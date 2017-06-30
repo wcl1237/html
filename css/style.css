@@ -1846,6 +1846,30 @@ img#wpstats {
 
 /* =Media queries
 -------------------------------------------------------------- */
+@media screen and (max-width: 600px) {
+    .projectli {
+        width: 100%;
+        box-shadow: 2px 2px 5px #888888;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.2);
+        margin-bottom: 5px;
+        line-height: 112px;
+    }
+
+    .projectimg {
+        width: 150px;
+        float: left;
+    }
+
+    .projectspan {
+        margin: 5px;
+    }
+
+    .projecta {
+        float: right;
+        margin-right: 10px;
+    }
+}
 
 /* Minimum width of 600 pixels. */
 @media screen and (min-width: 600px) {
@@ -1858,6 +1882,37 @@ img#wpstats {
     .author-description {
         float: right;
         width: 80%;
+    }
+
+    .projectbox {
+        text-align: center;
+        width: 640px;
+        margin: 0 auto;
+    }
+
+    .projectli {
+        width: 200px;
+        display: inline-block;
+        height: 180px;
+        box-shadow: 2px 2px 5px #888888;
+        margin: 5px;
+        float: left;
+    }
+
+    .projectimg {
+        width: 200px;
+        margin-bottom: 7px;
+    }
+
+    .projectspan {
+        font-size: 16px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    .projecta {
+        float: right;
+        margin-right: 10px;
     }
 
     .site {
@@ -1882,7 +1937,7 @@ img#wpstats {
     .widget-area {
         float: right;
         width: 300px;
-        margin-right:25px;
+        margin-right: 25px;
     }
 
     .site-header h1,
@@ -2051,6 +2106,37 @@ img#wpstats {
 @media screen and (min-width: 1100px) {
     body {
         background-color: #e6e6e6;
+    }
+
+    .projectbox {
+        text-align: center;
+        width: 640px;
+        margin: 0 auto;
+    }
+
+    .projectli {
+        width: 200px;
+        display: inline-block;
+        height: 180px;
+        box-shadow: 2px 2px 5px #888888;
+        margin: 5px;
+        float: left;
+    }
+
+    .projectimg {
+        width: 200px;
+        margin-bottom: 7px;
+    }
+
+    .projectspan {
+        font-size: 16px;
+        float: left;
+        margin-left: 10px;
+    }
+
+    .projecta {
+        float: right;
+        margin-right: 10px;
     }
 
     body .site {
