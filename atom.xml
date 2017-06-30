@@ -250,7 +250,7 @@ Windows 8
     <link href="http://yoursite.com/2017/06/29/CSS%E5%9F%BA%E7%A1%80/"/>
     <id>http://yoursite.com/2017/06/29/CSS基础/</id>
     <published>2017-06-29T05:32:09.000Z</published>
-    <updated>2017-06-30T02:27:33.920Z</updated>
+    <updated>2017-06-30T12:13:45.371Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><pre><code>颜色 background-color         rgba/十六进制/red
 图片 background-image         url(&quot;img.png&quot;)
@@ -394,9 +394,17 @@ filter:alpha(opacity=40); /* IE8 及其更早版本 */
 </code></pre><h4 id="18-CSS3-渐变（Gradients）"><a href="#18-CSS3-渐变（Gradients）" class="headerlink" title="18.CSS3 渐变（Gradients）"></a>18.CSS3 渐变（Gradients）</h4><pre><code>background: linear-gradient(direction, color-stop1, color-stop2, ...);
 background: linear-gradient(angle, color-stop1, color-stop2);
 background: radial-gradient(center, shape size, start-color, ..., last-color)
-</code></pre><h4 id="19-CSS3-2D-转换"><a href="#19-CSS3-2D-转换" class="headerlink" title="19.CSS3 2D 转换"></a>19.CSS3 2D 转换</h4><p>transform<br>    translate(50px,100px)<br>    rotate(30deg)<br>    scale(2,3)<br>    skew(30deg,20deg)<br>    matrix()</p>
-<h4 id="20-CSS3-3D-转换"><a href="#20-CSS3-3D-转换" class="headerlink" title="20.CSS3 3D 转换"></a>20.CSS3 3D 转换</h4><p>transform<br>    transform-style:preserve-3d;显示3D<br>    perspective 透视距离<br>    backface-visibility    定义元素在不面对屏幕时是否可见。</p>
-<h4 id="21-CSS3-过渡"><a href="#21-CSS3-过渡" class="headerlink" title="21.CSS3 过渡"></a>21.CSS3 过渡</h4><pre><code>transition: property duration timing-function delay;
+</code></pre><h4 id="19-CSS3-2D-转换"><a href="#19-CSS3-2D-转换" class="headerlink" title="19.CSS3 2D 转换"></a>19.CSS3 2D 转换</h4><pre><code>transform 
+translate(50px,100px) 
+rotate(30deg)
+scale(2,3)
+skew(30deg,20deg)
+matrix()
+</code></pre><h4 id="20-CSS3-3D-转换"><a href="#20-CSS3-3D-转换" class="headerlink" title="20.CSS3 3D 转换"></a>20.CSS3 3D 转换</h4><pre><code>transform 
+transform-style:preserve-3d;显示3D
+perspective 透视距离
+backface-visibility    定义元素在不面对屏幕时是否可见。
+</code></pre><h4 id="21-CSS3-过渡"><a href="#21-CSS3-过渡" class="headerlink" title="21.CSS3 过渡"></a>21.CSS3 过渡</h4><pre><code>transition: property duration timing-function delay;
 </code></pre><h4 id="22-CSS3-动画"><a href="#22-CSS3-动画" class="headerlink" title="22.CSS3 动画"></a>22.CSS3 动画</h4><pre><code>@keyframes 规则
 @keyframes myfirst{
     from {background: red;}
@@ -454,7 +462,7 @@ flex: auto: 计算值为 1 1 auto
       inherit：从父元素继承
       [ flex-grow ]：定义弹性盒子元素的扩展比率。
       [ flex-shrink ]：定义弹性盒子元素的收缩比率。
-    [ flex-basis ]：定义弹性盒子元素的默认基准值。
+      [ flex-basis ]：定义弹性盒子元素的默认基准值。
 </code></pre>]]></content>
     
     <summary type="html">
