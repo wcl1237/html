@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>阿木隆</title>
+  <subtitle>北风骤起，艳阳高照</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-06-30T02:07:48.064Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>阿木隆</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>threejs</title>
+    <link href="http://yoursite.com/2017/06/30/threejs/"/>
+    <id>http://yoursite.com/2017/06/30/threejs/</id>
+    <published>2017-06-30T02:07:16.000Z</published>
+    <updated>2017-06-30T02:07:48.064Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="threejs" scheme="http://yoursite.com/tags/threejs/"/>
+    
+      <category term="webGL" scheme="http://yoursite.com/tags/webGL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meta标签用法总结</title>
+    <link href="http://yoursite.com/2017/06/29/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/06/29/meta标签用法总结/</id>
+    <published>2017-06-29T09:16:57.000Z</published>
+    <updated>2017-06-30T02:50:31.496Z</updated>
+    
+    <content type="html"><![CDATA[<p><meta>标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。</p>
+<a id="more"></a>
+<h5 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">关键字： </div><div class="line">    &lt;meta name=&quot;keywords&quot; content=&quot;your tags&quot; /&gt;</div><div class="line">描述： </div><div class="line">    &lt;meta name=&quot;description&quot; content=&quot;150 words&quot; /&gt;</div><div class="line">搜索引擎索引方式：</div><div class="line">    &lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;</div><div class="line">     &lt;!--</div><div class="line">         all：文件将被检索，且页面上的链接可以被查询；</div><div class="line">         none：文件将不被检索，且页面上的链接不可以被查询；</div><div class="line">         index：文件将被检索；</div><div class="line">         follow：页面上的链接可以被查询；</div><div class="line">         noindex：文件将不被检索；</div><div class="line">         nofollow：页面上的链接不可以被查询。</div><div class="line">      --&gt;</div><div class="line">页面重定向和刷新：</div><div class="line">    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&quot; /&gt;</div><div class="line">定义网页作者：</div><div class="line">    &lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;</div></pre></td></tr></table></figure>
+<h5 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">viewport：</div><div class="line">    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;</div><div class="line">    &lt;!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边  --&gt;</div><div class="line">    width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）</div><div class="line">    height：高度（数值 / device-height）（范围从223 到10,000）</div><div class="line">    initial-scale：初始的缩放比例 （范围从&gt;0 到10）</div><div class="line">    minimum-scale：允许用户缩放到的最小比例</div><div class="line">    maximum-scale：允许用户缩放到的最大比例</div><div class="line">    user-scalable：用户是否可以手动缩 (no,yes)</div><div class="line">WebApp全屏模式：</div><div class="line">    伪装app，离线应用   </div><div class="line">    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt; &lt;!-- 启用 WebApp 全屏模式 --&gt;</div><div class="line">隐藏状态栏/设置状态栏颜色：</div><div class="line">    只有在开启WebApp全屏模式时才生效。</div><div class="line">    content的值为default | black | black-translucent 。</div><div class="line">    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;</div><div class="line">添加到主屏后的标题：</div><div class="line">    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;</div><div class="line">忽略数字自动识别为电话号码：</div><div class="line">    &lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot; /&gt; </div><div class="line">忽略识别邮箱：</div><div class="line">    &lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot; /&gt;</div><div class="line">添加智能 App 广告条 Smart App Banner：</div><div class="line">    告诉浏览器这个网站对应的app，并在页面上显示下载banner。</div><div class="line">    &lt;meta name=&quot;apple-itunes-app&quot; </div><div class="line">    content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt; </div><div class="line">其他：</div><div class="line">    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;</div><div class="line">    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;</div><div class="line">    &lt;!-- 微软的老式浏览器 --&gt;</div><div class="line">    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;</div><div class="line">    &lt;!-- uc强制竖屏 --&gt;</div><div class="line">    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;</div><div class="line">    &lt;!-- QQ强制竖屏 --&gt;</div><div class="line">    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;</div><div class="line">    &lt;!-- UC强制全屏 --&gt;</div><div class="line">    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;</div><div class="line">    &lt;!-- QQ强制全屏 --&gt;</div><div class="line">    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;</div><div class="line">    &lt;!-- UC应用模式 --&gt;</div><div class="line">    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;</div><div class="line">    &lt;!-- QQ应用模式 --&gt;</div><div class="line">    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;</div><div class="line">    &lt;!-- windows phone 点击无高光 --&gt;</div><div class="line">    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;</div></pre></td></tr></table></figure>
+<h5 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">申明编码：</div><div class="line">    &lt;meta charset=&apos;utf-8&apos; /&gt;</div><div class="line">优先使用 IE 最新版本和 Chrome：</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</div><div class="line">&lt;!-- 关于X-UA-Compatible --&gt;</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=6&quot; &gt;&lt;!-- 使用IE6 --&gt;</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=7&quot; &gt;&lt;!-- 使用IE7 --&gt;</div><div class="line">    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=8&quot; &gt;&lt;!-- 使用IE8 --&gt;</div><div class="line">浏览器内核控制：</div><div class="line">    国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。</div><div class="line">    而添加meta标签的网站可以控制浏览器选择何种内核渲染。</div><div class="line">    &lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;</div><div class="line">国内双核浏览器默认内核模式如下：</div><div class="line">    1. 搜狗高速浏览器、QQ浏览器：IE内核（兼容模式）</div><div class="line">    2. 360极速浏览器、遨游浏览器：Webkit内核（极速模式）</div><div class="line"></div><div class="line">禁止浏览器从本地计算机的缓存中访问页面内容：这样设定，访问者将无法脱机浏览。</div><div class="line">    &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;</div><div class="line">Windows 8</div><div class="line">    &lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#000&quot;/&gt; &lt;!-- Windows 8 磁贴颜色 --&gt;</div><div class="line">    &lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;icon.png&quot;/&gt; &lt;!-- Windows 8 磁贴图标 --&gt;</div><div class="line">站点适配：主要用于PC-手机页的对应关系。</div><div class="line">    &lt;meta name=&quot;mobile-agent&quot;content=&quot;format=[wml|xhtml|html5]; url=url&quot;&gt;</div><div class="line">    &lt;!--</div><div class="line">    [wml|xhtml|html5]根据手机页的协议语言，选择其中一种；</div><div class="line">    url=&quot;url&quot; 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。</div><div class="line">    --&gt;</div><div class="line">转码申明：用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta</div><div class="line">    &lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;meta&gt;标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="html" scheme="http://yoursite.com/tags/html/"/>
+    
+      <category term="meta" scheme="http://yoursite.com/tags/meta/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图片预览及Image对象总结</title>
+    <link href="http://yoursite.com/2017/06/29/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%8F%8AImage%E5%AF%B9%E8%B1%A1%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2017/06/29/图片预览及Image对象总结/</id>
+    <published>2017-06-29T08:32:54.000Z</published>
+    <updated>2017-06-30T02:43:08.376Z</updated>
+    
+    <content type="html"><![CDATA[<p>图片预览简单实现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">&lt;title&gt;图片预览&lt;/title&gt;</div><div class="line">&lt;script&gt;</div><div class="line">function previewFile() &#123;</div><div class="line"> var preview = document.querySelector(&apos;img&apos;);</div><div class="line"> var file  = document.querySelector(&apos;input[type=file]&apos;).files[0];</div><div class="line"> var reader = new FileReader();</div><div class="line"> reader.onloadend = function () &#123;</div><div class="line">  preview.src = reader.result;</div><div class="line"> &#125;</div><div class="line"> if (file) &#123;</div><div class="line">  reader.readAsDataURL(file);</div><div class="line"> &#125; else &#123;</div><div class="line">  preview.src = &quot;&quot;;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type=&quot;file&quot; onchange=&quot;previewFile()&quot;&gt;&lt;br&gt;</div><div class="line">&lt;img src=&quot;&quot; height=&quot;200&quot; width=&quot;300&quot; alt=&quot;Image preview...&quot;/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>1、FileReader接口的方法</p>
+<p>FileReader接口有4个方法，其中3个用来读取文件，另一个用来中断读取。无论读取成功或失败，方法并不会返回读取结果，这一结果存储在result属性中。</p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>readAsBinaryString</td>
+<td>file</td>
+<td>将文件读取为二进制编码</td>
+</tr>
+<tr>
+<td>readAsText</td>
+<td>file,[encoding]</td>
+<td>将文件读取为文本</td>
+</tr>
+<tr>
+<td>readAsDataURL</td>
+<td>file</td>
+<td>将文件读取为DataURL</td>
+</tr>
+<tr>
+<td>abort</td>
+<td>(none)</td>
+<td>终端读取操作</td>
+</tr>
+</tbody>
+</table>
+<p>2、FileReader接口事件<br>FileReader接口包含了一套完整的事件模型，用于捕获读取文件时的状态。</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>中断</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>出错</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>开始</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>正在读取</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>成功读取</td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td>读取完成，无论成功失败</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;  </div><div class="line">var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">var file=document.getElementById(<span class="string">"file"</span>);  </div><div class="line">  </div><div class="line">//判断浏览器是否支持FileReader接口  </div><div class="line"><span class="keyword">if</span>(typeof FileReader == <span class="string">'undefined'</span>)&#123;  </div><div class="line">    result.InnerHTML=<span class="string">"&lt;p&gt;你的浏览器不支持FileReader接口！&lt;/p&gt;"</span>;  </div><div class="line">    //使选择控件不可操作  </div><div class="line">    file.setAttribute(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsDataURL</span></span>()&#123;  </div><div class="line">    //检验是否为图像文件  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    <span class="keyword">if</span>(!/image\/\w+/.<span class="built_in">test</span>(file.type))&#123;  </div><div class="line">        alert(<span class="string">"看清楚，这个需要图片！"</span>);  </div><div class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </div><div class="line">    &#125;  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以Data URL形式读入页面  </div><div class="line">    reader.readAsDataURL(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(e)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=<span class="string">'&lt;img src="'</span> + this.result +<span class="string">'" alt="" /&gt;'</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsBinaryString</span></span>()&#123;  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以二进制形式读入页面  </div><div class="line">    reader.readAsBinaryString(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(f)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=this.result;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsText</span></span>()&#123;  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以文本形式读入页面  </div><div class="line">    reader.readAsText(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(f)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=this.result;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">&lt;/script&gt;  </div><div class="line">&lt;p&gt;  </div><div class="line">    &lt;label&gt;请选择一个文件：&lt;/label&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> id=<span class="string">"file"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取图像"</span> onclick=<span class="string">"readAsDataURL()"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取二进制数据"</span> onclick=<span class="string">"readAsBinaryString()"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取文本文件"</span> onclick=<span class="string">"readAsText()"</span> /&gt;  </div><div class="line">&lt;/p&gt;  </div><div class="line">&lt;div id=<span class="string">"result"</span> name=<span class="string">"result"</span>&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;图片预览简单实现&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;15&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;16&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;17&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;18&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;19&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;20&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;21&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;22&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;23&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;24&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;25&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;html&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;title&amp;gt;图片预览&amp;lt;/title&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;script&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;function previewFile() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; var preview = document.querySelector(&amp;apos;img&amp;apos;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; var file  = document.querySelector(&amp;apos;input[type=file]&amp;apos;).files[0];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; var reader = new FileReader();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; reader.onloadend = function () &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  preview.src = reader.result;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; if (file) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  reader.readAsDataURL(file);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &amp;#125; else &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  preview.src = &amp;quot;&amp;quot;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/script&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/head&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;input type=&amp;quot;file&amp;quot; onchange=&amp;quot;previewFile()&amp;quot;&amp;gt;&amp;lt;br&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;img src=&amp;quot;&amp;quot; height=&amp;quot;200&amp;quot; width=&amp;quot;300&amp;quot; alt=&amp;quot;Image preview...&amp;quot;/&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/body&amp;gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;lt;/html&amp;gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="html" scheme="http://yoursite.com/tags/html/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS基础</title>
+    <link href="http://yoursite.com/2017/06/29/CSS%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2017/06/29/CSS基础/</id>
+    <published>2017-06-29T05:32:09.000Z</published>
+    <updated>2017-06-30T02:27:33.920Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><pre><code>颜色 background-color         rgba/十六进制/red
+图片 background-image         url(&quot;img.png&quot;)
+重复 background-repeat        no-repeat/repeat-x
+滚动 background-attachment    scroll/fixed
+定位 background-position      left top/0 0/50% 50%
+尺寸 background-size           |contain;
+定位 background-origin        padding-box|border-box|content-box;
+区域 background-clip          border-box|padding-box|content-box;
+</code></pre><a id="more"></a>
+<h4 id="2-CSS-文本格式"><a href="#2-CSS-文本格式" class="headerlink" title="2.CSS 文本格式"></a>2.CSS 文本格式</h4><pre><code>文本颜色    color    
+文本方向    direction              ltr/rtl
+字符间距    letter-spacing    
+文本行高    line-height            数字乘字体尺寸来设置行间距
+文本对齐    text-align             justify/left/right/center
+文本修饰    text-decoration        underline/overline/line-through/blink
+首行缩进    text-indent            
+文本阴影    text-shadow            h-shadow v-shadow blur color
+控制字母    text-transform         capitalize/uppercase/lowercase
+文本重写    unicode-bidi           bidi-override
+垂直对齐    vertical-align         sub/super/top/middle/bottom
+空白处理    white-space            pre/nowrap/pre-wrap/pre-line
+汉字间距    word-spacing    
+text-overflow   ellipsis
+word-wrap   break-word  指定如果足够长得话，应该换行：
+word-break  break-all    允许在单词内换行。
+</code></pre><h4 id="3-CSS-字体"><a href="#3-CSS-字体" class="headerlink" title="3.CSS 字体"></a>3.CSS 字体</h4><pre><code>文本字体 font &quot;font-style font-variant font-weight font-size/line-height font-family&quot;
+文本字体系列 font-family    
+文本字体大小 font-size    
+文本字体样式 font-style     italic/oblique
+以小型大写字体或者正常字体显示文本 font-variant    
+字体粗细 font-weight normal 400/blod 500
+@font-face 规则
+@font-face{
+    font-family: myFirstFont;
+    src: url(sansation_light.woff);
+} 
+div{font-family:myFirstFont;}
+</code></pre><h4 id="4-CSS-链接"><a href="#4-CSS-链接" class="headerlink" title="4.CSS 链接"></a>4.CSS 链接</h4><pre><code>a:link {color:#000000;}      /* 未访问链接*/
+a:visited {color:#00FF00;}  /* 已访问链接 */
+a:hover {color:#FF00FF;}  /* 鼠标移动到链接上 */
+a:active {color:#0000FF;}  /* 鼠标点击时 */
+</code></pre><h4 id="5-CSS-列表"><a href="#5-CSS-列表" class="headerlink" title="5.CSS 列表"></a>5.CSS 列表</h4><pre><code>列表项标记浏览器兼容性解决方案
+ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+ul li{
+    background-image: url(sqpurple.gif);
+    background-repeat: no-repeat;
+    background-position: 0px 5px; 
+    padding-left: 14px; 
+}
+
+list-style    简写属性。用于把所有用于列表的属性设置于一个声明中
+list-style-image    将图象设置为列表项标志。
+list-style-position    设置列表中列表项标志的位置。
+list-style-type    设置列表项标志的类型。
+</code></pre><h4 id="6-CSS-盒子模型"><a href="#6-CSS-盒子模型" class="headerlink" title="6.CSS 盒子模型"></a>6.CSS 盒子模型</h4><pre><code>width浏览器的兼容性问题
+根据 W3C 的规范，元素内容占据的空间是由 width 属性设置的，
+而内容周围的 padding 和 border 值是另外计算的。
+不幸的是，IE5.X 和 6 在怪异模式中使用自己的非标准模型。
+这些浏览器的 width 属性不是内容的宽度，
+而是内容、内边距和边框的宽度的总和。
+···
+解决方式
+不要给元素添加具有指定宽度的内边距，
+而是尝试将内边距或外边距添加到元素的父元素和子元素。
+
+浏览器的兼容性问题
+IE8 及更早IE版本不支持 填充的宽度和边框的宽度属性设。
+···
+解决方式
+解决IE8及更早版本不兼容问题可以在HTML页面声明 &lt;!DOCTYPE html&gt;即可。
+</code></pre><h4 id="7-CSS-边框"><a href="#7-CSS-边框" class="headerlink" title="7.CSS 边框"></a>7.CSS 边框</h4><pre><code>边框样式    border-style dotted 点线/dashed 虚线/solid 实线
+圆角 border-radius
+盒阴影 box-shadow &quot;h-shadow v-shadow blur spread color inset&quot;
+边界图片 border-image &quot;source slice width outset repeat&quot;
+</code></pre><h4 id="8-CSS-轮廓"><a href="#8-CSS-轮廓" class="headerlink" title="8.CSS 轮廓"></a>8.CSS 轮廓</h4><pre><code>outline
+</code></pre><h4 id="9-CSS-Display-显示-与Visibility（可见性）"><a href="#9-CSS-Display-显示-与Visibility（可见性）" class="headerlink" title="9.CSS Display(显示) 与Visibility（可见性）"></a>9.CSS Display(显示) 与Visibility（可见性）</h4><pre><code>Display
+none    此元素不会被显示。
+block    此元素将显示为块级元素，此元素前后会带有换行符。
+inline    默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block 行内块元素
+...
+Visibility
+hidden 隐藏但是空间被占据
+</code></pre><h4 id="10-CSS-Positioning-定位"><a href="#10-CSS-Positioning-定位" class="headerlink" title="10.CSS Positioning(定位)"></a>10.CSS Positioning(定位)</h4><pre><code>static  默认值，即没有定位，在文档流中
+relative    相对其正常位置。
+fixed   相对于浏览器窗口是固定位置。
+absolute    相对于最近的已定位父元素或者html
+</code></pre><p>px:Fixed 定位在 IE7 和 IE8 下需要描述 !DOCTYPE 才能支持.</p>
+<h4 id="11-CSS-Float-浮动"><a href="#11-CSS-Float-浮动" class="headerlink" title="11.CSS Float(浮动)"></a>11.CSS Float(浮动)</h4><pre><code>一个浮动元素会尽量向左或向右移动，直到它的外边缘碰到包含框或另一个浮动框的边框为止。
+浮动元素之后的元素将围绕它。
+
+left    元素向左浮动。
+right   元素向右浮动。
+
+px:clear 清除浮动
+</code></pre><h4 id="12-CSS-clip-属性"><a href="#12-CSS-clip-属性" class="headerlink" title="12.CSS clip 属性"></a>12.CSS clip 属性</h4><pre><code>裁剪一张图像：
+img 
+{
+position:absolute;
+clip:rect(0px,60px,200px,0px);
+}
+</code></pre><h4 id="13-CSS-水平对齐-Horizontal-Align"><a href="#13-CSS-水平对齐-Horizontal-Align" class="headerlink" title="13.CSS 水平对齐(Horizontal Align)"></a>13.CSS 水平对齐(Horizontal Align)</h4><pre><code>在IE8中使用margin:auto属性无法正常工作，除非声明 !DOCTYPE
+
+IE5中块元素有一个margin处理BUG。在IE5中，需要添加一些额外的代码
+.container{text-align:center;}
+.center{
+margin-left:auto;
+margin-right:auto;
+width:70%;
+background-color:#b0e0e6;
+text-align:left;}
+
+IE8和早期有一个问题，当使用position属性时。
+如果一个容器元素（在本例中&lt;div class=&quot;container&quot;&gt;）指定的宽度，
+!DOCTYPE声明是缺失，IE8和早期版本会在右边增添17px的margin。
+这似乎是一个滚动的预留空间。
+使用position属性时始终设置在DOCTYPE声明中！
+
+IE8和早期有一个问题，当使用position属性时。
+如果一个容器元素（在本例中&lt;div class=&quot;container&quot;&gt;）指定的宽度，
+!DOCTYPE声明是缺失，IE8和早期版本会在右边增添17px的margin。
+这似乎是一个滚动的预留空间。
+使用position属性时始终设置在DOCTYPE声明中！
+float同样如此。
+</code></pre><h4 id="14-CSS-组合选择符"><a href="#14-CSS-组合选择符" class="headerlink" title="14.CSS 组合选择符"></a>14.CSS 组合选择符</h4><pre><code>后代选取器(以空格分隔)
+子元素选择器(以大于号分隔）
+相邻兄弟选择器（以加号分隔）
+普通兄弟选择器（以破折号分隔）
+:first-child 伪类来选择元素的第一个子元素
+q:lang(no) {quotes: &quot;~&quot; &quot;~&quot;;} 注意: 仅当 !DOCTYPE 已经声明时 IE8 支持 :lang.
+</code></pre><h4 id="15-CSS-图像透明-不透明"><a href="#15-CSS-图像透明-不透明" class="headerlink" title="15.CSS 图像透明/不透明"></a>15.CSS 图像透明/不透明</h4><pre><code>opacity:0.4;
+filter:alpha(opacity=40); /* IE8 及其更早版本 */
+</code></pre><h4 id="16-CSS-媒体类型"><a href="#16-CSS-媒体类型" class="headerlink" title="16.CSS 媒体类型"></a>16.CSS 媒体类型</h4><pre><code>@media 规则
+@media 规则允许在相同样式表为不同媒体设置不同的样式。
+</code></pre><h4 id="17-CSS-属性-选择器"><a href="#17-CSS-属性-选择器" class="headerlink" title="17.CSS 属性 选择器"></a>17.CSS 属性 选择器</h4><pre><code>注意：IE7和IE8需声明!DOCTYPE才支持属性选择器！IE6和更低的版本不支持属性选择器。
+</code></pre><h4 id="18-CSS3-渐变（Gradients）"><a href="#18-CSS3-渐变（Gradients）" class="headerlink" title="18.CSS3 渐变（Gradients）"></a>18.CSS3 渐变（Gradients）</h4><pre><code>background: linear-gradient(direction, color-stop1, color-stop2, ...);
+background: linear-gradient(angle, color-stop1, color-stop2);
+background: radial-gradient(center, shape size, start-color, ..., last-color)
+</code></pre><h4 id="19-CSS3-2D-转换"><a href="#19-CSS3-2D-转换" class="headerlink" title="19.CSS3 2D 转换"></a>19.CSS3 2D 转换</h4><p>transform<br>    translate(50px,100px)<br>    rotate(30deg)<br>    scale(2,3)<br>    skew(30deg,20deg)<br>    matrix()</p>
+<h4 id="20-CSS3-3D-转换"><a href="#20-CSS3-3D-转换" class="headerlink" title="20.CSS3 3D 转换"></a>20.CSS3 3D 转换</h4><p>transform<br>    transform-style:preserve-3d;显示3D<br>    perspective 透视距离<br>    backface-visibility    定义元素在不面对屏幕时是否可见。</p>
+<h4 id="21-CSS3-过渡"><a href="#21-CSS3-过渡" class="headerlink" title="21.CSS3 过渡"></a>21.CSS3 过渡</h4><pre><code>transition: property duration timing-function delay;
+</code></pre><h4 id="22-CSS3-动画"><a href="#22-CSS3-动画" class="headerlink" title="22.CSS3 动画"></a>22.CSS3 动画</h4><pre><code>@keyframes 规则
+@keyframes myfirst{
+    from {background: red;}
+    to {background: yellow;}
+}
+div
+{
+    animation-name: myfirst;
+    animation-duration: 5s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+animation: name duration timing-function delay 
+            iteration-count direction fill-mode play-state;
+</code></pre><h4 id="23-CSS3-box-sizing"><a href="#23-CSS3-box-sizing" class="headerlink" title="23.CSS3 box-sizing"></a>23.CSS3 box-sizing</h4><pre><code>border-box; 则 padding(内边距) 和 border(边框) 也包含在 width 和 height 中
+</code></pre><h4 id="24-CSS3-弹性盒子-Flex-Box"><a href="#24-CSS3-弹性盒子-Flex-Box" class="headerlink" title="24.CSS3 弹性盒子(Flex Box)"></a>24.CSS3 弹性盒子(Flex Box)</h4><pre><code>弹性盒子内容
+display: -webkit-flex;
+flex-direction: row：横向从左到右排列（左对齐），默认的排列方式。
+                row-reverse：反转横向排列（右对齐，从后往前排，最后一项排在最前面。
+                column：纵向排列。
+                column-reverse：反转纵向排列，从后往前排，最后一项排在最上面。
+justify-content: flex-start | flex-end | center | space-between | space-around
+align-items: flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+             flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+             center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+             baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与&apos;flex-start&apos;等效。其它情况下，该值将参与基线对齐。
+             stretch：如果指定侧轴大小的属性值为&apos;auto&apos;，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照&apos;min/max-width/height&apos;属性的限制。
+flex-wrap: nowrap - 默认， 弹性容器为单行。该情况下弹性子项可能会溢出容器。
+           wrap - 弹性容器为多行。该情况下弹性子项溢出的部分会被放置到新行，子项内部会发生断行
+           wrap-reverse -反转 wrap 排列。
+align-content: stretch - 默认。各行将会伸展以占用剩余的空间。
+               flex-start - 各行向弹性盒容器的起始位置堆叠。
+               flex-end - 各行向弹性盒容器的结束位置堆叠。
+               center -各行向弹性盒容器的中间位置堆叠。
+               space-between -各行在弹性盒容器中平均分布。
+               space-around - 各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。
+弹性子元素属性
+order: &lt;integer&gt;：用整数值来定义排列顺序，数值小的排在前面。可以为负值。
+完美的居中:
+.flex-item {
+  margin: auto;
+}
+align-self: auto：如果&apos;align-self&apos;的值为&apos;auto&apos;，则其计算值为元素的父元素的&apos;align-items&apos;值，如果其没有父元素，则计算值为&apos;stretch&apos;。
+            flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+            flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+            center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+            baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与&apos;flex-start&apos;等效。其它情况下，该值将参与基线对齐。
+            stretch：如果指定侧轴大小的属性值为&apos;auto&apos;，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照&apos;min/max-width/height&apos;属性的限制。
+flex: auto: 计算值为 1 1 auto
+      initial: 计算值为 0 1 auto
+      none：计算值为 0 0 auto
+      inherit：从父元素继承
+      [ flex-grow ]：定义弹性盒子元素的扩展比率。
+      [ flex-shrink ]：定义弹性盒子元素的收缩比率。
+    [ flex-basis ]：定义弹性盒子元素的默认基准值。
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-CSS-背景&quot;&gt;&lt;a href=&quot;#1-CSS-背景&quot; class=&quot;headerlink&quot; title=&quot;1.CSS 背景&quot;&gt;&lt;/a&gt;1.CSS 背景&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;颜色 background-color         rgba/十六进制/red
+图片 background-image         url(&amp;quot;img.png&amp;quot;)
+重复 background-repeat        no-repeat/repeat-x
+滚动 background-attachment    scroll/fixed
+定位 background-position      left top/0 0/50% 50%
+尺寸 background-size           |contain;
+定位 background-origin        padding-box|border-box|content-box;
+区域 background-clip          border-box|padding-box|content-box;
+&lt;/code&gt;&lt;/pre&gt;
+    
+    </summary>
+    
+    
+      <category term="css" scheme="http://yoursite.com/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Say ty 2 hexo</title>
+    <link href="http://yoursite.com/2017/06/27/hello-world/"/>
+    <id>http://yoursite.com/2017/06/27/hello-world/</id>
+    <published>2017-06-27T08:01:12.576Z</published>
+    <updated>2017-06-30T02:27:30.534Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
