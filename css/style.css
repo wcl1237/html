@@ -1865,6 +1865,7 @@ img#wpstats {
         max-width: 960px;
         max-width: 68.571428571rem;
         overflow: hidden;
+        min-width: 940px;
     }
 
     .site-content {
