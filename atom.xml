@@ -27,11 +27,11 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
       <category term="threejs" scheme="http://yoursite.com/tags/threejs/"/>
     
       <category term="webGL" scheme="http://yoursite.com/tags/webGL/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
@@ -239,9 +239,9 @@ Windows 8
     </summary>
     
     
-      <category term="html" scheme="http://yoursite.com/tags/html/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="html" scheme="http://yoursite.com/tags/html/"/>
     
   </entry>
   
