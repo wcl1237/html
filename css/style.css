@@ -1866,8 +1866,11 @@ img#wpstats {
     }
 
     .projecta {
-        float: right;
-        margin-right: 10px;
+        line-height: 112px;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 }
 
@@ -1901,18 +1904,7 @@ img#wpstats {
 
     .projectimg {
         width: 200px;
-        margin-bottom: 7px;
-    }
-
-    .projectspan {
-        font-size: 16px;
-        float: left;
-        margin-left: 10px;
-    }
-
-    .projecta {
-        float: right;
-        margin-right: 10px;
+        margin-bottom: 5px;
     }
 
     .site {
@@ -2125,18 +2117,7 @@ img#wpstats {
 
     .projectimg {
         width: 200px;
-        margin-bottom: 7px;
-    }
-
-    .projectspan {
-        font-size: 16px;
-        float: left;
-        margin-left: 10px;
-    }
-
-    .projecta {
-        float: right;
-        margin-right: 10px;
+        margin-bottom: 5px;
     }
 
     body .site {
