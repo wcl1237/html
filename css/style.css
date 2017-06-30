@@ -1870,7 +1870,7 @@ img#wpstats {
 
     .site-content {
         float: left;
-        width: 65.104166667%;
+        width: calc(100% - 400px);
     }
 
     body.template-front-page .site-content,
@@ -1881,7 +1881,8 @@ img#wpstats {
 
     .widget-area {
         float: right;
-        width: 26.041666667%;
+        width: 300px;
+        margin-right:25px;
     }
 
     .site-header h1,
