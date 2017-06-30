@@ -27,11 +27,11 @@
     </summary>
     
     
-      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
-    
       <category term="threejs" scheme="http://yoursite.com/tags/threejs/"/>
     
       <category term="webGL" scheme="http://yoursite.com/tags/webGL/"/>
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
