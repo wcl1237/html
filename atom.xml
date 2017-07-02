@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-02T04:56:03.448Z</updated>
+  <updated>2017-07-02T05:36:56.139Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,134 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>jsonp</title>
+    <link href="http://106.15.95.246/2017/07/02/jsonp/"/>
+    <id>http://106.15.95.246/2017/07/02/jsonp/</id>
+    <published>2017-07-02T05:32:48.000Z</published>
+    <updated>2017-07-02T05:36:56.139Z</updated>
+    
+    <content type="html"><![CDATA[<!-- toc -->
+<p>JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server1.example.com的服务器沟通，而 HTML 的&lt;script&gt;元素是一个例外。利用 &lt;script&gt;元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。<br><a id="more"></a></p>
+<h2 id="Jsonp原理"><a href="#Jsonp原理" class="headerlink" title="Jsonp原理"></a>Jsonp原理</h2><p>在客户端定义一个callbackFunction, 然后把callbackFunction的名字传给服务器。</p>
+<p>服务器先生成 json 数据。然后以 javascript 语法的方式，生成一个function , function 名字就是传递上来的参数 jsonp的值.</p>
+<p>最后将 json 数据直接以入参的方式，放置到 function 中，这样就生成了一段 js 语法的文档，返回给客户端。</p>
+<p>客户端浏览器，解析script标签，并执行返回的 javascript 文档，此时数据作为参数，传入到了客户端预先定义好的 callbackFunction 函数里.（动态执行回调函数）</p>
+<h2 id="服务器端对JSONP支持"><a href="#服务器端对JSONP支持" class="headerlink" title="服务器端对JSONP支持"></a>服务器端对JSONP支持</h2><p>请求： <a href="http://example.com/servlet?jsonp=callbackFunction。" target="_blank" rel="external">http://example.com/servlet?jsonp=callbackFunction。</a><br>期望数据：[“param1”,”param2”]<br>前段通过&lt;script&gt;加载文档并调用。实现callbackFunction函数调用</p>
+<p>Java:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">return</span> request.getParameter(<span class="string">"callbackFunction"</span>)+<span class="string">"("</span>+JsonString+<span class="string">")"</span>;</div></pre></td></tr></table></figure></p>
+<p>返回内容像：callbackFunction([“param1”,”param2”])</p>
+<h2 id="客户端实现跨域请求"><a href="#客户端实现跨域请求" class="headerlink" title="客户端实现跨域请求"></a>客户端实现跨域请求</h2><p>在客户端调用提供JSONP支持的URL Service，获取JSONP格式数据。</p>
+<h3 id="创建script标签"><a href="#创建script标签" class="headerlink" title="创建script标签"></a>创建script标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var head= document.getElementsByTagName(<span class="string">'head'</span>)[0]; </div><div class="line">var script= document.createElement(<span class="string">'script'</span>); </div><div class="line">script.type= <span class="string">'text/javascript'</span>; </div><div class="line">script.src= <span class="string">'http://example.com/servlet?jsonp=callbackFunction'</span>; </div><div class="line">head.appendChild(script);</div></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">	...</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://example.com/servlet?jsonp=callbackFunction"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="客户端实现-callbackFunction-函数-全局"><a href="#客户端实现-callbackFunction-函数-全局" class="headerlink" title="客户端实现 callbackFunction 函数(全局)"></a>客户端实现 callbackFunction 函数(全局)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> callbackFunction(result) &#123;  </div><div class="line">    <span class="keyword">for</span>(var i <span class="keyword">in</span> result) &#123;  </div><div class="line">        alert(i+<span class="string">":"</span>+result[i]); </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="监听jsonp"><a href="#监听jsonp" class="headerlink" title="监听jsonp"></a>监听jsonp</h2><p>Jsonp本质上就是一个异步的get请求，但是他跟ajax理论上毫无关联。<br>创建的script标签加载过程中同样拥有onreadystatechange事件与onload事件，同样也拥有onerror事件。我们可以通过这些来观察jsonp回调。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	var head= document.getElementsByTagName(<span class="string">'head'</span>)[0]; </div><div class="line">	var script= document.createElement(<span class="string">'script'</span>); </div><div class="line">	script.type= <span class="string">'text/javascript'</span>; </div><div class="line">	script.onload = script.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123; </div><div class="line">		<span class="keyword">if</span> (!this.readyState || this.readyState === <span class="string">"loaded"</span> || this.readyState === <span class="string">"complete"</span> ) &#123; </div><div class="line">			alert(<span class="string">'加载成功'</span>)</div><div class="line">			script.onload = script.onreadystatechange = null; </div><div class="line">		&#125; </div><div class="line">	&#125;; </div><div class="line">	script.onerror = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		alert(<span class="string">'加载失败'</span>)</div><div class="line">	&#125;</div><div class="line">	script.src= <span class="string">'jsonp.js'</span>; </div><div class="line">	head.appendChild(script); </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>除此之外，考虑到安全问题，我们可以通过使用正则表达式检查 JSON 字符。</p>
+<p>js代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var my_JSON_object = !(/[^,:&#123;&#125;\[\]0-9.\-+Eaeflnr-u \n\r\t]/.<span class="built_in">test</span>(text.replace(/<span class="string">"(\\.|[^"</span>\\])*<span class="string">"/g, ' '))) &amp;&amp; eval('(' + text + ')');</span></div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      数据交互与dom操作并列前端两大基石
+    
+    </summary>
+    
+      <category term="心得" scheme="http://106.15.95.246/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="跨域" scheme="http://106.15.95.246/tags/%E8%B7%A8%E5%9F%9F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ajax浅析</title>
+    <link href="http://106.15.95.246/2017/07/02/ajax%E6%B5%85%E6%9E%90/"/>
+    <id>http://106.15.95.246/2017/07/02/ajax浅析/</id>
+    <published>2017-07-02T05:32:29.000Z</published>
+    <updated>2017-07-02T05:36:08.747Z</updated>
+    
+    <content type="html"><![CDATA[<!-- toc -->
+<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。<br>AJAX = 异步 JavaScript和XML（标准通用标记语言的子集）。<br>AJAX 是一种用于创建快速动态网页的技术。<br>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><a id="more"></a></p>
+<h2 id="XMLHttpRequest-是-AJAX-的基础"><a href="#XMLHttpRequest-是-AJAX-的基础" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础"></a>XMLHttpRequest 是 AJAX 的基础</h2><p>注：IE5 和 IE6 使用 ActiveXObject。</p>
+<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。<br>创建 XMLHttpRequest 对象的语法：</p>
+<blockquote>
+<p>variable=new XMLHttpRequest();</p>
+</blockquote>
+<p>Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
+<blockquote>
+<p>variable=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//创建</div><div class="line">var xmlhttp;</div><div class="line"><span class="keyword">if</span> (window.XMLHttpRequest)</div><div class="line">  &#123;// code <span class="keyword">for</span> IE7+, Firefox, Chrome, Opera, Safari</div><div class="line">  xmlhttp=new XMLHttpRequest();</div><div class="line">  &#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">  &#123;// code <span class="keyword">for</span> IE6, IE5</div><div class="line">  xmlhttp=new ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h2 id="XMLHttpRequest对象用于和服务器交换数据"><a href="#XMLHttpRequest对象用于和服务器交换数据" class="headerlink" title="XMLHttpRequest对象用于和服务器交换数据"></a>XMLHttpRequest对象用于和服务器交换数据</h2><h3 id="XMLHttpRequest对象的方法"><a href="#XMLHttpRequest对象的方法" class="headerlink" title="XMLHttpRequest对象的方法"></a>XMLHttpRequest对象的方法</h3><p>open(method,url,async)</p>
+<blockquote>
+<p>method：请求的类型；GET 或 POST<br>url：文件在服务器上的位置<br>async：true（异步）或 false（同步）</p>
+</blockquote>
+<p>POST请求 send(string)<br>GET请求 send()</p>
+<p>setRequestHeader(header,value)</p>
+<blockquote>
+<p>header: 规定头的名称<br>value: 规定头的值</p>
+</blockquote>
+<h3 id="XMLHttpRequest对象的属性"><a href="#XMLHttpRequest对象的属性" class="headerlink" title="XMLHttpRequest对象的属性"></a>XMLHttpRequest对象的属性</h3><p>onreadystatechange  当 readyState 属性改变时，就会触发该事件</p>
+<p>readyState     存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</p>
+<blockquote>
+<p>0: 请求未初始化<br>1: 服务器连接已建立<br>2: 请求已接收<br>3: 请求处理中<br>4: 请求已完成，且响应已就绪</p>
+</blockquote>
+<p>status    </p>
+<blockquote>
+<p>200: “OK”<br>300~307: 重定向类<br>40<em>: 请求错误<br>50</em>: 服务器错误</p>
+</blockquote>
+<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><blockquote>
+<p>responseText    获得字符串形式的响应数据。<br>responseXML    获得 XML 形式的响应数据。</p>
+</blockquote>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"get"</span>, <span class="string">"url?key=value"</span>);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(null);</div></pre></td></tr></table></figure>
+<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"post"</span>, <span class="string">"url"</span>, data);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(data);</div></pre></td></tr></table></figure>
+<h2 id="ajax简单封装实例"><a href="#ajax简单封装实例" class="headerlink" title="ajax简单封装实例"></a>ajax简单封装实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="keyword">function</span> ajax(config) &#123;</div><div class="line"></div><div class="line">	  	var xhr = null;</div><div class="line">	  	try&#123;</div><div class="line">			xhr = new XMLHttpRequest();</div><div class="line">	  	&#125;catch(e)&#123;</div><div class="line">			try&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'MSXML2.XMLHttp'</span>);</div><div class="line">			&#125;catch(e)&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		var date = new Date();</div><div class="line">	  	config.url = config.url + <span class="string">'?timestamp='</span> + date.getTime();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'get'</span>) &#123;</div><div class="line">			var arr = [];</div><div class="line">			<span class="keyword">for</span> (var i <span class="keyword">in</span> config.data) &#123;</div><div class="line">			    arr.push(encodeURIComponent(i) + <span class="string">'='</span> + encodeURIComponent(config.data[i]));</div><div class="line">		  	&#125;</div><div class="line">		  	config.data = arr.join(<span class="string">'&amp;'</span>)</div><div class="line">		    config.url += config.data; </div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">true</span>) &#123; </div><div class="line">		    xhr.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">		      	<span class="keyword">if</span> (xhr.readyState == 4) &#123;</div><div class="line">		        	callback();</div><div class="line">		      	&#125;</div><div class="line">		    &#125;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	  	xhr.open(config.method, config.url, config.async);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</div><div class="line">		    xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</div><div class="line">		    xhr.send(JSON.stringify(config.data));</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    xhr.send(null);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">false</span>) &#123;</div><div class="line">		    callback();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">callback</span></span>() &#123;</div><div class="line">		    <span class="keyword">if</span> (xhr.status == 200) &#123;</div><div class="line">		      	config.success(xhr.responseText);</div><div class="line">		    &#125; <span class="keyword">else</span> &#123;</div><div class="line">		      	alert(<span class="string">'获取数据错误！错误代号：'</span> + xhr.status + <span class="string">'，错误信息：'</span> + xhr.statusText);</div><div class="line">		    &#125;	</div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      数据交互与dom操作并列前端两大基石
+    
+    </summary>
+    
+      <category term="心得" scheme="http://106.15.95.246/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>form对象</title>
+    <link href="http://106.15.95.246/2017/07/02/form%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://106.15.95.246/2017/07/02/form对象/</id>
+    <published>2017-07-02T05:32:00.000Z</published>
+    <updated>2017-07-02T05:35:39.588Z</updated>
+    
+    <content type="html"><![CDATA[<!-- toc -->
+<p>&lt;form&gt; 标签用于为用户输入创建 HTML 表单。<br>表单能够包含 input 元素，比如文本字段、复选框、单选框、提交按钮等等。<br>表单还可以包含 menus、textarea、fieldset、legend 和 label 元素。<br>表单用于向服务器传输数据。<br><a id="more"></a></p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form action=<span class="string">"url"</span> enctype=<span class="string">"multipart/form-data"</span> name=<span class="string">"form1"</span> target=<span class="string">"_blank"</span> method=<span class="string">"get"</span> &gt;</div><div class="line">  &lt;p&gt;First name: &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"fname"</span> /&gt;&lt;/p&gt;</div><div class="line">  &lt;p&gt;Last name: &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"lname"</span> /&gt;&lt;/p&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"Submit"</span> /&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<h2 id="form元素属性"><a href="#form元素属性" class="headerlink" title="form元素属性"></a>form元素属性</h2><table class="table table-bordered table-striped table-condensed"><tr><th>属性</th><th>值</th><th>描述</th></tr><tr><td>accept-charset</td><td>charset_list</td><td>规定服务器可处理的表单数据字符集。</td></tr><tr><td>action</td><td>URL</td><td>规定当提交表单时向何处发送表单数据。</td></tr><tr><td rowspan="2">autocomplete</td><td>on</td><td rowspan="2">规定是否启用表单的自动完成功能。</td></tr><tr><td>off</td></tr><tr><td rowspan="2">method</td><td>get</td><td rowspan="2">规定用于发送 form-data 的 HTTP 方法。</td></tr><tr><td>post</td></tr><tr><td>name</td><td>form_name</td><td>规定表单的名称。</td></tr><tr><td rowspan="5">target</td><td>_blank</td><td rowspan="5">规定在何处打开 action URL。</td></tr><tr><td>_self</td></tr><tr><td>_parent</td></tr><tr><td>_top</td></tr><tr><td>framename</td></tr><tr><td rowspan="3">enctype</td><td>application/x-www-form-urlencoded</td><td rowspan="3"></td></tr><tr><td>multipart/form-data</td></tr><tr><td>text/plain</td></tr></table>
+
+<h2 id="Form-对象"><a href="#Form-对象" class="headerlink" title="Form 对象"></a>Form 对象</h2><p>Form 对象代表一个 HTML 表单。<br>在 HTML 文档中&lt;form&gt; 每出现一次，Form 对象就会被创建。</p>
+<h2 id="Form-对象属性"><a href="#Form-对象属性" class="headerlink" title="Form 对象属性"></a>Form 对象属性</h2><table class="table table-bordered table-striped table-condensed"><tr><th>属性</th><th>描述</th></tr><tr><td>acceptCharset</td><td>服务器可接受的字符集。</td></tr><tr><td>action</td><td>设置或返回表单的 action 属性。</td></tr><tr><td>enctype</td><td>设置或返回表单用来编码内容的 MIME 类型。</td></tr><tr><td>id</td><td>设置或返回表单的 id。</td></tr><tr><td>length</td><td>返回表单中的元素数目。</td></tr><tr><td>method</td><td>设置或返回将数据发送到服务器的 HTTP 方法。</td></tr><tr><td>name</td><td>设置或返回表单的名称。</td></tr><tr><td>target </td><td>设置或返回表单提交结果的 Frame 或 Window 名。</td></tr></table>
+
+<h2 id="Form-对象方法-句柄"><a href="#Form-对象方法-句柄" class="headerlink" title="Form 对象方法/句柄"></a>Form 对象方法/句柄</h2><p>submit()    提交表单。<br>onsubmit    在提交表单之前调用。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      数据交互与dom操作并列前端两大基石
+    
+    </summary>
+    
+      <category term="心得" scheme="http://106.15.95.246/categories/%E5%BF%83%E5%BE%97/"/>
+    
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+  </entry>
   
   <entry>
     <title>浅谈onerror</title>
@@ -99,11 +227,11 @@ function render() {
     </summary>
     
     
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
       <category term="threejs" scheme="http://106.15.95.246/tags/threejs/"/>
     
       <category term="webGL" scheme="http://106.15.95.246/tags/webGL/"/>
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -311,9 +439,9 @@ Windows 8
     </summary>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
