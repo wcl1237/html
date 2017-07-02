@@ -99,11 +99,11 @@ function render() {
     </summary>
     
     
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
       <category term="threejs" scheme="http://106.15.95.246/tags/threejs/"/>
     
       <category term="webGL" scheme="http://106.15.95.246/tags/webGL/"/>
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
