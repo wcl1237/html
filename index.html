@@ -78,6 +78,111 @@
       <div id="main" class="wrapper">
         <div id="primary" class="site-content"><div id="content" role="main">
   
+    <article  id="post-实现全屏" class="post-实现全屏 post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/07/02/实现全屏/">实现全屏</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4mg0qh2000w70thyy6bl06o" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/02/实现全屏/">
+    <time datetime="2017-07-02T06:48:02.000Z" class="entry-date">
+        2017-07-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article  id="post-复制到剪切板" class="post-复制到剪切板 post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/2017/07/02/复制到剪切板/">复制到剪切板</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4mg0qgv000m70theacbj4r7" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl2</span></span>()</div><div class="line">&#123;</div><div class="line">var Url2=document.getElementById(<span class="string">"biao1"</span>);</div><div class="line">Url2.select(); // 选择对象</div><div class="line">document.execCommand(<span class="string">"Copy"</span>); // 执行浏览器复制命令</div><div class="line">alert(<span class="string">"已复制好，可贴粘。"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;textarea cols=<span class="string">"20"</span> rows=<span class="string">"10"</span> id=<span class="string">"biao1"</span>&gt;用户定义的代码区域&lt;/textarea&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> onClick=<span class="string">"copyUrl2()"</span> value=<span class="string">"点击复制代码"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="2-IE中的复制"><a href="#2-IE中的复制" class="headerlink" title="2.IE中的复制"></a>2.IE中的复制</h4><p>IE中针对复制的方法有2种。</p>
+<h5 id="复制span中的文本"><a href="#复制span中的文本" class="headerlink" title="复制span中的文本"></a>复制span中的文本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;span onClick=<span class="string">"copyText(this)"</span>&gt;点我复制我&lt;/span&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> copyText(obj) &#123;</div><div class="line">    var rng = document.body.createTextRange();</div><div class="line">    rng.moveToElementText(obj);</div><div class="line">    rng.scrollIntoView();</div><div class="line">    rng.select();</div><div class="line">    rng.execCommand(<span class="string">"Copy"</span>);</div><div class="line">    rng.collapse(<span class="literal">false</span>);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="复制locationURL地址"><a href="#复制locationURL地址" class="headerlink" title="复制locationURL地址"></a>复制locationURL地址</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"anniu2"</span> onClick=<span class="string">'copyUrl()'</span> value=<span class="string">"复制URL地址"</span>&gt;</div><div class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl</span></span>()&#123;</div><div class="line">    var clipBoardContent=this.location.href;</div><div class="line">    window.clipboardData.setData(<span class="string">"Text"</span>,clipBoardContent);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>综上所述，代码层面的页面复制有两种实现方法，一种的IE所支持的window.clipboardData的setData方法，一种是比较通用的针对表单元素input、textarea的document.execCommand(“Copy”)方法。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/02/复制到剪切板/">
+    <time datetime="2017-07-02T06:46:59.000Z" class="entry-date">
+        2017-07-02
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article  id="post-天命无我-起源" class="post-天命无我-起源 post type-post status-publish format-standard hentry" >
     <!---->
 
@@ -93,7 +198,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mbi0rq000mj0thvmfuddi0" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mg0qgy000p70thlriku2sf" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -148,7 +253,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mbi0rl000fj0thk0fqo9k6" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mg0qgm000970thjujv6vwk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -203,7 +308,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mbi0r40002j0thtz8nusg0" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mg0qgi000670thhpyd8iyn" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -259,7 +364,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mbi0rc0006j0th4svzwckh" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mg0qgk000870thghy3r5yy" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -314,7 +419,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mbi0rt000pj0thifgr4ia8" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mg0qgz000s70thn9as6n4d" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -369,7 +474,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mbi0rn000jj0thhhpo5egw" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mg0qgq000f70th42sit6ig" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -424,7 +529,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mbi0rh0009j0th14pgvkca" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mg0qgt000j70th72fy7b9g" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -479,7 +584,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mbi0rj000dj0thvcfqlpxb" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mg0qgp000d70thcq8wkjef" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -520,124 +625,12 @@
 
 
   
-    <article  id="post-CSS基础" class="post-CSS基础 post type-post status-publish format-standard hentry" >
-    <!---->
-
-      <header class="entry-header" >
-        
-        
   
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/06/29/CSS基础/">CSS基础</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/CSS基础/" data-id="cj4mbi0qz0000j0thionrh0ek" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><pre><code>颜色 background-color         rgba/十六进制/red
-图片 background-image         url(&quot;img.png&quot;)
-重复 background-repeat        no-repeat/repeat-x
-滚动 background-attachment    scroll/fixed
-定位 background-position      left top/0 0/50% 50%
-尺寸 background-size           |contain;
-定位 background-origin        padding-box|border-box|content-box;
-区域 background-clip          border-box|padding-box|content-box;
-</code></pre>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/29/CSS基础/#more" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/06/29/CSS基础/">
-    <time datetime="2017-06-29T05:32:09.000Z" class="entry-date">
-        2017-06-29
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
-    <article  id="post-hello-world" class="post-hello-world post type-post status-publish format-standard hentry" >
-    <!---->
-
-      <header class="entry-header" >
-        
-        
-  
-    <h1 class="entry-title">
-      <a class="article-title" href="/2017/06/27/hello-world/">Say ty 2 hexo</a>
-    </h1>
-  
-
-        
-        <div class="comments-link">
-            
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/27/hello-world/" data-id="cj4mbi0re0008j0thdpuxujh5" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/27/hello-world/#more" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
-          </p>
-        
-      
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/2017/06/27/hello-world/">
-    <time datetime="2017-06-27T08:01:12.576Z" class="entry-date">
-        2017-06-27
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/前端/">前端</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    </footer>
-</article>
-
-
-
-
-
-
-  
+    <nav id="pagination">
+      <nav id="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">上一页 &raquo;</a>
+      </nav>
+    </nav>
   
 
 </div></div>
@@ -660,7 +653,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -670,6 +663,14 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget-content">
       <ul>
+        
+          <li>
+            <a href="/2017/07/02/实现全屏/">实现全屏</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/02/复制到剪切板/">复制到剪切板</a>
+          </li>
         
           <li>
             <a href="/2017/07/02/天命无我-起源/">天命无我-起源</a>
@@ -683,14 +684,6 @@
             <a href="/2017/07/02/ajax浅析/">ajax浅析</a>
           </li>
         
-          <li>
-            <a href="/2017/07/02/form对象/">form对象</a>
-          </li>
-        
-          <li>
-            <a href="/2017/07/02/浅谈onerror/">浅谈onerror</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -700,7 +693,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li></ul>
       <div id = "tagsCloud"></div>
     </div>
   </aside>
