@@ -79,11 +79,10 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-浅谈onerror"
-         class="post-浅谈onerror post type-post status-publish format-standard hentry">
+        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-浅谈onerror" class="post-浅谈onerror post type-post status-publish format-standard hentry" >
     <!---->
 
-    <header class="entry-header">
+      <header class="entry-header" >
         
         
   
@@ -95,23 +94,12 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4m9h9vf0008c4th0a9pqeme" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4m9ibt40008ysth9dds1hdc" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
-    </header><!-- .entry-header -->
-    <footer class="entry-meta">
-        <a href="/2017/07/02/浅谈onerror/">
-    <time datetime="2017-07-02T04:55:09.000Z" class="entry-date">
-        2017-07-02
-    </time>
-</a>
-        
-        
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+      </header><!-- .entry-header -->
 
-    </footer>
     <div class="entry-content">
-        
+      
         <!-- toc -->
 <p>onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。<br>如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。<br><a id="more"></a></p>
 <h2 id="监听脚本错误"><a href="#监听脚本错误" class="headerlink" title="监听脚本错误"></a>监听脚本错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		onerror=handleErr</div><div class="line">		var txt=<span class="string">""</span></div><div class="line">		<span class="keyword">function</span> handleErr(msg,url,l)</div><div class="line">		&#123;</div><div class="line">			txt=<span class="string">"There was an error on this page.\n\n"</span></div><div class="line">			txt+=<span class="string">"Error: "</span> + msg + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"URL: "</span> + url + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"Line: "</span> + l + <span class="string">"\n\n"</span></div><div class="line">			txt+=<span class="string">"Click OK to continue.\n\n"</span></div><div class="line">			alert(txt)</div><div class="line">			<span class="built_in">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">message</span></span>()</div><div class="line">		&#123;</div><div class="line">			alertdddlert(<span class="string">"Welcome guest!"</span>)</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"View message"</span> onclick=<span class="string">"message()"</span> /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
@@ -124,13 +112,25 @@
 <p>利用3张图片，保证在加载第三方资源时不会因为无资源出现UI问题;同样也可以利用onerror监听js、css文件加载，实现二次请求。以及监听jsonp失败。</p>
 <h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://www.w3school.com.cn/jsref/event_onerror.asp" target="_blank" rel="external">W3C_onerror事件</a></p>
 
-        
+      
     </div><!-- .entry-content -->
 
+    <footer class="entry-meta">
+    <a href="/2017/07/02/浅谈onerror/">
+    <time datetime="2017-07-02T04:55:09.000Z" class="entry-date">
+        2017-07-02
+    </time>
+</a>
+    
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+
+    </footer>
 </article>
 
 
-
+    
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
@@ -138,6 +138,7 @@
         <span class="nav-next"><a href="/2017/06/30/threejs/" rel="next">threejs基础 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
+
 
 
 
