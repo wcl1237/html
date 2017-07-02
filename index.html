@@ -93,7 +93,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4mg0qh2000w70thyy6bl06o" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4mg3xst000p04thrb688xrl" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -143,18 +143,18 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4mg0qgv000m70theacbj4r7" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4mg3xsr000m04thinyeeekj" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl2</span></span>()</div><div class="line">&#123;</div><div class="line">var Url2=document.getElementById(<span class="string">"biao1"</span>);</div><div class="line">Url2.select(); // 选择对象</div><div class="line">document.execCommand(<span class="string">"Copy"</span>); // 执行浏览器复制命令</div><div class="line">alert(<span class="string">"已复制好，可贴粘。"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;textarea cols=<span class="string">"20"</span> rows=<span class="string">"10"</span> id=<span class="string">"biao1"</span>&gt;用户定义的代码区域&lt;/textarea&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> onClick=<span class="string">"copyUrl2()"</span> value=<span class="string">"点击复制代码"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="2-IE中的复制"><a href="#2-IE中的复制" class="headerlink" title="2.IE中的复制"></a>2.IE中的复制</h4><p>IE中针对复制的方法有2种。</p>
-<h5 id="复制span中的文本"><a href="#复制span中的文本" class="headerlink" title="复制span中的文本"></a>复制span中的文本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;span onClick=<span class="string">"copyText(this)"</span>&gt;点我复制我&lt;/span&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> copyText(obj) &#123;</div><div class="line">    var rng = document.body.createTextRange();</div><div class="line">    rng.moveToElementText(obj);</div><div class="line">    rng.scrollIntoView();</div><div class="line">    rng.select();</div><div class="line">    rng.execCommand(<span class="string">"Copy"</span>);</div><div class="line">    rng.collapse(<span class="literal">false</span>);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="复制locationURL地址"><a href="#复制locationURL地址" class="headerlink" title="复制locationURL地址"></a>复制locationURL地址</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"anniu2"</span> onClick=<span class="string">'copyUrl()'</span> value=<span class="string">"复制URL地址"</span>&gt;</div><div class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl</span></span>()&#123;</div><div class="line">    var clipBoardContent=this.location.href;</div><div class="line">    window.clipboardData.setData(<span class="string">"Text"</span>,clipBoardContent);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>综上所述，代码层面的页面复制有两种实现方法，一种的IE所支持的window.clipboardData的setData方法，一种是比较通用的针对表单元素input、textarea的document.execCommand(“Copy”)方法。</p>
-
+        <h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/02/复制到剪切板/#more" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
+          </p>
+        
       
     </div><!-- .entry-content -->
 
@@ -198,7 +198,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mg0qgy000p70thlriku2sf" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mg3xsw000v04th9zdevwtv" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -253,7 +253,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mg0qgm000970thjujv6vwk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mg3xsh000804thmyhx5o5f" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -308,7 +308,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mg0qgi000670thhpyd8iyn" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mg3xs9000204thkl2zksqy" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -364,7 +364,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mg0qgk000870thghy3r5yy" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mg3xsk000904thvsmt06ko" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -419,7 +419,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mg0qgz000s70thn9as6n4d" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mg3xsv000s04th0yb6v0ik" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -474,7 +474,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mg0qgq000f70th42sit6ig" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mg3xsn000f04thy1l6xvgk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -529,7 +529,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mg0qgt000j70th72fy7b9g" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mg3xsm000d04th1zlzzrad" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -584,7 +584,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mg0qgp000d70thcq8wkjef" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mg3xsq000j04thmrdb9eoq" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
