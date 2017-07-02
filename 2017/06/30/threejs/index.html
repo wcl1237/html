@@ -79,10 +79,22 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-threejs" class="post-threejs post type-post status-publish format-standard hentry" >
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-threejs"
+         class="post-threejs post type-post status-publish format-standard hentry">
     <!---->
+    <footer class="entry-meta">
+        <a href="/2017/06/30/threejs/">
+    <time datetime="2017-06-30T02:07:16.000Z" class="entry-date">
+        2017-06-30
+    </time>
+</a>
+        
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threejs/">threejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li></ul>
 
-      <header class="entry-header" >
+    </footer>
+    <header class="entry-header">
         
         
   
@@ -94,12 +106,12 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4m51tgl000208th7px8p95y" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4m8x1g90007z4th5766u3wr" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
+    </header><!-- .entry-header -->
 
     <div class="entry-content">
-      
+        
         <p>Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。</p>
 <a id="more"></a>
 <h4 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h4><p>场景是所有物体的容器，用THREE.Scene来表示。</p>
@@ -137,33 +149,22 @@ function render() {
     requestAnimationFrame(render);
 }
 </code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;style&gt;canvas &#123; width: 100%; height: 100% &#125;&lt;/style&gt;</div><div class="line">    &lt;script src=<span class="string">"js/three.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        var scene = new THREE.Scene();</div><div class="line">        </div><div class="line">        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);</div><div class="line">        </div><div class="line">        var renderer = new THREE.WebGLRenderer();</div><div class="line">        </div><div class="line">        renderer.setSize(window.innerWidth, window.innerHeight);</div><div class="line">        </div><div class="line">        document.body.appendChild(renderer.domElement);</div><div class="line">        var geometry = new THREE.CubeGeometry(1,1,1);</div><div class="line">        var material = new THREE.MeshBasicMaterial(&#123;color: 0x00ff00&#125;);</div><div class="line">        var cube = new THREE.Mesh(geometry, material); </div><div class="line">        scene.add(cube);</div><div class="line">        camera.position.z = 5;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">            requestAnimationFrame(render);</div><div class="line">            cube.rotation.x += 0.1;</div><div class="line">            cube.rotation.y += 0.1;</div><div class="line">            renderer.render(scene, camera);</div><div class="line">        &#125;</div><div class="line">        render();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-      
+        
     </div><!-- .entry-content -->
 
-    <footer class="entry-meta">
-    <a href="/2017/06/30/threejs/">
-    <time datetime="2017-06-30T02:07:16.000Z" class="entry-date">
-        2017-06-30
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/threejs/">threejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li></ul>
-
-    </footer>
 </article>
 
 
-    
+
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2017/07/02/浅谈onerror/" rel="prev"><span class="meta-nav">←</span> 浅谈onerror</a></span>
     
     
         <span class="nav-next"><a href="/2017/06/29/meta标签用法总结/" rel="next">meta标签用法总结 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
-
 
 
 
@@ -195,6 +196,10 @@ function render() {
       <ul>
         
           <li>
+            <a href="/2017/07/02/浅谈onerror/">浅谈onerror</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/30/threejs/">threejs基础</a>
           </li>
         
@@ -210,10 +215,6 @@ function render() {
             <a href="/2017/06/29/CSS基础/">CSS基础</a>
           </li>
         
-          <li>
-            <a href="/2017/06/27/hello-world/">Say ty 2 hexo</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -223,7 +224,7 @@ function render() {
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li></ul>
       <div id = "tagsCloud"></div>
     </div>
   </aside>
@@ -233,7 +234,7 @@ function render() {
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/webGL/" style="font-size: 10px;">webGL</a>
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/webGL/" style="font-size: 10px;">webGL</a>
     </div>
   </aside>
 
@@ -242,7 +243,7 @@ function render() {
       </div>
       <footer id="colophon" role="contentinfo">
     <p>2017 阿木隆
-    于旧版基础上更新</p>
+    于cyanstyle旧版基础上更新</p>
     <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

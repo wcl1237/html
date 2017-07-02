@@ -1858,6 +1858,7 @@ img#wpstats {
 
     .projectimg {
         width: 150px;
+        height: 112px;
         float: left;
     }
 
@@ -1904,6 +1905,7 @@ img#wpstats {
 
     .projectimg {
         width: 200px;
+        height: 150px;
         margin-bottom: 5px;
     }
 
@@ -2117,6 +2119,7 @@ img#wpstats {
 
     .projectimg {
         width: 200px;
+        height:150px;
         margin-bottom: 5px;
     }
 

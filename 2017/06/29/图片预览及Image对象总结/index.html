@@ -18,7 +18,7 @@
   <title>图片预览及Image对象总结 | 阿木隆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!--<meta name="description" content="图片预览简单实现 12345678910111213141516171819202122232425&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;&amp;lt;title&amp;gt;图片预览&amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;function previewFile() &amp;#123; var preview">
-<meta name="keywords" content="javascript,html">
+<meta name="keywords" content="html,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片预览及Image对象总结">
 <meta property="og:url" content="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/index.html">
@@ -79,10 +79,22 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-图片预览及Image对象总结" class="post-图片预览及Image对象总结 post type-post status-publish format-standard hentry" >
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-图片预览及Image对象总结"
+         class="post-图片预览及Image对象总结 post type-post status-publish format-standard hentry">
     <!---->
+    <footer class="entry-meta">
+        <a href="/2017/06/29/图片预览及Image对象总结/">
+    <time datetime="2017-06-29T08:32:54.000Z" class="entry-date">
+        2017-06-29
+    </time>
+</a>
+        
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
-      <header class="entry-header" >
+    </footer>
+    <header class="entry-header">
         
         
   
@@ -94,12 +106,12 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4m51tgt000708thvoodjti5" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4m8x1ge000bz4thq1vg2a7j" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
+    </header><!-- .entry-header -->
 
     <div class="entry-content">
-      
+        
         <p>图片预览简单实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">&lt;title&gt;图片预览&lt;/title&gt;</div><div class="line">&lt;script&gt;</div><div class="line">function previewFile() &#123;</div><div class="line"> var preview = document.querySelector(&apos;img&apos;);</div><div class="line"> var file  = document.querySelector(&apos;input[type=file]&apos;).files[0];</div><div class="line"> var reader = new FileReader();</div><div class="line"> reader.onloadend = function () &#123;</div><div class="line">  preview.src = reader.result;</div><div class="line"> &#125;</div><div class="line"> if (file) &#123;</div><div class="line">  reader.readAsDataURL(file);</div><div class="line"> &#125; else &#123;</div><div class="line">  preview.src = &quot;&quot;;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type=&quot;file&quot; onchange=&quot;previewFile()&quot;&gt;&lt;br&gt;</div><div class="line">&lt;img src=&quot;&quot; height=&quot;200&quot; width=&quot;300&quot; alt=&quot;Image preview...&quot;/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -172,25 +184,13 @@
 </tbody>
 </table>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;  </div><div class="line">var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">var file=document.getElementById(<span class="string">"file"</span>);  </div><div class="line">  </div><div class="line">//判断浏览器是否支持FileReader接口  </div><div class="line"><span class="keyword">if</span>(typeof FileReader == <span class="string">'undefined'</span>)&#123;  </div><div class="line">    result.InnerHTML=<span class="string">"&lt;p&gt;你的浏览器不支持FileReader接口！&lt;/p&gt;"</span>;  </div><div class="line">    //使选择控件不可操作  </div><div class="line">    file.setAttribute(<span class="string">"disabled"</span>,<span class="string">"disabled"</span>);  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsDataURL</span></span>()&#123;  </div><div class="line">    //检验是否为图像文件  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    <span class="keyword">if</span>(!/image\/\w+/.<span class="built_in">test</span>(file.type))&#123;  </div><div class="line">        alert(<span class="string">"看清楚，这个需要图片！"</span>);  </div><div class="line">        <span class="built_in">return</span> <span class="literal">false</span>;  </div><div class="line">    &#125;  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以Data URL形式读入页面  </div><div class="line">    reader.readAsDataURL(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(e)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=<span class="string">'&lt;img src="'</span> + this.result +<span class="string">'" alt="" /&gt;'</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsBinaryString</span></span>()&#123;  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以二进制形式读入页面  </div><div class="line">    reader.readAsBinaryString(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(f)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=this.result;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">readAsText</span></span>()&#123;  </div><div class="line">    var file = document.getElementById(<span class="string">"file"</span>).files[0];  </div><div class="line">    var reader = new FileReader();  </div><div class="line">    //将文件以文本形式读入页面  </div><div class="line">    reader.readAsText(file);  </div><div class="line">    reader.onload=<span class="keyword">function</span>(f)&#123;  </div><div class="line">        var result=document.getElementById(<span class="string">"result"</span>);  </div><div class="line">        //显示文件  </div><div class="line">        result.innerHTML=this.result;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line">&lt;/script&gt;  </div><div class="line">&lt;p&gt;  </div><div class="line">    &lt;label&gt;请选择一个文件：&lt;/label&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"file"</span> id=<span class="string">"file"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取图像"</span> onclick=<span class="string">"readAsDataURL()"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取二进制数据"</span> onclick=<span class="string">"readAsBinaryString()"</span> /&gt;  </div><div class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"读取文本文件"</span> onclick=<span class="string">"readAsText()"</span> /&gt;  </div><div class="line">&lt;/p&gt;  </div><div class="line">&lt;div id=<span class="string">"result"</span> name=<span class="string">"result"</span>&gt;&lt;/div&gt;</div></pre></td></tr></table></figure>
-      
+        
     </div><!-- .entry-content -->
 
-    <footer class="entry-meta">
-    <a href="/2017/06/29/图片预览及Image对象总结/">
-    <time datetime="2017-06-29T08:32:54.000Z" class="entry-date">
-        2017-06-29
-    </time>
-</a>
-    
-    
-  <span class="article-delim">&#8226;</span>
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
-
-    </footer>
 </article>
 
 
-    
+
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
@@ -200,7 +200,6 @@
         <span class="nav-next"><a href="/2017/06/29/CSS基础/" rel="next">CSS基础 <span class="meta-nav">→</span></a></span>
     
 </nav><!-- .nav-single -->
-
 
 
 
@@ -232,6 +231,10 @@
       <ul>
         
           <li>
+            <a href="/2017/07/02/浅谈onerror/">浅谈onerror</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/30/threejs/">threejs基础</a>
           </li>
         
@@ -247,10 +250,6 @@
             <a href="/2017/06/29/CSS基础/">CSS基础</a>
           </li>
         
-          <li>
-            <a href="/2017/06/27/hello-world/">Say ty 2 hexo</a>
-          </li>
-        
       </ul>
     </div>
   </aside>
@@ -260,7 +259,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li></ul>
       <div id = "tagsCloud"></div>
     </div>
   </aside>
@@ -270,7 +269,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/webGL/" style="font-size: 10px;">webGL</a>
+      <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 20px;">html</a> <a href="/tags/javascript/" style="font-size: 15px;">javascript</a> <a href="/tags/meta/" style="font-size: 10px;">meta</a> <a href="/tags/threejs/" style="font-size: 10px;">threejs</a> <a href="/tags/webGL/" style="font-size: 10px;">webGL</a>
     </div>
   </aside>
 
@@ -279,7 +278,7 @@
       </div>
       <footer id="colophon" role="contentinfo">
     <p>2017 阿木隆
-    于旧版基础上更新</p>
+    于cyanstyle旧版基础上更新</p>
     <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
