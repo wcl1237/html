@@ -93,13 +93,13 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4mg3xst000p04thrb688xrl" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4mi66e1000tzothsem89fuq" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullScreen</span></span>()&#123;</div><div class="line">	var el = document.documentElement;</div><div class="line">    var rfs = el.requestFullScreen  //w3c</div><div class="line">    || el.webkitRequestFullScreen   //webkit</div><div class="line">    || el.mozRequestFullScreen      //firefox</div><div class="line">    || el.msRequestFullScreen;      //IE11下这个方法没用</div><div class="line">    <span class="keyword">if</span> (typeof rfs != <span class="string">"undefined"</span> &amp;&amp; rfs) &#123;</div><div class="line">        rfs.call(el);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (typeof window.ActiveXObject != <span class="string">"undefined"</span>) &#123;</div><div class="line">    //ie10以下</div><div class="line">        var wscript = new ActiveXObject(<span class="string">"WScript.Shell"</span>);</div><div class="line">        <span class="keyword">if</span> (wscript != null) &#123;</div><div class="line">            wscript.SendKeys(<span class="string">"&#123;F11&#125;"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"请手动F11，展开全屏"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//退出全屏</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullExit</span></span>()&#123;</div><div class="line">  var element= document.documentElement;</div><div class="line">  //IE ActiveXObject</div><div class="line">  <span class="keyword">if</span> (window.ActiveXObject)</div><div class="line">  &#123;</div><div class="line">    var WsShell = new ActiveXObject(<span class="string">'WScript.Shell'</span>) </div><div class="line">    WsShell.SendKeys(<span class="string">'&#123;F11&#125;'</span>); </div><div class="line">  &#125;</div><div class="line">  //HTML5 W3C 提议</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.requestFullScreen) &#123;  </div><div class="line">    document.exitFullscreen();</div><div class="line">  &#125;</div><div class="line"> //IE 11</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.msRequestFullscreen) &#123;  </div><div class="line">    document.msExitFullscreen();</div><div class="line">  &#125;</div><div class="line">  // Webkit (works <span class="keyword">in</span> Safari5.1 and Chrome 15)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.webkitRequestFullScreen ) &#123;  </div><div class="line">    document.webkitCancelFullScreen(); </div><div class="line">  &#125; </div><div class="line">  // Firefox (works <span class="keyword">in</span> nightly)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.mozRequestFullScreen) &#123;  </div><div class="line">    document.mozCancelFullScreen();  </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
       
     </div><!-- .entry-content -->
 
@@ -143,7 +143,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4mg3xsr000m04thinyeeekj" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4mi66dw000jzothf1fqk858" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -198,7 +198,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mg3xsw000v04th9zdevwtv" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4mi66e0000qzoth15hogdlv" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -253,7 +253,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mg3xsh000804thmyhx5o5f" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4mi66df0009zoth2c85coy5" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -308,7 +308,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mg3xs9000204thkl2zksqy" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4mi66df0003zothp5dri220" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -364,7 +364,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mg3xsk000904thvsmt06ko" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4mi66d00001zoth4ax4pot7" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -419,7 +419,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mg3xsv000s04th0yb6v0ik" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/浅谈onerror/" data-id="cj4mi66e1000yzothknsbgv0v" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -474,7 +474,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mg3xsn000f04thy1l6xvgk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4mi66df000dzothc6yilgar" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -529,7 +529,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mg3xsm000d04th1zlzzrad" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/meta标签用法总结/" data-id="cj4mi66df000fzothdwnerqam" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -584,7 +584,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mg3xsq000j04thmrdb9eoq" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/29/图片预览及Image对象总结/" data-id="cj4mi66dx000mzothjo0i6h54" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
