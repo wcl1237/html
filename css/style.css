@@ -2098,7 +2098,7 @@ img#wpstats {
 }
 
 /* Minimum width of 960 pixels. */
-@media screen and (min-width: 1100px) {
+@media screen and (min-width: 1200px) {
     body {
         background-color: #e6e6e6;
     }
