@@ -93,14 +93,18 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程3—webpack/" data-id="cj4phzmvo001bncthcf8ldt95" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程3—webpack/" data-id="cj4pqpd6r001490th1r9ol8um" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line">var webpack = require(<span class="string">'webpack'</span>);</div><div class="line"></div><div class="line">// css 单独打包，使用该插件后就不需要配置style-loader了</div><div class="line">// 本来是内联在最终的网页里，现在通过外联方式，可以在/dist文件夹下找到单独的css文件</div><div class="line">var ExtractTextPlugin = require(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    entry: &#123;</div><div class="line">        index: <span class="string">'./src/entry.js'</span>, // 唯一的入口文件</div><div class="line">        vendor: [<span class="string">'react'</span>] // 这里是依赖的库文件配置，和CommonsChunkPlugin配合使用可以单独打包</div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">        path: <span class="string">'/dist'</span>, //打包后的文件存放的地方</div><div class="line">        filename: <span class="string">'bundle.js'</span>,//打包后的文件名</div><div class="line">        publicPath: <span class="string">'/dist/'</span>, //输出文件根目录</div><div class="line">        chunkFilename: <span class="string">'[name].js'</span>,//用于未配置在entry中，但是通过import或require依赖关系加载进来的模块进行命名。</div><div class="line">    &#125;,</div><div class="line">    module: &#123; </div><div class="line">    //noParse: regExp|[RegExp], //设定webpack在解析时,不解析的路径结构</div><div class="line">    /* 在webpack2.0版本已经将 module.loaders 改为 module.rules 为了兼容性考虑以前的声明方法任然可用，</div><div class="line">    　　　　　　同时链式loader(用!连接)只适用于module.loader，</div><div class="line">    　　　　　　同时-loader不可省略 */</div><div class="line">        rules: [&#123;</div><div class="line">            <span class="built_in">test</span>: /\.(js|jsx)$/,</div><div class="line">            loader: <span class="string">'babel'</span>,</div><div class="line">            // 可以单独在当前目录下配置.babelrc，也可以在这里配置</div><div class="line">            query: &#123;</div><div class="line">                     <span class="string">"presets"</span>: [</div><div class="line">                       <span class="string">"react"</span>, </div><div class="line">                       <span class="string">"es2015"</span></div><div class="line">                     ],</div><div class="line">                     <span class="string">"plugins"</span>: []</div><div class="line">                   &#125;,</div><div class="line">            // 排除 node_modules 下不需要转换的文件，可以加快编译</div><div class="line">            exclude: /node_modules/</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="built_in">test</span>: /\.css$/,</div><div class="line">            use: [</div><div class="line">                <span class="string">'style-loader'</span>, &#123;</div><div class="line">                    loader: <span class="string">'css-loader'</span></div><div class="line">                &#125;, &#123;</div><div class="line">                    loader: <span class="string">'postcss-loader'</span>,</div><div class="line">                    options: &#123;</div><div class="line">                        plugins: <span class="function"><span class="title">function</span></span>() &#123;</div><div class="line">                            <span class="built_in">return</span> [</div><div class="line">                                require(<span class="string">'autoprefixer'</span>)</div><div class="line">                            ];</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            ]</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="built_in">test</span>: /\.scss$/,</div><div class="line">            loader: ExtractTextPlugin.extract(<span class="string">"style"</span>, <span class="string">"css-loader!sass-loader"</span>)</div><div class="line">        &#125;, &#123;</div><div class="line">            <span class="built_in">test</span>: /\.(png|jpg|gif)$/,</div><div class="line">            loader: <span class="string">'url?limit=8192'</span></div><div class="line">        &#125;]</div><div class="line">    &#125;,</div><div class="line">    devServer: &#123;</div><div class="line">        historyApiFallback: <span class="literal">true</span>,</div><div class="line">        hot: <span class="literal">true</span>,</div><div class="line">        inline: <span class="literal">true</span>,</div><div class="line">        progress: <span class="literal">true</span>,</div><div class="line">        proxy: &#123;</div><div class="line">           <span class="string">'/api/**'</span>: &#123;</div><div class="line">             target: <span class="string">'http://test.com'</span>,</div><div class="line">             secure: <span class="literal">false</span>,</div><div class="line">             changeOrigin: <span class="literal">true</span></div><div class="line">           &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    resolve: &#123;</div><div class="line">        extensions: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>]</div><div class="line">    &#125;,</div><div class="line">    plugins: [</div><div class="line">        new ExtractTextPlugin(<span class="string">'main.css'</span>),//打包成一个文件</div><div class="line">        new webpack.optimize.CommonsChunkPlugin(&#123;</div><div class="line">            name: <span class="string">'vendor'</span>,</div><div class="line">            filename: <span class="string">'vendor.js'</span></div><div class="line">        &#125;),</div><div class="line">        // new OpenBrowser(&#123;url:<span class="string">'http://localhost:9090'</span>&#125;),</div><div class="line">    ]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-
+        <p>开发状态webpack.config.dev.js<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/07/04/怎么使用react搭建工程3—webpack/#more" class="more-link">阅读全文 <span class="meta-nav">→</span></a>
+          </p>
+        
       
     </div><!-- .entry-content -->
 
@@ -144,7 +148,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/" data-id="cj4phzmvi000xncths158hczk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/" data-id="cj4pqpd6o000w90thkepjv27p" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -199,7 +203,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/" data-id="cj4phzmvj0010ncth81s26sh0" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/" data-id="cj4pqpd6q001090thpyht1q2s" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -254,7 +258,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/重叠三角形/" data-id="cj4phzmvl0015ncth2nshhxhq" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/重叠三角形/" data-id="cj4pqpd6t001690th28xrlamc" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -309,7 +313,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4phzmuy0006ncthtjozbpif" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4pqpd62000690thx83xg5yo" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -364,7 +368,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4phzmvg000uncthbw161lwl" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4pqpd6i000q90thjpa6wsdl" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -419,7 +423,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4phzmv9000lncthtbkzp9zf" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4pqpd6h000o90thtcs5aphi" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -474,7 +478,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4phzmvc000oncthksy353t3" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/天命无我-起源/" data-id="cj4pqpd6l000t90thjyhps1yd" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -529,7 +533,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4phzmv4000cncthjix4la8z" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4pqpd69000c90th2qgtdllf" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -584,7 +588,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4phzmus0002ncthizbzsfo4" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4pqpd5v000290thugat8f61" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
