@@ -1954,6 +1954,7 @@ img#wpstats {
         display: inline-block !important;
         text-align: left;
         width: 100%;
+        border-right: 1px solid transparent;
     }
 
     .main-navigation ul {
