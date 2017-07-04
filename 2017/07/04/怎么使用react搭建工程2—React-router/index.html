@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="这是阿木隆的博客" />
+  
+
+  
+  <meta name="keywords" content="阿木隆" />
+  
+  
+  <!---->
+  <meta name="baidu-site-verification" content="nJtPfFjytu" />
+  
+  
+  <title>怎么使用react搭建工程2—React-router | 阿木隆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--<meta name="description" content="React-Router路由 Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。">
+<meta name="keywords" content="javascript,react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么使用react搭建工程2—React-router">
+<meta property="og:url" content="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/index.html">
+<meta property="og:site_name" content="阿木隆">
+<meta property="og:description" content="React-Router路由 Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。">
+<meta property="og:updated_time" content="2017-07-04T06:26:24.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="怎么使用react搭建工程2—React-router">
+<meta name="twitter:description" content="React-Router路由 Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。">-->
+  
+    <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  
+  <!-- baidu webmaster push -->
+  <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿木隆" rel="home">阿木隆</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">北风骤起，艳阳高照</a>
+        </h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">关于我</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/project">作品</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/atom.xml">rss</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-怎么使用react搭建工程2—React-router" class="post-怎么使用react搭建工程2—React-router post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title article-title">
+      怎么使用react搭建工程2—React-router
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/" data-id="cj4p6yqon000uwgthk3p7fnm0" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>React-Router路由</p>
+<p>Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。<br><a id="more"></a><br>Route则对路由地址和组件进行绑定，Route具有嵌套功能，表示路由地址的包涵关系，这和组件之间的嵌套并没有直接联系。Route可以向绑定的组件传递7个属性：children，history，location，params，route，routeParams，routes，每个属性都包涵路由的相关的信息。比较常用的有children（以路由的包涵关系为区分的组件），location（包括地址，参数，地址切换方式，key值，hash值）。react-router提供Link标签，这只是对a标签的封装，值得注意的是，点击链接进行的跳转并不是默认的方式，react-router阻止了a标签的默认行为并用pushState进行hash值的转变。切换页面的过程是在点击Link标签或者后退前进按钮时，会先发生url地址的转变，Router监听到地址的改变根据Route的path属性匹配到对应的组件，将state值改成对应的组件并调用setState触发render函数重新渲染dom。<br>当页面比较多时，项目就会变得越来越大，尤其对于单页面应用来说，初次渲染的速度就会很慢，这时候就需要按需加载，只有切换到页面的时候才去加载对应的js文件。react配合webpack进行按需加载的方法很简单，Route的component改为getComponent，组件用require.ensure的方式获取，并在webpack中配置chunkFilename。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from <span class="string">'react'</span>;</div><div class="line">import &#123; Router, Route, Redirect, IndexRoute, browserHistory, hashHistory &#125; from <span class="string">'react-router'</span>;</div><div class="line"></div><div class="line">import index from <span class="string">'../Component/index'</span>; //销售录入</div><div class="line"></div><div class="line">class Roots extends Component &#123;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;div&gt;&#123;this.props.children&#125;&lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const <span class="built_in">history</span> = process.env.NODE_ENV !== <span class="string">'production'</span> ? browserHistory : hashHistory;</div><div class="line"></div><div class="line">const chooseProducts = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/chooseProducts'</span>).default)</div><div class="line">    &#125;,<span class="string">'chooseProducts'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const helpCenter = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/helpCenter'</span>).default)</div><div class="line">    &#125;,<span class="string">'helpCenter'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const saleRecord = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/saleRecord'</span>).default)</div><div class="line">    &#125;,<span class="string">'saleRecord'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const RouteConfig = (</div><div class="line">    &lt;Router <span class="built_in">history</span>=&#123;<span class="built_in">history</span>&#125;&gt;</div><div class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;Roots&#125;&gt;</div><div class="line">            &lt;IndexRoute component=&#123;index&#125; /&gt;//首页</div><div class="line">            &lt;Route path=<span class="string">"index"</span> component=&#123;index&#125; /&gt;</div><div class="line">            &lt;Route path=<span class="string">"helpCenter"</span> getComponent=&#123;helpCenter&#125; /&gt;//帮助中心</div><div class="line">            &lt;Route path=<span class="string">"saleRecord"</span> getComponent=&#123;saleRecord&#125; /&gt;//销售记录</div><div class="line">            &lt;Redirect from=<span class="string">'*'</span> to=<span class="string">'/'</span>  /&gt;</div><div class="line">        &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">);</div></pre></td></tr></table></figure></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/04/怎么使用react搭建工程2—React-router/">
+    <time datetime="2017-07-04T06:24:35.000Z" class="entry-date">
+        2017-07-04
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2017/07/04/怎么使用react搭建工程1—计数器/" rel="next">怎么使用react搭建工程1—计数器 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+        <img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;float: left;">
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：阿木隆</div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于长安大学，自动化系</div>
+            <div>就职于数梦工场，前端开发攻城狮</div>
+        </div>
+        <div style="margin-top: 10px;line-height: 2">座右铭：任何道路都是靠自己走出来的，而不是靠自己在梦中等来的。 其中准确迈出第一脚，是尤为重要的。</div>
+    </div>
+</aside>
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/04/怎么使用react搭建工程2—React-router/">怎么使用react搭建工程2—React-router</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/04/怎么使用react搭建工程1—计数器/">怎么使用react搭建工程1—计数器</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/03/重叠三角形/">重叠三角形</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/03/http协议/">http协议</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/02/实现全屏/">实现全屏</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/threejs/">threejs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>2017 阿木隆
+    于cyanstyle旧版基础上更新</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

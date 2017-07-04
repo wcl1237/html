@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-03T09:03:51.634Z</updated>
+  <updated>2017-07-04T06:26:24.153Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>怎么使用react搭建工程2—React-router</title>
+    <link href="http://106.15.95.246/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B2%E2%80%94React-router/"/>
+    <id>http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/</id>
+    <published>2017-07-04T06:24:35.000Z</published>
+    <updated>2017-07-04T06:26:24.153Z</updated>
+    
+    <content type="html"><![CDATA[<p>React-Router路由</p>
+<p>Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。<br><a id="more"></a><br>Route则对路由地址和组件进行绑定，Route具有嵌套功能，表示路由地址的包涵关系，这和组件之间的嵌套并没有直接联系。Route可以向绑定的组件传递7个属性：children，history，location，params，route，routeParams，routes，每个属性都包涵路由的相关的信息。比较常用的有children（以路由的包涵关系为区分的组件），location（包括地址，参数，地址切换方式，key值，hash值）。react-router提供Link标签，这只是对a标签的封装，值得注意的是，点击链接进行的跳转并不是默认的方式，react-router阻止了a标签的默认行为并用pushState进行hash值的转变。切换页面的过程是在点击Link标签或者后退前进按钮时，会先发生url地址的转变，Router监听到地址的改变根据Route的path属性匹配到对应的组件，将state值改成对应的组件并调用setState触发render函数重新渲染dom。<br>当页面比较多时，项目就会变得越来越大，尤其对于单页面应用来说，初次渲染的速度就会很慢，这时候就需要按需加载，只有切换到页面的时候才去加载对应的js文件。react配合webpack进行按需加载的方法很简单，Route的component改为getComponent，组件用require.ensure的方式获取，并在webpack中配置chunkFilename。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from <span class="string">'react'</span>;</div><div class="line">import &#123; Router, Route, Redirect, IndexRoute, browserHistory, hashHistory &#125; from <span class="string">'react-router'</span>;</div><div class="line"></div><div class="line">import index from <span class="string">'../Component/index'</span>; //销售录入</div><div class="line"></div><div class="line">class Roots extends Component &#123;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;div&gt;&#123;this.props.children&#125;&lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const <span class="built_in">history</span> = process.env.NODE_ENV !== <span class="string">'production'</span> ? browserHistory : hashHistory;</div><div class="line"></div><div class="line">const chooseProducts = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/chooseProducts'</span>).default)</div><div class="line">    &#125;,<span class="string">'chooseProducts'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const helpCenter = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/helpCenter'</span>).default)</div><div class="line">    &#125;,<span class="string">'helpCenter'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const saleRecord = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/saleRecord'</span>).default)</div><div class="line">    &#125;,<span class="string">'saleRecord'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const RouteConfig = (</div><div class="line">    &lt;Router <span class="built_in">history</span>=&#123;<span class="built_in">history</span>&#125;&gt;</div><div class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;Roots&#125;&gt;</div><div class="line">            &lt;IndexRoute component=&#123;index&#125; /&gt;//首页</div><div class="line">            &lt;Route path=<span class="string">"index"</span> component=&#123;index&#125; /&gt;</div><div class="line">            &lt;Route path=<span class="string">"helpCenter"</span> getComponent=&#123;helpCenter&#125; /&gt;//帮助中心</div><div class="line">            &lt;Route path=<span class="string">"saleRecord"</span> getComponent=&#123;saleRecord&#125; /&gt;//销售记录</div><div class="line">            &lt;Redirect from=<span class="string">'*'</span> to=<span class="string">'/'</span>  /&gt;</div><div class="line">        &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;React-Router路由&lt;/p&gt;
+&lt;p&gt;Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="react" scheme="http://106.15.95.246/categories/react/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎么使用react搭建工程1—计数器</title>
+    <link href="http://106.15.95.246/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B1%E2%80%94%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
+    <id>http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/</id>
+    <published>2017-07-04T05:17:44.000Z</published>
+    <updated>2017-07-04T06:23:50.211Z</updated>
+    
+    <content type="html"><![CDATA[<p>react配合redux搭建最简单的应用——计数器。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from <span class="string">'react'</span></div><div class="line">import PropTypes from <span class="string">'prop-types'</span></div><div class="line">import ReactDOM from <span class="string">'react-dom'</span></div><div class="line">import &#123; createStore &#125; from <span class="string">'redux'</span></div><div class="line">import &#123; Provider, connect &#125; from <span class="string">'react-redux'</span></div><div class="line"></div><div class="line">/* 无状态页面组件 */</div><div class="line">// 组件只需要两种来源于props的变量</div><div class="line">// 一个是来自于store的state</div><div class="line">// 一个来源事件句柄</div><div class="line">class Counter extends Component &#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    const &#123; value, onIncreaseClick &#125; = this.props</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;span&gt;&#123;value&#125;&lt;/span&gt;</div><div class="line">        &lt;button onClick=&#123;onIncreaseClick&#125;&gt;Increase&lt;/button&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Counter.propTypes = &#123;</div><div class="line">  value: PropTypes.number.isRequired,</div><div class="line">  onIncreaseClick: PropTypes.func.isRequired</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 页面业务逻辑 */</div><div class="line">// 数据关联store.state中储存的值</div><div class="line"><span class="keyword">function</span> mapStateToProps(state) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    value: state.count</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// 事件句柄与Reducer关联</div><div class="line"><span class="keyword">function</span> mapDispatchToProps(dispatch) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    onIncreaseClick: () =&gt; dispatch(&#123; <span class="built_in">type</span>: <span class="string">'increase'</span> &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 将数据、方法与组件关联起来</div><div class="line">const App = connect(</div><div class="line">  mapStateToProps,</div><div class="line">  mapDispatchToProps</div><div class="line">)(Counter)</div><div class="line"></div><div class="line"></div><div class="line">// Reducer同步处理</div><div class="line"><span class="keyword">function</span> counter(state = &#123; count: 0 &#125;, action) &#123;</div><div class="line">  const count = state.count</div><div class="line">  switch (action.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'increase'</span>:</div><div class="line">      <span class="built_in">return</span> &#123; count: count + 1 &#125;</div><div class="line">    default:</div><div class="line">      <span class="built_in">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Store:将Reducer同步处理的state存在store中</div><div class="line">const store = createStore(counter)</div><div class="line"></div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &lt;App /&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById(<span class="string">'root'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">/* 代码来源阮一峰先生*/</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;react配合redux搭建最简单的应用——计数器。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="react" scheme="http://106.15.95.246/categories/react/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
   
   <entry>
     <title>重叠三角形</title>
@@ -109,9 +161,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -138,9 +190,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -596,9 +648,9 @@ Windows 8
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
