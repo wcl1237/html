@@ -166,9 +166,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -195,33 +195,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
-  </entry>
-  
-  <entry>
-    <title>天命无我-起源</title>
-    <link href="http://106.15.95.246/2017/07/02/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91-%E8%B5%B7%E6%BA%90/"/>
-    <id>http://106.15.95.246/2017/07/02/天命无我-起源/</id>
-    <published>2017-07-02T05:47:08.000Z</published>
-    <updated>2017-07-02T05:50:43.242Z</updated>
-    
-    <content type="html"><![CDATA[<p>虚无无极，无形无象。<br>化生一焏是为浑沌。<br>一焏凝形是为元气。元气之间相互吸引、排斥。平衡，使得浑沌静止。<br>元气聚，化成奇点。<br>这一瞬，浑沌的平衡被打破，混乱的能量开始由奇点向外扩散。混乱肆虐，元气湮灭，空间诞生。同时一种排斥的力量伴生，它充斥着空间的每一个角落，随着空间一起壮大，后世的人们称它为时间。<br>宇宙在这一瞬诞生。<br>元气湮灭，三分精气神，精为物，气为质，神为规则。规则由元气而生，万万千千。<br>有一规则名为融合，继承了元气吸引的能力，聚集精气神，许久之后一个微弱的意识诞生了。无序的融合，在意识的指引下变成了有序的行为。融合的意识逐渐强大，终于这个意识有了思考的能力。一个奇妙的波动扩散开来，宇宙中所有规则悸动化形而生。<br>波动到达了宇宙边缘，元气停止湮灭。<br>边缘地带，虚无、混沌、元气相互搅动。<br><a id="more"></a></p>
-<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://baike.baidu.com/view/2192547.htm" target="_blank" rel="external">先天五太</a>分别为：太易、太初、太始，太素、太极</p>
-]]></content>
-    
-    <summary type="html">
-    
-      对于万物来说，都只配当分母。
-    
-    </summary>
-    
-      <category term="天命无我" scheme="http://106.15.95.246/categories/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91/"/>
-    
-    
-      <category term="原创" scheme="http://106.15.95.246/tags/%E5%8E%9F%E5%88%9B/"/>
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -352,38 +328,6 @@ Connection:Keep-Alive (CRLF)
   </entry>
   
   <entry>
-    <title>浅谈onerror</title>
-    <link href="http://106.15.95.246/2017/07/02/%E6%B5%85%E8%B0%88onerror/"/>
-    <id>http://106.15.95.246/2017/07/02/浅谈onerror/</id>
-    <published>2017-07-02T04:55:09.000Z</published>
-    <updated>2017-07-02T05:53:17.831Z</updated>
-    
-    <content type="html"><![CDATA[<p>onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。<br>如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。<br><a id="more"></a></p>
-<h2 id="监听脚本错误"><a href="#监听脚本错误" class="headerlink" title="监听脚本错误"></a>监听脚本错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		onerror=handleErr</div><div class="line">		var txt=<span class="string">""</span></div><div class="line">		<span class="keyword">function</span> handleErr(msg,url,l)</div><div class="line">		&#123;</div><div class="line">			txt=<span class="string">"There was an error on this page.\n\n"</span></div><div class="line">			txt+=<span class="string">"Error: "</span> + msg + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"URL: "</span> + url + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"Line: "</span> + l + <span class="string">"\n\n"</span></div><div class="line">			txt+=<span class="string">"Click OK to continue.\n\n"</span></div><div class="line">			alert(txt)</div><div class="line">			<span class="built_in">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">message</span></span>()</div><div class="line">		&#123;</div><div class="line">			alertdddlert(<span class="string">"Welcome guest!"</span>)</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"View message"</span> onclick=<span class="string">"message()"</span> /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h2 id="监听资源加载"><a href="#监听资源加载" class="headerlink" title="监听资源加载"></a>监听资源加载</h2><p>如果装载图像时发生了错误，则显示一个对话框：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"image.gif"</span> onerror=<span class="string">"alert('The image could not be loaded.')"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<p>支持该事件的 HTML 标签：</p>
-<blockquote>
-<p>&lt;img&gt;,&lt;script&gt; , &lt;link&gt; 等</p>
-</blockquote>
-<h2 id="使用onerror加载图片"><a href="#使用onerror加载图片" class="headerlink" title="使用onerror加载图片"></a>使用onerror加载图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;img src=<span class="string">"1.jpg"</span> id=<span class="string">'image'</span> onerror=<span class="string">"setimg()"</span> alt=<span class="string">"pic"</span> style=<span class="string">'background-image: url(2.jpg)'</span> /&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">setimg</span></span>()&#123;</div><div class="line">		var d_image = document.getElementById(<span class="string">'image'</span>);</div><div class="line">		d_image .setAttribute(<span class="string">'src'</span>,<span class="string">'3.jpg'</span>);</div><div class="line">		d_image .onerror = <span class="string">''</span>;</div><div class="line">	&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>利用3张图片，保证在加载第三方资源时不会因为无资源出现UI问题;同样也可以利用onerror监听js、css文件加载，实现二次请求。以及监听jsonp失败。</p>
-<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://www.w3school.com.cn/jsref/event_onerror.asp" target="_blank" rel="external">W3C_onerror事件</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。&lt;br&gt;如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
     <title>threejs基础</title>
     <link href="http://106.15.95.246/2017/06/30/threejs/"/>
     <id>http://106.15.95.246/2017/06/30/threejs/</id>
@@ -444,11 +388,35 @@ function render() {
   </entry>
   
   <entry>
+    <title>天命无我-起源</title>
+    <link href="http://106.15.95.246/2017/01/01/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91-%E8%B5%B7%E6%BA%90/"/>
+    <id>http://106.15.95.246/2017/01/01/天命无我-起源/</id>
+    <published>2017-01-01T05:47:08.000Z</published>
+    <updated>2017-07-05T04:40:49.748Z</updated>
+    
+    <content type="html"><![CDATA[<p>虚无无极，无形无象。<br>化生一焏是为浑沌。<br>一焏凝形是为元气。元气之间相互吸引、排斥。平衡，使得浑沌静止。<br>元气聚，化成奇点。<br>这一瞬，浑沌的平衡被打破，混乱的能量开始由奇点向外扩散。混乱肆虐，元气湮灭，空间诞生。同时一种排斥的力量伴生，它充斥着空间的每一个角落，随着空间一起壮大，后世的人们称它为时间。<br>宇宙在这一瞬诞生。<br>元气湮灭，三分精气神，精为物，气为质，神为规则。规则由元气而生，万万千千。<br>有一规则名为融合，继承了元气吸引的能力，聚集精气神，许久之后一个微弱的意识诞生了。无序的融合，在意识的指引下变成了有序的行为。融合的意识逐渐强大，终于这个意识有了思考的能力。一个奇妙的波动扩散开来，宇宙中所有规则悸动化形而生。<br>波动到达了宇宙边缘，元气停止湮灭。<br>边缘地带，虚无、混沌、元气相互搅动。<br><a id="more"></a></p>
+<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://baike.baidu.com/view/2192547.htm" target="_blank" rel="external">先天五太</a>分别为：太易、太初、太始，太素、太极</p>
+]]></content>
+    
+    <summary type="html">
+    
+      对于万物来说，都只配当分母。
+    
+    </summary>
+    
+      <category term="天命无我" scheme="http://106.15.95.246/categories/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91/"/>
+    
+    
+      <category term="原创" scheme="http://106.15.95.246/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>meta标签用法总结</title>
-    <link href="http://106.15.95.246/2017/06/29/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/"/>
-    <id>http://106.15.95.246/2017/06/29/meta标签用法总结/</id>
-    <published>2017-06-29T09:16:57.000Z</published>
-    <updated>2017-07-02T05:52:58.199Z</updated>
+    <link href="http://106.15.95.246/2016/06/29/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://106.15.95.246/2016/06/29/meta标签用法总结/</id>
+    <published>2016-06-29T09:16:57.000Z</published>
+    <updated>2017-07-05T04:40:29.052Z</updated>
     
     <content type="html"><![CDATA[<p><meta>标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。</p>
 <a id="more"></a>
@@ -563,10 +531,10 @@ Windows 8
   
   <entry>
     <title>图片预览及Image对象总结</title>
-    <link href="http://106.15.95.246/2017/06/29/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%8F%8AImage%E5%AF%B9%E8%B1%A1%E6%80%BB%E7%BB%93/"/>
-    <id>http://106.15.95.246/2017/06/29/图片预览及Image对象总结/</id>
-    <published>2017-06-29T08:32:54.000Z</published>
-    <updated>2017-07-02T05:53:06.144Z</updated>
+    <link href="http://106.15.95.246/2016/05/29/%E5%9B%BE%E7%89%87%E9%A2%84%E8%A7%88%E5%8F%8AImage%E5%AF%B9%E8%B1%A1%E6%80%BB%E7%BB%93/"/>
+    <id>http://106.15.95.246/2016/05/29/图片预览及Image对象总结/</id>
+    <published>2016-05-29T08:32:54.000Z</published>
+    <updated>2017-07-05T04:40:41.716Z</updated>
     
     <content type="html"><![CDATA[<p>图片预览简单实现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot; /&gt;</div><div class="line">&lt;title&gt;图片预览&lt;/title&gt;</div><div class="line">&lt;script&gt;</div><div class="line">function previewFile() &#123;</div><div class="line"> var preview = document.querySelector(&apos;img&apos;);</div><div class="line"> var file  = document.querySelector(&apos;input[type=file]&apos;).files[0];</div><div class="line"> var reader = new FileReader();</div><div class="line"> reader.onloadend = function () &#123;</div><div class="line">  preview.src = reader.result;</div><div class="line"> &#125;</div><div class="line"> if (file) &#123;</div><div class="line">  reader.readAsDataURL(file);</div><div class="line"> &#125; else &#123;</div><div class="line">  preview.src = &quot;&quot;;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type=&quot;file&quot; onchange=&quot;previewFile()&quot;&gt;&lt;br&gt;</div><div class="line">&lt;img src=&quot;&quot; height=&quot;200&quot; width=&quot;300&quot; alt=&quot;Image preview...&quot;/&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
@@ -651,50 +619,73 @@ Windows 8
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
   <entry>
-    <title>Say ty 2 hexo</title>
-    <link href="http://106.15.95.246/2017/06/27/hello-world/"/>
-    <id>http://106.15.95.246/2017/06/27/hello-world/</id>
-    <published>2017-06-27T08:01:12.576Z</published>
-    <updated>2017-07-02T05:52:51.072Z</updated>
+    <title>浅谈onerror</title>
+    <link href="http://106.15.95.246/2016/04/02/%E6%B5%85%E8%B0%88onerror/"/>
+    <id>http://106.15.95.246/2016/04/02/浅谈onerror/</id>
+    <published>2016-04-02T04:55:09.000Z</published>
+    <updated>2017-07-05T04:40:29.064Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。<br>如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。<br><a id="more"></a></p>
+<h2 id="监听脚本错误"><a href="#监听脚本错误" class="headerlink" title="监听脚本错误"></a>监听脚本错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		onerror=handleErr</div><div class="line">		var txt=<span class="string">""</span></div><div class="line">		<span class="keyword">function</span> handleErr(msg,url,l)</div><div class="line">		&#123;</div><div class="line">			txt=<span class="string">"There was an error on this page.\n\n"</span></div><div class="line">			txt+=<span class="string">"Error: "</span> + msg + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"URL: "</span> + url + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"Line: "</span> + l + <span class="string">"\n\n"</span></div><div class="line">			txt+=<span class="string">"Click OK to continue.\n\n"</span></div><div class="line">			alert(txt)</div><div class="line">			<span class="built_in">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">message</span></span>()</div><div class="line">		&#123;</div><div class="line">			alertdddlert(<span class="string">"Welcome guest!"</span>)</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"View message"</span> onclick=<span class="string">"message()"</span> /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="监听资源加载"><a href="#监听资源加载" class="headerlink" title="监听资源加载"></a>监听资源加载</h2><p>如果装载图像时发生了错误，则显示一个对话框：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"image.gif"</span> onerror=<span class="string">"alert('The image could not be loaded.')"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<p>支持该事件的 HTML 标签：</p>
+<blockquote>
+<p>&lt;img&gt;,&lt;script&gt; , &lt;link&gt; 等</p>
+</blockquote>
+<h2 id="使用onerror加载图片"><a href="#使用onerror加载图片" class="headerlink" title="使用onerror加载图片"></a>使用onerror加载图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;img src=<span class="string">"1.jpg"</span> id=<span class="string">'image'</span> onerror=<span class="string">"setimg()"</span> alt=<span class="string">"pic"</span> style=<span class="string">'background-image: url(2.jpg)'</span> /&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">setimg</span></span>()&#123;</div><div class="line">		var d_image = document.getElementById(<span class="string">'image'</span>);</div><div class="line">		d_image .setAttribute(<span class="string">'src'</span>,<span class="string">'3.jpg'</span>);</div><div class="line">		d_image .onerror = <span class="string">''</span>;</div><div class="line">	&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>利用3张图片，保证在加载第三方资源时不会因为无资源出现UI问题;同样也可以利用onerror监听js、css文件加载，实现二次请求。以及监听jsonp失败。</p>
+<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://www.w3school.com.cn/jsref/event_onerror.asp" target="_blank" rel="external">W3C_onerror事件</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。&lt;br&gt;如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。&lt;br&gt;
     
     </summary>
     
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="hexo" scheme="http://106.15.95.246/tags/hexo/"/>
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重叠三角形</title>
+    <link href="http://106.15.95.246/2016/03/03/%E9%87%8D%E5%8F%A0%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
+    <id>http://106.15.95.246/2016/03/03/重叠三角形/</id>
+    <published>2016-03-03T08:24:39.000Z</published>
+    <updated>2017-07-05T04:39:17.477Z</updated>
+    
+    <content type="html"><![CDATA[<p>画三角形，带边框的三角形，重叠三角形。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">.tool &#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 100px;</div><div class="line">    top: 100px;</div><div class="line"></div><div class="line">    &amp;:before &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#000;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -9px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &amp;:after &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#fff;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -8px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;画三角形，带边框的三角形，重叠三角形。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://106.15.95.246/tags/css/"/>
     
   </entry>
   
   <entry>
     <title>CSS基础</title>
-    <link href="http://106.15.95.246/2016/06/29/CSS%E5%9F%BA%E7%A1%80/"/>
-    <id>http://106.15.95.246/2016/06/29/CSS基础/</id>
-    <published>2016-06-29T05:32:09.000Z</published>
-    <updated>2017-07-05T03:28:25.693Z</updated>
+    <link href="http://106.15.95.246/2016/01/29/CSS%E5%9F%BA%E7%A1%80/"/>
+    <id>http://106.15.95.246/2016/01/29/CSS基础/</id>
+    <published>2016-01-29T05:32:09.000Z</published>
+    <updated>2017-07-05T04:39:17.486Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><pre><code>颜色 background-color         rgba/十六进制/red
 图片 background-image         url(&quot;img.png&quot;)
@@ -931,25 +922,34 @@ flex: auto: 计算值为 1 1 auto
   </entry>
   
   <entry>
-    <title>重叠三角形</title>
-    <link href="http://106.15.95.246/2016/01/03/%E9%87%8D%E5%8F%A0%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
-    <id>http://106.15.95.246/2016/01/03/重叠三角形/</id>
-    <published>2016-01-03T08:24:39.000Z</published>
-    <updated>2017-07-05T03:28:35.615Z</updated>
+    <title>Say ty 2 hexo</title>
+    <link href="http://106.15.95.246/2016/01/27/hello-world/"/>
+    <id>http://106.15.95.246/2016/01/27/hello-world/</id>
+    <published>2016-01-27T04:31:31.000Z</published>
+    <updated>2017-07-05T04:39:53.130Z</updated>
     
-    <content type="html"><![CDATA[<p>画三角形，带边框的三角形，重叠三角形。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">.tool &#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 100px;</div><div class="line">    top: 100px;</div><div class="line"></div><div class="line">    &amp;:before &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#000;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -9px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &amp;:after &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#fff;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -8px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;画三角形，带边框的三角形，重叠三角形。&lt;br&gt;
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
     
     </summary>
     
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="css" scheme="http://106.15.95.246/tags/css/"/>
+      <category term="hexo" scheme="http://106.15.95.246/tags/hexo/"/>
     
   </entry>
   
