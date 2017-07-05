@@ -18,7 +18,7 @@
   <title>图片预览及Image对象总结 | 阿木隆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!--<meta name="description" content="图片预览简单实现 12345678910111213141516171819202122232425&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;meta charset=&amp;quot;utf-8&amp;quot; /&amp;gt;&amp;lt;title&amp;gt;图片预览&amp;lt;/title&amp;gt;&amp;lt;script&amp;gt;function previewFile() &amp;#123; var preview">
-<meta name="keywords" content="javascript,html">
+<meta name="keywords" content="html,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图片预览及Image对象总结">
 <meta property="og:url" content="http://106.15.95.246/2016/05/29/图片预览及Image对象总结/index.html">
@@ -40,6 +40,25 @@
   
   <!-- baidu webmaster push -->
   <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+  <script type="text/JavaScript">
+      //event 参数中有 data 属性，就是父窗口发送过来的数据
+      window.addEventListener("message", function( event ) {
+          // 把父窗口发送过来的数据显示在子窗口中
+          alert(event.data);
+      }, false );
+      function sendIt(){
+          // 通过 postMessage 向子窗口发送数据
+          window.parent
+              .postMessage(
+                  "123123123",
+                  "http://10.85.1.202:8020/test/father.html"
+              );
+      }
+      document.addEventListener("click",function(){
+          alert("点击了")
+          sendIt()
+      })
+  </script>
 </head>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
@@ -92,7 +111,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/05/29/图片预览及Image对象总结/" data-id="cj4qirium000qc8thl4zzgvp1" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/05/29/图片预览及Image对象总结/" data-id="cj4qsh223000in0th83w342oz" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 

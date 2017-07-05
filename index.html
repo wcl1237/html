@@ -39,6 +39,25 @@
   
   <!-- baidu webmaster push -->
   <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+  <script type="text/JavaScript">
+      //event 参数中有 data 属性，就是父窗口发送过来的数据
+      window.addEventListener("message", function( event ) {
+          // 把父窗口发送过来的数据显示在子窗口中
+          alert(event.data);
+      }, false );
+      function sendIt(){
+          // 通过 postMessage 向子窗口发送数据
+          window.parent
+              .postMessage(
+                  "123123123",
+                  "http://10.85.1.202:8020/test/father.html"
+              );
+      }
+      document.addEventListener("click",function(){
+          alert("点击了")
+          sendIt()
+      })
+  </script>
 </head>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
@@ -93,7 +112,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程3—webpack/" data-id="cj4qiriux0016c8th6ymtjx2k" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程3—webpack/" data-id="cj4qsh22l0018n0th1skefe3n" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -148,7 +167,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/" data-id="cj4qiriuu000zc8thjvvne2er" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/" data-id="cj4qsh22m001bn0th4izxlmbs" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -203,7 +222,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/" data-id="cj4qiriuw0012c8th8ntmdtba" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/" data-id="cj4qsh22c000xn0thiecn1486" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -258,7 +277,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4qiriua0008c8tho407c9vh" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4qsh21v0008n0thfbq6tleb" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -313,7 +332,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4qiriuo000tc8tho04evopn" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/实现全屏/" data-id="cj4qsh229000tn0thvtbgiyeq" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -368,7 +387,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4qiriui000ic8th38750sti" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/复制到剪切板/" data-id="cj4qsh228000qn0thpeii9819" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -423,7 +442,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4qiritv0000c8thw94z0mk5" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/jsonp/" data-id="cj4qsh221000en0thpvx3z9zk" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -478,7 +497,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4qiriue000bc8thv9aie4os" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/ajax浅析/" data-id="cj4qsh21t0006n0thm8l74u7f" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -534,7 +553,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4qiriu80007c8th9bgs7dtp" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/02/form对象/" data-id="cj4qsh21g0000n0thev9ca09g" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -589,7 +608,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4qiriuj000lc8ths284fnw5" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/06/30/threejs/" data-id="cj4qsh225000ln0thnb3npehp" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -644,7 +663,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/01/01/天命无我-起源/" data-id="cj4qirius000wc8thkbpov0oo" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/01/01/天命无我-起源/" data-id="cj4qsh22g0014n0th42stv565" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -699,7 +718,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/06/29/meta标签用法总结/" data-id="cj4qiriuf000dc8th7t5iusby" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/06/29/meta标签用法总结/" data-id="cj4qsh21u0007n0thop7tpmr6" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -754,7 +773,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/05/29/图片预览及Image对象总结/" data-id="cj4qirium000qc8thl4zzgvp1" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/05/29/图片预览及Image对象总结/" data-id="cj4qsh223000in0th83w342oz" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -810,7 +829,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/04/02/浅谈onerror/" data-id="cj4qiriv2001cc8thsdvsv3lx" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/04/02/浅谈onerror/" data-id="cj4qsh22o001gn0thkoijnadv" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -865,7 +884,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/03/03/重叠三角形/" data-id="cj4qiriv00018c8th3lt3eyl1" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/03/03/重叠三角形/" data-id="cj4qsh22f0010n0thtcpyane4" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -920,7 +939,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/29/CSS基础/" data-id="cj4qiriu00002c8th2scbwdsg" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/29/CSS基础/" data-id="cj4qsh21m0002n0thi8a07aau" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -983,7 +1002,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/27/hello-world/" data-id="cj4qiriu70006c8thz77vnx93" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/27/hello-world/" data-id="cj4qsh21z000cn0thiuyidyfn" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
