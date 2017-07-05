@@ -11,7 +11,7 @@
                 );
         }
         window.addEventListener("message", function( event ) {
-            alert("我收到了来自father的:‘"+event.data+"’");
+            alert("我是other，我收到了来自father的:‘"+event.data+"’");
         }, false );
         document.addEventListener("click",function(){
             alert("点击了other")
