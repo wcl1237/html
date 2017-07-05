@@ -4,7 +4,7 @@
     <title>Test Cross-domain communication using HTML5</title>
     <script type="text/JavaScript">
         function sendIt(){
-            window.parent.iframe[0]
+            window.parent.frames[0]
                 .postMessage(
                     document.getElementById("message").value,
                     "http://106.15.95.246/project/cross1/father.html"
