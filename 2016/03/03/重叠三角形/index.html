@@ -40,25 +40,6 @@
   
   <!-- baidu webmaster push -->
   <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
-  <script type="text/JavaScript">
-      //event 参数中有 data 属性，就是父窗口发送过来的数据
-      window.addEventListener("message", function( event ) {
-          // 把父窗口发送过来的数据显示在子窗口中
-          alert(event.data);
-      }, false );
-      function sendIt(){
-          // 通过 postMessage 向子窗口发送数据
-          window.parent
-              .postMessage(
-                  "123123123",
-                  "http://10.85.1.202:8020/test/father.html"
-              );
-      }
-      document.addEventListener("click",function(){
-          alert("点击了")
-          sendIt()
-      })
-  </script>
 </head>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
@@ -111,7 +92,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/03/03/重叠三角形/" data-id="cj4qsh22f0010n0thtcpyane4" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/03/03/重叠三角形/" data-id="cj4quq0ma001e34thobaveew8" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
