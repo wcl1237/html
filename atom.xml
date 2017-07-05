@@ -96,29 +96,6 @@
   </entry>
   
   <entry>
-    <title>重叠三角形</title>
-    <link href="http://106.15.95.246/2017/07/03/%E9%87%8D%E5%8F%A0%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
-    <id>http://106.15.95.246/2017/07/03/重叠三角形/</id>
-    <published>2017-07-03T08:24:39.000Z</published>
-    <updated>2017-07-03T09:03:51.634Z</updated>
-    
-    <content type="html"><![CDATA[<p>画三角形，带边框的三角形，重叠三角形。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">.tool &#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 100px;</div><div class="line">    top: 100px;</div><div class="line"></div><div class="line">    &amp;:before &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#000;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -9px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &amp;:after &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#fff;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -8px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;画三角形，带边框的三角形，重叠三角形。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="css" scheme="http://106.15.95.246/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
     <title>http协议</title>
     <link href="http://106.15.95.246/2017/07/03/http%E5%8D%8F%E8%AE%AE/"/>
     <id>http://106.15.95.246/2017/07/03/http协议/</id>
@@ -189,9 +166,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -218,9 +195,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -411,7 +388,7 @@ Connection:Keep-Alive (CRLF)
     <link href="http://106.15.95.246/2017/06/30/threejs/"/>
     <id>http://106.15.95.246/2017/06/30/threejs/</id>
     <published>2017-06-30T02:07:16.000Z</published>
-    <updated>2017-07-02T05:53:01.472Z</updated>
+    <updated>2017-07-05T03:20:53.071Z</updated>
     
     <content type="html"><![CDATA[<p>Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。</p>
 <a id="more"></a>
@@ -461,8 +438,6 @@ function render() {
     
     
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="threejs" scheme="http://106.15.95.246/tags/threejs/"/>
     
       <category term="webGL" scheme="http://106.15.95.246/tags/webGL/"/>
     
@@ -676,18 +651,50 @@ Windows 8
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+  </entry>
+  
+  <entry>
+    <title>Say ty 2 hexo</title>
+    <link href="http://106.15.95.246/2017/06/27/hello-world/"/>
+    <id>http://106.15.95.246/2017/06/27/hello-world/</id>
+    <published>2017-06-27T08:01:12.576Z</published>
+    <updated>2017-07-02T05:52:51.072Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="hexo" scheme="http://106.15.95.246/tags/hexo/"/>
     
   </entry>
   
   <entry>
     <title>CSS基础</title>
-    <link href="http://106.15.95.246/2017/06/29/CSS%E5%9F%BA%E7%A1%80/"/>
-    <id>http://106.15.95.246/2017/06/29/CSS基础/</id>
-    <published>2017-06-29T05:32:09.000Z</published>
-    <updated>2017-07-02T05:52:51.064Z</updated>
+    <link href="http://106.15.95.246/2016/06/29/CSS%E5%9F%BA%E7%A1%80/"/>
+    <id>http://106.15.95.246/2016/06/29/CSS基础/</id>
+    <published>2016-06-29T05:32:09.000Z</published>
+    <updated>2017-07-05T03:28:25.693Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><pre><code>颜色 background-color         rgba/十六进制/red
 图片 background-image         url(&quot;img.png&quot;)
@@ -924,34 +931,25 @@ flex: auto: 计算值为 1 1 auto
   </entry>
   
   <entry>
-    <title>Say ty 2 hexo</title>
-    <link href="http://106.15.95.246/2017/06/27/hello-world/"/>
-    <id>http://106.15.95.246/2017/06/27/hello-world/</id>
-    <published>2017-06-27T08:01:12.576Z</published>
-    <updated>2017-07-02T05:52:51.072Z</updated>
+    <title>重叠三角形</title>
+    <link href="http://106.15.95.246/2016/01/03/%E9%87%8D%E5%8F%A0%E4%B8%89%E8%A7%92%E5%BD%A2/"/>
+    <id>http://106.15.95.246/2016/01/03/重叠三角形/</id>
+    <published>2016-01-03T08:24:39.000Z</published>
+    <updated>2017-07-05T03:28:35.615Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <content type="html"><![CDATA[<p>画三角形，带边框的三角形，重叠三角形。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">.tool &#123;</div><div class="line">    position: absolute;</div><div class="line">    left: 100px;</div><div class="line">    top: 100px;</div><div class="line"></div><div class="line">    &amp;:before &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#000;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -9px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    &amp;:after &#123;</div><div class="line">      content: <span class="string">''</span>;</div><div class="line">      width: 0;</div><div class="line">      height: 0;</div><div class="line">      border-width:8px 0 8px 8px;</div><div class="line">      border-style:dashed;</div><div class="line">      border-color:transparent transparent transparent <span class="comment">#fff;</span></div><div class="line">      position: absolute;</div><div class="line">      top: 6px;</div><div class="line">      right: -8px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+      &lt;p&gt;画三角形，带边框的三角形，重叠三角形。&lt;br&gt;
     
     </summary>
     
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="hexo" scheme="http://106.15.95.246/tags/hexo/"/>
+      <category term="css" scheme="http://106.15.95.246/tags/css/"/>
     
   </entry>
   
