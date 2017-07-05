@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="这是阿木隆的博客" />
+  
+
+  
+  <meta name="keywords" content="阿木隆" />
+  
+  
+  <!---->
+  <meta name="baidu-site-verification" content="nJtPfFjytu" />
+  
+  
+  <title>初学docker3 | 阿木隆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--<meta name="description" content="制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；我们还会使用redis数据库来暂存用户的访问次数；在Node.js应用前端，我们需要放置一个Nginx作为反向代理。">
+<meta name="keywords" content="nodejs,docker">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学docker3">
+<meta property="og:url" content="http://106.15.95.246/2017/07/05/初学docker3/index.html">
+<meta property="og:site_name" content="阿木隆">
+<meta property="og:description" content="制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；我们还会使用redis数据库来暂存用户的访问次数；在Node.js应用前端，我们需要放置一个Nginx作为反向代理。">
+<meta property="og:updated_time" content="2017-07-05T12:20:33.372Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学docker3">
+<meta name="twitter:description" content="制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；我们还会使用redis数据库来暂存用户的访问次数；在Node.js应用前端，我们需要放置一个Nginx作为反向代理。">-->
+  
+    <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  
+  <!-- baidu webmaster push -->
+  <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿木隆" rel="home">阿木隆</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">北风骤起，艳阳高照</a>
+        </h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">关于我</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/project">作品</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/atom.xml">rss</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-初学docker3" class="post-初学docker3 post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title article-title">
+      初学docker3
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/05/初学docker3/" data-id="cj4qzrcfz000qjkth451rnvll" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；<br>我们还会使用redis数据库来暂存用户的访问次数；<br>在Node.js应用前端，我们需要放置一个Nginx作为反向代理。<br><a id="more"></a></p>
+<p>第一步，我们把需要用到的Image镜像统统都下载到本地，执行如下命令。</p>
+<pre><code>$ sudo docker pull redis:latest
+$ sudo docker pull node:latest
+</code></pre><p>执行docker images检查一下这些镜像是否都安装完毕。</p>
+<p>我们先在本地创建一个部署Node.js应用的目录，然后写上package.json</p>
+<pre><code>$ mkdir /var/node/
+$ mkdir /var/node/docker_node
+</code></pre><p>在创建我们的应用之前，我们从node这个镜像基础上，开始制作自己的镜像，这个镜像只是比node镜像多了一个pm2的命令。<br>运行如下命令，进入到Container的命令行，然后我们安装pm2软件。<br>它是Node.js进程管理软件，可以方便地重启进程和查看Node.js日志。</p>
+<pre><code>$ sudo docker run -i -t node /bin/bash
+#进入Container的bash    
+$ npm install pm2 -g
+#从Container的bash退出
+$ exit
+</code></pre><p>这样我们就成功地在node这个镜像的基础上安装了pm2，然后我们要把这个新的Container保存为镜像，这样以后我们要用到带pm2的Node.js镜像，只需下载它即可。<br>执行命令，进行登录，然后把镜像push到云上，非官方不允许直接提交根目录镜像，所以必须以&lt;用户名&gt;/&lt;镜像名&gt;这样的方式提交，比如doublespout/node_pm2这样</p>
+<pre><code>#使用docker官网注册的用户名和密码进行登录
+$ sudo docker login
+Username: &lt;Your Docker Account&gt;
+Password: 
+Email:  &lt;Your Email&gt;
+Login Succeeded
+
+#查看所有Container，找到node_pm2的CONTAINER ID
+$ sudo docker ps -a
+CONTAINER ID  IMAGE   COMMAND       CREATED         STATUS           PORTS      NAMES
+7a3e85bfaddf  node:0  &quot;/bin/bash&quot;   5 minutes ago   Exited (130)...             goofy_fermi
+
+#登录成功之后，把Container提交为Images
+$ sudo docker commit 7a3e doublespout/node_pm2
+
+#然后查看Images列表
+$ sudo docker images node_pm2
+REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+node_pm2            latest              9a418757ae2b        About a minute ago   714.8 MB
+
+#把镜像提交到云上
+$ sudo docker push doublespout/node_pm2
+
+#从云上下载node_pm2
+$ sudo docker pull doublespout/node_pm2
+</code></pre><p>接下来我们将通过redis镜像，启动一个redis的Container，命令如下：</p>
+<pre><code>docker run --name redis-server -d redis redis-server --appendonly yes
+</code></pre><p>然后我们要准备编写Node.js代码，实现这个计数访问应用的功能。<br>在/var/node/docker_node目录下创建如下的package.json文件。</p>
+<pre><code>{
+  &quot;name&quot;: &quot;docker_node&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;main&quot;: &quot;app.js&quot;,
+  &quot;dependencies&quot;: {
+       &quot;express&quot;:&quot;4.10.2&quot;,
+       &quot;redis&quot;:&quot;0.12.1&quot;,
+   },
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;=0.10.0&quot;
+  }
+}
+</code></pre><p>然后我们创建app.js，启动并监听8000端口，同时通过redis记录访问次数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var redis = require(<span class="string">"redis"</span>);</div><div class="line">var app = express();</div><div class="line">//从环境变量里读取redis服务器的ip地址</div><div class="line">var redisHost = process.env[<span class="string">'REDIS_PORT_6379_TCP_ADDR'</span>];</div><div class="line">var redisPort = process.env[<span class="string">'REDIS_PORT_6379_TCP_PORT'</span>];</div><div class="line"></div><div class="line">var reidsClient = redis.createClient(redisPort, redisHost);</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res)&#123;</div><div class="line">	  console.log(<span class="string">'get request'</span>)</div><div class="line">	  reidsClient.get(<span class="string">'access_count'</span>, <span class="keyword">function</span>(err, countNum)&#123;</div><div class="line">	  		<span class="keyword">if</span>(err)&#123;</div><div class="line">	  			<span class="built_in">return</span> res.send(<span class="string">'get access count error'</span>)</div><div class="line">	  		&#125;</div><div class="line">	  		<span class="keyword">if</span>(!countNum)&#123;</div><div class="line">	  			countNum = 1</div><div class="line">	  		&#125;</div><div class="line">	  		<span class="keyword">else</span>&#123;</div><div class="line">	  			countNum = parseInt(countNum) + 1</div><div class="line">	  		&#125;</div><div class="line">	  		reidsClient.set(<span class="string">'access_count'</span>, countNum, <span class="keyword">function</span>(err)&#123;</div><div class="line">	  			<span class="keyword">if</span>(err)&#123;</div><div class="line">		  			<span class="built_in">return</span> res.send(<span class="string">'set access count error'</span>)</div><div class="line">		  		&#125;</div><div class="line">		  		res.send(countNum.toString())</div><div class="line">	  		&#125;)</div><div class="line">	  &#125;)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(8000);</div></pre></td></tr></table></figure></p>
+<p>启动一个Container把依赖包装一下，命令如下：</p>
+<pre><code>$ sudo docker run --rm -i -t -v /var/node/docker_node:/var/node/docker_node -w /var/node/docker_node/ doublespout/node_pm2 cnpm install
+</code></pre><p>-w参数表示命令执行的当前工作目录，屏幕会打印依赖包的安装过程，等所有Node.js的包安装完成后，这个Container会自动退出。</p>
+<p>如果出现EACCESS的权限错误，可以执行如下命令，许可SELinux的工作状态，不过这只是临时修改，重启系统后会恢复。</p>
+<pre><code>su -c &quot;setenforce 0&quot;
+</code></pre><p>代码开发完毕，基于刚才提交的doublespout/node_pm2镜像，需要启动一个运行这个程序的Container，要求这个Container有端口映射、文件挂载，并同时加载redis的那个Container，命令如下：</p>
+<pre><code>#挂载pm2的日志输出
+$ mkdir /var/log/pm2
+#使用pm2启动app应用，会有问题
+$ sudo docker run -d --name &quot;nodeCountAccess&quot; -p 8000:8000 -v /var/node/docker_node:/var/node/docker_node -v /var/log/pm2:/root/.pm2/logs/ --link redis-server:redis -w /var/node/docker_node/  doublespout/node_pm2 pm2 start app.js
+</code></pre><p>但是当我们执行docker ps后发现这个Container并没有启动，这是什么原因呢？<br>因为利用pm2的守护进程方式启动应用，所以Container会认为进程已经运行结束，所以自己退出了，<br>这时候需要让pm2以非守护进程的方式运行在Container里即可。</p>
+<pre><code>$ sudo docker run -d --name &quot;nodeCountAccess&quot; -p 8000:8000 -v /var/node/docker_node:/var/node/docker_node -v /var/log/pm2:/root/.pm2/logs/ --link redis-server:redis -w /var/node/docker_node/  doublespout/node_pm2 pm2 start --no-daemon app.js
+</code></pre><p>再执行docker ps，就可以看到nodeCountAccess这个名字的Container在运行了，使用浏览器打开主机的8000端口，也能看到访问的计数次数。</p>
+<p>接下来配置Nginx。</p>
+<p>由于使用Docker的Container它的ip地址是动态变化的，所以想要使用Nginx容器来做反向代理，配置写起来比较困难，暂不使用Docker容器来管理Nginx，而是直接编译安装Nginx。</p>
+<p>我们使用Nginx的分支版本openresty来做反向代理，openresty比Nginx内置了ngx-lua模块，让Nginx具有逻辑处理能力，我们用yum安装依赖包，然后编译安装openresty。</p>
+<pre><code>yum install -y gcc gcc-c++ kernel-devel
+yum install -y readline-devel pcre-devel openssl-devel openssl zlib zlib-devel pcre-devel
+wget http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz
+tar -zxvf ngx_openresty-1.7.2.1.tar.gz
+cd ngx_openresty-1.7.2.1
+./configure --prefix=/opt/openresty \
+        --with-pcre-jit \
+        --with-ipv6 \
+        --without-http_redis2_module \
+        --with-http_iconv_module \
+        -j2
+make &amp;&amp; make install
+ln -s /opt/openresty/nginx/sbin/nginx /usr/sbin/
+</code></pre><p>修改openresty的默认配置文件，配置文件在/opt/openresty/nginx/conf/nginx.conf，修改为如下内容，文件是精简的配置，不要用于生产环境，主要就看server那段配置的内容。</p>
+<pre><code>worker_processes 1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    server_names_hash_bucket_size 64;
+    access_log off;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 3001;
+        location / {
+          proxy_pass http://127.0.0.1:8000;
+          proxy_redirect default;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection $http_connection;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header Host $http_host;
+        }
+    }
+}
+</code></pre><p>执行命令nginx就将openresty运行起来，然后打开浏览器，输入主机IP:3001就可以正常访问之前启动的Node.js访问计数应用。</p>
+<p>另外如果遇到在Container里无法解析域名，则需要手动增加dns服务器，方法如下：</p>
+<pre><code>DOCKER_OPTS=&quot; --dns 8.8.8.8&quot;
+service docker restart
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/05/初学docker3/">
+    <time datetime="2017-07-05T12:02:36.000Z" class="entry-date">
+        2017-07-05
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2017/07/05/初学docker2/" rel="next">初学docker2 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+        <img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;float: left;">
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：阿木隆</div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于长安大学，自动化系</div>
+            <div>就职于数梦工场，前端攻城狮</div>
+        </div>
+        <div style="margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：任何道路都是靠自己走出来的，而不是靠自己在梦中等来的。 其中准确迈出第一脚，是尤为重要的。</div>
+    </div>
+</aside>
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <h4 class="widget-title">总共发表了21篇</h4>
+    <div class="widget-content">
+        <ul>
+            
+            <li>
+                <a href="/2017/07/05/初学docker3/">初学docker3</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker2/">初学docker2</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/Nginx作为Node-js前端WebServer/">Nginx作为Node.js前端WebServer</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker1/">初学docker1</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/04/怎么使用react搭建工程3—webpack/">怎么使用react搭建工程3—webpack</a>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>2017 阿木隆
+    于cyanstyle旧版基础上更新</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

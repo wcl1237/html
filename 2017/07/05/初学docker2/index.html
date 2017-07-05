@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="这是阿木隆的博客" />
+  
+
+  
+  <meta name="keywords" content="阿木隆" />
+  
+  
+  <!---->
+  <meta name="baidu-site-verification" content="nJtPfFjytu" />
+  
+  
+  <title>初学docker2 | 阿木隆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--<meta name="description" content="使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。">
+<meta name="keywords" content="docker,redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初学docker2">
+<meta property="og:url" content="http://106.15.95.246/2017/07/05/初学docker2/index.html">
+<meta property="og:site_name" content="阿木隆">
+<meta property="og:description" content="使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。">
+<meta property="og:updated_time" content="2017-07-05T12:25:54.891Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初学docker2">
+<meta name="twitter:description" content="使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。">-->
+  
+    <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  
+  <!-- baidu webmaster push -->
+  <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿木隆" rel="home">阿木隆</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">北风骤起，艳阳高照</a>
+        </h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">关于我</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/project">作品</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/atom.xml">rss</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-初学docker2" class="post-初学docker2 post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title article-title">
+      初学docker2
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/05/初学docker2/" data-id="cj4qzrcg2000xjkthkilpzxdf" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。<br><a id="more"></a><br>下载官方的redis最新镜像</p>
+<pre><code>$ sudo docker pull redis:latest 
+</code></pre><p>启动redis镜像的Container，开启redis-server持久化服务。</p>
+<pre><code>$ sudo docker run --name redis-server -d redis redis-server --appendonly yes
+</code></pre><p>再启动一个redis镜像的Container作为客户端，连接我们刚才启动的redis-server</p>
+<pre><code>$ sudo docker run --rm=true -it --link redis-server:redis redis /bin/bash
+
+$ redis-cli -h &quot;$REDIS_PORT_6379_TCP_ADDR&quot; -p &quot;$REDIS_PORT_6379_TCP_PORT&quot;
+$ 172.17.0.34:6379&gt; set a 1 #成功连入redis数据库服务器
+OK
+$ 172.17.0.34:6379&gt; get a
+&quot;1&quot;
+</code></pre>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/05/初学docker2/">
+    <time datetime="2017-07-05T11:58:19.000Z" class="entry-date">
+        2017-07-05
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/">redis</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2017/07/05/初学docker3/" rel="prev"><span class="meta-nav">←</span> 初学docker3</a></span>
+    
+    
+        <span class="nav-next"><a href="/2017/07/05/Nginx作为Node-js前端WebServer/" rel="next">Nginx作为Node.js前端WebServer <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+        <img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;float: left;">
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：阿木隆</div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于长安大学，自动化系</div>
+            <div>就职于数梦工场，前端攻城狮</div>
+        </div>
+        <div style="margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：任何道路都是靠自己走出来的，而不是靠自己在梦中等来的。 其中准确迈出第一脚，是尤为重要的。</div>
+    </div>
+</aside>
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <h4 class="widget-title">总共发表了21篇</h4>
+    <div class="widget-content">
+        <ul>
+            
+            <li>
+                <a href="/2017/07/05/初学docker3/">初学docker3</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker2/">初学docker2</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/Nginx作为Node-js前端WebServer/">Nginx作为Node.js前端WebServer</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker1/">初学docker1</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/04/怎么使用react搭建工程3—webpack/">怎么使用react搭建工程3—webpack</a>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>2017 阿木隆
+    于cyanstyle旧版基础上更新</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

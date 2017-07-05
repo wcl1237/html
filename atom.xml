@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-04T15:08:22.870Z</updated>
+  <updated>2017-07-05T12:20:33.372Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,274 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初学docker3</title>
+    <link href="http://106.15.95.246/2017/07/05/%E5%88%9D%E5%AD%A6docker3/"/>
+    <id>http://106.15.95.246/2017/07/05/初学docker3/</id>
+    <published>2017-07-05T12:02:36.000Z</published>
+    <updated>2017-07-05T12:20:33.372Z</updated>
+    
+    <content type="html"><![CDATA[<p>制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；<br>我们还会使用redis数据库来暂存用户的访问次数；<br>在Node.js应用前端，我们需要放置一个Nginx作为反向代理。<br><a id="more"></a></p>
+<p>第一步，我们把需要用到的Image镜像统统都下载到本地，执行如下命令。</p>
+<pre><code>$ sudo docker pull redis:latest
+$ sudo docker pull node:latest
+</code></pre><p>执行docker images检查一下这些镜像是否都安装完毕。</p>
+<p>我们先在本地创建一个部署Node.js应用的目录，然后写上package.json</p>
+<pre><code>$ mkdir /var/node/
+$ mkdir /var/node/docker_node
+</code></pre><p>在创建我们的应用之前，我们从node这个镜像基础上，开始制作自己的镜像，这个镜像只是比node镜像多了一个pm2的命令。<br>运行如下命令，进入到Container的命令行，然后我们安装pm2软件。<br>它是Node.js进程管理软件，可以方便地重启进程和查看Node.js日志。</p>
+<pre><code>$ sudo docker run -i -t node /bin/bash
+#进入Container的bash    
+$ npm install pm2 -g
+#从Container的bash退出
+$ exit
+</code></pre><p>这样我们就成功地在node这个镜像的基础上安装了pm2，然后我们要把这个新的Container保存为镜像，这样以后我们要用到带pm2的Node.js镜像，只需下载它即可。<br>执行命令，进行登录，然后把镜像push到云上，非官方不允许直接提交根目录镜像，所以必须以&lt;用户名&gt;/&lt;镜像名&gt;这样的方式提交，比如doublespout/node_pm2这样</p>
+<pre><code>#使用docker官网注册的用户名和密码进行登录
+$ sudo docker login
+Username: &lt;Your Docker Account&gt;
+Password: 
+Email:  &lt;Your Email&gt;
+Login Succeeded
+
+#查看所有Container，找到node_pm2的CONTAINER ID
+$ sudo docker ps -a
+CONTAINER ID  IMAGE   COMMAND       CREATED         STATUS           PORTS      NAMES
+7a3e85bfaddf  node:0  &quot;/bin/bash&quot;   5 minutes ago   Exited (130)...             goofy_fermi
+
+#登录成功之后，把Container提交为Images
+$ sudo docker commit 7a3e doublespout/node_pm2
+
+#然后查看Images列表
+$ sudo docker images node_pm2
+REPOSITORY          TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
+node_pm2            latest              9a418757ae2b        About a minute ago   714.8 MB
+
+#把镜像提交到云上
+$ sudo docker push doublespout/node_pm2
+
+#从云上下载node_pm2
+$ sudo docker pull doublespout/node_pm2
+</code></pre><p>接下来我们将通过redis镜像，启动一个redis的Container，命令如下：</p>
+<pre><code>docker run --name redis-server -d redis redis-server --appendonly yes
+</code></pre><p>然后我们要准备编写Node.js代码，实现这个计数访问应用的功能。<br>在/var/node/docker_node目录下创建如下的package.json文件。</p>
+<pre><code>{
+  &quot;name&quot;: &quot;docker_node&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;main&quot;: &quot;app.js&quot;,
+  &quot;dependencies&quot;: {
+       &quot;express&quot;:&quot;4.10.2&quot;,
+       &quot;redis&quot;:&quot;0.12.1&quot;,
+   },
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;=0.10.0&quot;
+  }
+}
+</code></pre><p>然后我们创建app.js，启动并监听8000端口，同时通过redis记录访问次数。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">var express = require(<span class="string">'express'</span>);</div><div class="line">var redis = require(<span class="string">"redis"</span>);</div><div class="line">var app = express();</div><div class="line">//从环境变量里读取redis服务器的ip地址</div><div class="line">var redisHost = process.env[<span class="string">'REDIS_PORT_6379_TCP_ADDR'</span>];</div><div class="line">var redisPort = process.env[<span class="string">'REDIS_PORT_6379_TCP_PORT'</span>];</div><div class="line"></div><div class="line">var reidsClient = redis.createClient(redisPort, redisHost);</div><div class="line"></div><div class="line">app.get(<span class="string">'/'</span>, <span class="keyword">function</span>(req, res)&#123;</div><div class="line">	  console.log(<span class="string">'get request'</span>)</div><div class="line">	  reidsClient.get(<span class="string">'access_count'</span>, <span class="keyword">function</span>(err, countNum)&#123;</div><div class="line">	  		<span class="keyword">if</span>(err)&#123;</div><div class="line">	  			<span class="built_in">return</span> res.send(<span class="string">'get access count error'</span>)</div><div class="line">	  		&#125;</div><div class="line">	  		<span class="keyword">if</span>(!countNum)&#123;</div><div class="line">	  			countNum = 1</div><div class="line">	  		&#125;</div><div class="line">	  		<span class="keyword">else</span>&#123;</div><div class="line">	  			countNum = parseInt(countNum) + 1</div><div class="line">	  		&#125;</div><div class="line">	  		reidsClient.set(<span class="string">'access_count'</span>, countNum, <span class="keyword">function</span>(err)&#123;</div><div class="line">	  			<span class="keyword">if</span>(err)&#123;</div><div class="line">		  			<span class="built_in">return</span> res.send(<span class="string">'set access count error'</span>)</div><div class="line">		  		&#125;</div><div class="line">		  		res.send(countNum.toString())</div><div class="line">	  		&#125;)</div><div class="line">	  &#125;)</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(8000);</div></pre></td></tr></table></figure></p>
+<p>启动一个Container把依赖包装一下，命令如下：</p>
+<pre><code>$ sudo docker run --rm -i -t -v /var/node/docker_node:/var/node/docker_node -w /var/node/docker_node/ doublespout/node_pm2 cnpm install
+</code></pre><p>-w参数表示命令执行的当前工作目录，屏幕会打印依赖包的安装过程，等所有Node.js的包安装完成后，这个Container会自动退出。</p>
+<p>如果出现EACCESS的权限错误，可以执行如下命令，许可SELinux的工作状态，不过这只是临时修改，重启系统后会恢复。</p>
+<pre><code>su -c &quot;setenforce 0&quot;
+</code></pre><p>代码开发完毕，基于刚才提交的doublespout/node_pm2镜像，需要启动一个运行这个程序的Container，要求这个Container有端口映射、文件挂载，并同时加载redis的那个Container，命令如下：</p>
+<pre><code>#挂载pm2的日志输出
+$ mkdir /var/log/pm2
+#使用pm2启动app应用，会有问题
+$ sudo docker run -d --name &quot;nodeCountAccess&quot; -p 8000:8000 -v /var/node/docker_node:/var/node/docker_node -v /var/log/pm2:/root/.pm2/logs/ --link redis-server:redis -w /var/node/docker_node/  doublespout/node_pm2 pm2 start app.js
+</code></pre><p>但是当我们执行docker ps后发现这个Container并没有启动，这是什么原因呢？<br>因为利用pm2的守护进程方式启动应用，所以Container会认为进程已经运行结束，所以自己退出了，<br>这时候需要让pm2以非守护进程的方式运行在Container里即可。</p>
+<pre><code>$ sudo docker run -d --name &quot;nodeCountAccess&quot; -p 8000:8000 -v /var/node/docker_node:/var/node/docker_node -v /var/log/pm2:/root/.pm2/logs/ --link redis-server:redis -w /var/node/docker_node/  doublespout/node_pm2 pm2 start --no-daemon app.js
+</code></pre><p>再执行docker ps，就可以看到nodeCountAccess这个名字的Container在运行了，使用浏览器打开主机的8000端口，也能看到访问的计数次数。</p>
+<p>接下来配置Nginx。</p>
+<p>由于使用Docker的Container它的ip地址是动态变化的，所以想要使用Nginx容器来做反向代理，配置写起来比较困难，暂不使用Docker容器来管理Nginx，而是直接编译安装Nginx。</p>
+<p>我们使用Nginx的分支版本openresty来做反向代理，openresty比Nginx内置了ngx-lua模块，让Nginx具有逻辑处理能力，我们用yum安装依赖包，然后编译安装openresty。</p>
+<pre><code>yum install -y gcc gcc-c++ kernel-devel
+yum install -y readline-devel pcre-devel openssl-devel openssl zlib zlib-devel pcre-devel
+wget http://openresty.org/download/ngx_openresty-1.7.2.1.tar.gz
+tar -zxvf ngx_openresty-1.7.2.1.tar.gz
+cd ngx_openresty-1.7.2.1
+./configure --prefix=/opt/openresty \
+        --with-pcre-jit \
+        --with-ipv6 \
+        --without-http_redis2_module \
+        --with-http_iconv_module \
+        -j2
+make &amp;&amp; make install
+ln -s /opt/openresty/nginx/sbin/nginx /usr/sbin/
+</code></pre><p>修改openresty的默认配置文件，配置文件在/opt/openresty/nginx/conf/nginx.conf，修改为如下内容，文件是精简的配置，不要用于生产环境，主要就看server那段配置的内容。</p>
+<pre><code>worker_processes 1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    server_names_hash_bucket_size 64;
+    access_log off;
+
+    sendfile        on;
+    keepalive_timeout  65;
+
+    server {
+        listen 3001;
+        location / {
+          proxy_pass http://127.0.0.1:8000;
+          proxy_redirect default;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection $http_connection;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header Host $http_host;
+        }
+    }
+}
+</code></pre><p>执行命令nginx就将openresty运行起来，然后打开浏览器，输入主机IP:3001就可以正常访问之前启动的Node.js访问计数应用。</p>
+<p>另外如果遇到在Container里无法解析域名，则需要手动增加dns服务器，方法如下：</p>
+<pre><code>DOCKER_OPTS=&quot; --dns 8.8.8.8&quot;
+service docker restart
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;制作一个Node.js包含Express.js环境的镜像，通过pm2来启动web应用，然后发布到Docker云上；&lt;br&gt;我们还会使用redis数据库来暂存用户的访问次数；&lt;br&gt;在Node.js应用前端，我们需要放置一个Nginx作为反向代理。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://106.15.95.246/categories/docker/"/>
+    
+    
+      <category term="nodejs" scheme="http://106.15.95.246/tags/nodejs/"/>
+    
+      <category term="docker" scheme="http://106.15.95.246/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初学docker2</title>
+    <link href="http://106.15.95.246/2017/07/05/%E5%88%9D%E5%AD%A6docker2/"/>
+    <id>http://106.15.95.246/2017/07/05/初学docker2/</id>
+    <published>2017-07-05T11:58:19.000Z</published>
+    <updated>2017-07-05T12:25:54.891Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。<br><a id="more"></a><br>下载官方的redis最新镜像</p>
+<pre><code>$ sudo docker pull redis:latest 
+</code></pre><p>启动redis镜像的Container，开启redis-server持久化服务。</p>
+<pre><code>$ sudo docker run --name redis-server -d redis redis-server --appendonly yes
+</code></pre><p>再启动一个redis镜像的Container作为客户端，连接我们刚才启动的redis-server</p>
+<pre><code>$ sudo docker run --rm=true -it --link redis-server:redis redis /bin/bash
+
+$ redis-cli -h &quot;$REDIS_PORT_6379_TCP_ADDR&quot; -p &quot;$REDIS_PORT_6379_TCP_PORT&quot;
+$ 172.17.0.34:6379&gt; set a 1 #成功连入redis数据库服务器
+OK
+$ 172.17.0.34:6379&gt; get a
+&quot;1&quot;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用Docker的常规做法，数据库单独用一个Image，程序一个Image，利用Docker的link属性将他们连接起来，配合使用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://106.15.95.246/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://106.15.95.246/tags/docker/"/>
+    
+      <category term="redis" scheme="http://106.15.95.246/tags/redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Nginx作为Node.js前端WebServer</title>
+    <link href="http://106.15.95.246/2017/07/05/Nginx%E4%BD%9C%E4%B8%BANode-js%E5%89%8D%E7%AB%AFWebServer/"/>
+    <id>http://106.15.95.246/2017/07/05/Nginx作为Node-js前端WebServer/</id>
+    <published>2017-07-05T11:32:13.000Z</published>
+    <updated>2017-07-05T11:50:27.005Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ngnix拥有出色的HTTP反向代理能力,将他置于Node.js前端来处理我们的各种需求。<br><a id="more"></a></p>
+<h4 id="1-静态文件处理能力"><a href="#1-静态文件处理能力" class="headerlink" title="1.静态文件处理能力"></a>1.静态文件处理能力</h4><p>Node.js的静态文件处理能力受制于他的单线程异步I/O模型。使用Ngnix处理静态文件性能基本上是纯Node.js的2倍以上。</p>
+<h4 id="2-反向代理规则"><a href="#2-反向代理规则" class="headerlink" title="2.反向代理规则"></a>2.反向代理规则</h4><p>有时候存在反向代理服务器配置多样化的情况，有时候我们希望配置较好的机器能够分担更多的压力，有时又因为session的关系，我们需要将同一来源IP客户端全转发到同一进程上。使用Ngnix的配置文件可以简单实现。</p>
+<h4 id="3-扩展性"><a href="#3-扩展性" class="headerlink" title="3.扩展性"></a>3.扩展性</h4><p>Nginx可以加入许多扩展，帮助我们处理业务。最典型的就是加入Lua语言的扩展，通过胶水语言Lua，对Nginx赋予了复杂逻辑判断的能力，并且保持着一贯的高效。例如我们有一个api服务，对访问会进行md5签名或对同一客户端来源有访问频率限制，这部分代码是后端业务处理前必须通过的验证，具有卡口作用。利用Lua扩展，我们就可以高效、简单地完成这个卡口。</p>
+<h4 id="4-稳定性和转发性能"><a href="#4-稳定性和转发性能" class="headerlink" title="4.稳定性和转发性能"></a>4.稳定性和转发性能</h4><p>Nginx的稳定性有目共睹，同样负载下，相比Node.js占用的CPU和内存资源更少，同时高效地转发新能，方便地转发配置都是我们选择它作为反向代理的原因之一，比如我们可以根据不同的url请求路径转发到不同的后端机器上，也可以设定超时时间等，方便管理。</p>
+<h4 id="5-安全性"><a href="#5-安全性" class="headerlink" title="5.安全性"></a>5.安全性</h4><p>Nginx已经被各大互联网公司广泛应用，经过一些配置可以有效抵挡类似slowloris等的DoS攻击，而Node.js在这方面做的还不够。</p>
+<h4 id="6-运维管理"><a href="#6-运维管理" class="headerlink" title="6.运维管理"></a>6.运维管理</h4><p>可能我们目前限于资金的原因，只有一台web服务器，同时有多个站点需要占用80端口，这时我们只需要让Node.js服务监听本地的特殊端口，例如3000，通过Nginx的反向代理配置，就可以完成多个站点域名指向一台机器的需求了。</p>
+<p>所以，一个好习惯就是，在生产环境中，永远把Nginx放置在Node.js的前端，对性能、安全性和将来的扩展性都有益处。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Ngnix拥有出色的HTTP反向代理能力,将他置于Node.js前端来处理我们的各种需求。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://106.15.95.246/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://106.15.95.246/tags/Nginx/"/>
+    
+      <category term="nodejs" scheme="http://106.15.95.246/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初学docker1</title>
+    <link href="http://106.15.95.246/2017/07/05/%E5%88%9D%E5%AD%A6docker1/"/>
+    <id>http://106.15.95.246/2017/07/05/初学docker1/</id>
+    <published>2017-07-05T11:26:03.000Z</published>
+    <updated>2017-07-05T12:29:31.570Z</updated>
+    
+    <content type="html"><![CDATA[<p>Docker是一个开源的应用容器引擎，可以让开发者打包自己的应用及依赖到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可实现虚拟化。<br><a id="more"></a><br>对于在CentOS 7下的用户，安装非常简单，直接运行如下命令，就可以安装最新版本的Docker。<br>    $ sudo yum install docker</p>
+<p>启动Docker服务，并且把Docker服务开机启动。</p>
+<pre><code>$ sudo service docker start
+$ sudo chkconfig docker on
+</code></pre><p>输入如下命令，检查Dcoker进程是否已经启动。</p>
+<pre><code>$ ps -ef|grep docker
+</code></pre><p>现在Docker服务已经安装并启动，接下来需要下载Image镜像，镜像就是应用运行的环境，比如自己装好Node.js和npm然后发布到Docker Hub上，供自己或者别人下载，也可以下载安装一些官方的镜像，把它作为镜像的基础。<br>先下载CentOS镜像</p>
+<pre><code>$ sudo docker pull centos:7
+</code></pre><p>执行命令查看镜像是否安装成功。</p>
+<pre><code>$ sudo docker images centos
+</code></pre><h4 id="docker基本命令"><a href="#docker基本命令" class="headerlink" title="docker基本命令"></a>docker基本命令</h4><pre><code>1、获取镜像。
+$ sudo docker pull NAME[:TAG]
+$ sudo docker pull centos:latest 
+2、启动Container盒子。
+$ sudo docker run [OPTIONS] IMAGE [COMMAND] [ARG...] 
+$ sudo docker run -t -i centos /bin/bash
+3、查看镜像列表，会把本地所有的images列出。
+$ sudo docker images [OPTIONS] [NAME]
+$ sudo docker images centos
+4、查看容器列表，可以看到所有我们创建过的Container。
+$ sudo docker ps [OPTIONS] 
+$ sudo docker ps -a
+5、删除镜像，从本地删除一个已经下载的镜像。
+$ sudo docker rmi IMAGE [IMAGE...] 
+$ sudo docker rmi centos:latest
+6、移除一个或多个容器实例。
+$ sudo docker rm [OPTIONS] CONTAINER [CONTAINER...]
+$ sudo docker rm sudo docker ps -aq
+7、停止一个正在运行的容器。
+$ sudo docker kill [OPTIONS] CONTAINER [CONTAINER...]
+$ sudo docker kill 026e
+8、重启一个正在运行的容器。
+$ sudo docker restart [OPTIONS] CONTAINER [CONTAINER...]
+$ sudo docker restart 026e
+9、启动一个已经停止的容器。
+$ sudo docker start [OPTIONS] CONTAINER [CONTAINER...]
+$ sudo docker start 026e
+</code></pre><p>简单说明一下Image和Container的关系。Image顾名思义就是镜像的意思，可以把它理解为一个执行环境（env），当执行docker run命令之后，Dock就会根据当前的Image创建一个新的Container，Container是一个程序运行的沙箱，它们互相独立，但都是运行在Image创建的执行环境之上。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Docker是一个开源的应用容器引擎，可以让开发者打包自己的应用及依赖到一个可移植的容器中，然后发布到任何流行的Linux机器上，也可实现虚拟化。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="docker" scheme="http://106.15.95.246/categories/docker/"/>
+    
+    
+      <category term="docker" scheme="http://106.15.95.246/tags/docker/"/>
+    
+  </entry>
   
   <entry>
     <title>怎么使用react搭建工程3—webpack</title>
@@ -166,9 +434,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -195,9 +463,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -619,9 +887,9 @@ Windows 8
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -918,38 +1186,6 @@ flex: auto: 计算值为 1 1 auto
     
     
       <category term="css" scheme="http://106.15.95.246/tags/css/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Say ty 2 hexo</title>
-    <link href="http://106.15.95.246/2016/01/27/hello-world/"/>
-    <id>http://106.15.95.246/2016/01/27/hello-world/</id>
-    <published>2016-01-27T04:31:31.000Z</published>
-    <updated>2017-07-05T04:39:53.130Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="hexo" scheme="http://106.15.95.246/tags/hexo/"/>
     
   </entry>
   
