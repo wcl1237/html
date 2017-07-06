@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-05T15:01:58.740Z</updated>
+  <updated>2017-07-06T06:35:04.065Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,133 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS兼容性总结</title>
+    <link href="http://106.15.95.246/2017/07/06/CSS%E5%85%BC%E5%AE%B9%E6%80%A7%E6%80%BB%E7%BB%93/"/>
+    <id>http://106.15.95.246/2017/07/06/CSS兼容性总结/</id>
+    <published>2017-07-06T06:12:55.000Z</published>
+    <updated>2017-07-06T06:35:04.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。<br>这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争<br><a id="more"></a></p>
+<h4 id="CSS-Hack"><a href="#CSS-Hack" class="headerlink" title="CSS Hack"></a>CSS Hack</h4><p>为了让页面形成统一的效果，要针对不同的浏览器或不同版本写出对应可解析的CSS样式，所以我们就把这个针对不同浏览器/版本而写CSS的过程叫做 CSS hack.<br>CSS hack主要有三种：IE条件注释法、CSS属性前缀法、选择器前缀法。</p>
+<p>（1）IE条件注释法，即在正常代码之外添加判别IE浏览器或对应版本的条件注释，符合条件的浏览器或者版本号才回执行里边的代码。</p>
+<pre><code>&lt;!--  lt是小于 gt是大于 lte是小于等于 gte是不小于 !是不等于 --&gt;
+
+&lt;!-- [if IE]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+&lt;!-- [if lt IE 8]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+&lt;!-- [if ! IE 8]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+</code></pre><p>（2）CSS属性前缀法，即是给css的属性添加前缀。</p>
+<pre><code>* 可以被IE6/IE7识别，但 _ 只能被IE6识别，
+IE6-IE10都可以识别 &quot;\9&quot;
+IE6不能识别!important  
+FireFox不能识别 * _  \9
+可以先使用“\9&quot;标记，将IE分离出来
+再用”*&quot;分离出IE6/IE7
+最后可以用“_”分离出IE6
+“_″是IE6专有的hack
+“\9″ IE6/IE7/IE8/IE9/IE10都生效
+“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack
+“\9\0″ 只对IE9/IE10生效，是IE9/10的hack
+
+.type{
+    color: #111; /* all */
+    color: #222\9; /* IE */
+    *color: #333; /* IE6/IE7 */
+    _color: #444; /* IE6 */
+    }
+</code></pre><p>（3）选择器前缀法，就是给选择器加上前缀。</p>
+<pre><code>IE6可识别 *div{color:red;}  
+IE7可识别 *+div{color:red;}
+@media screen\9{...}只对IE6/7生效    
+@media \0screen {body { background: red; }}只对IE8有效    
+@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效    
+@media screen\0 {body { background: green; }} 只对IE8/9/10有效    
+@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body { background: orange; }} 只对IE10有效 等等
+</code></pre><h4 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h4><p>（1）浏览器对标签的默认支持不同，要进行CSS reset 。</p>
+<pre><code>body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+    body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+    h1, h2, h3, h4, h5, h6{ font-size:100%; }
+    address, cite, dfn, em, var { font-style:normal; }
+    code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+    small{ font-size:12px; }
+    ul, ol { list-style:none; }
+    a { text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    sup { vertical-align:text-top; }
+    sub{ vertical-align:text-bottom; }
+    legend { color:#000; }
+    fieldset, img { border:0; }
+    button, input, select, textarea { font-size:100%; }
+    table { border-collapse:collapse; border-spacing:0; }
+</code></pre><p>（2）IE6双边距bug: 块属性标签添加了浮动float之后，若在浮动方向上也有margin值，则margin值会加倍。其实这种问题主要就是会把某些元素挤到了第二行</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    html,body,div{ margin: 0;padding: 0;}
+    .wrap{width: 200px; height: 200px; border: 1px solid #333;}
+    .box{
+        float: left;
+         /* display:inline */ ;
+         margin-left: 10px; 
+         width: 80px; 
+         height: 80px; 
+         background-color: green;
+     }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>解决的方式有两个：<br>1.给float元素添加display：inline 即可正常显示<br>2.就是hack处理了，对IE6进行 _margin-left:5px;</p>
+<p>（3）跟上述差不多，也属于IE6双边距bug: 行内属性标签，为了设置宽高，我们经常就会设置成display：block; 这样一来就产生上述的问题。<br>解决办法也是添加display：inline; 但是这样一来我们就不能设置宽高了，所以呢需要再加个 display:table.<br>所以你设置display:block后，再添上display:inline和display:table   </p>
+<p>（4）上下margin重合问题，相邻的两个div margin-left margin-right 不会重合，但相邻的margin-top margin-bottom会重合。</p>
+<pre><code>.box1{width: 200px;height: 200px; border: 1px solid #333; }
+    .mt{margin-top: 10px;}
+    .mb{margin-bottom: 10px;}
+
+&lt;div class=&quot;box1 mb&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;box1 mt&quot;&gt;&lt;/div&gt;
+</code></pre><p>（5）有些浏览器解析img标签也有不同，img是行内的，一般都会紧接着排放，但是在有些情况下还是会突然出现个间距，解决办法是给它来个浮动  float </p>
+<p>（6）标签属性min-height是不兼容的，所以使用的时候也要稍微改改。这样吧：</p>
+<pre><code>.box{min-height:100px;height:auto !important; height:100px; overflow:visible;}
+</code></pre><p>（7）超链接访问过后 样式就混乱了，hover样式不出现了。其实主要是其CSS属性的排序问题。一般来说，最好按照这个顺序：L-V-H-A</p>
+<pre><code>a:link{}  a:visited{}  a:hover{}  a:active{}
+</code></pre><p>（8）chrome下默认会将小于12px的文本强制按照12px来解析。解决办法是给其添加属性：</p>
+<pre><code>-webkit-text-size-adjust: none; 
+</code></pre><p>（9）png24位的图片在IE6下面会出现背景，所以最好还是使用png8格式的</p>
+<p>（10）因为存在两种盒子模式：IE盒子模式和W3C标准模式，所以对象的实际宽度也要注意。</p>
+<p>IE/Opera：对象的实际宽度 = (margin-left) + width + (margin-right)<br>Firefox/Mozilla：对象的实际宽度= (margin-left) + (border-left-width) + (padding- left) + width + (padding-right) + (border-right-width) + (margin-right)</p>
+<p>（11）鼠标的手势也有问题：FireFox的cursor属性不支持hand，但是支持pointer，IE两个都支持；所以为了兼容都用pointer</p>
+<p>（12）有个说法是：FireFox无法解析简写的padding属性设置。</p>
+<p>如padding 5px 4px 3px 1px；必须改为 padding-top:5px; padding-right:4px; padding-bottom:3px; padding-left:1px。但我试了一下，发现还是可以解析的，难道是版本的原因？</p>
+<p>（13）消除ul、ol等列表的缩进时，样式应写成:list-style:none;margin:0px;padding:0px; 其中margin属性对IE有效，padding属性对FireFox有效</p>
+<p>（14）CSS控制透明度问题：一般就直接 opacity: 0.6 ; IE就 filter: alpha(opacity=60) ; 在IE6下 filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60);</p>
+<p>（15）有些时候图片下方会出现一条间隙，通常会出现在FF和IE6下面比如</p>
+<div><img src="1.jpg"></div><br>一般给img添加vertical-align属性即可，比如top middle<br>img{verticle-align:center;}<br><br>（16）IE6下div高度无法小于10px ;比如定义一条高2px的线条，FF和IE7都正常;但IE6就是10px<br>解决的办法有两种：添加overflow属性或设置fontsize大小为高度大小  如：<br><div style="height:2px;overflow:hidden;background:#000000;width:778px;"></div><br><div style="height:2px;font-size:2px;background:#000000;width:778px;">&nbps;</div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。&lt;br&gt;这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="css" scheme="http://106.15.95.246/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>js基本功能大全</title>
@@ -1423,9 +1550,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1452,9 +1579,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1494,63 +1621,6 @@ Connection:Keep-Alive (CRLF)
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
       <category term="跨域" scheme="http://106.15.95.246/tags/%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ajax浅析</title>
-    <link href="http://106.15.95.246/2017/07/02/ajax%E6%B5%85%E6%9E%90/"/>
-    <id>http://106.15.95.246/2017/07/02/ajax浅析/</id>
-    <published>2017-07-02T05:32:29.000Z</published>
-    <updated>2017-07-02T05:52:51.079Z</updated>
-    
-    <content type="html"><![CDATA[<!-- toc -->
-<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。<br>AJAX = 异步 JavaScript和XML（标准通用标记语言的子集）。<br>AJAX 是一种用于创建快速动态网页的技术。<br>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><a id="more"></a></p>
-<h2 id="XMLHttpRequest-是-AJAX-的基础"><a href="#XMLHttpRequest-是-AJAX-的基础" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础"></a>XMLHttpRequest 是 AJAX 的基础</h2><p>注：IE5 和 IE6 使用 ActiveXObject。</p>
-<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。<br>创建 XMLHttpRequest 对象的语法：</p>
-<blockquote>
-<p>variable=new XMLHttpRequest();</p>
-</blockquote>
-<p>Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
-<blockquote>
-<p>variable=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//创建</div><div class="line">var xmlhttp;</div><div class="line"><span class="keyword">if</span> (window.XMLHttpRequest)</div><div class="line">  &#123;// code <span class="keyword">for</span> IE7+, Firefox, Chrome, Opera, Safari</div><div class="line">  xmlhttp=new XMLHttpRequest();</div><div class="line">  &#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">  &#123;// code <span class="keyword">for</span> IE6, IE5</div><div class="line">  xmlhttp=new ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
-<h2 id="XMLHttpRequest对象用于和服务器交换数据"><a href="#XMLHttpRequest对象用于和服务器交换数据" class="headerlink" title="XMLHttpRequest对象用于和服务器交换数据"></a>XMLHttpRequest对象用于和服务器交换数据</h2><h3 id="XMLHttpRequest对象的方法"><a href="#XMLHttpRequest对象的方法" class="headerlink" title="XMLHttpRequest对象的方法"></a>XMLHttpRequest对象的方法</h3><p>open(method,url,async)</p>
-<blockquote>
-<p>method：请求的类型；GET 或 POST<br>url：文件在服务器上的位置<br>async：true（异步）或 false（同步）</p>
-</blockquote>
-<p>POST请求 send(string)<br>GET请求 send()</p>
-<p>setRequestHeader(header,value)</p>
-<blockquote>
-<p>header: 规定头的名称<br>value: 规定头的值</p>
-</blockquote>
-<h3 id="XMLHttpRequest对象的属性"><a href="#XMLHttpRequest对象的属性" class="headerlink" title="XMLHttpRequest对象的属性"></a>XMLHttpRequest对象的属性</h3><p>onreadystatechange  当 readyState 属性改变时，就会触发该事件</p>
-<p>readyState     存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</p>
-<blockquote>
-<p>0: 请求未初始化<br>1: 服务器连接已建立<br>2: 请求已接收<br>3: 请求处理中<br>4: 请求已完成，且响应已就绪</p>
-</blockquote>
-<p>status    </p>
-<blockquote>
-<p>200: “OK”<br>300~307: 重定向类<br>40<em>: 请求错误<br>50</em>: 服务器错误</p>
-</blockquote>
-<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><blockquote>
-<p>responseText    获得字符串形式的响应数据。<br>responseXML    获得 XML 形式的响应数据。</p>
-</blockquote>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"get"</span>, <span class="string">"url?key=value"</span>);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(null);</div></pre></td></tr></table></figure>
-<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"post"</span>, <span class="string">"url"</span>, data);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(data);</div></pre></td></tr></table></figure>
-<h2 id="ajax简单封装实例"><a href="#ajax简单封装实例" class="headerlink" title="ajax简单封装实例"></a>ajax简单封装实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	<span class="keyword">function</span> ajax(config) &#123;</div><div class="line"></div><div class="line">	  	var xhr = null;</div><div class="line">	  	try&#123;</div><div class="line">			xhr = new XMLHttpRequest();</div><div class="line">	  	&#125;catch(e)&#123;</div><div class="line">			try&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'MSXML2.XMLHttp'</span>);</div><div class="line">			&#125;catch(e)&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		var date = new Date();</div><div class="line">	  	config.url = config.url + <span class="string">'?timestamp='</span> + date.getTime();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'get'</span>) &#123;</div><div class="line">			var arr = [];</div><div class="line">			<span class="keyword">for</span> (var i <span class="keyword">in</span> config.data) &#123;</div><div class="line">			    arr.push(encodeURIComponent(i) + <span class="string">'='</span> + encodeURIComponent(config.data[i]));</div><div class="line">		  	&#125;</div><div class="line">		  	config.data = arr.join(<span class="string">'&amp;'</span>)</div><div class="line">		    config.url += config.data; </div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">true</span>) &#123; </div><div class="line">		    xhr.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">		      	<span class="keyword">if</span> (xhr.readyState == 4) &#123;</div><div class="line">		        	callback();</div><div class="line">		      	&#125;</div><div class="line">		    &#125;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	  	xhr.open(config.method, config.url, config.async);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</div><div class="line">		    xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</div><div class="line">		    xhr.send(JSON.stringify(config.data));</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    xhr.send(null);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">false</span>) &#123;</div><div class="line">		    callback();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">callback</span></span>() &#123;</div><div class="line">		    <span class="keyword">if</span> (xhr.status == 200) &#123;</div><div class="line">		      	config.success(xhr.responseText);</div><div class="line">		    &#125; <span class="keyword">else</span> &#123;</div><div class="line">		      	alert(<span class="string">'获取数据错误！错误代号：'</span> + xhr.status + <span class="string">'，错误信息：'</span> + xhr.statusText);</div><div class="line">		    &#125;	</div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      数据交互与dom操作并列前端两大基石
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1665,6 +1735,63 @@ function render() {
     
     
       <category term="原创" scheme="http://106.15.95.246/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ajax浅析</title>
+    <link href="http://106.15.95.246/2016/10/02/ajax%E6%B5%85%E6%9E%90/"/>
+    <id>http://106.15.95.246/2016/10/02/ajax浅析/</id>
+    <published>2016-10-02T05:32:00.000Z</published>
+    <updated>2017-07-06T01:40:15.069Z</updated>
+    
+    <content type="html"><![CDATA[<!-- toc -->
+<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。<br>AJAX = 异步 JavaScript和XML（标准通用标记语言的子集）。<br>AJAX 是一种用于创建快速动态网页的技术。<br>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><a id="more"></a></p>
+<h2 id="XMLHttpRequest-是-AJAX-的基础"><a href="#XMLHttpRequest-是-AJAX-的基础" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础"></a>XMLHttpRequest 是 AJAX 的基础</h2><p>注：IE5 和 IE6 使用 ActiveXObject。</p>
+<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。<br>创建 XMLHttpRequest 对象的语法：</p>
+<blockquote>
+<p>var variable=new XMLHttpRequest();</p>
+</blockquote>
+<p>Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
+<blockquote>
+<p>var variable=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//创建</div><div class="line">var xmlhttp;</div><div class="line"><span class="keyword">if</span> (window.XMLHttpRequest)&#123;</div><div class="line">// code <span class="keyword">for</span> IE7+, Firefox, Chrome, Opera, Safari</div><div class="line">  xmlhttp=new XMLHttpRequest();</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">// code <span class="keyword">for</span> IE6, IE5</div><div class="line">  xmlhttp=new ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="XMLHttpRequest对象用于和服务器交换数据"><a href="#XMLHttpRequest对象用于和服务器交换数据" class="headerlink" title="XMLHttpRequest对象用于和服务器交换数据"></a>XMLHttpRequest对象用于和服务器交换数据</h2><h3 id="XMLHttpRequest对象的方法"><a href="#XMLHttpRequest对象的方法" class="headerlink" title="XMLHttpRequest对象的方法"></a>XMLHttpRequest对象的方法</h3><p>open(method,url,async)</p>
+<blockquote>
+<p>method：请求的类型；GET 或 POST<br>url：文件在服务器上的位置<br>async：true（异步）或 false（同步）</p>
+</blockquote>
+<p>POST请求 send(string)<br>GET请求 send()</p>
+<p>setRequestHeader(header,value)</p>
+<blockquote>
+<p>header: 规定头的名称<br>value: 规定头的值</p>
+</blockquote>
+<h3 id="XMLHttpRequest对象的属性"><a href="#XMLHttpRequest对象的属性" class="headerlink" title="XMLHttpRequest对象的属性"></a>XMLHttpRequest对象的属性</h3><p>onreadystatechange  当 readyState 属性改变时，就会触发该事件</p>
+<p>readyState     存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</p>
+<blockquote>
+<p>0: 请求未初始化<br>1: 服务器连接已建立<br>2: 请求已接收<br>3: 请求处理中<br>4: 请求已完成，且响应已就绪</p>
+</blockquote>
+<p>status    </p>
+<blockquote>
+<p>200: “OK”<br>300~307: 重定向类<br>40X: 请求错误<br>50X: 服务器错误</p>
+</blockquote>
+<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><blockquote>
+<p>responseText    获得字符串形式的响应数据。<br>responseXML    获得 XML 形式的响应数据。</p>
+</blockquote>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"get"</span>, <span class="string">"url?key=value"</span>);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(null);</div></pre></td></tr></table></figure>
+<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"post"</span>, <span class="string">"url"</span>, data);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(data);</div></pre></td></tr></table></figure>
+<h2 id="ajax简单封装实例"><a href="#ajax简单封装实例" class="headerlink" title="ajax简单封装实例"></a>ajax简单封装实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="keyword">function</span> ajax(config) &#123;</div><div class="line"></div><div class="line">	  	var xhr = null;</div><div class="line">	  	try&#123;</div><div class="line">			xhr = new XMLHttpRequest();</div><div class="line">	  	&#125;catch(e)&#123;</div><div class="line">			try&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'MSXML2.XMLHttp'</span>);</div><div class="line">			&#125;catch(e)&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		var date = new Date();</div><div class="line">	  	config.url = config.url + <span class="string">'?timestamp='</span> + date.getTime();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'get'</span>) &#123;</div><div class="line">			var arr = [];</div><div class="line">			<span class="keyword">for</span> (var i <span class="keyword">in</span> config.data) &#123;</div><div class="line">			    arr.push(encodeURIComponent(i) + <span class="string">'='</span> + encodeURIComponent(config.data[i]));</div><div class="line">		  	&#125;</div><div class="line">		  	config.data = arr.join(<span class="string">'&amp;'</span>)</div><div class="line">		    config.url += config.data; </div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">true</span>) &#123; </div><div class="line">		    xhr.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">		      	<span class="keyword">if</span> (xhr.readyState == 4) &#123;</div><div class="line">		        	callback();</div><div class="line">		      	&#125;</div><div class="line">		    &#125;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	  	xhr.open(config.method, config.url, config.async);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</div><div class="line">		    xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</div><div class="line">		    xhr.send(JSON.stringify(config.data));</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    xhr.send(null);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">false</span>) &#123;</div><div class="line">		    callback();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">callback</span></span>() &#123;</div><div class="line">		    <span class="keyword">if</span> (xhr.status == 200) &#123;</div><div class="line">		      	config.success(xhr.responseText);</div><div class="line">		    &#125; <span class="keyword">else</span> &#123;</div><div class="line">		      	alert(<span class="string">'获取数据错误！错误代号：'</span> + xhr.status + <span class="string">'，错误信息：'</span> + xhr.statusText);</div><div class="line">		    &#125;	</div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      数据交互与dom操作并列前端两大基石
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1876,41 +2003,9 @@ Windows 8
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈onerror</title>
-    <link href="http://106.15.95.246/2016/04/02/%E6%B5%85%E8%B0%88onerror/"/>
-    <id>http://106.15.95.246/2016/04/02/浅谈onerror/</id>
-    <published>2016-04-02T04:55:09.000Z</published>
-    <updated>2017-07-05T04:40:29.064Z</updated>
-    
-    <content type="html"><![CDATA[<p>onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。<br>如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。<br><a id="more"></a></p>
-<h2 id="监听脚本错误"><a href="#监听脚本错误" class="headerlink" title="监听脚本错误"></a>监听脚本错误</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">		onerror=handleErr</div><div class="line">		var txt=<span class="string">""</span></div><div class="line">		<span class="keyword">function</span> handleErr(msg,url,l)</div><div class="line">		&#123;</div><div class="line">			txt=<span class="string">"There was an error on this page.\n\n"</span></div><div class="line">			txt+=<span class="string">"Error: "</span> + msg + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"URL: "</span> + url + <span class="string">"\n"</span></div><div class="line">			txt+=<span class="string">"Line: "</span> + l + <span class="string">"\n\n"</span></div><div class="line">			txt+=<span class="string">"Click OK to continue.\n\n"</span></div><div class="line">			alert(txt)</div><div class="line">			<span class="built_in">return</span> <span class="literal">true</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">message</span></span>()</div><div class="line">		&#123;</div><div class="line">			alertdddlert(<span class="string">"Welcome guest!"</span>)</div><div class="line">		&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"View message"</span> onclick=<span class="string">"message()"</span> /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<h2 id="监听资源加载"><a href="#监听资源加载" class="headerlink" title="监听资源加载"></a>监听资源加载</h2><p>如果装载图像时发生了错误，则显示一个对话框：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=<span class="string">"image.gif"</span> onerror=<span class="string">"alert('The image could not be loaded.')"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<p>支持该事件的 HTML 标签：</p>
-<blockquote>
-<p>&lt;img&gt;,&lt;script&gt; , &lt;link&gt; 等</p>
-</blockquote>
-<h2 id="使用onerror加载图片"><a href="#使用onerror加载图片" class="headerlink" title="使用onerror加载图片"></a>使用onerror加载图片</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=<span class="string">"UTF-8"</span>&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	&lt;img src=<span class="string">"1.jpg"</span> id=<span class="string">'image'</span> onerror=<span class="string">"setimg()"</span> alt=<span class="string">"pic"</span> style=<span class="string">'background-image: url(2.jpg)'</span> /&gt;</div><div class="line">	&lt;script&gt;</div><div class="line">	<span class="keyword">function</span> <span class="function"><span class="title">setimg</span></span>()&#123;</div><div class="line">		var d_image = document.getElementById(<span class="string">'image'</span>);</div><div class="line">		d_image .setAttribute(<span class="string">'src'</span>,<span class="string">'3.jpg'</span>);</div><div class="line">		d_image .onerror = <span class="string">''</span>;</div><div class="line">	&#125;</div><div class="line">	&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p>利用3张图片，保证在加载第三方资源时不会因为无资源出现UI问题;同样也可以利用onerror监听js、css文件加载，实现二次请求。以及监听jsonp失败。</p>
-<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://www.w3school.com.cn/jsref/event_onerror.asp" target="_blank" rel="external">W3C_onerror事件</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;onerror 事件会在文档或图像加载过程中发生错误时被触发，或者页面中出现脚本错误，也会产生 onerror 事件。&lt;br&gt;如果需要利用 onerror 事件，就必须创建一个处理错误的函数。你可以把这个函数叫作 onerror 事件处理器 (onerror event handler)。这个事件处理器使用三个参数来调用：msg（错误消息）、url（发生错误的页面的 url）、line（发生错误的代码行）。同样，你也可以不使用他们。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   

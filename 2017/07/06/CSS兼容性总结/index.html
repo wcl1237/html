@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="这是阿木隆的博客" />
+  
+
+  
+  <meta name="keywords" content="阿木隆" />
+  
+  
+  <!---->
+  <meta name="baidu-site-verification" content="nJtPfFjytu" />
+  
+  
+  <title>CSS兼容性总结 | 阿木隆</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--<meta name="description" content="浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS兼容性总结">
+<meta property="og:url" content="http://106.15.95.246/2017/07/06/CSS兼容性总结/index.html">
+<meta property="og:site_name" content="阿木隆">
+<meta property="og:description" content="浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争">
+<meta property="og:image" content="http://106.15.95.246/2017/07/06/CSS兼容性总结/1.jpg">
+<meta property="og:updated_time" content="2017-07-06T06:35:04.065Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS兼容性总结">
+<meta name="twitter:description" content="浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争">
+<meta name="twitter:image" content="http://106.15.95.246/2017/07/06/CSS兼容性总结/1.jpg">-->
+  
+    <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  
+  <!-- baidu webmaster push -->
+  <!--<script src='https://push.zhanzhang.baidu.com/push.js'></script>-->
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="阿木隆" rel="home">阿木隆</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">北风骤起，艳阳高照</a>
+        </h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">关于我</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/project">作品</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/atom.xml">rss</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-CSS兼容性总结" class="post-CSS兼容性总结 post type-post status-publish format-standard hentry" >
+    <!---->
+
+      <header class="entry-header" >
+        
+        
+  
+    <h1 class="entry-title article-title">
+      CSS兼容性总结
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/06/CSS兼容性总结/" data-id="cj4s6b10m0000tsthebszi5mo" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>浏览器的兼容性问题，通常是因为不同的浏览器对同一段代码有不同的解析，造成页面显示不统一的情况。<br>这里谈到的浏览器，主要指IE6/IE7/IE… FireFox Chrome Opera Safari 等。 但更多的兼容还是考虑IE6/IE7/FF之间的斗争<br><a id="more"></a></p>
+<h4 id="CSS-Hack"><a href="#CSS-Hack" class="headerlink" title="CSS Hack"></a>CSS Hack</h4><p>为了让页面形成统一的效果，要针对不同的浏览器或不同版本写出对应可解析的CSS样式，所以我们就把这个针对不同浏览器/版本而写CSS的过程叫做 CSS hack.<br>CSS hack主要有三种：IE条件注释法、CSS属性前缀法、选择器前缀法。</p>
+<p>（1）IE条件注释法，即在正常代码之外添加判别IE浏览器或对应版本的条件注释，符合条件的浏览器或者版本号才回执行里边的代码。</p>
+<pre><code>&lt;!--  lt是小于 gt是大于 lte是小于等于 gte是不小于 !是不等于 --&gt;
+
+&lt;!-- [if IE]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+&lt;!-- [if lt IE 8]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+&lt;!-- [if ! IE 8]&gt;
+   你想要执行的代码 
+&lt;![endif]--&gt;
+</code></pre><p>（2）CSS属性前缀法，即是给css的属性添加前缀。</p>
+<pre><code>* 可以被IE6/IE7识别，但 _ 只能被IE6识别，
+IE6-IE10都可以识别 &quot;\9&quot;
+IE6不能识别!important  
+FireFox不能识别 * _  \9
+可以先使用“\9&quot;标记，将IE分离出来
+再用”*&quot;分离出IE6/IE7
+最后可以用“_”分离出IE6
+“_″是IE6专有的hack
+“\9″ IE6/IE7/IE8/IE9/IE10都生效
+“\0″ IE8/IE9/IE10都生效，是IE8/9/10的hack
+“\9\0″ 只对IE9/IE10生效，是IE9/10的hack
+
+.type{
+    color: #111; /* all */
+    color: #222\9; /* IE */
+    *color: #333; /* IE6/IE7 */
+    _color: #444; /* IE6 */
+    }
+</code></pre><p>（3）选择器前缀法，就是给选择器加上前缀。</p>
+<pre><code>IE6可识别 *div{color:red;}  
+IE7可识别 *+div{color:red;}
+@media screen\9{...}只对IE6/7生效    
+@media \0screen {body { background: red; }}只对IE8有效    
+@media \0screen\,screen\9{body { background: blue; }}只对IE6/7/8有效    
+@media screen\0 {body { background: green; }} 只对IE8/9/10有效    
+@media screen and (min-width:0\0) {body { background: gray; }} 只对IE9/10有效
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body { background: orange; }} 只对IE10有效 等等
+</code></pre><h4 id="兼容性问题"><a href="#兼容性问题" class="headerlink" title="兼容性问题"></a>兼容性问题</h4><p>（1）浏览器对标签的默认支持不同，要进行CSS reset 。</p>
+<pre><code>body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+    body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+    h1, h2, h3, h4, h5, h6{ font-size:100%; }
+    address, cite, dfn, em, var { font-style:normal; }
+    code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+    small{ font-size:12px; }
+    ul, ol { list-style:none; }
+    a { text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    sup { vertical-align:text-top; }
+    sub{ vertical-align:text-bottom; }
+    legend { color:#000; }
+    fieldset, img { border:0; }
+    button, input, select, textarea { font-size:100%; }
+    table { border-collapse:collapse; border-spacing:0; }
+</code></pre><p>（2）IE6双边距bug: 块属性标签添加了浮动float之后，若在浮动方向上也有margin值，则margin值会加倍。其实这种问题主要就是会把某些元素挤到了第二行</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+    html,body,div{ margin: 0;padding: 0;}
+    .wrap{width: 200px; height: 200px; border: 1px solid #333;}
+    .box{
+        float: left;
+         /* display:inline */ ;
+         margin-left: 10px; 
+         width: 80px; 
+         height: 80px; 
+         background-color: green;
+     }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;wrap&quot;&gt;
+    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>解决的方式有两个：<br>1.给float元素添加display：inline 即可正常显示<br>2.就是hack处理了，对IE6进行 _margin-left:5px;</p>
+<p>（3）跟上述差不多，也属于IE6双边距bug: 行内属性标签，为了设置宽高，我们经常就会设置成display：block; 这样一来就产生上述的问题。<br>解决办法也是添加display：inline; 但是这样一来我们就不能设置宽高了，所以呢需要再加个 display:table.<br>所以你设置display:block后，再添上display:inline和display:table   </p>
+<p>（4）上下margin重合问题，相邻的两个div margin-left margin-right 不会重合，但相邻的margin-top margin-bottom会重合。</p>
+<pre><code>.box1{width: 200px;height: 200px; border: 1px solid #333; }
+    .mt{margin-top: 10px;}
+    .mb{margin-bottom: 10px;}
+
+&lt;div class=&quot;box1 mb&quot;&gt;&lt;/div&gt;
+&lt;div class=&quot;box1 mt&quot;&gt;&lt;/div&gt;
+</code></pre><p>（5）有些浏览器解析img标签也有不同，img是行内的，一般都会紧接着排放，但是在有些情况下还是会突然出现个间距，解决办法是给它来个浮动  float </p>
+<p>（6）标签属性min-height是不兼容的，所以使用的时候也要稍微改改。这样吧：</p>
+<pre><code>.box{min-height:100px;height:auto !important; height:100px; overflow:visible;}
+</code></pre><p>（7）超链接访问过后 样式就混乱了，hover样式不出现了。其实主要是其CSS属性的排序问题。一般来说，最好按照这个顺序：L-V-H-A</p>
+<pre><code>a:link{}  a:visited{}  a:hover{}  a:active{}
+</code></pre><p>（8）chrome下默认会将小于12px的文本强制按照12px来解析。解决办法是给其添加属性：</p>
+<pre><code>-webkit-text-size-adjust: none; 
+</code></pre><p>（9）png24位的图片在IE6下面会出现背景，所以最好还是使用png8格式的</p>
+<p>（10）因为存在两种盒子模式：IE盒子模式和W3C标准模式，所以对象的实际宽度也要注意。</p>
+<p>IE/Opera：对象的实际宽度 = (margin-left) + width + (margin-right)<br>Firefox/Mozilla：对象的实际宽度= (margin-left) + (border-left-width) + (padding- left) + width + (padding-right) + (border-right-width) + (margin-right)</p>
+<p>（11）鼠标的手势也有问题：FireFox的cursor属性不支持hand，但是支持pointer，IE两个都支持；所以为了兼容都用pointer</p>
+<p>（12）有个说法是：FireFox无法解析简写的padding属性设置。</p>
+<p>如padding 5px 4px 3px 1px；必须改为 padding-top:5px; padding-right:4px; padding-bottom:3px; padding-left:1px。但我试了一下，发现还是可以解析的，难道是版本的原因？</p>
+<p>（13）消除ul、ol等列表的缩进时，样式应写成:list-style:none;margin:0px;padding:0px; 其中margin属性对IE有效，padding属性对FireFox有效</p>
+<p>（14）CSS控制透明度问题：一般就直接 opacity: 0.6 ; IE就 filter: alpha(opacity=60) ; 在IE6下 filter:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=60);</p>
+<p>（15）有些时候图片下方会出现一条间隙，通常会出现在FF和IE6下面比如</p>
+<div><img src="1.jpg"></div><br>一般给img添加vertical-align属性即可，比如top middle<br>img{verticle-align:center;}<br><br>（16）IE6下div高度无法小于10px ;比如定义一条高2px的线条，FF和IE7都正常;但IE6就是10px<br>解决的办法有两种：添加overflow属性或设置fontsize大小为高度大小  如：<br><div style="height:2px;overflow:hidden;background:#000000;width:778px;"></div><br><div style="height:2px;font-size:2px;background:#000000;width:778px;">&nbps;</div>
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/2017/07/06/CSS兼容性总结/">
+    <time datetime="2017-07-06T06:12:55.000Z" class="entry-date">
+        2017-07-06
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2017/07/05/js基本功能大全/" rel="next">js基本功能大全 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+        <img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;float: left;">
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：阿木隆</div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于长安大学，自动化系</div>
+            <div>就职于数梦工场，前端攻城狮</div>
+        </div>
+        <div style="margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：任何道路都是靠自己走出来的，而不是靠自己在梦中等来的。 其中准确迈出第一脚，是尤为重要的。</div>
+    </div>
+</aside>
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <h4 class="widget-title">总共发表了24篇</h4>
+    <div class="widget-content">
+        <ul>
+            
+            <li>
+                <a href="/2017/07/06/CSS兼容性总结/">CSS兼容性总结</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/js基本功能大全/">js基本功能大全</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/node的几个基础实例—静态资源/">node的几个基础实例—静态资源</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker3/">初学docker3</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/05/初学docker2/">初学docker2</a>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">14</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>2017 阿木隆
+    于cyanstyle旧版基础上更新</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
