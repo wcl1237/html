@@ -77,10 +77,11 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article  id="post-http协议" class="post-http协议 post type-post status-publish format-standard hentry" >
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-http协议"
+         class="post-http协议 post type-post status-publish format-standard hentry">
     <!---->
 
-      <header class="entry-header" >
+    <header class="entry-header">
         
         
   
@@ -92,12 +93,12 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4t5esmq0008ikthf0ncuxol" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/03/http协议/" data-id="cj4t67ydh000c2wthibxywz6q" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
+    </header><!-- .entry-header -->
 
     <div class="entry-content">
-      
+        
         <p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。<br>HTTP是一个客户端和服务器端请求和应答的标准（TCP）。<br><a id="more"></a></p>
 <h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>HTTP/1.0　这是第一个在通讯中指定版本号的HTTP 协议版本，至今仍被广泛采用，特别是在代理服务器中。<br>HTTP/1.1　当前版本。持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式同时发送多个请求，以便降低线路负载，提高传输速度。<br>HTTP/1.1相较于 HTTP/1.0 协议的区别主要体现在：<br>    1 缓存处理<br>    2 带宽优化及网络连接的使用<br>    3 错误通知的管理<br>    4 消息在网络中的发送<br>    5 互联网地址的维护<br>    6 安全性及完整性</p>
 <p>HTTP/2.0 协议目标<br>    1 异步连接多路复用；<br>    2 头部压缩；<br>    3 请求/响应管线化；<br>    4 服务器推送流（即Server Push技术）；</p>
@@ -127,31 +128,31 @@ Connection:Keep-Alive (CRLF)
 <p> 5、Http指纹识别技术<br>    Http指纹识别的原理大致上也是相同的：记录不同服务器对Http协议执行中的微小差别进行识别.Http指纹识别比TCP/IP堆栈指纹识别复杂许 多,理由是定制Http服务器的配置文件、增加插件或组件使得更改Http的响应信息变的很容易,这样使得识别变的困难；然而定制TCP/IP堆栈的行为 需要对核心层进行修改,所以就容易识别.<br> 要让服务器返回不同的Banner信息的设置是很简单的,象Apache这样的开放源代码的Http服务器,用户可以在源代码里修改Banner信息,然 后重起Http服务就生效了；对于没有公开源代码的Http服务器比如微软的IIS或者是Netscape,可以在存放Banner信息的Dll文件中修 改,相关的文章有讨论的,这里不再赘述,当然这样的修改的效果还是不错的.另外一种模糊Banner信息的方法是使用插件。<br> 常用测试请求：<br> 1：HEAD/Http/1.0发送基本的Http请求<br> 2：DELETE/Http/1.0发送那些不被允许的请求,比如Delete请求<br> 3：GET/Http/3.0发送一个非法版本的Http协议请求<br> 4：GET/JUNK/1.0发送一个不正确规格的Http协议请求<br> Http指纹识别工具Httprint,它通过运用统计学原理,组合模糊的逻辑学技术,能很有效的确定Http服务器的类型.它可以被用来收集和分析不同Http服务器产生的签名。</p>
 <p> 6、其他：为了提高用户使用浏览器时的性能，现代浏览器还支持并发的访问方式，浏览一个网页时同时建立多个连接，以迅速获得一个网页上的多个图标，这样能更快速完成整个网页的传输。<br> HTTP1.1中提供了这种持续连接的方式，而下一代HTTP协议：HTTP-NG更增加了有关会话控制、丰富的内容协商等方式的支持，来提供<br> 更高效率的连接。</p>
 
-      
+        
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2017/07/03/http协议/">
+        <a href="/2017/07/03/http协议/">
     <time datetime="2017-07-03T06:01:44.000Z" class="entry-date">
         2017-07-03
     </time>
 </a>
-    
+        
   <span class="article-delim">&#8226;</span>
   <div class="article-category">
   <a class="article-category-link" href="/categories/通信/">通信</a>
   </div>
 
-    
+        
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/通信/">通信</a></li></ul>
 
-
+        
     </footer>
 </article>
 
 
-    
+
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
     
@@ -166,12 +167,10 @@ Connection:Keep-Alive (CRLF)
 
 
 
-
 <!-- 代码1：放在页面需要展示的位置  -->
 <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
 <div id="cyReward" role="cylabs" data-use="reward" sid="http://106.15.95.246/2017/07/03/http协议/"  style="text-align: center"></div>
 <section id="comments">
-  <div id="SOHUCS"></div>
   <div id="SOHUCS" sid="http://106.15.95.246/2017/07/03/http协议/" ></div>
   <script type="text/javascript">
       (function(){
