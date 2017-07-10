@@ -24,7 +24,7 @@
 <meta property="og:url" content="http://106.15.95.246/2016/01/29/CSS基础/index.html">
 <meta property="og:site_name" content="阿木隆">
 <meta property="og:description" content="1.CSS 背景background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。">
-<meta property="og:updated_time" content="2017-07-06T08:30:58.723Z">
+<meta property="og:updated_time" content="2017-07-10T06:45:41.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS基础">
 <meta name="twitter:description" content="1.CSS 背景background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。">-->
@@ -93,7 +93,7 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/29/CSS基础/" data-id="cj4xfuhm700080kthd7mk6z16" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2016/01/29/CSS基础/" data-id="cj4xtjpin0002dsth6jg9japn" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
     </header><!-- .entry-header -->
 
@@ -270,12 +270,17 @@ list-style    简写属性。用于把所有用于列表的属性设置于一个
 list-style-image    将图象设置为列表项标志。
 list-style-position    设置列表中列表项标志的位置。
 list-style-type    设置列表项标志的类型。
-</code></pre><h4 id="6-CSS-盒子模型"><a href="#6-CSS-盒子模型" class="headerlink" title="6.CSS 盒子模型"></a>6.CSS 盒子模型</h4><pre><code>width浏览器的兼容性问题
+</code></pre><h4 id="6-CSS-盒子模型"><a href="#6-CSS-盒子模型" class="headerlink" title="6.CSS 盒子模型"></a>6.CSS 盒子模型</h4><pre><code>Css盒模型magin外边距+border边框+padding内边距+width内容
+当设置background颜色的时候，会覆盖border+padding+width;
+
+width浏览器的兼容性问题
 根据 W3C 的规范，元素内容占据的空间是由 width 属性设置的，
+w3c中的盒子模型的宽仅包括content;
 而内容周围的 padding 和 border 值是另外计算的。
 不幸的是，IE5.X 和 6 在怪异模式中使用自己的非标准模型。
 这些浏览器的 width 属性不是内容的宽度，
 而是内容、内边距和边框的宽度的总和。
+ie怪异盒模型的宽包括border*2+padding*2+content;
 ···
 解决方式
 不要给元素添加具有指定宽度的内边距，
@@ -577,9 +582,17 @@ flex: auto: 计算值为 1 1 auto
     
 <aside class="widget">
     <h3 class="widget-title">最近发表</h3>
-    <h4 class="widget-title">总共发表了26篇</h4>
+    <h4 class="widget-title">总共发表了28篇</h4>
     <div class="widget-content">
         <ul>
+            
+            <li>
+                <a href="/2017/07/10/javascript继承/">javascript继承</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/10/javascript创建对象/">javascript创建对象</a>
+            </li>
             
             <li>
                 <a href="/2017/07/07/javascript理解对象/">javascript理解对象</a>
@@ -593,14 +606,6 @@ flex: auto: 计算值为 1 1 auto
                 <a href="/2017/07/06/CSS兼容性总结/">CSS兼容性总结</a>
             </li>
             
-            <li>
-                <a href="/2017/07/05/js基本功能大全/">js基本功能大全</a>
-            </li>
-            
-            <li>
-                <a href="/2017/07/05/node的几个基础实例—静态资源/">node的几个基础实例—静态资源</a>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -610,7 +615,7 @@ flex: auto: 计算值为 1 1 auto
   <aside class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -619,7 +624,7 @@ flex: auto: 计算值为 1 1 auto
   <aside class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
       <div id = "tagsCloud"></div>
     </div>
   </aside>

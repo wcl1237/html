@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-10T00:57:02.891Z</updated>
+  <updated>2017-07-10T07:14:59.801Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -16,20 +16,221 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>javascript继承</title>
+    <link href="http://106.15.95.246/2017/07/10/javascript%E7%BB%A7%E6%89%BF/"/>
+    <id>http://106.15.95.246/2017/07/10/javascript继承/</id>
+    <published>2017-07-10T05:33:15.000Z</published>
+    <updated>2017-07-10T07:14:59.801Z</updated>
+    
+    <content type="html"><![CDATA[<p>许多OO语言都支持两种继承方式：接口继承和实现继承。EMCAScript只支持实现继承，其实现继承主要是依靠原型链来实现的。<br><a id="more"></a></p>
+<h4 id="1-组合继承"><a href="#1-组合继承" class="headerlink" title="1.组合继承"></a>1.组合继承</h4><pre><code>function SuperType(name){
+    this.name = name;
+    this.colors = [&quot;red&quot;];
+}
+SuperType.prototype.sayName = function(){
+    alert(this.name)
+}
+function SubType(name,age){
+    SuperType.call(this.name)
+    this.age = age;
+}
+SubType.prototype = new SuperType();
+SubType.prototype.constructor = SubType;
+SubType.prototype.sayAge = function(){
+    alert(this.age)
+}
+//创建原型对象
+//增强对象，添加constructor属性
+//指定原型，使用新创建的原型对象
+</code></pre><h4 id="2-原型式继承"><a href="#2-原型式继承" class="headerlink" title="2.原型式继承"></a>2.原型式继承</h4><p>Object.create()规范化原型继承。这个方法接受两个参数：一个是用作新对象原型的对象，一个是为新对象定义额外属性的对象。</p>
+<h4 id="3-深度克隆"><a href="#3-深度克隆" class="headerlink" title="3.深度克隆"></a>3.深度克隆</h4><p>浅度克隆：原始类型为值传递，对象类型仍为引用传递。<br>深度克隆：所有元素或属性均完全复制，与原对象完全脱离，也就是说所有对于新对象的修改都不会反映到原对象中。</p>
+<pre><code>//深度克隆
+Object.prototype.clone=function(){
+    //原型指向保持一致
+    var newobj=Object.create(Object.getPrototypeOf(this));
+    //自身属性保持一样
+    var propNames=Object.getOwnPropertyNames(this);
+    propNames.forEach(function(item){
+       //保持每个属性的特性也一样
+       var des=Object.getOwnPropertyDescriptor(this,item);
+       Object.defineProperty(newobj,item,des);
+    },this);
+    return newobj;
+}
+注解：
+Object.getPrototypeOf(this)
+//返回值：给定对象的原型。如果没有继承属性，则返回 null 。
+//在 ES5 中，如果参数不是一个对象类型，将抛出一个  TypeError 异常。在 ES6 /ES2015中，参数被强制转换为一个 Object。
+
+Object.create(proto);
+//proto：新创建的对象的原型
+//返回值：使用指定的原型对象和其属性创建了一个新的对象。
+
+Object.getOwnPropertyNames(this);
+//返回一个数组，它包含了指定对象所有的可枚举或不可枚举的属性名。
+
+Object.getOwnPropertyDescriptor(obj, prop)
+//obj：想要查看属性的对象；prop：将返回对应属性描述符的属性名称
+//返回对象指定的属性配置。
+
+ Object.defineProperty(newobj,item,des);
+ //obj：要在其上定义属性的对象。prop：要定义或修改的属性的名称。descriptor：将被定义或修改的属性的描述符。
+ //会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性， 并返回这个对象。
+
+ //IE兼容forEach方法
+ //https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach  
+    if (!Array.prototype.forEach) {  
+       Array.prototype.forEach = function(callback, thisArg) {  
+           var T, k;  
+           if (this == null) {  
+               throw new TypeError(&quot; this is null or not defined&quot;);  
+           }  
+           var O = Object(this);  
+           var len = O.length &gt;&gt;&gt; 0; // Hack to convert O.length to a UInt32  
+           if ({}.toString.call(callback) != &quot;[object Function]&quot;) {  
+               throw new TypeError(callback + &quot; is not a function&quot;);  
+           }  
+           if (thisArg) {  
+               T = thisArg;  
+           }  
+           k = 0;  
+           while (k &lt; len) {  
+               var kValue;  
+               if (k in O) {  
+                   kValue = O[k];  
+                   callback.call(T, kValue, k, O);  
+               }  
+               k++;  
+           }  
+       };  
+    } 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;许多OO语言都支持两种继承方式：接口继承和实现继承。EMCAScript只支持实现继承，其实现继承主要是依靠原型链来实现的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript创建对象</title>
+    <link href="http://106.15.95.246/2017/07/10/javascript%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://106.15.95.246/2017/07/10/javascript创建对象/</id>
+    <published>2017-07-10T01:34:07.000Z</published>
+    <updated>2017-07-10T05:32:20.845Z</updated>
+    
+    <content type="html"><![CDATA[<p>Object构造函数或对象字面量都可以用来创造单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量重复代码。</p>
+<h4 id="1-工厂模式"><a href="#1-工厂模式" class="headerlink" title="1.工厂模式"></a>1.工厂模式</h4><a id="more"></a>
+<pre><code>function createPerson(name,age,job){
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.sayName = function(){
+        alert(this.name)
+    }
+    return o;
+}
+
+var person1 = createPerson(&quot;tom&quot;,11,&quot;student&quot;)
+</code></pre><h4 id="2-构造函数模式"><a href="#2-构造函数模式" class="headerlink" title="2.构造函数模式"></a>2.构造函数模式</h4><pre><code>function Person(name,age,job){
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function(){
+        alert(this.name)
+    }
+}
+var person1 =new Person(&quot;tom&quot;,11,&quot;student&quot;)
+//或者
+var person2 = new Object();
+Person.call(person2,&quot;Sam&quot;,11,&quot;student&quot;)
+</code></pre><h4 id="3-原型模式"><a href="#3-原型模式" class="headerlink" title="3.原型模式"></a>3.原型模式</h4><pre><code>function Person(){
+
+} 
+Person.prototype.name = &quot;hello&quot;;
+Person.prototype.sayName = function(){
+    alert(this.name);
+}
+
+var person1 = new Person(）;
+person1.age = 11;
+</code></pre><p>Person.prototype.constructor = Person;<br>person1.constructor = Person;<br>person1.<em>proto</em> = Person.prototype;<br>Person.prototype.isPrototype(person1); //true<br>Object.getPrototypeOf(person1) == Person.prototype; // true<br>person1.hasOwnProperty(“name”); //false<br>“name” in person1; //true<br>Object.keys(Person.prototype); //[“name”,”sayName”]<br>Object.keys(person1); //[“age”]<br>Object.getOwnPropertyNames(Person.prototype); //[“constructor”,”name”,”sayName”]<br>person1 instanceof Person; //true<br>//重写原型对象切断了现有原型与任何之前已经存在的对象实例之间的联系。他们引用的仍然是最初的原型。</p>
+<h4 id="4-组合使用构造函数模式和原型模式"><a href="#4-组合使用构造函数模式和原型模式" class="headerlink" title="4.组合使用构造函数模式和原型模式"></a>4.组合使用构造函数模式和原型模式</h4><pre><code>function Person(){
+    this.name = name;
+    this.friends = [&quot;tom&quot;,&quot;sam&quot;]
+}
+Person.prototype = {
+    constructor:Person,
+    sayName:function(){
+        alert(this.name)
+    }
+}
+</code></pre><h4 id="5-动态原型模式"><a href="#5-动态原型模式" class="headerlink" title="5.动态原型模式"></a>5.动态原型模式</h4><pre><code>function Person(){
+    this.name = name;
+    if(typeof this.sayName != &quot;function&quot;){
+        Person.prototype.sayName = function(){
+            alert(this.name)
+        }
+    }
+}
+</code></pre><h4 id="6-寄生构造函数模式"><a href="#6-寄生构造函数模式" class="headerlink" title="6.寄生构造函数模式"></a>6.寄生构造函数模式</h4><pre><code>function SpecialArray(){
+    var val = new Array();
+    val.push.apply(val,arguments)
+    val.toPipedString = function () {
+        return this.join(&apos;|&apos;);
+    }
+    return val
+}
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Object构造函数或对象字面量都可以用来创造单个对象，但这些方式有个明显的缺点：使用同一个接口创建很多对象，会产生大量重复代码。&lt;/p&gt;
+&lt;h4 id=&quot;1-工厂模式&quot;&gt;&lt;a href=&quot;#1-工厂模式&quot; class=&quot;headerlink&quot; title=&quot;1.工厂模式&quot;&gt;&lt;/a&gt;1.工厂模式&lt;/h4&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
     <title>javascript理解对象</title>
     <link href="http://106.15.95.246/2017/07/07/javascript%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1/"/>
     <id>http://106.15.95.246/2017/07/07/javascript理解对象/</id>
     <published>2017-07-07T14:05:40.000Z</published>
-    <updated>2017-07-10T00:57:02.891Z</updated>
+    <updated>2017-07-10T01:45:14.167Z</updated>
     
-    <content type="html"><![CDATA[<p>EMCAScript中有两种属性：数据属性和访问器属性。</p>
-<h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1.数据属性"></a>1.数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Writable]]:表示能否修改属性的值。默认值为true。<br>④[[Value]]:包含这个属性的值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为undefined。<br>修改属性默认的特性,使用Object.defineProperty()方法。这个方法接收3个参数</p>
+    <content type="html"><![CDATA[<p>EMCAScript中有两种属性：数据属性和访问器属性。<br><a id="more"></a></p>
+<h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1.数据属性"></a>1.数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Writable]]:表示能否修改属性的值。默认值为true。<br>④[[Value]]:包含这个属性的值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为undefined。<br>修改属性默认的特性,使用Object.defineProperty()方法。这个方法接收3个参数：属性所在的对象、属性的名字和一个描述符对象。其中，描述符对象的属性必须是：configurable、enumerable、writable和value。</p>
+<pre><code>var person = {};
+Object.defineProperty{
+    person,
+    &quot;name&quot;,
+    {
+        writable:false,
+        value: &quot;Tom&quot;
+    }
+}
+</code></pre><p>在调用Object.defineProperty()方法时，如果不指定，configurable、enumerable和writable特性的默认值都是false。<br>注：IE8及以下不建议使用该方法。</p>
+<h4 id="2-访问器属性"><a href="#2-访问器属性" class="headerlink" title="2.访问器属性"></a>2.访问器属性</h4><p>访问器属性不包含数值：访问器属性有如下4个特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Get]]:在读取属性时调用的函数。默认的是undefined。<br>④[[Get]]:在写入属性时调用的函数。默认的是undefined。</p>
+<h4 id="3-读取属性的特性"><a href="#3-读取属性的特性" class="headerlink" title="3.读取属性的特性"></a>3.读取属性的特性</h4><p>使用Object.getOwnPropertyDescriptor()方法，可以取得给定属性的描述符。这个方法接受两个参数：属性所在的对象和要读取其描述符的属性名称。返回一个对象，如果是访问器属性，这个对象的属性有configurable、enumerable、get和set;如果是数据属性，这个对象的属性有configurable、enumerable、writable和value。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;EMCAScript中有两种属性：数据属性和访问器属性。&lt;/p&gt;
-&lt;h4 id=&quot;1-数据属性&quot;&gt;&lt;a href=&quot;#1-数据属性&quot; class=&quot;headerlink&quot; title=&quot;1.数据属性&quot;&gt;&lt;/a&gt;1.数据属性&lt;/h4&gt;&lt;p&gt;数据属性包含一个数据值的位置。在这个
+      &lt;p&gt;EMCAScript中有两种属性：数据属性和访问器属性。&lt;br&gt;
     
     </summary>
     
@@ -1765,9 +1966,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1794,9 +1995,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -1926,87 +2127,6 @@ function render() {
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
       <category term="webGL" scheme="http://106.15.95.246/tags/webGL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>天命无我-起源</title>
-    <link href="http://106.15.95.246/2017/01/01/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91-%E8%B5%B7%E6%BA%90/"/>
-    <id>http://106.15.95.246/2017/01/01/天命无我-起源/</id>
-    <published>2017-01-01T05:47:08.000Z</published>
-    <updated>2017-07-05T04:40:49.748Z</updated>
-    
-    <content type="html"><![CDATA[<p>虚无无极，无形无象。<br>化生一焏是为浑沌。<br>一焏凝形是为元气。元气之间相互吸引、排斥。平衡，使得浑沌静止。<br>元气聚，化成奇点。<br>这一瞬，浑沌的平衡被打破，混乱的能量开始由奇点向外扩散。混乱肆虐，元气湮灭，空间诞生。同时一种排斥的力量伴生，它充斥着空间的每一个角落，随着空间一起壮大，后世的人们称它为时间。<br>宇宙在这一瞬诞生。<br>元气湮灭，三分精气神，精为物，气为质，神为规则。规则由元气而生，万万千千。<br>有一规则名为融合，继承了元气吸引的能力，聚集精气神，许久之后一个微弱的意识诞生了。无序的融合，在意识的指引下变成了有序的行为。融合的意识逐渐强大，终于这个意识有了思考的能力。一个奇妙的波动扩散开来，宇宙中所有规则悸动化形而生。<br>波动到达了宇宙边缘，元气停止湮灭。<br>边缘地带，虚无、混沌、元气相互搅动。<br><a id="more"></a></p>
-<h2 id="参考内容："><a href="#参考内容：" class="headerlink" title="参考内容："></a>参考内容：</h2><p><a href="http://baike.baidu.com/view/2192547.htm" target="_blank" rel="external">先天五太</a>分别为：太易、太初、太始，太素、太极</p>
-]]></content>
-    
-    <summary type="html">
-    
-      对于万物来说，都只配当分母。
-    
-    </summary>
-    
-      <category term="天命无我" scheme="http://106.15.95.246/categories/%E5%A4%A9%E5%91%BD%E6%97%A0%E6%88%91/"/>
-    
-    
-      <category term="原创" scheme="http://106.15.95.246/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ajax浅析</title>
-    <link href="http://106.15.95.246/2016/10/02/ajax%E6%B5%85%E6%9E%90/"/>
-    <id>http://106.15.95.246/2016/10/02/ajax浅析/</id>
-    <published>2016-10-02T05:32:00.000Z</published>
-    <updated>2017-07-06T01:40:15.069Z</updated>
-    
-    <content type="html"><![CDATA[<!-- toc -->
-<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式网页应用的网页开发技术。<br>AJAX = 异步 JavaScript和XML（标准通用标记语言的子集）。<br>AJAX 是一种用于创建快速动态网页的技术。<br>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。<br><a id="more"></a></p>
-<h2 id="XMLHttpRequest-是-AJAX-的基础"><a href="#XMLHttpRequest-是-AJAX-的基础" class="headerlink" title="XMLHttpRequest 是 AJAX 的基础"></a>XMLHttpRequest 是 AJAX 的基础</h2><p>注：IE5 和 IE6 使用 ActiveXObject。</p>
-<h2 id="创建-XMLHttpRequest-对象"><a href="#创建-XMLHttpRequest-对象" class="headerlink" title="创建 XMLHttpRequest 对象"></a>创建 XMLHttpRequest 对象</h2><p>所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 XMLHttpRequest 对象。<br>创建 XMLHttpRequest 对象的语法：</p>
-<blockquote>
-<p>var variable=new XMLHttpRequest();</p>
-</blockquote>
-<p>Internet Explorer （IE5 和 IE6）使用 ActiveX 对象：</p>
-<blockquote>
-<p>var variable=new ActiveXObject(“Microsoft.XMLHTTP”);</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//创建</div><div class="line">var xmlhttp;</div><div class="line"><span class="keyword">if</span> (window.XMLHttpRequest)&#123;</div><div class="line">// code <span class="keyword">for</span> IE7+, Firefox, Chrome, Opera, Safari</div><div class="line">  xmlhttp=new XMLHttpRequest();</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">// code <span class="keyword">for</span> IE6, IE5</div><div class="line">  xmlhttp=new ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="XMLHttpRequest对象用于和服务器交换数据"><a href="#XMLHttpRequest对象用于和服务器交换数据" class="headerlink" title="XMLHttpRequest对象用于和服务器交换数据"></a>XMLHttpRequest对象用于和服务器交换数据</h2><h3 id="XMLHttpRequest对象的方法"><a href="#XMLHttpRequest对象的方法" class="headerlink" title="XMLHttpRequest对象的方法"></a>XMLHttpRequest对象的方法</h3><p>open(method,url,async)</p>
-<blockquote>
-<p>method：请求的类型；GET 或 POST<br>url：文件在服务器上的位置<br>async：true（异步）或 false（同步）</p>
-</blockquote>
-<p>POST请求 send(string)<br>GET请求 send()</p>
-<p>setRequestHeader(header,value)</p>
-<blockquote>
-<p>header: 规定头的名称<br>value: 规定头的值</p>
-</blockquote>
-<h3 id="XMLHttpRequest对象的属性"><a href="#XMLHttpRequest对象的属性" class="headerlink" title="XMLHttpRequest对象的属性"></a>XMLHttpRequest对象的属性</h3><p>onreadystatechange  当 readyState 属性改变时，就会触发该事件</p>
-<p>readyState     存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。</p>
-<blockquote>
-<p>0: 请求未初始化<br>1: 服务器连接已建立<br>2: 请求已接收<br>3: 请求处理中<br>4: 请求已完成，且响应已就绪</p>
-</blockquote>
-<p>status    </p>
-<blockquote>
-<p>200: “OK”<br>300~307: 重定向类<br>40X: 请求错误<br>50X: 服务器错误</p>
-</blockquote>
-<h2 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h2><blockquote>
-<p>responseText    获得字符串形式的响应数据。<br>responseXML    获得 XML 形式的响应数据。</p>
-</blockquote>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="get请求"><a href="#get请求" class="headerlink" title="get请求"></a>get请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"get"</span>, <span class="string">"url?key=value"</span>);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(null);</div></pre></td></tr></table></figure>
-<h3 id="post请求"><a href="#post请求" class="headerlink" title="post请求"></a>post请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//创建XMLHttpRequest对象</div><div class="line">var xmlHttp = new XMLHttpRequest();</div><div class="line"></div><div class="line">//配置XMLHttpRequest对象</div><div class="line">xmlHttp.open(<span class="string">"post"</span>, <span class="string">"url"</span>, data);</div><div class="line"></div><div class="line">//设置回调函数</div><div class="line">xmlHttp.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">    <span class="keyword">if</span> (xmlHttp.readyState == 4 &amp;&amp; xmlHttp.status == 200) &#123;</div><div class="line">        var result= xmlHttp.responseText;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//发送请求</div><div class="line">xmlHttp.send(data);</div></pre></td></tr></table></figure>
-<h2 id="ajax简单封装实例"><a href="#ajax简单封装实例" class="headerlink" title="ajax简单封装实例"></a>ajax简单封装实例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">    <span class="keyword">function</span> ajax(config) &#123;</div><div class="line"></div><div class="line">	  	var xhr = null;</div><div class="line">	  	try&#123;</div><div class="line">			xhr = new XMLHttpRequest();</div><div class="line">	  	&#125;catch(e)&#123;</div><div class="line">			try&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'MSXML2.XMLHttp'</span>);</div><div class="line">			&#125;catch(e)&#123;</div><div class="line">				xhr = new ActiveXObject(<span class="string">'Microsoft.XMLHTTP'</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		var date = new Date();</div><div class="line">	  	config.url = config.url + <span class="string">'?timestamp='</span> + date.getTime();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'get'</span>) &#123;</div><div class="line">			var arr = [];</div><div class="line">			<span class="keyword">for</span> (var i <span class="keyword">in</span> config.data) &#123;</div><div class="line">			    arr.push(encodeURIComponent(i) + <span class="string">'='</span> + encodeURIComponent(config.data[i]));</div><div class="line">		  	&#125;</div><div class="line">		  	config.data = arr.join(<span class="string">'&amp;'</span>)</div><div class="line">		    config.url += config.data; </div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">true</span>) &#123; </div><div class="line">		    xhr.onreadystatechange = <span class="function"><span class="title">function</span></span> () &#123;</div><div class="line">		      	<span class="keyword">if</span> (xhr.readyState == 4) &#123;</div><div class="line">		        	callback();</div><div class="line">		      	&#125;</div><div class="line">		    &#125;;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">	  	xhr.open(config.method, config.url, config.async);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.method === <span class="string">'post'</span>) &#123;</div><div class="line">		    xhr.setRequestHeader(<span class="string">'Content-Type'</span>, <span class="string">'application/json'</span>);</div><div class="line">		    xhr.send(JSON.stringify(config.data));</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">		    xhr.send(null);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (config.async === <span class="literal">false</span>) &#123;</div><div class="line">		    callback();</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">function</span> <span class="function"><span class="title">callback</span></span>() &#123;</div><div class="line">		    <span class="keyword">if</span> (xhr.status == 200) &#123;</div><div class="line">		      	config.success(xhr.responseText);</div><div class="line">		    &#125; <span class="keyword">else</span> &#123;</div><div class="line">		      	alert(<span class="string">'获取数据错误！错误代号：'</span> + xhr.status + <span class="string">'，错误信息：'</span> + xhr.statusText);</div><div class="line">		    &#125;	</div><div class="line">		&#125;</div><div class="line">	&#125;	</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      数据交互与dom操作并列前端两大基石
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   

@@ -17,17 +17,17 @@
   
   <title>javascript理解对象 | 阿木隆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!--<meta name="description" content="EMCAScript中有两种属性：数据属性和访问器属性。 1.数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为tru">
+  <!--<meta name="description" content="EMCAScript中有两种属性：数据属性和访问器属性。">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript理解对象">
 <meta property="og:url" content="http://106.15.95.246/2017/07/07/javascript理解对象/index.html">
 <meta property="og:site_name" content="阿木隆">
-<meta property="og:description" content="EMCAScript中有两种属性：数据属性和访问器属性。 1.数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为tru">
-<meta property="og:updated_time" content="2017-07-10T00:57:02.891Z">
+<meta property="og:description" content="EMCAScript中有两种属性：数据属性和访问器属性。">
+<meta property="og:updated_time" content="2017-07-10T01:45:14.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript理解对象">
-<meta name="twitter:description" content="EMCAScript中有两种属性：数据属性和访问器属性。 1.数据属性数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为tru">-->
+<meta name="twitter:description" content="EMCAScript中有两种属性：数据属性和访问器属性。">-->
   
     <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
   
@@ -93,14 +93,26 @@
         
         <div class="comments-link">
             
-            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/07/javascript理解对象/" data-id="cj4xfuhmb000d0kthi3yimekl" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
+            <!--<a href="javascript:void(0);" data-url="http://106.15.95.246/2017/07/07/javascript理解对象/" data-id="cj4xtjpj6000ldsthnd6r7mbb" class="leave-reply bdsharebuttonbox" data-cmd="more">分享</a>-->
         </div><!-- .comments-link -->
     </header><!-- .entry-header -->
 
     <div class="entry-content">
         
-        <p>EMCAScript中有两种属性：数据属性和访问器属性。</p>
-<h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1.数据属性"></a>1.数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Writable]]:表示能否修改属性的值。默认值为true。<br>④[[Value]]:包含这个属性的值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为undefined。<br>修改属性默认的特性,使用Object.defineProperty()方法。这个方法接收3个参数</p>
+        <p>EMCAScript中有两种属性：数据属性和访问器属性。<br><a id="more"></a></p>
+<h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1.数据属性"></a>1.数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Writable]]:表示能否修改属性的值。默认值为true。<br>④[[Value]]:包含这个属性的值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为undefined。<br>修改属性默认的特性,使用Object.defineProperty()方法。这个方法接收3个参数：属性所在的对象、属性的名字和一个描述符对象。其中，描述符对象的属性必须是：configurable、enumerable、writable和value。</p>
+<pre><code>var person = {};
+Object.defineProperty{
+    person,
+    &quot;name&quot;,
+    {
+        writable:false,
+        value: &quot;Tom&quot;
+    }
+}
+</code></pre><p>在调用Object.defineProperty()方法时，如果不指定，configurable、enumerable和writable特性的默认值都是false。<br>注：IE8及以下不建议使用该方法。</p>
+<h4 id="2-访问器属性"><a href="#2-访问器属性" class="headerlink" title="2.访问器属性"></a>2.访问器属性</h4><p>访问器属性不包含数值：访问器属性有如下4个特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Get]]:在读取属性时调用的函数。默认的是undefined。<br>④[[Get]]:在写入属性时调用的函数。默认的是undefined。</p>
+<h4 id="3-读取属性的特性"><a href="#3-读取属性的特性" class="headerlink" title="3.读取属性的特性"></a>3.读取属性的特性</h4><p>使用Object.getOwnPropertyDescriptor()方法，可以取得给定属性的描述符。这个方法接受两个参数：属性所在的对象和要读取其描述符的属性名称。返回一个对象，如果是访问器属性，这个对象的属性有configurable、enumerable、get和set;如果是数据属性，这个对象的属性有configurable、enumerable、writable和value。</p>
 
         
     </div><!-- .entry-content -->
@@ -129,6 +141,8 @@
 
 <nav class="nav-single">
     <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2017/07/10/javascript创建对象/" rel="prev"><span class="meta-nav">←</span> javascript创建对象</a></span>
     
     
         <span class="nav-next"><a href="/2017/07/07/html标签(html5支持标签)/" rel="next">html标签(html5支持标签) <span class="meta-nav">→</span></a></span>
@@ -176,9 +190,17 @@
     
 <aside class="widget">
     <h3 class="widget-title">最近发表</h3>
-    <h4 class="widget-title">总共发表了26篇</h4>
+    <h4 class="widget-title">总共发表了28篇</h4>
     <div class="widget-content">
         <ul>
+            
+            <li>
+                <a href="/2017/07/10/javascript继承/">javascript继承</a>
+            </li>
+            
+            <li>
+                <a href="/2017/07/10/javascript创建对象/">javascript创建对象</a>
+            </li>
             
             <li>
                 <a href="/2017/07/07/javascript理解对象/">javascript理解对象</a>
@@ -192,14 +214,6 @@
                 <a href="/2017/07/06/CSS兼容性总结/">CSS兼容性总结</a>
             </li>
             
-            <li>
-                <a href="/2017/07/05/js基本功能大全/">js基本功能大全</a>
-            </li>
-            
-            <li>
-                <a href="/2017/07/05/node的几个基础实例—静态资源/">node的几个基础实例—静态资源</a>
-            </li>
-            
         </ul>
     </div>
 </aside>
@@ -209,7 +223,7 @@
   <aside class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
     </div>
   </aside>
 
@@ -218,7 +232,7 @@
   <aside class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/meta/">meta</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li></ul>
       <div id = "tagsCloud"></div>
     </div>
   </aside>
