@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-07T14:11:40.513Z</updated>
+  <updated>2017-07-10T00:57:02.891Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -20,15 +20,16 @@
     <link href="http://106.15.95.246/2017/07/07/javascript%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1/"/>
     <id>http://106.15.95.246/2017/07/07/javascript理解对象/</id>
     <published>2017-07-07T14:05:40.000Z</published>
-    <updated>2017-07-07T14:11:40.513Z</updated>
+    <updated>2017-07-10T00:57:02.891Z</updated>
     
-    <content type="html"><![CDATA[<p>EMCAScript 中有两种属性：数据属性和访问器属性。<br>1.数据属性</p>
+    <content type="html"><![CDATA[<p>EMCAScript中有两种属性：数据属性和访问器属性。</p>
+<h4 id="1-数据属性"><a href="#1-数据属性" class="headerlink" title="1.数据属性"></a>1.数据属性</h4><p>数据属性包含一个数据值的位置。在这个位置可以读取和写入值。数据属性有4个描述其行为的特性。<br>①[[Configurable]]:表示能否通过Delete 删除属性从而重新定义属性，能否修改属性的特性，或者能否把属性修改为访问器属性。默认值为true。<br>②[[Enumerable]]:表示能通过fro-in循环返回属性。默认值为true。<br>③[[Writable]]:表示能否修改属性的值。默认值为true。<br>④[[Value]]:包含这个属性的值。读取属性值的时候，从这个位置读；写入属性值的时候，把新值保存在这个位置。默认值为undefined。<br>修改属性默认的特性,使用Object.defineProperty()方法。这个方法接收3个参数</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;EMCAScript 中有两种属性：数据属性和访问器属性。&lt;br&gt;1.数据属性&lt;/p&gt;
-
+      &lt;p&gt;EMCAScript中有两种属性：数据属性和访问器属性。&lt;/p&gt;
+&lt;h4 id=&quot;1-数据属性&quot;&gt;&lt;a href=&quot;#1-数据属性&quot; class=&quot;headerlink&quot; title=&quot;1.数据属性&quot;&gt;&lt;/a&gt;1.数据属性&lt;/h4&gt;&lt;p&gt;数据属性包含一个数据值的位置。在这个
     
     </summary>
     
@@ -1764,9 +1765,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -1793,9 +1794,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
