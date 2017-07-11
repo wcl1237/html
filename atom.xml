@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-10T08:51:50.379Z</updated>
+  <updated>2017-07-11T01:14:27.984Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://106.15.95.246/2017/07/10/window%E5%AF%B9%E8%B1%A1/"/>
     <id>http://106.15.95.246/2017/07/10/window对象/</id>
     <published>2017-07-10T07:44:40.000Z</published>
-    <updated>2017-07-10T08:51:50.379Z</updated>
+    <updated>2017-07-11T01:14:27.984Z</updated>
     
     <content type="html"><![CDATA[<h4 id="1-全浏览器兼容，获取浏览器视口大小"><a href="#1-全浏览器兼容，获取浏览器视口大小" class="headerlink" title="1.全浏览器兼容，获取浏览器视口大小"></a>1.全浏览器兼容，获取浏览器视口大小</h4><pre><code>var pageWidth = window.innerWidth,
     pageHeight = window.innerHeight;
@@ -33,7 +33,8 @@ if(typeof pageWidth != &quot;number&quot;){
         pageHeight = document.body.clinetHeight;
     }
 }
-</code></pre><h4 id="2-location对象"><a href="#2-location对象" class="headerlink" title="2.location对象"></a>2.location对象</h4><p>属性名</p>
+</code></pre><a id="more"></a>
+<h4 id="2-location对象"><a href="#2-location对象" class="headerlink" title="2.location对象"></a>2.location对象</h4><p>属性名</p>
 <pre><code>href:设置或返回完整的url.
 host:设置或返回主机名和当前的URL的端口号。
 hostname:设置或返回当前URL的主机名。
@@ -65,7 +66,18 @@ history.go(url)
     
     <summary type="html">
     
-      &lt;h4 id=&quot;1-全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;a href=&quot;#1-全浏览器兼容，获取浏览器视口大小&quot; class=&quot;headerlink&quot; title=&quot;1.全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;/a&gt;1.全浏览器兼容，获取浏览器视口大小&lt;/h4&gt;&lt;pre&gt;&lt;cod
+      &lt;h4 id=&quot;1-全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;a href=&quot;#1-全浏览器兼容，获取浏览器视口大小&quot; class=&quot;headerlink&quot; title=&quot;1.全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;/a&gt;1.全浏览器兼容，获取浏览器视口大小&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;var pageWidth = window.innerWidth,
+    pageHeight = window.innerHeight;
+if(typeof pageWidth != &amp;quot;number&amp;quot;){
+    if(document.compatMode == &amp;quot;CSS1Compat&amp;quot;){
+        pageWidth = document.documentElement.clinetWidth;
+        pageHeight = document.documentElement.clinetHeight;
+    }else{
+        pageWidth = document.body.clinetWidth;
+        pageHeight = document.body.clinetHeight;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
@@ -2029,9 +2041,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
@@ -2058,9 +2070,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
     
   </entry>
   
