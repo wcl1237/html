@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-10T07:14:59.801Z</updated>
+  <updated>2017-07-10T08:51:50.379Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,69 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>window对象</title>
+    <link href="http://106.15.95.246/2017/07/10/window%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://106.15.95.246/2017/07/10/window对象/</id>
+    <published>2017-07-10T07:44:40.000Z</published>
+    <updated>2017-07-10T08:51:50.379Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-全浏览器兼容，获取浏览器视口大小"><a href="#1-全浏览器兼容，获取浏览器视口大小" class="headerlink" title="1.全浏览器兼容，获取浏览器视口大小"></a>1.全浏览器兼容，获取浏览器视口大小</h4><pre><code>var pageWidth = window.innerWidth,
+    pageHeight = window.innerHeight;
+if(typeof pageWidth != &quot;number&quot;){
+    if(document.compatMode == &quot;CSS1Compat&quot;){
+        pageWidth = document.documentElement.clinetWidth;
+        pageHeight = document.documentElement.clinetHeight;
+    }else{
+        pageWidth = document.body.clinetWidth;
+        pageHeight = document.body.clinetHeight;
+    }
+}
+</code></pre><h4 id="2-location对象"><a href="#2-location对象" class="headerlink" title="2.location对象"></a>2.location对象</h4><p>属性名</p>
+<pre><code>href:设置或返回完整的url.
+host:设置或返回主机名和当前的URL的端口号。
+hostname:设置或返回当前URL的主机名。
+hash:设置或返回从井号（#）开始的URL（锚）。
+pathname:设置或返回当前URL的路径部分。
+port:设置或返回当前URL的端口号。
+protocol:设置或返回当前URL的协议。
+search:设置或返回从问号 (?) 开始的 URL（查询部分）
+</code></pre><p>查询制定参数的值</p>
+<pre><code>function getQuery(name){
+　  var reg = new RegExp(&quot;(^|&amp;)&quot;+ name +&quot;=([^&amp;]*)(&amp;|$)&quot;);
+    var r = window.location.search.substr(1).match(reg);
+    if (r!=null){
+        return decodeURIComponent (r[2]);
+    } 
+    return null;
+}
+</code></pre><p>location操作</p>
+<pre><code>location.assign(url) || window.location = url ||location.href = url
+location.replace(url) //没有历史记录
+location.reload(true) //强制刷新
+</code></pre><h4 id="3-navigator对象"><a href="#3-navigator对象" class="headerlink" title="3.navigator对象"></a>3.navigator对象</h4><pre><code>userAgent
+</code></pre><h4 id="4-screen对象"><a href="#4-screen对象" class="headerlink" title="4.screen对象"></a>4.screen对象</h4><h4 id="5-history对象"><a href="#5-history对象" class="headerlink" title="5.history对象"></a>5.history对象</h4><pre><code>history.go(-1) //后退一页
+history.back()
+history.go(1) //前进一页
+history.forward()
+history.go(url)
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;a href=&quot;#1-全浏览器兼容，获取浏览器视口大小&quot; class=&quot;headerlink&quot; title=&quot;1.全浏览器兼容，获取浏览器视口大小&quot;&gt;&lt;/a&gt;1.全浏览器兼容，获取浏览器视口大小&lt;/h4&gt;&lt;pre&gt;&lt;cod
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="window" scheme="http://106.15.95.246/tags/window/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript继承</title>
@@ -1966,9 +2029,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -1995,9 +2058,9 @@ Connection:Keep-Alive (CRLF)
       <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
       <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
@@ -2067,66 +2130,6 @@ Connection:Keep-Alive (CRLF)
     
     
       <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>threejs基础</title>
-    <link href="http://106.15.95.246/2017/06/30/threejs/"/>
-    <id>http://106.15.95.246/2017/06/30/threejs/</id>
-    <published>2017-06-30T02:07:16.000Z</published>
-    <updated>2017-07-05T03:20:53.071Z</updated>
-    
-    <content type="html"><![CDATA[<p>Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。</p>
-<a id="more"></a>
-<h4 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h4><p>场景是所有物体的容器，用THREE.Scene来表示。</p>
-<p>构件一个场景</p>
-<pre><code>var scene = new THREE.Scene();
-</code></pre><h4 id="2-相机"><a href="#2-相机" class="headerlink" title="2.相机"></a>2.相机</h4><p>相机决定了场景中第一视角的位置。<br>相机的种类：<br>透视相机（THREE.PerspectiveCamera）</p>
-<pre><code>var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-</code></pre><h4 id="3-渲染器"><a href="#3-渲染器" class="headerlink" title="3.渲染器"></a>3.渲染器</h4><p> 渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。</p>
-<pre><code>var renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
-</code></pre><h4 id="4-添加物体到场景中"><a href="#4-添加物体到场景中" class="headerlink" title="4.添加物体到场景中"></a>4.添加物体到场景中</h4><pre><code>/*创建一个物体*/
-var geometry = new THREE.CubeGeometry(1,1,1); 
-var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-/*为物体添加细节*/
-var cube = new THREE.Mesh(geometry, material);
-/*将物体添加到场景中*/
-scene.add(cube);
-</code></pre><h4 id="5-渲染"><a href="#5-渲染" class="headerlink" title="5.渲染"></a>5.渲染</h4><pre><code>/*使用渲染器，结合相机和场景*/
-renderer.render(scene, camera);
-/*渲染函数的原型*/
-render( scene, camera, renderTarget, forceClear )
-/*
-scene：前面定义的场景
-camera：前面定义的相机
-renderTarget：渲染的目标，默认是渲染到前面定义的render变量中
-forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。
-*/
-</code></pre><h4 id="6-渲染循环"><a href="#6-渲染循环" class="headerlink" title="6.渲染循环"></a>6.渲染循环</h4><p>渲染有两种方式：实时渲染和离线渲染 。</p>
-<pre><code>/*实时渲染（游戏循环）*/
-function render() {
-    cube.rotation.x += 0.1;
-    cube.rotation.y += 0.1;
-    renderer.render(scene, camera);
-    requestAnimationFrame(render);
-}
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;style&gt;canvas &#123; width: 100%; height: 100% &#125;&lt;/style&gt;</div><div class="line">    &lt;script src=<span class="string">"js/three.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        var scene = new THREE.Scene();</div><div class="line">        </div><div class="line">        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);</div><div class="line">        </div><div class="line">        var renderer = new THREE.WebGLRenderer();</div><div class="line">        </div><div class="line">        renderer.setSize(window.innerWidth, window.innerHeight);</div><div class="line">        </div><div class="line">        document.body.appendChild(renderer.domElement);</div><div class="line">        var geometry = new THREE.CubeGeometry(1,1,1);</div><div class="line">        var material = new THREE.MeshBasicMaterial(&#123;color: 0x00ff00&#125;);</div><div class="line">        var cube = new THREE.Mesh(geometry, material); </div><div class="line">        scene.add(cube);</div><div class="line">        camera.position.z = 5;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">            requestAnimationFrame(render);</div><div class="line">            cube.rotation.x += 0.1;</div><div class="line">            cube.rotation.y += 0.1;</div><div class="line">            renderer.render(scene, camera);</div><div class="line">        &#125;</div><div class="line">        render();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="webGL" scheme="http://106.15.95.246/tags/webGL/"/>
     
   </entry>
   
