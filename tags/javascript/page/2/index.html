@@ -15,19 +15,18 @@
   <meta name="baidu-site-verification" content="43om1SQhig" />
   
   
-  <title>复制到剪切板 | 阿木隆</title>
+  <title>Tag: javascript | 阿木隆</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <!--<meta name="description" content="1.通用的复制方法使用浏览器器自带的复制功能。选中，然后复制。该方法在代码层面只支持input、textarea等表单元素的复制。所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。">
-<meta name="keywords" content="html,javascript">
-<meta property="og:type" content="article">
-<meta property="og:title" content="复制到剪切板">
-<meta property="og:url" content="http://www.amulong.xin/2017/07/02/复制到剪切板/index.html">
+  <!--<meta name="description" content="这是阿木隆的博客">
+<meta name="keywords" content="阿木隆">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿木隆">
+<meta property="og:url" content="http://www.amulong.xin/tags/javascript/page/2/index.html">
 <meta property="og:site_name" content="阿木隆">
-<meta property="og:description" content="1.通用的复制方法使用浏览器器自带的复制功能。选中，然后复制。该方法在代码层面只支持input、textarea等表单元素的复制。所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。">
-<meta property="og:updated_time" content="2017-07-02T08:19:07.876Z">
+<meta property="og:description" content="这是阿木隆的博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="复制到剪切板">
-<meta name="twitter:description" content="1.通用的复制方法使用浏览器器自带的复制功能。选中，然后复制。该方法在代码层面只支持input、textarea等表单元素的复制。所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。">-->
+<meta name="twitter:title" content="阿木隆">
+<meta name="twitter:description" content="这是阿木隆的博客">-->
   
     <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
   
@@ -74,39 +73,32 @@
     </nav>
 </header>
       <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-复制到剪切板"
-         class="post-复制到剪切板 post type-post status-publish format-standard hentry">
-    <!---->
+        <div id="primary" class="site-content"><div id="content" role="main">
 
-    <header class="entry-header">
+
+
+
+
+
+
+
+
+<section class="archives-wrap">
+    <div class="archive-year-wrap">
+        <a href="/archives/2017" class="archive-year">2017</a>
+    </div>
+    <div class="archives">
         
         
-  
-    <h1 class="entry-title article-title">
-      复制到剪切板
-    </h1>
-  
-
         
-    </header><!-- .entry-header -->
-
-    <div class="entry-content">
+        <a href="/archives/2017/07"
+           style=" margin: 10px 0 10px 10px;display: block;">07</a>
         
-        <h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl2</span></span>()</div><div class="line">&#123;</div><div class="line">var Url2=document.getElementById(<span class="string">"biao1"</span>);</div><div class="line">Url2.select(); // 选择对象</div><div class="line">document.execCommand(<span class="string">"Copy"</span>); // 执行浏览器复制命令</div><div class="line">alert(<span class="string">"已复制好，可贴粘。"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;textarea cols=<span class="string">"20"</span> rows=<span class="string">"10"</span> id=<span class="string">"biao1"</span>&gt;用户定义的代码区域&lt;/textarea&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> onClick=<span class="string">"copyUrl2()"</span> value=<span class="string">"点击复制代码"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="2-IE中的复制"><a href="#2-IE中的复制" class="headerlink" title="2.IE中的复制"></a>2.IE中的复制</h4><p>IE中针对复制的方法有2种。</p>
-<h5 id="复制span中的文本"><a href="#复制span中的文本" class="headerlink" title="复制span中的文本"></a>复制span中的文本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;span onClick=<span class="string">"copyText(this)"</span>&gt;点我复制我&lt;/span&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> copyText(obj) &#123;</div><div class="line">    var rng = document.body.createTextRange();</div><div class="line">    rng.moveToElementText(obj);</div><div class="line">    rng.scrollIntoView();</div><div class="line">    rng.select();</div><div class="line">    rng.execCommand(<span class="string">"Copy"</span>);</div><div class="line">    rng.collapse(<span class="literal">false</span>);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="复制locationURL地址"><a href="#复制locationURL地址" class="headerlink" title="复制locationURL地址"></a>复制locationURL地址</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"anniu2"</span> onClick=<span class="string">'copyUrl()'</span> value=<span class="string">"复制URL地址"</span>&gt;</div><div class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl</span></span>()&#123;</div><div class="line">    var clipBoardContent=this.location.href;</div><div class="line">    window.clipboardData.setData(<span class="string">"Text"</span>,clipBoardContent);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>综上所述，代码层面的页面复制有两种实现方法，一种的IE所支持的window.clipboardData的setData方法，一种是比较通用的针对表单元素input、textarea的document.execCommand(“Copy”)方法。</p>
-
-        
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-        <a href="/2017/07/02/复制到剪切板/">
-    <time datetime="2017-07-02T06:46:59.000Z" class="entry-date">
-        2017-07-02
-    </time>
-</a>
+        <article class=" post type-post status-publish format-standard hentry archive-type-post articlelist" style="display: flex;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;">
+    <a class="archive-article-title" href="/2017/07/02/复制到剪切板/"
+       itemprop="url">复制到剪切板</a>
+    &nbsp;&nbsp;
+    <div class="displaynone">
         
   <span class="article-delim">&#8226;</span>
   <div class="article-category">
@@ -117,43 +109,140 @@
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
-        
-        
-    </footer>
+    </div>
+    <span style="float: right">创建于2017-07-02 14:46:59</span>
 </article>
-
-
-
-<nav class="nav-single">
-    <h3 class="assistive-text">文章导航</h3>
-    
-        <span class="nav-previous"><a href="/2017/07/02/实现全屏/" rel="prev"><span class="meta-nav">←</span> 实现全屏</a></span>
-    
-    
-        <span class="nav-next"><a href="/2017/07/02/jsonp/" rel="next">jsonp <span class="meta-nav">→</span></a></span>
-    
-</nav><!-- .nav-single -->
+        
 
 
 
 
+        
+        <article class=" post type-post status-publish format-standard hentry archive-type-post articlelist" style="display: flex;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;">
+    <a class="archive-article-title" href="/2017/07/02/jsonp/"
+       itemprop="url">jsonp</a>
+    &nbsp;&nbsp;
+    <div class="displaynone">
+        
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
 
-<!-- 代码1：放在页面需要展示的位置  -->
-<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
 
-<div id="cyReward" role="cylabs" data-use="reward" sid="http://www.amulong.xin/2017/07/02/复制到剪切板/"  style="text-align: center"></div>
-<section id="comments">
-  <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-  <!--<div id="cyReping" role="cylabs" data-use="reping" sid="http://www.amulong.xin/2017/07/02/复制到剪切板/"></div>-->
-  <div id="SOHUCS" sid="http://www.amulong.xin/2017/07/02/复制到剪切板/" ></div>
-  <script type="text/javascript">
-      (function(){
-          var appid = 'cyt6d5PUS';
-          var conf = 'prod_ae46027aa49ac2fe7a466e24ef337d1f';
-          var width = window.innerWidth || document.documentElement.clientWidth;
-          if (width < 600) {
-              window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+    </div>
+    <span style="float: right">创建于2017-07-02 13:32:48</span>
+</article>
+        
+
+
+
+
+        
+        
+        <a href="/archives/2017/06"
+           style=" margin: 10px 0 10px 10px;display: block;">06</a>
+        
+        <article class=" post type-post status-publish format-standard hentry archive-type-post articlelist" style="display: flex;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;">
+    <a class="archive-article-title" href="/2017/06/30/threejs/"
+       itemprop="url">threejs基础</a>
+    &nbsp;&nbsp;
+    <div class="displaynone">
+        
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li></ul>
+
+    </div>
+    <span style="float: right">创建于2017-06-30 10:07:16</span>
+</article>
+        
+
+
+
+
+
+</div></section>
+
+
+
+<section class="archives-wrap">
+    <div class="archive-year-wrap">
+        <a href="/archives/2016" class="archive-year">2016</a>
+    </div>
+    <div class="archives">
+        
+        
+        
+        <a href="/archives/2016/10"
+           style=" margin: 10px 0 10px 10px;display: block;">10</a>
+        
+        <article class=" post type-post status-publish format-standard hentry archive-type-post articlelist" style="display: flex;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;">
+    <a class="archive-article-title" href="/2016/10/02/ajax浅析/"
+       itemprop="url">ajax浅析</a>
+    &nbsp;&nbsp;
+    <div class="displaynone">
+        
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </div>
+    <span style="float: right">创建于2016-10-02 13:32:00</span>
+</article>
+        
+
+
+
+
+        
+        
+        <a href="/archives/2016/05"
+           style=" margin: 10px 0 10px 10px;display: block;">05</a>
+        
+        <article class=" post type-post status-publish format-standard hentry archive-type-post articlelist" style="display: flex;display: -webkit-flex;-webkit-justify-content: space-between;justify-content: space-between;-webkit-align-items: center;align-items: center;">
+    <a class="archive-article-title" href="/2016/05/29/图片预览及Image对象总结/"
+       itemprop="url">图片预览及Image对象总结</a>
+    &nbsp;&nbsp;
+    <div class="displaynone">
+        
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+        
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
+
+    </div>
+    <span style="float: right">创建于2016-05-29 16:32:54</span>
+</article>
+        
+        
+    </div>
 </section>
+
+
+<nav id="pagination">
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/tags/javascript/">&laquo; 上一页</a><a class="page-number" href="/tags/javascript/">1</a><span class="page-number current">2</span>
+    </nav>
+</nav>
+
 
 </div></div>
         <div id="secondary" class="widget-area" role="complementary">
