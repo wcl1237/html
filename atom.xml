@@ -42,114 +42,6 @@
   </entry>
   
   <entry>
-    <title>React源码分析6 — React合成事件系统</title>
-    <link href="http://www.amulong.xin/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%906-%E2%80%94-React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
-    <id>http://www.amulong.xin/2017/07/13/React源码分析6-—-React合成事件系统/</id>
-    <published>2017-07-13T10:13:22.000Z</published>
-    <updated>2017-07-14T01:23:21.421Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RReact源码分析5 -- 组件通信，refs，key，ReactDOM</title>
-    <link href="http://www.amulong.xin/2017/07/13/RReact%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%905-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%EF%BC%8Crefs%EF%BC%8Ckey%EF%BC%8CReactDOM/"/>
-    <id>http://www.amulong.xin/2017/07/13/RReact源码分析5-组件通信，refs，key，ReactDOM/</id>
-    <published>2017-07-13T10:13:08.000Z</published>
-    <updated>2017-07-14T01:23:21.405Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>RReact源码分析4 — setState机制</title>
-    <link href="http://www.amulong.xin/2017/07/13/RReact%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%904-%E2%80%94-setState%E6%9C%BA%E5%88%B6/"/>
-    <id>http://www.amulong.xin/2017/07/13/RReact源码分析4-—-setState机制/</id>
-    <published>2017-07-13T10:12:56.000Z</published>
-    <updated>2017-07-14T01:23:21.390Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React源码分析3 — React生命周期详解</title>
-    <link href="http://www.amulong.xin/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%903-%E2%80%94-React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://www.amulong.xin/2017/07/13/React源码分析3-—-React生命周期详解/</id>
-    <published>2017-07-13T10:12:41.000Z</published>
-    <updated>2017-07-14T01:23:21.405Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React源码分析2 — React组件插入DOM流程</title>
-    <link href="http://www.amulong.xin/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902-%E2%80%94-React%E7%BB%84%E4%BB%B6%E6%8F%92%E5%85%A5DOM%E6%B5%81%E7%A8%8B/"/>
-    <id>http://www.amulong.xin/2017/07/13/React源码分析2-—-React组件插入DOM流程/</id>
-    <published>2017-07-13T10:12:24.000Z</published>
-    <updated>2017-07-14T01:23:21.405Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>React源码分析1 — 组件和元素对象的创建（createClass，createElement)</title>
-    <link href="http://www.amulong.xin/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901-%E2%80%94-%E7%BB%84%E4%BB%B6%E5%92%8C%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88createClass%EF%BC%8CcreateElement%EF%BC%89/"/>
-    <id>http://www.amulong.xin/2017/07/13/React源码分析1-—-组件和元素对象的创建（createClass，createElement）/</id>
-    <published>2017-07-13T10:11:34.000Z</published>
-    <updated>2017-07-14T02:32:05.767Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
     <title>前端面试题精华</title>
     <link href="http://www.amulong.xin/2017/07/13/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E5%8D%8E/"/>
     <id>http://www.amulong.xin/2017/07/13/前端面试题精华/</id>
@@ -2153,6 +2045,192 @@ $ sudo docker start 026e
     
     
       <category term="docker" scheme="http://www.amulong.xin/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎么使用react搭建工程3—webpack</title>
+    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B3%E2%80%94webpack/"/>
+    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程3—webpack/</id>
+    <published>2017-07-04T08:35:26.000Z</published>
+    <updated>2017-07-04T15:08:22.870Z</updated>
+    
+    <content type="html"><![CDATA[<p>开发状态webpack.config.dev.js<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">const path = require(<span class="string">'path'</span>);</div><div class="line">const webpack = require(<span class="string">'webpack'</span>);</div><div class="line">const HtmlWebpackPlugin = require(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  devtool: <span class="string">'cheap-eval-source-map'</span>,</div><div class="line">  entry: [</div><div class="line">    // 开启react代码的模块热替换（HMR）</div><div class="line">    <span class="string">'react-hot-loader/patch'</span>,</div><div class="line">    // 为webpack-dev-server的环境打包好运行代码</div><div class="line">    // 然后连接到指定服务器域名与端口</div><div class="line">    <span class="string">'webpack-dev-server/client?http://localhost:8080'</span>,</div><div class="line">    // 为热替换（HMR）打包好运行代码</div><div class="line">    // only- 意味着只有成功更新运行代码才会执行热替换（HMR）</div><div class="line">    <span class="string">'webpack/hot/only-dev-server'</span>,</div><div class="line">    // 我们app的入口文件</div><div class="line">    <span class="string">'./index.js'</span></div><div class="line">  ],</div><div class="line">  output: &#123;</div><div class="line">    // 输出的打包文件</div><div class="line">    filename: <span class="string">'bundle.[hash].js'</span>,</div><div class="line">    // 输出文件路劲</div><div class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</div><div class="line">    // 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）</div><div class="line">    publicPath: <span class="string">'/dist'</span></div><div class="line">  &#125;,</div><div class="line">  context: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">  devServer: &#123;</div><div class="line">    // 开启服务器的模块热替换（HMR）</div><div class="line">    hot: <span class="literal">true</span>,</div><div class="line">    // 开启服务器输出文件的路径</div><div class="line">    contentBase: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">    // 和上文output的<span class="string">"publicPath"</span>值保持一致</div><div class="line">    publicPath: <span class="string">'/'</span></div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // loader 配置</div><div class="line">  module: &#123;</div><div class="line">    rules: [&#123;</div><div class="line">        <span class="built_in">test</span>: /\.js$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'babel-loader'</span>,</div><div class="line">        ],</div><div class="line">        exclude: /(node_modules|bower_components)/,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">test</span>: /\.css$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'style-loader'</span>,</div><div class="line">          <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">          <span class="string">'postcss-loader'</span></div><div class="line">        ]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(sass|scss)$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">"style-loader"</span>,</div><div class="line">          <span class="string">"css-loader"</span>,</div><div class="line">          <span class="string">'postcss-loader'</span>,</div><div class="line">          <span class="string">"sass-loader"</span></div><div class="line">        ]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,</div><div class="line">        use: [<span class="string">'file-loader'</span>]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(mp4|webm)$/,</div><div class="line">        use:[<span class="string">'url-loader?limit=10000'</span>]</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // plugins 插件配置</div><div class="line">  plugins: [</div><div class="line">    // 开启全局的模块热替换（HMR）</div><div class="line">    new webpack.HotModuleReplacementPlugin(),</div><div class="line">    // 当模块热替换（HMR）时在浏览器控制台输出对用户更友好的模块名字信息</div><div class="line">    new webpack.NamedModulesPlugin(),</div><div class="line">    // dist目录下生成html模板文件</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: <span class="string">'./index.html'</span>,</div><div class="line">    &#125;),</div><div class="line">    // autoprefixer 生成浏览器前缀</div><div class="line">    new webpack.LoaderOptionsPlugin(&#123;</div><div class="line">      options: &#123;</div><div class="line">        postcss: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">          <span class="built_in">return</span> [ require(<span class="string">"autoprefixer"</span>)(&#123; browsers: [<span class="string">'last 2 versions'</span>] &#125;) ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>生产状态下webpack.config.pro.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">const path = require(<span class="string">'path'</span>);</div><div class="line">const webpack = require(<span class="string">'webpack'</span>);</div><div class="line">const ExtractTextPlugin = require(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: <span class="string">'./index.js'</span>,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'bundle.[hash].js'</span>,</div><div class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</div><div class="line">    publicPath: <span class="string">'/dist'</span></div><div class="line">  &#125;,</div><div class="line">  context: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">  module: &#123;</div><div class="line">    rules: [&#123;</div><div class="line">        <span class="built_in">test</span>: /\.js$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'babel-loader'</span>,</div><div class="line">        ],</div><div class="line">        exclude: /(node_modules|bower_components)/,</div><div class="line">      &#125;,&#123;</div><div class="line">         <span class="built_in">test</span>: /\.css$/,</div><div class="line">         use: ExtractTextPlugin.extract(&#123;</div><div class="line">           use: [</div><div class="line">             <span class="string">'style-loader'</span>,</div><div class="line">             <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">             <span class="string">'postcss-loader'</span></div><div class="line">           ]</div><div class="line">         &#125;)</div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="built_in">test</span>: /\.(sass|scss)$/,</div><div class="line">         use: ExtractTextPlugin.extract(&#123;</div><div class="line">           use: [</div><div class="line">             <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">             <span class="string">'postcss-loader'</span>,</div><div class="line">            &#123;</div><div class="line">               loader: <span class="string">"sass-loader"</span>,</div><div class="line">               options: &#123;</div><div class="line">                 sourceMap:<span class="literal">true</span>,</div><div class="line">                 outputStyle : <span class="string">'compressed'</span></div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">        &#125;)</div><div class="line">       &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,</div><div class="line">        use: [<span class="string">'file-loader'</span>]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">test</span>: /\.(mp4|webm)$/,</div><div class="line">        use:[<span class="string">'url-loader?limit=10000'</span>]</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: <span class="string">'./index.html'</span>,</div><div class="line">    &#125;),</div><div class="line">     new ExtractTextPlugin(&#123;</div><div class="line">     filename : <span class="string">'style.[hash].css'</span></div><div class="line">     &#125;),</div><div class="line">     new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">       comments: <span class="literal">false</span>,</div><div class="line">       compress: &#123; warnings: <span class="literal">false</span> &#125;</div><div class="line">    &#125;),</div><div class="line">    new webpack.LoaderOptionsPlugin(&#123;</div><div class="line">      options: &#123;</div><div class="line">        postcss: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">          <span class="built_in">return</span> [ require(<span class="string">"autoprefixer"</span>)(&#123; browsers: [<span class="string">'last 2 versions'</span>] &#125;) ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;开发状态webpack.config.dev.js&lt;br&gt;
+    
+    </summary>
+    
+      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎么使用react搭建工程2—React-router</title>
+    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B2%E2%80%94React-router/"/>
+    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程2—React-router/</id>
+    <published>2017-07-04T06:24:35.000Z</published>
+    <updated>2017-07-04T07:29:50.422Z</updated>
+    
+    <content type="html"><![CDATA[<p>React-Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。<br><a id="more"></a><br>Route对路由地址和组件进行绑定，Route具有嵌套功能，表示路由地址的包涵关系，这和组件之间的嵌套并没有直接联系。<br>Route可以向绑定的组件传递7个属性：children，history，location，params，route，routeParams，routes，每个属性都包涵路由的相关的信息。<br>比较常用的有children（以路由的包涵关系为区分的组件），location（包括地址，参数，地址切换方式，key值，hash值）。<br>react-router提供Link标签，这只是对a标签的封装，值得注意的是，点击链接进行的跳转并不是默认的方式，react-router阻止了a标签的默认行为并用pushState进行hash值的转变。<br>切换页面的过程是在点击Link标签或者后退前进按钮时，会先发生url地址的转变，Router监听到地址的改变根据Route的path属性匹配到对应的组件，将state值改成对应的组件并调用setState触发render函数重新渲染dom。<br>当页面比较多时，项目就会变得越来越大，尤其对于单页面应用来说，初次渲染的速度就会很慢，这时候就需要按需加载，只有切换到页面的时候才去加载对应的js文件。<br>react配合webpack进行按需加载的方法很简单，Route的component改为getComponent，组件用require.ensure的方式获取，并在webpack中配置chunkFilename。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from <span class="string">'react'</span>;</div><div class="line">import &#123; Router, Route, Redirect, IndexRoute, browserHistory, hashHistory &#125; from <span class="string">'react-router'</span>;</div><div class="line"></div><div class="line">import index from <span class="string">'../Component/index'</span>;</div><div class="line"></div><div class="line">class Roots extends Component &#123;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;div&gt;&#123;this.props.children&#125;&lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const <span class="built_in">history</span> = process.env.NODE_ENV !== <span class="string">'production'</span> ? browserHistory : hashHistory;</div><div class="line"></div><div class="line">const Component1 = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/Component1'</span>).default)</div><div class="line">    &#125;,<span class="string">'Component1'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const RouteConfig = (</div><div class="line">    &lt;Router <span class="built_in">history</span>=&#123;<span class="built_in">history</span>&#125;&gt;</div><div class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;Roots&#125;&gt;</div><div class="line">            &lt;IndexRoute component=&#123;index&#125; /&gt;//首页</div><div class="line">            &lt;Route path=<span class="string">"index"</span> component=&#123;index&#125; /&gt;</div><div class="line">            &lt;Route path=<span class="string">"Component2"</span> getComponent=&#123;Component2&#125; /&gt;</div><div class="line">            &lt;Redirect from=<span class="string">'*'</span> to=<span class="string">'/'</span>  /&gt;</div><div class="line">        &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">);</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;React-Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>怎么使用react搭建工程1—计数器</title>
+    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B1%E2%80%94%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
+    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程1—计数器/</id>
+    <published>2017-07-04T05:17:44.000Z</published>
+    <updated>2017-07-04T07:26:29.767Z</updated>
+    
+    <content type="html"><![CDATA[<p>react配合redux搭建最简单的应用——计数器。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from <span class="string">'react'</span></div><div class="line">import PropTypes from <span class="string">'prop-types'</span></div><div class="line">import ReactDOM from <span class="string">'react-dom'</span></div><div class="line">import &#123; createStore &#125; from <span class="string">'redux'</span></div><div class="line">import &#123; Provider, connect &#125; from <span class="string">'react-redux'</span></div><div class="line"></div><div class="line">/* 无状态页面组件 */</div><div class="line">// 组件只需要两种来源于props的变量</div><div class="line">// 一个是来自于store的state</div><div class="line">// 一个来源事件句柄</div><div class="line">class Counter extends Component &#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    const &#123; value, onIncreaseClick &#125; = this.props</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;span&gt;&#123;value&#125;&lt;/span&gt;</div><div class="line">        &lt;button onClick=&#123;onIncreaseClick&#125;&gt;Increase&lt;/button&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Counter.propTypes = &#123;</div><div class="line">  value: PropTypes.number.isRequired,</div><div class="line">  onIncreaseClick: PropTypes.func.isRequired</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 页面业务逻辑 */</div><div class="line">// 数据关联store.state中储存的值</div><div class="line"><span class="keyword">function</span> mapStateToProps(state) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    value: state.count</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// 事件句柄与Reducer关联</div><div class="line"><span class="keyword">function</span> mapDispatchToProps(dispatch) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    onIncreaseClick: () =&gt; dispatch(&#123; <span class="built_in">type</span>: <span class="string">'increase'</span> &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 将数据、方法与组件关联起来</div><div class="line">const App = connect(</div><div class="line">  mapStateToProps,</div><div class="line">  mapDispatchToProps</div><div class="line">)(Counter)</div><div class="line"></div><div class="line"></div><div class="line">// Reducer同步处理</div><div class="line"><span class="keyword">function</span> counter(state = &#123; count: 0 &#125;, action) &#123;</div><div class="line">  const count = state.count</div><div class="line">  switch (action.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'increase'</span>:</div><div class="line">      <span class="built_in">return</span> &#123; count: count + 1 &#125;</div><div class="line">    default:</div><div class="line">      <span class="built_in">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Store:将Reducer同步处理的state存在store中</div><div class="line">const store = createStore(counter)</div><div class="line"></div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &lt;App /&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById(<span class="string">'root'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">/* 代码来源阮一峰先生*/</div></pre></td></tr></table></figure></p>
+<p>基于以上代码，我们可以清楚看清楚react的数据流。</p>
+<blockquote>
+<p>Component （事件）-&gt; 句柄或异步请求 -&gt; Reducer -&gt; store -&gt; (state)Component</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;react配合redux搭建最简单的应用——计数器。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>http协议</title>
+    <link href="http://www.amulong.xin/2017/07/03/http%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://www.amulong.xin/2017/07/03/http协议/</id>
+    <published>2017-07-03T06:01:44.000Z</published>
+    <updated>2017-07-03T09:09:07.944Z</updated>
+    
+    <content type="html"><![CDATA[<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。<br>HTTP是一个客户端和服务器端请求和应答的标准（TCP）。<br><a id="more"></a></p>
+<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>HTTP/1.0　这是第一个在通讯中指定版本号的HTTP 协议版本，至今仍被广泛采用，特别是在代理服务器中。<br>HTTP/1.1　当前版本。持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式同时发送多个请求，以便降低线路负载，提高传输速度。<br>HTTP/1.1相较于 HTTP/1.0 协议的区别主要体现在：<br>    1 缓存处理<br>    2 带宽优化及网络连接的使用<br>    3 错误通知的管理<br>    4 消息在网络中的发送<br>    5 互联网地址的维护<br>    6 安全性及完整性</p>
+<p>HTTP/2.0 协议目标<br>    1 异步连接多路复用；<br>    2 头部压缩；<br>    3 请求/响应管线化；<br>    4 服务器推送流（即Server Push技术）；</p>
+<h4 id="http特点"><a href="#http特点" class="headerlink" title="http特点"></a>http特点</h4><p>1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。<br>2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。<br>3、无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。<br>4、无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。<br>5、支持B/S及C/S模式。</p>
+<h4 id="http缺点与https"><a href="#http缺点与https" class="headerlink" title="http缺点与https"></a>http缺点与https</h4><p>a、通信使用明文不加密，内容可能被窃听，也就是被抓包分析。<br>b、不验证通信方身份，可能遭到伪装<br>c、无法验证报文完整性，可能被篡改<br>HTTPS就是HTTP加上加密处理（一般是SSL安全通信线路）+认证+完整性保护</p>
+<h4 id="报头"><a href="#报头" class="headerlink" title="报头"></a>报头</h4><p>HTTP消息报头包括通用报头、请求报头、响应报头、实体报头。</p>
+<p>1、通用报头</p>
+<p>Cache-Control用于指定缓存指令，缓存指令是单向的（响应中出现的缓存指令在请求中未必会出现），且是独立的（一个消息的缓存指令不会影响另一个消息处理的缓存机制），HTTP1.0使用的类似的报头域为Pragma。<br>请求时的缓存指令包括：no-cache（用于指示请求或响应消息不能缓存）、no-store、max-age、max-stale、min-fresh、only-if-cached;<br>响应时的缓存指令包括：public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age、s-maxage.<br>Date普通报头域表示消息产生的日期和时间<br>Connection普通报头域允许发送指定连接的选项。例如指定连接是连续，或者指定“close”选项，通知服务器，在响应完成后，关闭连接</p>
+<p>2、请求报头<br>请求报头允许客户端向服务器端传递请求的附加信息以及客户端自身的信息。<br>常用的请求报头<br>Accept请求报头域用于指定客户端接受哪些类型的信息。eg：Accept：image/gif，表明客户端希望接受GIF图象格式的资源；Accept：text/html，表明客户端希望接受html文本。<br>Accept-Charset请求报头域用于指定客户端接受的字符集。eg：Accept-Charset:iso-8859-1,gb2312.如果在请求消息中没有设置这个域，缺省是任何字符集都可以接受。<br>Accept-Encoding请求报头域类似于Accept，但是它是用于指定可接受的内容编码。eg：Accept-Encoding:gzip.deflate.如果请求消息中没有设置这个域服务器假定客户端对各种内容编码都可以接受。<br>Accept-Language请求报头域类似于Accept，但是它是用于指定一种自然语言。eg：Accept-Language:zh-cn.如果请求消息中没有设置这个报头域，服务器假定客户端对各种语言都可以接受。<br>Authorization请求报头域主要用于证明客户端有权查看某个资源。当浏览器访问一个页面时，如果收到服务器的响应代码为401（未授权），可以发送一个包含Authorization请求报头域的请求，要求服务器对其进行验证。<br>Host请求报头域主要用于指定被请求资源的Internet主机和端口号，它通常从HTTP URL中提取出来的，eg：<br>User-Agent请求报头域允许客户端将它的操作系统、浏览器和其它属性告诉服务器。</p>
+<pre><code>eg：
+GET /form.html HTTP/1.1 (CRLF)
+Accept:image/gif,image/x-xbitmap,image/jpeg,application/x-shockwave-flash,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/msword,*/* (CRLF)
+Accept-Language:zh-cn (CRLF)
+Accept-Encoding:gzip,deflate (CRLF)
+If-Modified-Since:Wed,05 Jan 2007 11:21:25 GMT (CRLF)
+If-None-Match:W/&quot;80b1a4c018f3c41:8317&quot; (CRLF)
+User-Agent:Mozilla/4.0(compatible;MSIE6.0;Windows NT 5.0) (CRLF)
+Host:www.guet.edu.cn (CRLF)
+Connection:Keep-Alive (CRLF)
+(CRLF)
+</code></pre><p>3、响应报头<br>响应报头允许服务器传递不能放在状态行中的附加响应信息，以及关于服务器的信息和对Request-URI所标识的资源进行下一步访问的信息。<br>Location响应报头域用于重定向接受者到一个新的位置。Location响应报头域常用在更换域名的时候。<br>Server响应报头域包含了服务器用来处理请求的软件信息。与User-Agent请求报头域是相对应的。Server：Apache-Coyote/1.1<br>WWW-Authenticate响应报头域必须被包含在401（未授权的）响应消息中，客户端收到401响应消息时候，并发送Authorization报头域请求服务器对其进行验证时，服务端响应报头就包含该报头域。</p>
+<p>4、实体报头<br>请求和响应消息都可以传送一个实体。一个实体由实体报头域和实体正文组成，但并不是说实体报头域和实体正文要在一起发送，可以只发送实体报头域。实体报头定义了关于实体正文（eg：有无实体正文）和请求所标识的资源的元信息。<br>Content-Encoding实体报头域被用作媒体类型的修饰符，它的值指示了已经被应用到实体正文的附加内容的编码，因而要获得Content-Type报头域中所引用的媒体类型，必须采用相应的解码机制。Content-Encoding这样用于记录文档的压缩方法，eg：Content-Encoding：gzip<br>Content-Language实体报头域描述了资源所用的自然语言。没有设置该域则认为实体内容将提供给所有的语言阅读者。<br>Content-Length实体报头域用于指明实体正文的长度，以字节方式存储的十进制数字来表示。<br>Content-Type实体报头域用语指明发送给接收者的实体正文的媒体类型。<br>Last-Modified实体报头域用于指示资源的最后修改日期和时间。<br>Expires实体报头域给出响应过期的日期和时间。为了让代理服务器或浏览器在一段时间以后更新缓存中(再次访问曾访问过的页面时，直接从缓存中加载，缩短响应时间和降低服务器负载)的页面，我们可以使用Expires实体报头域指定页面过期的时间。eg：Expires：Thu，15 Sep 2006 16:23:12 GMT</p>
+<h4 id="HTTP协议相关技术"><a href="#HTTP协议相关技术" class="headerlink" title="HTTP协议相关技术"></a>HTTP协议相关技术</h4><p> 1、基础：<br>    高层协议有：文件传输协议FTP、电子邮件传输协议SMTP、域名系统服务DNS、网络新闻传输协议NNTP和HTTP协议等<br> 中介由三种：代理(Proxy)、网关(Gateway)和通道(Tunnel)，一个代理根据URI的绝对格式来接受请求，重写全部或部分消息，通过 URI的标识把已格式化过的请求发送到服务器。网关是一个接收代理，作为一些其它服务器的上层，并且如果必须的话，可以把请求翻译给下层的服务器协议。一 个通道作为不改变消息的两个连接之间的中继点。当通讯需要通过一个中介(例如：防火墙等)或者是中介不能识别消息的内容时，通道经常被使用。<br>    代理(Proxy)：一个中间程序，它可以充当一个服务器，也可以充当一个客户机，为其它客户机建立请求。请求是通过可能的翻译在内部或经过传递到其它的 服务器中。一个代理在发送请求信息之前，必须解释并且如果可能重写它。代理经常作为通过防火墙的客户机端的门户，代理还可以作为一个帮助应用来通过协议处 理没有被用户代理完成的请求。<br> 网关(Gateway)：一个作为其它服务器中间媒介的服务器。与代理不同的是，网关接受请求就好象对被请求的资源来说它就是源服务器；发出请求的客户机并没有意识到它在同网关打交道。<br> 网关经常作为通过防火墙的服务器端的门户，网关还可以作为一个协议翻译器以便存取那些存储在非HTTP系统中的资源。<br>    通道(Tunnel)：是作为两个连接中继的中介程序。一旦激活，通道便被认为不属于HTTP通讯，尽管通道可能是被一个HTTP请求初始化的。当被中继 的连接两端关闭时，通道便消失。当一个门户(Portal)必须存在或中介(Intermediary)不能解释中继的通讯时通道被经常使用。</p>
+<p> 2、协议分析的优势—HTTP分析器检测网络攻击<br> 以模块化的方式对高层协议进行分析处理，将是未来入侵检测的方向。<br> HTTP及其代理的常用端口80、3128和8080在network部分用port标签进行了规定</p>
+<p> 3、HTTP协议Content Lenth限制漏洞导致拒绝服务攻击<br> 使用POST方法时，可以设置ContentLenth来定义需要传送的数据长度，例如ContentLenth:999999999，在传送完成前，内 存不会释放，攻击者可以利用这个缺陷，连续向WEB服务器发送垃圾数据直至WEB服务器内存耗尽。这种攻击方法基本不会留下痕迹。</p>
+<p> 4、利用HTTP协议的特性进行拒绝服务攻击的一些构思<br> 服务器端忙于处理攻击者伪造的TCP连接请求而无暇理睬客户的正常请求（毕竟客户端的正常请求比率非常之小），此时从正常客户的角度看来，服务器失去响应，这种情况我们称作：服务器端受到了SYNFlood攻击（SYN洪水攻击）。<br> 而Smurf、TearDrop等是利用ICMP报文来Flood和IP碎片攻击的。本文用“正常连接”的方法来产生拒绝服务攻击。<br> 19端口在早期已经有人用来做Chargen攻击了，即Chargen_Denial_of_Service，但是！他们用的方法是在两台Chargen 服务器之间产生UDP连接，让服务器处理过多信息而DOWN掉，那么，干掉一台WEB服务器的条件就必须有2个：1.有Chargen服务2.有HTTP 服务<br> 方法：攻击者伪造源IP给N台Chargen发送连接请求（Connect），Chargen接收到连接后就会返回每秒72字节的字符流（实际上根据网络实际情况，这个速度更快）给服务器。</p>
+<p> 5、Http指纹识别技术<br>    Http指纹识别的原理大致上也是相同的：记录不同服务器对Http协议执行中的微小差别进行识别.Http指纹识别比TCP/IP堆栈指纹识别复杂许 多,理由是定制Http服务器的配置文件、增加插件或组件使得更改Http的响应信息变的很容易,这样使得识别变的困难；然而定制TCP/IP堆栈的行为 需要对核心层进行修改,所以就容易识别.<br> 要让服务器返回不同的Banner信息的设置是很简单的,象Apache这样的开放源代码的Http服务器,用户可以在源代码里修改Banner信息,然 后重起Http服务就生效了；对于没有公开源代码的Http服务器比如微软的IIS或者是Netscape,可以在存放Banner信息的Dll文件中修 改,相关的文章有讨论的,这里不再赘述,当然这样的修改的效果还是不错的.另外一种模糊Banner信息的方法是使用插件。<br> 常用测试请求：<br> 1：HEAD/Http/1.0发送基本的Http请求<br> 2：DELETE/Http/1.0发送那些不被允许的请求,比如Delete请求<br> 3：GET/Http/3.0发送一个非法版本的Http协议请求<br> 4：GET/JUNK/1.0发送一个不正确规格的Http协议请求<br> Http指纹识别工具Httprint,它通过运用统计学原理,组合模糊的逻辑学技术,能很有效的确定Http服务器的类型.它可以被用来收集和分析不同Http服务器产生的签名。</p>
+<p> 6、其他：为了提高用户使用浏览器时的性能，现代浏览器还支持并发的访问方式，浏览一个网页时同时建立多个连接，以迅速获得一个网页上的多个图标，这样能更快速完成整个网页的传输。<br> HTTP1.1中提供了这种持续连接的方式，而下一代HTTP协议：HTTP-NG更增加了有关会话控制、丰富的内容协商等方式的支持，来提供<br> 更高效率的连接。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。&lt;br&gt;HTTP是一个客户端和服务器端请求和应答的标准（TCP）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="通信" scheme="http://www.amulong.xin/categories/%E9%80%9A%E4%BF%A1/"/>
+    
+    
+      <category term="通信" scheme="http://www.amulong.xin/tags/%E9%80%9A%E4%BF%A1/"/>
+    
+      <category term="http" scheme="http://www.amulong.xin/tags/http/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>实现全屏</title>
+    <link href="http://www.amulong.xin/2017/07/02/%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%8F/"/>
+    <id>http://www.amulong.xin/2017/07/02/实现全屏/</id>
+    <published>2017-07-02T06:48:02.000Z</published>
+    <updated>2017-07-02T09:24:32.237Z</updated>
+    
+    <content type="html"><![CDATA[<p>代码实现全屏ie10以下可以使用ActiveXObject。ie11的msRequestFullScreen鉴定无效。其他浏览器可以使用专用方法进行全屏。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullScreen</span></span>()&#123;</div><div class="line">	var el = document.documentElement;</div><div class="line">    var rfs = el.requestFullScreen  //w3c</div><div class="line">    || el.webkitRequestFullScreen   //webkit</div><div class="line">    || el.mozRequestFullScreen      //firefox</div><div class="line">    || el.msRequestFullScreen;      //IE11下这个方法没用</div><div class="line">    <span class="keyword">if</span> (typeof rfs != <span class="string">"undefined"</span> &amp;&amp; rfs) &#123;</div><div class="line">        rfs.call(el);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (typeof window.ActiveXObject != <span class="string">"undefined"</span>) &#123;</div><div class="line">    //ie10以下</div><div class="line">        var wscript = new ActiveXObject(<span class="string">"WScript.Shell"</span>);</div><div class="line">        <span class="keyword">if</span> (wscript != null) &#123;</div><div class="line">            wscript.SendKeys(<span class="string">"&#123;F11&#125;"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"请手动F11，展开全屏"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//退出全屏</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullExit</span></span>()&#123;</div><div class="line">  var element= document.documentElement;</div><div class="line">  //IE ActiveXObject</div><div class="line">  <span class="keyword">if</span> (window.ActiveXObject)</div><div class="line">  &#123;</div><div class="line">    var WsShell = new ActiveXObject(<span class="string">'WScript.Shell'</span>) </div><div class="line">    WsShell.SendKeys(<span class="string">'&#123;F11&#125;'</span>); </div><div class="line">  &#125;</div><div class="line">  //HTML5 W3C 提议</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.requestFullScreen) &#123;  </div><div class="line">    document.exitFullscreen();</div><div class="line">  &#125;</div><div class="line"> //IE 11</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.msRequestFullscreen) &#123;  </div><div class="line">    document.msExitFullscreen();</div><div class="line">  &#125;</div><div class="line">  // Webkit (works <span class="keyword">in</span> Safari5.1 and Chrome 15)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.webkitRequestFullScreen ) &#123;  </div><div class="line">    document.webkitCancelFullScreen(); </div><div class="line">  &#125; </div><div class="line">  // Firefox (works <span class="keyword">in</span> nightly)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.mozRequestFullScreen) &#123;  </div><div class="line">    document.mozCancelFullScreen();  </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;代码实现全屏ie10以下可以使用ActiveXObject。ie11的msRequestFullScreen鉴定无效。其他浏览器可以使用专用方法进行全屏。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>复制到剪切板</title>
+    <link href="http://www.amulong.xin/2017/07/02/%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E5%88%87%E6%9D%BF/"/>
+    <id>http://www.amulong.xin/2017/07/02/复制到剪切板/</id>
+    <published>2017-07-02T06:46:59.000Z</published>
+    <updated>2017-07-02T08:19:07.876Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl2</span></span>()</div><div class="line">&#123;</div><div class="line">var Url2=document.getElementById(<span class="string">"biao1"</span>);</div><div class="line">Url2.select(); // 选择对象</div><div class="line">document.execCommand(<span class="string">"Copy"</span>); // 执行浏览器复制命令</div><div class="line">alert(<span class="string">"已复制好，可贴粘。"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;textarea cols=<span class="string">"20"</span> rows=<span class="string">"10"</span> id=<span class="string">"biao1"</span>&gt;用户定义的代码区域&lt;/textarea&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> onClick=<span class="string">"copyUrl2()"</span> value=<span class="string">"点击复制代码"</span> /&gt;</div></pre></td></tr></table></figure></p>
+<h4 id="2-IE中的复制"><a href="#2-IE中的复制" class="headerlink" title="2.IE中的复制"></a>2.IE中的复制</h4><p>IE中针对复制的方法有2种。</p>
+<h5 id="复制span中的文本"><a href="#复制span中的文本" class="headerlink" title="复制span中的文本"></a>复制span中的文本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;span onClick=<span class="string">"copyText(this)"</span>&gt;点我复制我&lt;/span&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> copyText(obj) &#123;</div><div class="line">    var rng = document.body.createTextRange();</div><div class="line">    rng.moveToElementText(obj);</div><div class="line">    rng.scrollIntoView();</div><div class="line">    rng.select();</div><div class="line">    rng.execCommand(<span class="string">"Copy"</span>);</div><div class="line">    rng.collapse(<span class="literal">false</span>);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="复制locationURL地址"><a href="#复制locationURL地址" class="headerlink" title="复制locationURL地址"></a>复制locationURL地址</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"anniu2"</span> onClick=<span class="string">'copyUrl()'</span> value=<span class="string">"复制URL地址"</span>&gt;</div><div class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl</span></span>()&#123;</div><div class="line">    var clipBoardContent=this.location.href;</div><div class="line">    window.clipboardData.setData(<span class="string">"Text"</span>,clipBoardContent);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p>综上所述，代码层面的页面复制有两种实现方法，一种的IE所支持的window.clipboardData的setData方法，一种是比较通用的针对表单元素input、textarea的document.execCommand(“Copy”)方法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-通用的复制方法&quot;&gt;&lt;a href=&quot;#1-通用的复制方法&quot; class=&quot;headerlink&quot; title=&quot;1.通用的复制方法&quot;&gt;&lt;/a&gt;1.通用的复制方法&lt;/h4&gt;&lt;p&gt;使用浏览器器自带的复制功能。选中，然后复制。&lt;br&gt;该方法在代码层面只支持input、textarea等表单元素的复制。&lt;br&gt;所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
     
   </entry>
   
