@@ -2296,6 +2296,6 @@ a.archive-article-title{
 .bdcs-container .bdcs-search {
     width: 100% !important;
 }
-.bdcs-container .bdcs-search {
+.bdcs-container .bdcs-search-form-input {
     width: calc(100% - 70px) !important;
 }
