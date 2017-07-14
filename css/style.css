@@ -2293,3 +2293,9 @@ img#wpstats {
 a.archive-article-title{
     color: #000000;
 }
+.bdcs-container .bdcs-search {
+    width: 100% !important;
+}
+.bdcs-container .bdcs-search {
+    width: calc(100% - 70px) !important;
+}
