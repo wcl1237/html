@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://106.15.95.246/"/>
-  <updated>2017-07-11T01:14:27.984Z</updated>
+  <updated>2017-07-14T01:23:21.421Z</updated>
   <id>http://106.15.95.246/</id>
   
   <author>
@@ -14,6 +14,272 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端图像处理</title>
+    <link href="http://106.15.95.246/2017/07/13/%E5%89%8D%E7%AB%AF%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    <id>http://106.15.95.246/2017/07/13/前端图像处理/</id>
+    <published>2017-07-13T10:21:08.000Z</published>
+    <updated>2017-07-14T01:23:21.421Z</updated>
+    
+    <content type="html"><![CDATA[<p>计算机图像处理是一门很成熟的技术，任何一门可操作系统接口的语言都能很轻易的实现各种处理操作。但是前端限于浏览器环境和接口限制，处理起来会有诸多不便，这里所说的前端图像处理，是真的指<strong>不借助任何后端服务</strong>纯前端实现的图像处理。本文会介绍canvas位图处理，SVG矢量图和CSS3图像处理，重点是canvas，并且最后会附上一个小应用。<br><a id="more"></a></p>
+<h4 id="图像滤镜处理"><a href="#图像滤镜处理" class="headerlink" title="图像滤镜处理"></a>图像滤镜处理</h4><p>现在的朋友圈发个图都要用滤镜美一下，复古清纯胶片LOMO各种风格应有尽有。canvas提供了getImageData方法来获取图像上每一个像素点的RGBA信息，这样我们就能对图片进行像素级处理了。通过特定算法来重写imageData中的像素信息，然后用setImageData方法把新的数据重新绘制在canvas上，这样就可以实现图像滤镜打码加特效等一系列功能。</p>
+<p>比如我们现在要实现一个复古滤镜:</p>
+<p>// 复古滤镜处理算法：获取每个像素的RGB信息，并按特定权重返回其加权平均值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">let</span> sepiaFilter = <span class="keyword">function</span>(imgData) &#123;</div><div class="line">  <span class="built_in">let</span> d = imgData.data</div><div class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> i = 0; i &lt; d.length; i += 4) &#123;</div><div class="line">    <span class="built_in">let</span> r = d[i]</div><div class="line">    <span class="built_in">let</span> g = d[i + 1]</div><div class="line">    <span class="built_in">let</span> b = d[i + 2]</div><div class="line">    d[i] = (r * 0.393) + (g * 0.769) + (b * 0.189) // red</div><div class="line">    d[i + 1] = (r * 0.349) + (g * 0.686) + (b * 0.168) // green</div><div class="line">    d[i + 2] = (r * 0.272) + (g * 0.534) + (b * 0.131) // blue</div><div class="line">  &#125;</div><div class="line">  <span class="built_in">return</span> imgData</div><div class="line">&#125;</div><div class="line">//图像地址必须和当前页面同域，否则会报cross-origin错误</div><div class="line">img.src = <span class="string">'/img/logo@2x.png'</span></div><div class="line">img.onload = () =&gt; &#123;</div><div class="line">  ctx.drawImage(img, 0, 0) // 绘制原图</div><div class="line">  <span class="built_in">let</span> imgData = ctx.getImageData(0, 0, img.width, img.height) // 获取图片信息</div><div class="line">  ctx.putImageData(sepiaFilter(imgData), 100, 0) // 绘制处理后图片</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;计算机图像处理是一门很成熟的技术，任何一门可操作系统接口的语言都能很轻易的实现各种处理操作。但是前端限于浏览器环境和接口限制，处理起来会有诸多不便，这里所说的前端图像处理，是真的指&lt;strong&gt;不借助任何后端服务&lt;/strong&gt;纯前端实现的图像处理。本文会介绍canvas位图处理，SVG矢量图和CSS3图像处理，重点是canvas，并且最后会附上一个小应用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React源码分析6 — React合成事件系统</title>
+    <link href="http://106.15.95.246/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%906-%E2%80%94-React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F/"/>
+    <id>http://106.15.95.246/2017/07/13/React源码分析6-—-React合成事件系统/</id>
+    <published>2017-07-13T10:13:22.000Z</published>
+    <updated>2017-07-14T01:23:21.421Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RReact源码分析5 -- 组件通信，refs，key，ReactDOM</title>
+    <link href="http://106.15.95.246/2017/07/13/RReact%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%905-%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1%EF%BC%8Crefs%EF%BC%8Ckey%EF%BC%8CReactDOM/"/>
+    <id>http://106.15.95.246/2017/07/13/RReact源码分析5-组件通信，refs，key，ReactDOM/</id>
+    <published>2017-07-13T10:13:08.000Z</published>
+    <updated>2017-07-14T01:23:21.405Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RReact源码分析4 — setState机制</title>
+    <link href="http://106.15.95.246/2017/07/13/RReact%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%904-%E2%80%94-setState%E6%9C%BA%E5%88%B6/"/>
+    <id>http://106.15.95.246/2017/07/13/RReact源码分析4-—-setState机制/</id>
+    <published>2017-07-13T10:12:56.000Z</published>
+    <updated>2017-07-14T01:23:21.390Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React源码分析3 — React生命周期详解</title>
+    <link href="http://106.15.95.246/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%903-%E2%80%94-React%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%A6%E8%A7%A3/"/>
+    <id>http://106.15.95.246/2017/07/13/React源码分析3-—-React生命周期详解/</id>
+    <published>2017-07-13T10:12:41.000Z</published>
+    <updated>2017-07-14T01:23:21.405Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React源码分析2 — React组件插入DOM流程</title>
+    <link href="http://106.15.95.246/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%902-%E2%80%94-React%E7%BB%84%E4%BB%B6%E6%8F%92%E5%85%A5DOM%E6%B5%81%E7%A8%8B/"/>
+    <id>http://106.15.95.246/2017/07/13/React源码分析2-—-React组件插入DOM流程/</id>
+    <published>2017-07-13T10:12:24.000Z</published>
+    <updated>2017-07-14T01:23:21.405Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>React源码分析1 — 组件和元素对象的创建（createClass，createElement)</title>
+    <link href="http://106.15.95.246/2017/07/13/React%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%901-%E2%80%94-%E7%BB%84%E4%BB%B6%E5%92%8C%E5%85%83%E7%B4%A0%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9B%E5%BB%BA%EF%BC%88createClass%EF%BC%8CcreateElement%EF%BC%89/"/>
+    <id>http://106.15.95.246/2017/07/13/React源码分析1-—-组件和元素对象的创建（createClass，createElement）/</id>
+    <published>2017-07-13T10:11:34.000Z</published>
+    <updated>2017-07-14T02:32:05.767Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端面试题精华</title>
+    <link href="http://106.15.95.246/2017/07/13/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E5%8D%8E/"/>
+    <id>http://106.15.95.246/2017/07/13/前端面试题精华/</id>
+    <published>2017-07-13T07:57:08.000Z</published>
+    <updated>2017-07-14T01:23:21.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>前端面试题精华汇总<br>一、理论知识<br>1.1、讲讲输入完网址按下回车，到看到网页这个过程中发生了什么</p>
+<p>  a. 域名解析<br>  b. 发起TCP的3次握手<br>  c. 建立TCP连接后发起http请求<br>  d. 服务器端响应http请求，浏览器得到html代码<br>  e. 浏览器解析html代码，并请求html代码中的资源<br>  f. 浏览器对页面进行渲染呈现给用户<br><a id="more"></a></p>
+<p>1.2、谈谈你对前端性能优化的理解</p>
+<p>  a. 请求数量：合并脚本和样式表，CSS Sprites，拆分初始化负载，划分主域<br>  b. 请求带宽：开启GZip，精简JavaScript，移除重复脚本，图像优化，将icon做成字体<br>  c. 缓存利用：使用CDN，使用外部JavaScript和CSS，添加Expires头，减少DNS查找，配置ETag，使AjaX可缓存<br>  d. 页面结构：将样式表放在顶部，将脚本放在底部，尽早刷新文档的输出<br>  e. 代码校验：避免CSS表达式，避免重定向</p>
+<p>1.3、前端 MV*框架的意义</p>
+<p>早期前端都是比较简单，基本以页面为工作单元，内容以浏览型为主，也偶尔有简单的表单操作，基本不太需要框架。<br>随着 AJAX 的出现，Web2.0的兴起，人们可以在页面上可以做比较复杂的事情了，然后前端框架才真正出现了。<br>如果是页面型产品，多数确实不太需要它，因为页面中的 JavaScript代码，处理交互的绝对远远超过处理模型的，但是如果是应用软件类产品，这就太需要了。<br>长期做某个行业软件的公司，一般都会沉淀下来一些业务组件，主要体现在数据模型、业务规则和业务流程，这些组件基本都存在于后端，在前端很少有相应的组织。<br>从协作关系上讲，很多前端开发团队每个成员的职责不是很清晰，有了前端的 MV框架，这个状况会大有改观。<br>之所以感受不到 MV*框架的重要性，是因为Model部分代码较少，View的相对多一些。如果主要在操作View和Controller，那当然 jQuery 这类库比较好用了。</p>
+<p>1.4、请简述盒模型</p>
+<p>IE6盒子模型与W3C盒子模型。</p>
+<p>文档中的每个元素被描绘为矩形盒子。盒子有四个边界：外边距边界margin, 边框边界border, 内边距边界padding与内容边界content。<br>CSS3中有个box-sizing属性可以控制盒子的计算方式，<br>content-box：padding和border不被包含在定义的width和height之内。对象的实际宽度等于设置的width值和border、padding之和。（W3C盒子模型）<br>border-box：padding和border被包含在定义的width和height之内。对象的实际宽度就等于设置的width值。（IE6盒子模型）</p>
+<p>1.5、请你谈谈Cookie的弊端</p>
+<p>  a. 每个特定的域名下最多生成的cookie个数有限制<br>  b. IE和Opera 会清理近期最少使用的cookie，Firefox会随机清理cookie<br>  c. cookie的最大大约为4096字节，为了兼容性，一般不能超过4095字节<br>  d. 安全性问题。如果cookie被人拦截了，那人就可以取得所有的session信息。</p>
+<p>1.6、浏览器本地存储</p>
+<p>在HTML5中提供了sessionStorage和localStorage。<br>sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁，是会话级别的存储。<br>localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。</p>
+<p>1.7、web storage和cookie的区别</p>
+<p>  a. Cookie的大小是受限的<br>  b. 每次你请求一个新的页面的时候Cookie都会被发送过去，这样无形中浪费了带宽<br>  c. cookie还需要指定作用域，不可以跨域调用<br>  d. Web Storage拥有setItem,getItem等方法，cookie需要前端开发者自己封装setCookie，getCookie<br>  e. Cookie的作用是与服务器进行交互，作为HTTP规范的一部分而存在 ，而Web Storage仅仅是为了在本地“存储”数据而生<br>  f. IE7、IE6中的UserData通过简单的代码封装可以统一到所有的浏览器都支持web storage</p>
+<p>1.8、对BFC规范的理解</p>
+<p>BFC全称是Block Formatting Context，即块格式化上下文。它是CSS2.1规范定义的，关于CSS渲染定位的一个概念。<br>BFC是页面CSS 视觉渲染的一部分，用于决定块盒子的布局及浮动相互影响范围的一个区域。<br>BFC的一个最重要的效果是，让处于BFC内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。<br>利用BFC可以闭合浮动，防止与浮动元素重叠。</p>
+<p>1.9、线程与进程的区别</p>
+<p>  a. 一个程序至少有一个进程，一个进程至少有一个线程<br>  b. 线程的划分尺度小于进程，使得多线程程序的并发性高<br>  c. 进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率<br>  d. 每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制<br>  e. 多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配</p>
+<p>1.10、请说出三种减少页面加载时间的方法</p>
+<p>  a. 尽量减少页面中重复的HTTP请求数量<br>  b. 服务器开启gzip压缩<br>  c. css样式的定义放置在文件头部<br>  d. Javascript脚本放在文件末尾<br>  e. 压缩合并Javascript、CSS代码<br>  f. 使用多域名负载网页内的多个文件、图片</p>
+<p>1.11、你都使用哪些工具来测试代码的性能？</p>
+<p>JSPerf, Dromaeo</p>
+<p>1.12、你遇到过比较难的技术问题是？你是如何解决的？</p>
+<p>1.13、常使用的库有哪些？常用的前端开发工具？开发过什么应用或组件？</p>
+<p>1.14、列举IE与其他浏览器不一样的特性？</p>
+<p>  a. IE的排版引擎是Trident （又称为MSHTML）<br>  b. Trident内核曾经几乎与W3C标准脱节（2005年）<br>  c. Trident内核的大量 Bug等安全性问题没有得到及时解决<br>  d. JS方面，有很多独立的方法，例如绑定事件的attachEvent、创建事件的createEventObject等<br>  e. CSS方面，也有自己独有的处理方式，例如设置透明，低版本IE中使用滤镜的方式</p>
+<p>1.15、什么叫优雅降级和渐进增强？</p>
+<p>渐进增强 progressive enhancement：<br>针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。<br>优雅降级 graceful degradation：<br>一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。</p>
+<p>区别：<br>  a. 优雅降级是从复杂的现状开始，并试图减少用户体验的供给<br>  b. 渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要<br>  c. 降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带</p>
+<p>1.16、WEB应用从服务器主动推送Data到客户端有那些方式？</p>
+<p>  a. html5 websoket<br>  b. WebSocket 通过 Flash<br>  c. XHR长时间连接<br>  d. XHR Multipart Streaming<br>  e. 不可见的Iframe<br>  f. &lt;script&gt;标签的长时间连接(可跨域)</p>
+<p>1.17、对前端界面工程师这个职位是怎么样理解的？</p>
+<p>  a. 前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好<br>  b. 参与项目，快速高质量完成实现效果图，精确到1px；<br>  c. 与团队成员，UI设计，产品经理的沟通；<br>  d. 做好的页面结构，页面重构和用户体验；<br>  e. 处理hack，兼容、写出优美的代码格式；<br>  f. 针对服务器的优化、拥抱最新前端技术。</p>
+<p>1.18、你在现在的团队处于什么样的角色，起到了什么明显的作用？</p>
+<p>1.19、你的优点是什么？缺点是什么？</p>
+<p>1.20、如何管理前端团队?</p>
+<p>1.21、最近在学什么？能谈谈你未来3，5年给自己的规划吗？</p>
+<p>1.22、平时如何管理你的项目？</p>
+<p>  a. 先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；<br>  b. 编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；<br>  c. 标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；<br>  d. 页面进行标注（例如 页面 模块 开始和结束）；<br>  e. CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）；<br>  f. JS 分文件夹存放 命名以该JS功能为准的英文翻译。<br>  g. 图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理</p>
+<p>1.23、说说最近最流行的一些东西吧？常去哪些网站？</p>
+<p>CSDN、SegmentFault、php.net、MDN、css参考手册、iconfont、<br>underscore、github、Bootstrap、W3Shool、W3Cplus、caniuse</p>
+<p>1.24、Flash、Ajax各自的优缺点，在使用中如何取舍？</p>
+<p>Flash：<br>  a. Flash适合处理多媒体、矢量图形、访问机器<br>  b. 对CSS、处理文本上不足，不容易被搜索</p>
+<p>Ajax：<br>  a. Ajax对CSS、文本支持很好，支持搜索<br>  b. 多媒体、矢量图形、机器访问不足</p>
+<p>共同点：<br>  a. 与服务器的无刷新传递消息<br>  b. 可以检测用户离线和在线状态<br>  c. 操作DOM</p>
+<p>1.25、请解释一下 JavaScript 的同源策略</p>
+<p>同源策略指的是：协议，域名，端口相同，同源策略是一种安全协议。</p>
+<p>指一段脚本只能读取来自同一来源的窗口和文档的属性。</p>
+<p>1.26、AMD和CMD 规范的区别？</p>
+<p>AMD 提前执行依赖 - 尽早执行，requireJS 是它的实现<br>CMD 按需执行依赖 - 懒执行，seaJS 是它的实现</p>
+<p>1.27、网站重构的理解</p>
+<p>重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。<br>  a. 使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)<br>  b. 对于移动平台的优化，针对于SEO进行优化<br>  c. 减少代码间的耦合，让代码保持弹性<br>  d. 压缩或合并JS、CSS、image等前端资源</p>
+<p>1.28、浏览器的内核分别是什么?</p>
+<p>IE浏览器的内核Trident、Mozilla的Gecko、Chrome的Blink（WebKit的分支）、Opera内核原为Presto，现为Blink；</p>
+<p>1.29、请介绍下cache-control</p>
+<p>每个资源都可以通过 Cache-Control HTTP 头来定义自己的缓存策略<br>Cache-Control 指令控制谁在什么条件下可以缓存响应以及可以缓存多久<br>Cache-Control 头在 HTTP/1.1 规范中定义，取代了之前用来定义响应缓存策略的头（例如 Expires）。</p>
+<p>1.30、前端页面有哪三层构成，分别是什么？作用是什么？</p>
+<p>  a. 结构层：由 HTML 或 XHTML 之类的标记语言负责创建，仅负责语义的表达。解决了页面“内容是什么”的问题。<br>  b. 表示层：由CSS负责创建，解决了页面“如何显示内容”的问题。<br>  c. 行为层：由脚本负责。解决了页面上“内容应该如何对事件作出反应”的问题。</p>
+<p>1.31、知道的网页制作会用到的图片格式有哪些？</p>
+<p>png-8，png-24，jpeg，gif，svg<br>Webp：谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。<br>Apng：全称是“Animated Portable Network Graphics”, 是PNG的位图动画扩展，可以实现png格式的动态图片效果。04年诞生，但一直得不到各大浏览器厂商的支持，直到日前得到 iOS safari 8的支持，有望代替GIF成为下一代动态图标准。</p>
+<p>1.32、一次js请求一般情况下有哪些地方会有缓存处理？</p>
+<p>  a. 浏览器端存储<br>  b. 浏览器端文件缓存<br>  c. HTTP缓存304<br>  d. 服务器端文件类型缓存<br>  e. 表现层&amp;DOM缓存</p>
+<p>1.33、一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验。</p>
+<p>  a. 图片懒加载，滚动到相应位置才加载图片。<br>  b. 图片预加载，如果为幻灯片、相册等，将当前展示图片的前一张和后一张优先下载。<br>  c. 使用CSSsprite，SVGsprite，Iconfont、Base64等技术，如果图片为css图片的话。<br>  d. 如果图片过大，可以使用特殊编码的图片，加载时会先加载一张压缩的特别厉害的缩略图，以提高用户体验。</p>
+<p>1.34、谈谈以前端角度出发做好SEO需要考虑什么？</p>
+<p>  a. 了解搜索引擎如何抓取网页和如何索引网页<br>  b. meta标签优化<br>  c. 关键词分析<br>  d. 付费给搜索引擎<br>  e. 链接交换和链接广泛度（Link Popularity）<br>  f. 合理的标签使用</p>
+<p>二、HTML<br>2.1、&lt;img&gt;标签上title属性与alt属性的区别是什么？</p>
+<p>alt属性是为了给那些不能看到你文档中图像的浏览者提供文字说明的。且长度必须少于100个英文字符或者用户必须保证替换文字尽可能的短。<br>这包括那些使用本来就不支持图像显示或者图像显示被关闭的浏览器的用户，视觉障碍的用户和使用屏幕阅读器的用户等。<br>title属性为设置该属性的元素提供建议性的信息。使用title属性提供非本质的额外信息。参考《alt和title属性的区别及应用》</p>
+<p>2.2、分别写出以下几个HTML标签：文字加粗、下标、居中、字体</p>
+<p>  加粗：&lt;b&gt;、&lt;strong&gt;<br>  下标：&lt;sub&gt;<br>  居中：&lt;center&gt;<br>  字体：&lt;font&gt;、&lt;basefont&gt;、参考《HTML标签列表》</p>
+<p>2.3、请写出至少5个html5新增的标签，并说明其语义和应用场景</p>
+<p>  section：定义文档中的一个章节<br>  nav：定义只包含导航链接的章节<br>  header：定义页面或章节的头部。它经常包含 logo、页面标题和导航性的目录。<br>  footer：定义页面或章节的尾部。它经常包含版权信息、法律信息链接和反馈建议用的地址。<br>  aside：定义和页面内容关联度较低的内容——如果被删除，剩下的内容仍然很合理。</p>
+<p>2.4、请说说你对标签语义化的理解？</p>
+<p>  a. 去掉或者丢失样式的时候能够让页面呈现出清晰的结构<br>  b. 有利于SEO：和搜索引擎建立良好沟通，有助于爬虫抓取更多的有效信息：爬虫依赖于标签来确定上下文和各个关键字的权重；<br>  c. 方便其他设备解析（如屏幕阅读器、盲人阅读器、移动设备）以意义的方式来渲染网页；<br>  d. 便于团队开发和维护，语义化更具可读性，遵循W3C标准的团队都遵循这个标准，可以减少差异化。</p>
+<p>2.5、Doctype作用? 严格模式与混杂模式如何区分？它们有何意义?</p>
+<p>&lt;!DOCTYPE&gt; 声明位于文档中的最前面，处于 &lt;html&gt; 标签之前。告知浏览器以何种模式来渲染文档。<br>严格模式的排版和 JS 运作模式是，以该浏览器支持的最高标准运行。<br>在混杂模式中，页面以宽松的向后兼容的方式显示。模拟老式浏览器的行为以防止站点无法工作。<br>DOCTYPE不存在或格式不正确会导致文档以混杂模式呈现。</p>
+<p>2.6、你知道多少种Doctype文档类型？</p>
+<p>标签可声明三种 DTD 类型，分别表示严格版本、过渡版本以及基于框架的 HTML 文档。<br>HTML 4.01 规定了三种文档类型：Strict、Transitional 以及 Frameset。<br>XHTML 1.0 规定了三种 XML 文档类型：Strict、Transitional 以及 Frameset。<br>Standards （标准）模式（也就是严格呈现模式）用于呈现遵循最新标准的网页，<br>Quirks（包容）模式（也就是松散呈现模式或者兼容模式）用于呈现为传统浏览器而设计的网页。</p>
+<p>2.7、HTML与XHTML——二者有什么区别</p>
+<p>  a. XHTML 元素必须被正确地嵌套。<br>  b. XHTML 元素必须被关闭。<br>  c. 标签名必须用小写字母。<br>  d. XHTML 文档必须拥有根元素。</p>
+<p>2.8、html5有哪些新特性、移除了那些元素？</p>
+<p>  a. HTML5 现在已经不是 SGML 的子集，主要是关于图像，位置，存储，多任务等功能的增加。<br>  b. 拖拽释放(Drag and drop) API<br>  c. 语义化更好的内容标签（header,nav,footer,aside,article,section）<br>  d. 音频、视频API(audio,video)<br>  e. 画布(Canvas) API<br>  f. 地理(Geolocation) API<br>  g. 本地离线存储 localStorage 长期存储数据，浏览器关闭后数据不丢失<br>  h. sessionStorage 的数据在页面会话结束时会被清除<br>  i. 表单控件，calendar、date、time、email、url、search<br>  j. 新的技术webworker, websocket等</p>
+<p>移除的元素：</p>
+<p>  a. 纯表现的元素：basefont，big，center, s，strike，tt，u；<br>  b. 对可用性产生负面影响的元素：frame，frameset，noframes；</p>
+<p>2.9、iframe的优缺点？</p>
+<p>优点：<br>  a. 解决加载缓慢的第三方内容如图标和广告等的加载问题<br>  b. iframe无刷新文件上传<br>  c. iframe跨域通信</p>
+<p>缺点：<br>  a. iframe会阻塞主页面的Onload事件<br>  b. 无法被一些搜索引擎索引到<br>  c. 页面会增加服务器的http请求<br>  d. 会产生很多页面，不容易管理。</p>
+<p>2.10、Quirks模式是什么？它和Standards模式有什么区别？</p>
+<p>在写程序时我们也会经常遇到这样的问题，如何保证原来的接口不变，又提供更强大的功能，尤其是新功能不兼容旧功能时。IE6以前的页面大家都不会去写DTD，所以IE6就假定 如果写了DTD，就意味着这个页面将采用对CSS支持更好的布局，而如果没有，则采用兼容之前的布局方式。这就是Quirks模式（怪癖模式，诡异模式，怪异模式）。</p>
+<p>区别：总体会有布局、样式解析和脚本执行三个方面的区别。<br>  a. 盒模型：在W3C标准中，如果设置一个元素的宽度和高度，指的是元素内容的宽度和高度，而在Quirks 模式下，IE的宽度和高度还包含了padding和border。<br>  b. 设置行内元素的高宽：在Standards模式下，给&lt;span&gt;等行内元素设置wdith和height都不会生效，而在quirks模式下，则会生效。<br>  c. 设置百分比的高度：在standards模式下，一个元素的高度是由其包含的内容来决定的，如果父元素没有设置百分比的高度，子元素设置一个百分比的高度是无效的用<br>  d. 设置水平居中：使用margin:0 auto在standards模式下可以使元素水平居中，但在quirks模式下却会失效。</p>
+<p>2.11、请阐述table的缺点</p>
+<p>  a. 太深的嵌套，比如table&gt;tr&gt;td&gt;h3，会导致搜索引擎读取困难，而且，最直接的损失就是大大增加了冗余代码量。<br>  b. 灵活性差，比如要将tr设置border等属性，是不行的，得通过td<br>  c. 代码臃肿，当在table中套用table的时候，阅读代码会显得异常混乱<br>  d. 混乱的colspan与rowspan，用来布局时，频繁使用他们会造成整个文档顺序混乱。<br>  e. 不够语义</p>
+<p>2.12、简述一下src与href的区别</p>
+<p>src用于替换当前元素；href用于在当前文档和引用资源之间确立联系。<br>src是source的缩写，指向外部资源的位置，指向的内容将会嵌入到文档中当前标签所在位置<br>href是Hypertext Reference的缩写，指向网络资源所在位置，建立和当前元素（锚点）或当前文档（链接）之间的链接</p>
+<p>三、CSS<br>3.1、谈谈你对CSS布局的理解</p>
+<p>3.2、请列举几种可以清除浮动的方法（至少两种）</p>
+<p>浮动会漂浮于普通流之上，像浮云一样，但是只能左右浮动。正是这种特性，导致框内部由于不存在其他普通流元素了，表现出高度为0（高度塌陷）。<br>  a. 添加额外标签，例如&lt;div style=”clear:both”&gt;&lt;/div&gt;<br>  b. 使用br标签和其自身的html属性，例如&lt;br clear=”all” /&gt;<br>  c. 父元素设置 overflow：hidden；在IE6中还需要触发hasLayout，例如zoom：1；<br>  d. 父元素设置 overflow：auto 属性；同样IE6需要触发hasLayout<br>  e. 父元素也设置浮动<br>  f. 父元素设置display:table<br>  g. 使用:after 伪元素；由于IE6-7不支持:after，使用 zoom:1触发 hasLayout。</p>
+<p>在CSS2.1里面有一个很重要的概念，那就是 Block formatting contexts （块级格式化上下文），简称 BFC。<br>创建了BFC的元素就是一个独立的盒子，里面的子元素不会在布局上影响外面的元素，同时BFC仍然属于文档中的普通流。<br>IE6-7的显示引擎使用的是一个称为布局（layout）的内部概念。</p>
+<p>3.3、请列举几种隐藏元素的方法</p>
+<p>  a. visibility: hidden；这个属性只是简单的隐藏某个元素，但是元素占用的空间任然存在。<br>  b. opacity: 0；一个CSS3属性，设置0可以使一个元素完全透明，制作出和visibility一样的效果。与visibility相比，它可以被transition和animate<br>  c. position: absolute；使元素脱离文档流，处于普通文档之上，给它设置一个很大的left负值定位，使元素定位在可见区域之外。<br>  d. display: none；元素会变得不可见，并且不会再占用文档的空间。<br>  e. transform: scale(0)；将一个元素设置为无限小，这个元素将不可见。这个元素原来所在的位置将被保留。<br>  f. HTML5 hidden attribute；hidden属性的效果和display:none;相同，这个属性用于记录一个元素的状态<br>  g. height: 0; overflow: hidden；将元素在垂直方向上收缩为0,使元素消失。只要元素没有可见的边框，该技术就可以正常工作。<br>  h. filter: blur(0)；将一个元素的模糊度设置为0，从而使这个元素“消失”在页面中。</p>
+<p>3.4、如何让一段文本中的所有英文单词的首字母大写</p>
+<p>text-transform：</p>
+<p>none| capitalize(将每个单词的第一个字母转换成大写) | uppercase(将每个单词转换成大写 ) | lowercase(将每个单词转换成小写 )</p>
+<p>3.5、请简述CSS样式表继承</p>
+<p>CSS样式表继承指的是，特定的CSS属性向下传递到子孙元素。会被继承下去的属性如下：</p>
+<p>文本相关：font-family，font-size， font-style，font-variant，font-weight， font，letter-spacing，line-height，color</p>
+<p>列表相关：list-style-image，list-style-position，list-style-type， list-style</p>
+<p>转载，原文地址<a href="http://www.cnblogs.com/iyulang/p/6604956.html" target="_blank" rel="external">_夜枫</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;前端面试题精华汇总&lt;br&gt;一、理论知识&lt;br&gt;1.1、讲讲输入完网址按下回车，到看到网页这个过程中发生了什么&lt;/p&gt;
+&lt;p&gt;  a. 域名解析&lt;br&gt;  b. 发起TCP的3次握手&lt;br&gt;  c. 建立TCP连接后发起http请求&lt;br&gt;  d. 服务器端响应http请求，浏览器得到html代码&lt;br&gt;  e. 浏览器解析html代码，并请求html代码中的资源&lt;br&gt;  f. 浏览器对页面进行渲染呈现给用户&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+      <category term="面试" scheme="http://106.15.95.246/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>window对象</title>
@@ -1887,261 +2153,6 @@ $ sudo docker start 026e
     
     
       <category term="docker" scheme="http://106.15.95.246/tags/docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎么使用react搭建工程3—webpack</title>
-    <link href="http://106.15.95.246/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B3%E2%80%94webpack/"/>
-    <id>http://106.15.95.246/2017/07/04/怎么使用react搭建工程3—webpack/</id>
-    <published>2017-07-04T08:35:26.000Z</published>
-    <updated>2017-07-04T15:08:22.870Z</updated>
-    
-    <content type="html"><![CDATA[<p>开发状态webpack.config.dev.js<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div></pre></td><td class="code"><pre><div class="line">const path = require(<span class="string">'path'</span>);</div><div class="line">const webpack = require(<span class="string">'webpack'</span>);</div><div class="line">const HtmlWebpackPlugin = require(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  devtool: <span class="string">'cheap-eval-source-map'</span>,</div><div class="line">  entry: [</div><div class="line">    // 开启react代码的模块热替换（HMR）</div><div class="line">    <span class="string">'react-hot-loader/patch'</span>,</div><div class="line">    // 为webpack-dev-server的环境打包好运行代码</div><div class="line">    // 然后连接到指定服务器域名与端口</div><div class="line">    <span class="string">'webpack-dev-server/client?http://localhost:8080'</span>,</div><div class="line">    // 为热替换（HMR）打包好运行代码</div><div class="line">    // only- 意味着只有成功更新运行代码才会执行热替换（HMR）</div><div class="line">    <span class="string">'webpack/hot/only-dev-server'</span>,</div><div class="line">    // 我们app的入口文件</div><div class="line">    <span class="string">'./index.js'</span></div><div class="line">  ],</div><div class="line">  output: &#123;</div><div class="line">    // 输出的打包文件</div><div class="line">    filename: <span class="string">'bundle.[hash].js'</span>,</div><div class="line">    // 输出文件路劲</div><div class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</div><div class="line">    // 对于热替换（HMR）是必须的，让webpack知道在哪里载入热更新的模块（chunk）</div><div class="line">    publicPath: <span class="string">'/dist'</span></div><div class="line">  &#125;,</div><div class="line">  context: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">  devServer: &#123;</div><div class="line">    // 开启服务器的模块热替换（HMR）</div><div class="line">    hot: <span class="literal">true</span>,</div><div class="line">    // 开启服务器输出文件的路径</div><div class="line">    contentBase: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">    // 和上文output的<span class="string">"publicPath"</span>值保持一致</div><div class="line">    publicPath: <span class="string">'/'</span></div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // loader 配置</div><div class="line">  module: &#123;</div><div class="line">    rules: [&#123;</div><div class="line">        <span class="built_in">test</span>: /\.js$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'babel-loader'</span>,</div><div class="line">        ],</div><div class="line">        exclude: /(node_modules|bower_components)/,</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">test</span>: /\.css$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'style-loader'</span>,</div><div class="line">          <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">          <span class="string">'postcss-loader'</span></div><div class="line">        ]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(sass|scss)$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">"style-loader"</span>,</div><div class="line">          <span class="string">"css-loader"</span>,</div><div class="line">          <span class="string">'postcss-loader'</span>,</div><div class="line">          <span class="string">"sass-loader"</span></div><div class="line">        ]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,</div><div class="line">        use: [<span class="string">'file-loader'</span>]</div><div class="line">      &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(mp4|webm)$/,</div><div class="line">        use:[<span class="string">'url-loader?limit=10000'</span>]</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line"></div><div class="line">  // plugins 插件配置</div><div class="line">  plugins: [</div><div class="line">    // 开启全局的模块热替换（HMR）</div><div class="line">    new webpack.HotModuleReplacementPlugin(),</div><div class="line">    // 当模块热替换（HMR）时在浏览器控制台输出对用户更友好的模块名字信息</div><div class="line">    new webpack.NamedModulesPlugin(),</div><div class="line">    // dist目录下生成html模板文件</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: <span class="string">'./index.html'</span>,</div><div class="line">    &#125;),</div><div class="line">    // autoprefixer 生成浏览器前缀</div><div class="line">    new webpack.LoaderOptionsPlugin(&#123;</div><div class="line">      options: &#123;</div><div class="line">        postcss: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">          <span class="built_in">return</span> [ require(<span class="string">"autoprefixer"</span>)(&#123; browsers: [<span class="string">'last 2 versions'</span>] &#125;) ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>生产状态下webpack.config.pro.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">const path = require(<span class="string">'path'</span>);</div><div class="line">const webpack = require(<span class="string">'webpack'</span>);</div><div class="line">const ExtractTextPlugin = require(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  entry: <span class="string">'./index.js'</span>,</div><div class="line">  output: &#123;</div><div class="line">    filename: <span class="string">'bundle.[hash].js'</span>,</div><div class="line">    path: path.resolve(__dirname, <span class="string">'dist'</span>),</div><div class="line">    publicPath: <span class="string">'/dist'</span></div><div class="line">  &#125;,</div><div class="line">  context: path.resolve(__dirname, <span class="string">'src'</span>),</div><div class="line">  module: &#123;</div><div class="line">    rules: [&#123;</div><div class="line">        <span class="built_in">test</span>: /\.js$/,</div><div class="line">        use: [</div><div class="line">          <span class="string">'babel-loader'</span>,</div><div class="line">        ],</div><div class="line">        exclude: /(node_modules|bower_components)/,</div><div class="line">      &#125;,&#123;</div><div class="line">         <span class="built_in">test</span>: /\.css$/,</div><div class="line">         use: ExtractTextPlugin.extract(&#123;</div><div class="line">           use: [</div><div class="line">             <span class="string">'style-loader'</span>,</div><div class="line">             <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">             <span class="string">'postcss-loader'</span></div><div class="line">           ]</div><div class="line">         &#125;)</div><div class="line">       &#125;,&#123;</div><div class="line">         <span class="built_in">test</span>: /\.(sass|scss)$/,</div><div class="line">         use: ExtractTextPlugin.extract(&#123;</div><div class="line">           use: [</div><div class="line">             <span class="string">'css-loader?importLoaders=1'</span>,</div><div class="line">             <span class="string">'postcss-loader'</span>,</div><div class="line">            &#123;</div><div class="line">               loader: <span class="string">"sass-loader"</span>,</div><div class="line">               options: &#123;</div><div class="line">                 sourceMap:<span class="literal">true</span>,</div><div class="line">                 outputStyle : <span class="string">'compressed'</span></div><div class="line">              &#125;</div><div class="line">            &#125;</div><div class="line">          ]</div><div class="line">        &#125;)</div><div class="line">       &#125;,&#123;</div><div class="line">        <span class="built_in">test</span>: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2)$/,</div><div class="line">        use: [<span class="string">'file-loader'</span>]</div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="built_in">test</span>: /\.(mp4|webm)$/,</div><div class="line">        use:[<span class="string">'url-loader?limit=10000'</span>]</div><div class="line">      &#125;</div><div class="line">    ],</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    new HtmlWebpackPlugin(&#123;</div><div class="line">     template: <span class="string">'./index.html'</span>,</div><div class="line">    &#125;),</div><div class="line">     new ExtractTextPlugin(&#123;</div><div class="line">     filename : <span class="string">'style.[hash].css'</span></div><div class="line">     &#125;),</div><div class="line">     new webpack.optimize.UglifyJsPlugin(&#123;</div><div class="line">       comments: <span class="literal">false</span>,</div><div class="line">       compress: &#123; warnings: <span class="literal">false</span> &#125;</div><div class="line">    &#125;),</div><div class="line">    new webpack.LoaderOptionsPlugin(&#123;</div><div class="line">      options: &#123;</div><div class="line">        postcss: <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">          <span class="built_in">return</span> [ require(<span class="string">"autoprefixer"</span>)(&#123; browsers: [<span class="string">'last 2 versions'</span>] &#125;) ]</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;)</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;开发状态webpack.config.dev.js&lt;br&gt;
-    
-    </summary>
-    
-      <category term="react" scheme="http://106.15.95.246/categories/react/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎么使用react搭建工程2—React-router</title>
-    <link href="http://106.15.95.246/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B2%E2%80%94React-router/"/>
-    <id>http://106.15.95.246/2017/07/04/怎么使用react搭建工程2—React-router/</id>
-    <published>2017-07-04T06:24:35.000Z</published>
-    <updated>2017-07-04T07:29:50.422Z</updated>
-    
-    <content type="html"><![CDATA[<p>React-Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。<br><a id="more"></a><br>Route对路由地址和组件进行绑定，Route具有嵌套功能，表示路由地址的包涵关系，这和组件之间的嵌套并没有直接联系。<br>Route可以向绑定的组件传递7个属性：children，history，location，params，route，routeParams，routes，每个属性都包涵路由的相关的信息。<br>比较常用的有children（以路由的包涵关系为区分的组件），location（包括地址，参数，地址切换方式，key值，hash值）。<br>react-router提供Link标签，这只是对a标签的封装，值得注意的是，点击链接进行的跳转并不是默认的方式，react-router阻止了a标签的默认行为并用pushState进行hash值的转变。<br>切换页面的过程是在点击Link标签或者后退前进按钮时，会先发生url地址的转变，Router监听到地址的改变根据Route的path属性匹配到对应的组件，将state值改成对应的组件并调用setState触发render函数重新渲染dom。<br>当页面比较多时，项目就会变得越来越大，尤其对于单页面应用来说，初次渲染的速度就会很慢，这时候就需要按需加载，只有切换到页面的时候才去加载对应的js文件。<br>react配合webpack进行按需加载的方法很简单，Route的component改为getComponent，组件用require.ensure的方式获取，并在webpack中配置chunkFilename。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">import React, &#123;Component, PropTypes&#125; from <span class="string">'react'</span>;</div><div class="line">import &#123; Router, Route, Redirect, IndexRoute, browserHistory, hashHistory &#125; from <span class="string">'react-router'</span>;</div><div class="line"></div><div class="line">import index from <span class="string">'../Component/index'</span>;</div><div class="line"></div><div class="line">class Roots extends Component &#123;</div><div class="line">    <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">        <span class="built_in">return</span> (</div><div class="line">            &lt;div&gt;&#123;this.props.children&#125;&lt;/div&gt;</div><div class="line">        );</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const <span class="built_in">history</span> = process.env.NODE_ENV !== <span class="string">'production'</span> ? browserHistory : hashHistory;</div><div class="line"></div><div class="line">const Component1 = (location, cb) =&gt; &#123;</div><div class="line">    require.ensure([], require =&gt; &#123;</div><div class="line">        cb(null, require(<span class="string">'../Component/Component1'</span>).default)</div><div class="line">    &#125;,<span class="string">'Component1'</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const RouteConfig = (</div><div class="line">    &lt;Router <span class="built_in">history</span>=&#123;<span class="built_in">history</span>&#125;&gt;</div><div class="line">        &lt;Route path=<span class="string">"/"</span> component=&#123;Roots&#125;&gt;</div><div class="line">            &lt;IndexRoute component=&#123;index&#125; /&gt;//首页</div><div class="line">            &lt;Route path=<span class="string">"index"</span> component=&#123;index&#125; /&gt;</div><div class="line">            &lt;Route path=<span class="string">"Component2"</span> getComponent=&#123;Component2&#125; /&gt;</div><div class="line">            &lt;Redirect from=<span class="string">'*'</span> to=<span class="string">'/'</span>  /&gt;</div><div class="line">        &lt;/Route&gt;</div><div class="line">    &lt;/Router&gt;</div><div class="line">);</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;React-Router就是React的一个组件，它并不会被渲染，只是一个创建内部路由规则的配置对象，根据匹配的路由地址展现相应的组件。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="react" scheme="http://106.15.95.246/categories/react/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎么使用react搭建工程1—计数器</title>
-    <link href="http://106.15.95.246/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B1%E2%80%94%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
-    <id>http://106.15.95.246/2017/07/04/怎么使用react搭建工程1—计数器/</id>
-    <published>2017-07-04T05:17:44.000Z</published>
-    <updated>2017-07-04T07:26:29.767Z</updated>
-    
-    <content type="html"><![CDATA[<p>react配合redux搭建最简单的应用——计数器。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">import React, &#123; Component &#125; from <span class="string">'react'</span></div><div class="line">import PropTypes from <span class="string">'prop-types'</span></div><div class="line">import ReactDOM from <span class="string">'react-dom'</span></div><div class="line">import &#123; createStore &#125; from <span class="string">'redux'</span></div><div class="line">import &#123; Provider, connect &#125; from <span class="string">'react-redux'</span></div><div class="line"></div><div class="line">/* 无状态页面组件 */</div><div class="line">// 组件只需要两种来源于props的变量</div><div class="line">// 一个是来自于store的state</div><div class="line">// 一个来源事件句柄</div><div class="line">class Counter extends Component &#123;</div><div class="line">  <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">    const &#123; value, onIncreaseClick &#125; = this.props</div><div class="line">    <span class="built_in">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;span&gt;&#123;value&#125;&lt;/span&gt;</div><div class="line">        &lt;button onClick=&#123;onIncreaseClick&#125;&gt;Increase&lt;/button&gt;</div><div class="line">      &lt;/div&gt;</div><div class="line">    )</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Counter.propTypes = &#123;</div><div class="line">  value: PropTypes.number.isRequired,</div><div class="line">  onIncreaseClick: PropTypes.func.isRequired</div><div class="line">&#125;</div><div class="line"></div><div class="line">/* 页面业务逻辑 */</div><div class="line">// 数据关联store.state中储存的值</div><div class="line"><span class="keyword">function</span> mapStateToProps(state) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    value: state.count</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">// 事件句柄与Reducer关联</div><div class="line"><span class="keyword">function</span> mapDispatchToProps(dispatch) &#123;</div><div class="line">  <span class="built_in">return</span> &#123;</div><div class="line">    onIncreaseClick: () =&gt; dispatch(&#123; <span class="built_in">type</span>: <span class="string">'increase'</span> &#125;)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 将数据、方法与组件关联起来</div><div class="line">const App = connect(</div><div class="line">  mapStateToProps,</div><div class="line">  mapDispatchToProps</div><div class="line">)(Counter)</div><div class="line"></div><div class="line"></div><div class="line">// Reducer同步处理</div><div class="line"><span class="keyword">function</span> counter(state = &#123; count: 0 &#125;, action) &#123;</div><div class="line">  const count = state.count</div><div class="line">  switch (action.type) &#123;</div><div class="line">    <span class="keyword">case</span> <span class="string">'increase'</span>:</div><div class="line">      <span class="built_in">return</span> &#123; count: count + 1 &#125;</div><div class="line">    default:</div><div class="line">      <span class="built_in">return</span> state</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// Store:将Reducer同步处理的state存在store中</div><div class="line">const store = createStore(counter)</div><div class="line"></div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;Provider store=&#123;store&#125;&gt;</div><div class="line">    &lt;App /&gt;</div><div class="line">  &lt;/Provider&gt;,</div><div class="line">  document.getElementById(<span class="string">'root'</span>)</div><div class="line">)</div><div class="line"></div><div class="line">/* 代码来源阮一峰先生*/</div></pre></td></tr></table></figure></p>
-<p>基于以上代码，我们可以清楚看清楚react的数据流。</p>
-<blockquote>
-<p>Component （事件）-&gt; 句柄或异步请求 -&gt; Reducer -&gt; store -&gt; (state)Component</p>
-</blockquote>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;react配合redux搭建最简单的应用——计数器。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="react" scheme="http://106.15.95.246/categories/react/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="react" scheme="http://106.15.95.246/tags/react/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>http协议</title>
-    <link href="http://106.15.95.246/2017/07/03/http%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://106.15.95.246/2017/07/03/http协议/</id>
-    <published>2017-07-03T06:01:44.000Z</published>
-    <updated>2017-07-03T09:09:07.944Z</updated>
-    
-    <content type="html"><![CDATA[<p>超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。<br>HTTP是一个客户端和服务器端请求和应答的标准（TCP）。<br><a id="more"></a></p>
-<h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>HTTP/1.0　这是第一个在通讯中指定版本号的HTTP 协议版本，至今仍被广泛采用，特别是在代理服务器中。<br>HTTP/1.1　当前版本。持久连接被默认采用，并能很好地配合代理服务器工作。还支持以管道方式同时发送多个请求，以便降低线路负载，提高传输速度。<br>HTTP/1.1相较于 HTTP/1.0 协议的区别主要体现在：<br>    1 缓存处理<br>    2 带宽优化及网络连接的使用<br>    3 错误通知的管理<br>    4 消息在网络中的发送<br>    5 互联网地址的维护<br>    6 安全性及完整性</p>
-<p>HTTP/2.0 协议目标<br>    1 异步连接多路复用；<br>    2 头部压缩；<br>    3 请求/响应管线化；<br>    4 服务器推送流（即Server Push技术）；</p>
-<h4 id="http特点"><a href="#http特点" class="headerlink" title="http特点"></a>http特点</h4><p>1、简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。<br>2、灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。<br>3、无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。<br>4、无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。<br>5、支持B/S及C/S模式。</p>
-<h4 id="http缺点与https"><a href="#http缺点与https" class="headerlink" title="http缺点与https"></a>http缺点与https</h4><p>a、通信使用明文不加密，内容可能被窃听，也就是被抓包分析。<br>b、不验证通信方身份，可能遭到伪装<br>c、无法验证报文完整性，可能被篡改<br>HTTPS就是HTTP加上加密处理（一般是SSL安全通信线路）+认证+完整性保护</p>
-<h4 id="报头"><a href="#报头" class="headerlink" title="报头"></a>报头</h4><p>HTTP消息报头包括通用报头、请求报头、响应报头、实体报头。</p>
-<p>1、通用报头</p>
-<p>Cache-Control用于指定缓存指令，缓存指令是单向的（响应中出现的缓存指令在请求中未必会出现），且是独立的（一个消息的缓存指令不会影响另一个消息处理的缓存机制），HTTP1.0使用的类似的报头域为Pragma。<br>请求时的缓存指令包括：no-cache（用于指示请求或响应消息不能缓存）、no-store、max-age、max-stale、min-fresh、only-if-cached;<br>响应时的缓存指令包括：public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age、s-maxage.<br>Date普通报头域表示消息产生的日期和时间<br>Connection普通报头域允许发送指定连接的选项。例如指定连接是连续，或者指定“close”选项，通知服务器，在响应完成后，关闭连接</p>
-<p>2、请求报头<br>请求报头允许客户端向服务器端传递请求的附加信息以及客户端自身的信息。<br>常用的请求报头<br>Accept请求报头域用于指定客户端接受哪些类型的信息。eg：Accept：image/gif，表明客户端希望接受GIF图象格式的资源；Accept：text/html，表明客户端希望接受html文本。<br>Accept-Charset请求报头域用于指定客户端接受的字符集。eg：Accept-Charset:iso-8859-1,gb2312.如果在请求消息中没有设置这个域，缺省是任何字符集都可以接受。<br>Accept-Encoding请求报头域类似于Accept，但是它是用于指定可接受的内容编码。eg：Accept-Encoding:gzip.deflate.如果请求消息中没有设置这个域服务器假定客户端对各种内容编码都可以接受。<br>Accept-Language请求报头域类似于Accept，但是它是用于指定一种自然语言。eg：Accept-Language:zh-cn.如果请求消息中没有设置这个报头域，服务器假定客户端对各种语言都可以接受。<br>Authorization请求报头域主要用于证明客户端有权查看某个资源。当浏览器访问一个页面时，如果收到服务器的响应代码为401（未授权），可以发送一个包含Authorization请求报头域的请求，要求服务器对其进行验证。<br>Host请求报头域主要用于指定被请求资源的Internet主机和端口号，它通常从HTTP URL中提取出来的，eg：<br>User-Agent请求报头域允许客户端将它的操作系统、浏览器和其它属性告诉服务器。</p>
-<pre><code>eg：
-GET /form.html HTTP/1.1 (CRLF)
-Accept:image/gif,image/x-xbitmap,image/jpeg,application/x-shockwave-flash,application/vnd.ms-excel,application/vnd.ms-powerpoint,application/msword,*/* (CRLF)
-Accept-Language:zh-cn (CRLF)
-Accept-Encoding:gzip,deflate (CRLF)
-If-Modified-Since:Wed,05 Jan 2007 11:21:25 GMT (CRLF)
-If-None-Match:W/&quot;80b1a4c018f3c41:8317&quot; (CRLF)
-User-Agent:Mozilla/4.0(compatible;MSIE6.0;Windows NT 5.0) (CRLF)
-Host:www.guet.edu.cn (CRLF)
-Connection:Keep-Alive (CRLF)
-(CRLF)
-</code></pre><p>3、响应报头<br>响应报头允许服务器传递不能放在状态行中的附加响应信息，以及关于服务器的信息和对Request-URI所标识的资源进行下一步访问的信息。<br>Location响应报头域用于重定向接受者到一个新的位置。Location响应报头域常用在更换域名的时候。<br>Server响应报头域包含了服务器用来处理请求的软件信息。与User-Agent请求报头域是相对应的。Server：Apache-Coyote/1.1<br>WWW-Authenticate响应报头域必须被包含在401（未授权的）响应消息中，客户端收到401响应消息时候，并发送Authorization报头域请求服务器对其进行验证时，服务端响应报头就包含该报头域。</p>
-<p>4、实体报头<br>请求和响应消息都可以传送一个实体。一个实体由实体报头域和实体正文组成，但并不是说实体报头域和实体正文要在一起发送，可以只发送实体报头域。实体报头定义了关于实体正文（eg：有无实体正文）和请求所标识的资源的元信息。<br>Content-Encoding实体报头域被用作媒体类型的修饰符，它的值指示了已经被应用到实体正文的附加内容的编码，因而要获得Content-Type报头域中所引用的媒体类型，必须采用相应的解码机制。Content-Encoding这样用于记录文档的压缩方法，eg：Content-Encoding：gzip<br>Content-Language实体报头域描述了资源所用的自然语言。没有设置该域则认为实体内容将提供给所有的语言阅读者。<br>Content-Length实体报头域用于指明实体正文的长度，以字节方式存储的十进制数字来表示。<br>Content-Type实体报头域用语指明发送给接收者的实体正文的媒体类型。<br>Last-Modified实体报头域用于指示资源的最后修改日期和时间。<br>Expires实体报头域给出响应过期的日期和时间。为了让代理服务器或浏览器在一段时间以后更新缓存中(再次访问曾访问过的页面时，直接从缓存中加载，缩短响应时间和降低服务器负载)的页面，我们可以使用Expires实体报头域指定页面过期的时间。eg：Expires：Thu，15 Sep 2006 16:23:12 GMT</p>
-<h4 id="HTTP协议相关技术"><a href="#HTTP协议相关技术" class="headerlink" title="HTTP协议相关技术"></a>HTTP协议相关技术</h4><p> 1、基础：<br>    高层协议有：文件传输协议FTP、电子邮件传输协议SMTP、域名系统服务DNS、网络新闻传输协议NNTP和HTTP协议等<br> 中介由三种：代理(Proxy)、网关(Gateway)和通道(Tunnel)，一个代理根据URI的绝对格式来接受请求，重写全部或部分消息，通过 URI的标识把已格式化过的请求发送到服务器。网关是一个接收代理，作为一些其它服务器的上层，并且如果必须的话，可以把请求翻译给下层的服务器协议。一 个通道作为不改变消息的两个连接之间的中继点。当通讯需要通过一个中介(例如：防火墙等)或者是中介不能识别消息的内容时，通道经常被使用。<br>    代理(Proxy)：一个中间程序，它可以充当一个服务器，也可以充当一个客户机，为其它客户机建立请求。请求是通过可能的翻译在内部或经过传递到其它的 服务器中。一个代理在发送请求信息之前，必须解释并且如果可能重写它。代理经常作为通过防火墙的客户机端的门户，代理还可以作为一个帮助应用来通过协议处 理没有被用户代理完成的请求。<br> 网关(Gateway)：一个作为其它服务器中间媒介的服务器。与代理不同的是，网关接受请求就好象对被请求的资源来说它就是源服务器；发出请求的客户机并没有意识到它在同网关打交道。<br> 网关经常作为通过防火墙的服务器端的门户，网关还可以作为一个协议翻译器以便存取那些存储在非HTTP系统中的资源。<br>    通道(Tunnel)：是作为两个连接中继的中介程序。一旦激活，通道便被认为不属于HTTP通讯，尽管通道可能是被一个HTTP请求初始化的。当被中继 的连接两端关闭时，通道便消失。当一个门户(Portal)必须存在或中介(Intermediary)不能解释中继的通讯时通道被经常使用。</p>
-<p> 2、协议分析的优势—HTTP分析器检测网络攻击<br> 以模块化的方式对高层协议进行分析处理，将是未来入侵检测的方向。<br> HTTP及其代理的常用端口80、3128和8080在network部分用port标签进行了规定</p>
-<p> 3、HTTP协议Content Lenth限制漏洞导致拒绝服务攻击<br> 使用POST方法时，可以设置ContentLenth来定义需要传送的数据长度，例如ContentLenth:999999999，在传送完成前，内 存不会释放，攻击者可以利用这个缺陷，连续向WEB服务器发送垃圾数据直至WEB服务器内存耗尽。这种攻击方法基本不会留下痕迹。</p>
-<p> 4、利用HTTP协议的特性进行拒绝服务攻击的一些构思<br> 服务器端忙于处理攻击者伪造的TCP连接请求而无暇理睬客户的正常请求（毕竟客户端的正常请求比率非常之小），此时从正常客户的角度看来，服务器失去响应，这种情况我们称作：服务器端受到了SYNFlood攻击（SYN洪水攻击）。<br> 而Smurf、TearDrop等是利用ICMP报文来Flood和IP碎片攻击的。本文用“正常连接”的方法来产生拒绝服务攻击。<br> 19端口在早期已经有人用来做Chargen攻击了，即Chargen_Denial_of_Service，但是！他们用的方法是在两台Chargen 服务器之间产生UDP连接，让服务器处理过多信息而DOWN掉，那么，干掉一台WEB服务器的条件就必须有2个：1.有Chargen服务2.有HTTP 服务<br> 方法：攻击者伪造源IP给N台Chargen发送连接请求（Connect），Chargen接收到连接后就会返回每秒72字节的字符流（实际上根据网络实际情况，这个速度更快）给服务器。</p>
-<p> 5、Http指纹识别技术<br>    Http指纹识别的原理大致上也是相同的：记录不同服务器对Http协议执行中的微小差别进行识别.Http指纹识别比TCP/IP堆栈指纹识别复杂许 多,理由是定制Http服务器的配置文件、增加插件或组件使得更改Http的响应信息变的很容易,这样使得识别变的困难；然而定制TCP/IP堆栈的行为 需要对核心层进行修改,所以就容易识别.<br> 要让服务器返回不同的Banner信息的设置是很简单的,象Apache这样的开放源代码的Http服务器,用户可以在源代码里修改Banner信息,然 后重起Http服务就生效了；对于没有公开源代码的Http服务器比如微软的IIS或者是Netscape,可以在存放Banner信息的Dll文件中修 改,相关的文章有讨论的,这里不再赘述,当然这样的修改的效果还是不错的.另外一种模糊Banner信息的方法是使用插件。<br> 常用测试请求：<br> 1：HEAD/Http/1.0发送基本的Http请求<br> 2：DELETE/Http/1.0发送那些不被允许的请求,比如Delete请求<br> 3：GET/Http/3.0发送一个非法版本的Http协议请求<br> 4：GET/JUNK/1.0发送一个不正确规格的Http协议请求<br> Http指纹识别工具Httprint,它通过运用统计学原理,组合模糊的逻辑学技术,能很有效的确定Http服务器的类型.它可以被用来收集和分析不同Http服务器产生的签名。</p>
-<p> 6、其他：为了提高用户使用浏览器时的性能，现代浏览器还支持并发的访问方式，浏览一个网页时同时建立多个连接，以迅速获得一个网页上的多个图标，这样能更快速完成整个网页的传输。<br> HTTP1.1中提供了这种持续连接的方式，而下一代HTTP协议：HTTP-NG更增加了有关会话控制、丰富的内容协商等方式的支持，来提供<br> 更高效率的连接。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;超文本传输协议（HTTP，HyperText Transfer Protocol)是互联网上应用最为广泛的一种网络协议。&lt;br&gt;HTTP是一个客户端和服务器端请求和应答的标准（TCP）。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="通信" scheme="http://106.15.95.246/categories/%E9%80%9A%E4%BF%A1/"/>
-    
-    
-      <category term="通信" scheme="http://106.15.95.246/tags/%E9%80%9A%E4%BF%A1/"/>
-    
-      <category term="http" scheme="http://106.15.95.246/tags/http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>实现全屏</title>
-    <link href="http://106.15.95.246/2017/07/02/%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%8F/"/>
-    <id>http://106.15.95.246/2017/07/02/实现全屏/</id>
-    <published>2017-07-02T06:48:02.000Z</published>
-    <updated>2017-07-02T09:24:32.237Z</updated>
-    
-    <content type="html"><![CDATA[<p>代码实现全屏ie10以下可以使用ActiveXObject。ie11的msRequestFullScreen鉴定无效。其他浏览器可以使用专用方法进行全屏。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullScreen</span></span>()&#123;</div><div class="line">	var el = document.documentElement;</div><div class="line">    var rfs = el.requestFullScreen  //w3c</div><div class="line">    || el.webkitRequestFullScreen   //webkit</div><div class="line">    || el.mozRequestFullScreen      //firefox</div><div class="line">    || el.msRequestFullScreen;      //IE11下这个方法没用</div><div class="line">    <span class="keyword">if</span> (typeof rfs != <span class="string">"undefined"</span> &amp;&amp; rfs) &#123;</div><div class="line">        rfs.call(el);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (typeof window.ActiveXObject != <span class="string">"undefined"</span>) &#123;</div><div class="line">    //ie10以下</div><div class="line">        var wscript = new ActiveXObject(<span class="string">"WScript.Shell"</span>);</div><div class="line">        <span class="keyword">if</span> (wscript != null) &#123;</div><div class="line">            wscript.SendKeys(<span class="string">"&#123;F11&#125;"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        alert(<span class="string">"请手动F11，展开全屏"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//退出全屏</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">fullExit</span></span>()&#123;</div><div class="line">  var element= document.documentElement;</div><div class="line">  //IE ActiveXObject</div><div class="line">  <span class="keyword">if</span> (window.ActiveXObject)</div><div class="line">  &#123;</div><div class="line">    var WsShell = new ActiveXObject(<span class="string">'WScript.Shell'</span>) </div><div class="line">    WsShell.SendKeys(<span class="string">'&#123;F11&#125;'</span>); </div><div class="line">  &#125;</div><div class="line">  //HTML5 W3C 提议</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.requestFullScreen) &#123;  </div><div class="line">    document.exitFullscreen();</div><div class="line">  &#125;</div><div class="line"> //IE 11</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.msRequestFullscreen) &#123;  </div><div class="line">    document.msExitFullscreen();</div><div class="line">  &#125;</div><div class="line">  // Webkit (works <span class="keyword">in</span> Safari5.1 and Chrome 15)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.webkitRequestFullScreen ) &#123;  </div><div class="line">    document.webkitCancelFullScreen(); </div><div class="line">  &#125; </div><div class="line">  // Firefox (works <span class="keyword">in</span> nightly)</div><div class="line">  <span class="keyword">else</span> <span class="keyword">if</span>(element.mozRequestFullScreen) &#123;  </div><div class="line">    document.mozCancelFullScreen();  </div><div class="line">  &#125; </div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;代码实现全屏ie10以下可以使用ActiveXObject。ie11的msRequestFullScreen鉴定无效。其他浏览器可以使用专用方法进行全屏。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>复制到剪切板</title>
-    <link href="http://106.15.95.246/2017/07/02/%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E5%88%87%E6%9D%BF/"/>
-    <id>http://106.15.95.246/2017/07/02/复制到剪切板/</id>
-    <published>2017-07-02T06:46:59.000Z</published>
-    <updated>2017-07-02T08:19:07.876Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="1-通用的复制方法"><a href="#1-通用的复制方法" class="headerlink" title="1.通用的复制方法"></a>1.通用的复制方法</h4><p>使用浏览器器自带的复制功能。选中，然后复制。<br>该方法在代码层面只支持input、textarea等表单元素的复制。<br>所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。<br><a id="more"></a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl2</span></span>()</div><div class="line">&#123;</div><div class="line">var Url2=document.getElementById(<span class="string">"biao1"</span>);</div><div class="line">Url2.select(); // 选择对象</div><div class="line">document.execCommand(<span class="string">"Copy"</span>); // 执行浏览器复制命令</div><div class="line">alert(<span class="string">"已复制好，可贴粘。"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;textarea cols=<span class="string">"20"</span> rows=<span class="string">"10"</span> id=<span class="string">"biao1"</span>&gt;用户定义的代码区域&lt;/textarea&gt;</div><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> onClick=<span class="string">"copyUrl2()"</span> value=<span class="string">"点击复制代码"</span> /&gt;</div></pre></td></tr></table></figure></p>
-<h4 id="2-IE中的复制"><a href="#2-IE中的复制" class="headerlink" title="2.IE中的复制"></a>2.IE中的复制</h4><p>IE中针对复制的方法有2种。</p>
-<h5 id="复制span中的文本"><a href="#复制span中的文本" class="headerlink" title="复制span中的文本"></a>复制span中的文本</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;span onClick=<span class="string">"copyText(this)"</span>&gt;点我复制我&lt;/span&gt;</div><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> copyText(obj) &#123;</div><div class="line">    var rng = document.body.createTextRange();</div><div class="line">    rng.moveToElementText(obj);</div><div class="line">    rng.scrollIntoView();</div><div class="line">    rng.select();</div><div class="line">    rng.execCommand(<span class="string">"Copy"</span>);</div><div class="line">    rng.collapse(<span class="literal">false</span>);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h5 id="复制locationURL地址"><a href="#复制locationURL地址" class="headerlink" title="复制locationURL地址"></a>复制locationURL地址</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"anniu2"</span> onClick=<span class="string">'copyUrl()'</span> value=<span class="string">"复制URL地址"</span>&gt;</div><div class="line">&lt;script language=<span class="string">"javascript"</span>&gt;</div><div class="line"><span class="keyword">function</span> <span class="function"><span class="title">copyUrl</span></span>()&#123;</div><div class="line">    var clipBoardContent=this.location.href;</div><div class="line">    window.clipboardData.setData(<span class="string">"Text"</span>,clipBoardContent);</div><div class="line">    alert(<span class="string">"复制成功!"</span>);</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>综上所述，代码层面的页面复制有两种实现方法，一种的IE所支持的window.clipboardData的setData方法，一种是比较通用的针对表单元素input、textarea的document.execCommand(“Copy”)方法。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h4 id=&quot;1-通用的复制方法&quot;&gt;&lt;a href=&quot;#1-通用的复制方法&quot; class=&quot;headerlink&quot; title=&quot;1.通用的复制方法&quot;&gt;&lt;/a&gt;1.通用的复制方法&lt;/h4&gt;&lt;p&gt;使用浏览器器自带的复制功能。选中，然后复制。&lt;br&gt;该方法在代码层面只支持input、textarea等表单元素的复制。&lt;br&gt;所以需要将元素中的文本设置到一个textarea中。textarea必须窗口可见。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>jsonp</title>
-    <link href="http://106.15.95.246/2017/07/02/jsonp/"/>
-    <id>http://106.15.95.246/2017/07/02/jsonp/</id>
-    <published>2017-07-02T05:32:48.000Z</published>
-    <updated>2017-07-02T05:53:27.784Z</updated>
-    
-    <content type="html"><![CDATA[<p>JSONP(JSON with Padding)是JSON的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server1.example.com的服务器沟通，而 HTML 的&lt;script&gt;元素是一个例外。利用 &lt;script&gt;元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。<br><a id="more"></a></p>
-<h2 id="Jsonp原理"><a href="#Jsonp原理" class="headerlink" title="Jsonp原理"></a>Jsonp原理</h2><p>在客户端定义一个callbackFunction, 然后把callbackFunction的名字传给服务器。</p>
-<p>服务器先生成 json 数据。然后以 javascript 语法的方式，生成一个function , function 名字就是传递上来的参数 jsonp的值.</p>
-<p>最后将 json 数据直接以入参的方式，放置到 function 中，这样就生成了一段 js 语法的文档，返回给客户端。</p>
-<p>客户端浏览器，解析script标签，并执行返回的 javascript 文档，此时数据作为参数，传入到了客户端预先定义好的 callbackFunction 函数里.（动态执行回调函数）</p>
-<h2 id="服务器端对JSONP支持"><a href="#服务器端对JSONP支持" class="headerlink" title="服务器端对JSONP支持"></a>服务器端对JSONP支持</h2><p>请求： <a href="http://example.com/servlet?jsonp=callbackFunction。" target="_blank" rel="external">http://example.com/servlet?jsonp=callbackFunction。</a><br>期望数据：[“param1”,”param2”]<br>前段通过&lt;script&gt;加载文档并调用。实现callbackFunction函数调用</p>
-<p>Java:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">return</span> request.getParameter(<span class="string">"callbackFunction"</span>)+<span class="string">"("</span>+JsonString+<span class="string">")"</span>;</div></pre></td></tr></table></figure></p>
-<p>返回内容像：callbackFunction([“param1”,”param2”])</p>
-<h2 id="客户端实现跨域请求"><a href="#客户端实现跨域请求" class="headerlink" title="客户端实现跨域请求"></a>客户端实现跨域请求</h2><p>在客户端调用提供JSONP支持的URL Service，获取JSONP格式数据。</p>
-<h3 id="创建script标签"><a href="#创建script标签" class="headerlink" title="创建script标签"></a>创建script标签</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var head= document.getElementsByTagName(<span class="string">'head'</span>)[0]; </div><div class="line">var script= document.createElement(<span class="string">'script'</span>); </div><div class="line">script.type= <span class="string">'text/javascript'</span>; </div><div class="line">script.src= <span class="string">'http://example.com/servlet?jsonp=callbackFunction'</span>; </div><div class="line">head.appendChild(script);</div></pre></td></tr></table></figure>
-<p>结果：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">	...</div><div class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span> src=<span class="string">"http://example.com/servlet?jsonp=callbackFunction"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div></pre></td></tr></table></figure></p>
-<h3 id="客户端实现-callbackFunction-函数-全局"><a href="#客户端实现-callbackFunction-函数-全局" class="headerlink" title="客户端实现 callbackFunction 函数(全局)"></a>客户端实现 callbackFunction 函数(全局)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> callbackFunction(result) &#123;  </div><div class="line">    <span class="keyword">for</span>(var i <span class="keyword">in</span> result) &#123;  </div><div class="line">        alert(i+<span class="string">":"</span>+result[i]); </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="监听jsonp"><a href="#监听jsonp" class="headerlink" title="监听jsonp"></a>监听jsonp</h2><p>Jsonp本质上就是一个异步的get请求，但是他跟ajax理论上毫无关联。<br>创建的script标签加载过程中同样拥有onreadystatechange事件与onload事件，同样也拥有onerror事件。我们可以通过这些来观察jsonp回调。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</div><div class="line">	var head= document.getElementsByTagName(<span class="string">'head'</span>)[0]; </div><div class="line">	var script= document.createElement(<span class="string">'script'</span>); </div><div class="line">	script.type= <span class="string">'text/javascript'</span>; </div><div class="line">	script.onload = script.onreadystatechange = <span class="function"><span class="title">function</span></span>() &#123; </div><div class="line">		<span class="keyword">if</span> (!this.readyState || this.readyState === <span class="string">"loaded"</span> || this.readyState === <span class="string">"complete"</span> ) &#123; </div><div class="line">			alert(<span class="string">'加载成功'</span>)</div><div class="line">			script.onload = script.onreadystatechange = null; </div><div class="line">		&#125; </div><div class="line">	&#125;; </div><div class="line">	script.onerror = <span class="function"><span class="title">function</span></span>()&#123;</div><div class="line">		alert(<span class="string">'加载失败'</span>)</div><div class="line">	&#125;</div><div class="line">	script.src= <span class="string">'jsonp.js'</span>; </div><div class="line">	head.appendChild(script); </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
-<p>除此之外，考虑到安全问题，我们可以通过使用正则表达式检查 JSON 字符。</p>
-<p>js代码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var my_JSON_object = !(/[^,:&#123;&#125;\[\]0-9.\-+Eaeflnr-u \n\r\t]/.<span class="built_in">test</span>(text.replace(/<span class="string">"(\\.|[^"</span>\\])*<span class="string">"/g, ' '))) &amp;&amp; eval('(' + text + ')');</span></div></pre></td></tr></table></figure></p>
-]]></content>
-    
-    <summary type="html">
-    
-      数据交互与dom操作并列前端两大基石
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="javascript" scheme="http://106.15.95.246/tags/javascript/"/>
-    
-      <category term="跨域" scheme="http://106.15.95.246/tags/%E8%B7%A8%E5%9F%9F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>form对象</title>
-    <link href="http://106.15.95.246/2017/07/02/form%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://106.15.95.246/2017/07/02/form对象/</id>
-    <published>2017-07-02T05:32:00.000Z</published>
-    <updated>2017-07-02T05:53:35.304Z</updated>
-    
-    <content type="html"><![CDATA[<p>&lt;form&gt; 标签用于为用户输入创建 HTML 表单。<br>表单能够包含 input 元素，比如文本字段、复选框、单选框、提交按钮等等。<br>表单还可以包含 menus、textarea、fieldset、legend 和 label 元素。<br>表单用于向服务器传输数据。<br><a id="more"></a></p>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;form action=<span class="string">"url"</span> enctype=<span class="string">"multipart/form-data"</span> name=<span class="string">"form1"</span> target=<span class="string">"_blank"</span> method=<span class="string">"get"</span> &gt;</div><div class="line">  &lt;p&gt;First name: &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"fname"</span> /&gt;&lt;/p&gt;</div><div class="line">  &lt;p&gt;Last name: &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"lname"</span> /&gt;&lt;/p&gt;</div><div class="line">  &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"Submit"</span> /&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<h2 id="form元素属性"><a href="#form元素属性" class="headerlink" title="form元素属性"></a>form元素属性</h2><table class="table table-bordered table-striped table-condensed"><tr><th>属性</th><th>值</th><th>描述</th></tr><tr><td>accept-charset</td><td>charset_list</td><td>规定服务器可处理的表单数据字符集。</td></tr><tr><td>action</td><td>URL</td><td>规定当提交表单时向何处发送表单数据。</td></tr><tr><td rowspan="2">autocomplete</td><td>on</td><td rowspan="2">规定是否启用表单的自动完成功能。</td></tr><tr><td>off</td></tr><tr><td rowspan="2">method</td><td>get</td><td rowspan="2">规定用于发送 form-data 的 HTTP 方法。</td></tr><tr><td>post</td></tr><tr><td>name</td><td>form_name</td><td>规定表单的名称。</td></tr><tr><td rowspan="5">target</td><td>_blank</td><td rowspan="5">规定在何处打开 action URL。</td></tr><tr><td>_self</td></tr><tr><td>_parent</td></tr><tr><td>_top</td></tr><tr><td>framename</td></tr><tr><td rowspan="3">enctype</td><td>application/x-www-form-urlencoded</td><td rowspan="3"></td></tr><tr><td>multipart/form-data</td></tr><tr><td>text/plain</td></tr></table>
-
-<h2 id="Form-对象"><a href="#Form-对象" class="headerlink" title="Form 对象"></a>Form 对象</h2><p>Form 对象代表一个 HTML 表单。<br>在 HTML 文档中&lt;form&gt; 每出现一次，Form 对象就会被创建。</p>
-<h2 id="Form-对象属性"><a href="#Form-对象属性" class="headerlink" title="Form 对象属性"></a>Form 对象属性</h2><table class="table table-bordered table-striped table-condensed"><tr><th>属性</th><th>描述</th></tr><tr><td>acceptCharset</td><td>服务器可接受的字符集。</td></tr><tr><td>action</td><td>设置或返回表单的 action 属性。</td></tr><tr><td>enctype</td><td>设置或返回表单用来编码内容的 MIME 类型。</td></tr><tr><td>id</td><td>设置或返回表单的 id。</td></tr><tr><td>length</td><td>返回表单中的元素数目。</td></tr><tr><td>method</td><td>设置或返回将数据发送到服务器的 HTTP 方法。</td></tr><tr><td>name</td><td>设置或返回表单的名称。</td></tr><tr><td>target </td><td>设置或返回表单提交结果的 Frame 或 Window 名。</td></tr></table>
-
-<h2 id="Form-对象方法-句柄"><a href="#Form-对象方法-句柄" class="headerlink" title="Form 对象方法/句柄"></a>Form 对象方法/句柄</h2><p>submit()    提交表单。<br>onsubmit    在提交表单之前调用。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      数据交互与dom操作并列前端两大基石
-    
-    </summary>
-    
-      <category term="前端" scheme="http://106.15.95.246/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-      <category term="html" scheme="http://106.15.95.246/tags/html/"/>
     
   </entry>
   
