@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.amulong.xin/"/>
-  <updated>2017-07-17T05:03:56.867Z</updated>
+  <updated>2017-07-17T05:10:53.290Z</updated>
   <id>http://www.amulong.xin/</id>
   
   <author>
@@ -16,317 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>前端三剑客-js基础大全</title>
-    <link href="http://www.amulong.xin/2017/07/17/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/"/>
-    <id>http://www.amulong.xin/2017/07/17/前端三剑客-js基础大全/</id>
-    <published>2017-07-17T04:31:55.000Z</published>
-    <updated>2017-07-17T05:03:56.867Z</updated>
-    
-    <content type="html"><![CDATA[<p>Javascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。<br><a id="more"></a></p>
-<h4 id="0-基本类型与引用类型"><a href="#0-基本类型与引用类型" class="headerlink" title="0.基本类型与引用类型"></a>0.基本类型与引用类型</h4><p>1.基本类型： string,number,boolean,null,undefined;操作和保存在变量的实际的值。<br>2.引用类型： Function,Array,Object;值保存在内存中，js不允许直接访问内存，在操作的时候，操作的是对象的引用。</p>
-<h4 id="1-字符串API"><a href="#1-字符串API" class="headerlink" title="1.字符串API:"></a>1.字符串API:</h4><pre><code>//字符串(String) 
-//1.声明 
-var myString = new String(&quot;Every good boy does fine.&quot;); 
-var myString = &quot;Every good boy does fine.&quot;; 
-
-//2.字符串连接 
-var myString = &quot;Every &quot; + &quot;good boy &quot; + &quot;does fine.&quot;; 
-var myString = &quot;Every &quot;; myString += &quot;good boy does fine.&quot;; 
-
-//3.截取字符串 
-var myString = &quot;Every good boy does fine.&quot;; 
-//截取第 6 位开始的字符 
-var section = myString.substring(6); //结果: &quot;good boy does fine.&quot; 
-//截取第 0 位开始至第 10 位为止的字符 
-var section = myString.substring(0,10); //结果: &quot;Every good&quot; 
-//截取从第 11 位到倒数第 6 位为止的字符 
-var section = myString.slice(11,-6); //结果: &quot;boy does&quot; 
-//从第 6 位开始截取长度为 4 的字符 
-var section = myString.substr(6,4); //结果: &quot;good&quot; 
-
-//4.转换大小写 
-var myString = &quot;Hello&quot;; 
-var lcString = myString.toLowerCase(); //结果: &quot;hello&quot; 
-var ucString = myString.toUpperCase(); //结果: &quot;HELLO&quot; 
-
-//5.字符串比较 
-var aString = &quot;Hello!&quot;; 
-var bString = new String(&quot;Hello!&quot;); 
-if( aString == &quot;Hello!&quot; ){ } //结果: true 
-if( aString == bString ){ } //结果: true 
-if( aString === bString ){ } //结果: false (两个对象不同,尽管它们的值相同) 
-
-//6.检索字符串 
-var myString = &quot;hello everybody.&quot;; 
-// 如果检索不到会返回-1,检索到的话返回在该串中的起始位置 
-if( myString.indexOf(&quot;every&quot;) &gt; -1 ){ } //结果: true 
-
-////7.查找替换字符串 
-var myString = &quot;I is your father.&quot;; 
-var result = myString.replace(&quot;is&quot;,&quot;am&quot;); //结果: &quot;I am your father.&quot; 
-
-//8.特殊字符: 
-//\b : 后退符 \t : 水平制表符 
-//\n : 换行符 \v : 垂直制表符 
-//\f : 分页符 \r : 回车符 
-//\&quot; : 双引号 \&apos; : 单引号 
-//\\ : 反斜杆 
-
-//9.将字符转换成Unicode编码 
-var myString = &quot;hello&quot;; 
-var code = myString.charCodeAt(3); //返回&quot;l&quot;的Unicode编码(整型) 
-var char = String.fromCharCode(66); //返回Unicode为66的字符 
-
-//10.将字符串转换成URL编码 
-var myString = &quot;hello all&quot;; 
-var code = encodeURI(myString); //结果: &quot;hello%20all&quot; 
-var str = decodeURI(code); //结果: &quot;hello all&quot; 
-//相应的还有: encodeURIComponent() decodeURIComponent() 
-</code></pre><h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2.数字函数:"></a>2.数字函数:</h4><pre><code>//数字型(Number) 
-//1.声明 
-var i = 1; 
-var i = new Number(1); 
-
-//2.字符串与数字间的转换 
-var i = 1; 
-var str = i.toString(); //结果: &quot;1&quot; 
-var str = new String(i); //结果: &quot;1&quot; 
-i = parseInt(str); //结果: 1 
-i = parseFloat(str); //结果: 1.0 
-//注意: parseInt,parseFloat会把一个类似于&quot;32G&quot;的字符串,强制转换成32 
-
-//3.判断是否为有效的数字 
-var i = 123; var str = &quot;string&quot;; 
-if( typeof i == &quot;number&quot; ){ } //true 
-//某些方法(如:parseInt,parseFloat)会返回一个特殊的值NaN(Not a Number) 
-//请注意第2点中的[注意],此方法不完全适合判断一个字符串是否是数字型!! 
-i = parseInt(str); 
-if( isNaN(i) ){ } 
-
-//4.数字型比较 
-//此知识与[字符串比较]相同 
-
-///5.小数转整数 
-var f = 1.5; 
-var i = Math.round(f); //结果:2 (四舍五入) 
-var i = Math.ceil(f); //结果:2 (返回大于f的最小整数) 
-var i = Math.floor(f); //结果:1 (返回小于f的最大整数) 
-
-//6.格式化显示数字 
-var i = 3.14159; 
-//格式化为两位小数的浮点数 
-var str = i.toFixed(2); //结果: &quot;3.14&quot; 
-//格式化为五位数字的浮点数(从左到右五位数字,不够补零) 
-var str = i.toPrecision(5); //结果: &quot;3.1415&quot; 
-
-//7.X进制数字的转换 
-var i = parseInt(&quot;0x1f&quot;,16); 
-var i = parseInt(i,10); 
-var i = parseInt(&quot;11010011&quot;,2); 
-
-//8.随机数 
-//返回0-1之间的任意小数 
-var rnd = Math.random(); 
-//返回0-n之间的任意整数(不包括n) 
-var rnd = Math.floor(Math.random() * n) 
-</code></pre><h4 id="3-数组API"><a href="#3-数组API" class="headerlink" title="3.数组API"></a>3.数组API</h4><pre><code>//定义数组 
-var arr = new Array();  
-
-//数组长度 
-arr.length; 
-
-//shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
-var a = [1,2,3,4,5]; 
-var b = a.shift(); //a：[2,3,4,5] b：1 
-
-//unshift：将参数添加到原数组开头，并返回数组的长度 
-//注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，
-//所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。
-var a = [1,2,3,4,5]; 
-var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5] b：7 
-
-//pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
-var a = [1,2,3,4,5]; 
-var b = a.pop(); //a：[1,2,3,4] b：5 
-
-//push：将参数添加到原数组末尾，并返回数组的长度 
-var a = [1,2,3,4,5]; 
-var b = a.push(6,7); //a：[1,2,3,4,5,6,7] b：7 
-
-//concat：返回一个新数组，是将参数添加到原数组中构成的 
-var a = [1,2,3,4,5]; 
-var b = a.concat(6,7); //a：[1,2,3,4,5] b：[1,2,3,4,5,6,7] 
-
-//splice(start,deleteCount,val1,val2,)：从start位置开始删除deleteCount项，从该位置起插入val1,val2, 
-var a = [1,2,3,4,5]; 
-var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5] b：[3,4] 
-var b = a.splice(0,1); //同shift 
-a.splice(0,0,-2,-1); var b = a.length; //同unshift 
-var b = a.splice(a.length-1,1); //同pop 
-a.splice(a.length,0,6,7); var b = a.length; //同push 
-
-//reverse：将数组反序 
-var a = [1,2,3,4,5]; 
-var b = a.reverse(); //a：[5,4,3,2,1] b：[5,4,3,2,1] 
-
-//sort(orderfunction)：按指定的参数对数组进行排序 
-var a = [1,2,3,4,5]; 
-var b = a.sort(); //a：[1,2,3,4,5] b：[1,2,3,4,5] 
-
-//slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
-var a = [1,2,3,4,5]; 
-var b = a.slice(2,5); //a：[1,2,3,4,5] b：[3,4,5] 
-
-//join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
-var a = [1,2,3,4,5]; 
-var b = a.join(&quot;|&quot;); //a：[1,2,3,4,5] b：&quot;1|2|3|4|5&quot; 
-</code></pre><h4 id="4-日期函数"><a href="#4-日期函数" class="headerlink" title="4.日期函数:"></a>4.日期函数:</h4><pre><code>//日期型(Date) 
-//1.声明 
-var myDate = new Date(); //系统当前时间 
-var myDate = new Date(yyyy, mm, dd, hh, mm, ss); 
-var myDate = new Date(yyyy, mm, dd); 
-var myDate = new Date(&quot;monthName dd, yyyy hh:mm:ss&quot;); 
-var myDate = new Date(&quot;monthName dd, yyyy&quot;); 
-var myDate = new Date(epochMilliseconds); 
-
-//2.获取时间的某部份 
-var myDate = new Date(); 
-myDate.getYear(); //获取当前年份(2位) 
-myDate.getFullYear(); //获取完整的年份(4位,1970-????) 
-myDate.getMonth(); //获取当前月份(0-11,0代表1月) 
-myDate.getDate(); //获取当前日(1-31) 
-myDate.getDay(); //获取当前星期X(0-6,0代表星期天) 
-myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数) 时间戳！！ 
-myDate.getHours(); //获取当前小时数(0-23) 
-myDate.getMinutes(); //获取当前分钟数(0-59) 
-myDate.getSeconds(); //获取当前秒数(0-59) 
-myDate.getMilliseconds(); //获取当前毫秒数(0-999) 
-myDate.toLocaleDateString(); //获取当前日期 
-myDate.toLocaleTimeString(); //获取当前时间 
-myDate.toLocaleString( ); //获取日期与时间 
-
-//3.计算之前或未来的时间 
-var myDate = new Date(); 
-myDate.setDate(myDate.getDate() + 10); //当前时间加10天 
-//类似的方法都基本相同,以set开头,具体参考第2点 
-
-//4.计算两个日期的偏移量 
-var i = daysBetween(beginDate,endDate); //返回天数 
-var i = beginDate.getTimezoneOffset(endDate); //返回分钟数 
-
-//5.检查有效日期 
-//checkDate() 只允许&quot;mm-dd-yyyy&quot;或&quot;mm/dd/yyyy&quot;两种格式的日期 
-if( checkDate(&quot;2006-01-01&quot;) ){ } 
-//正则表达式(自己写的检查 yyyy-mm-dd, yy-mm-dd, yyyy/mm/dd, yy/mm/dd 四种) 
-var r = /^(\d{2}|\d{4})[\/-]\d{1,2}[\/-]\d{1,2}$/; 
-if( r.test( myString ) ){ } 
-</code></pre><h4 id="5-数学函数"><a href="#5-数学函数" class="headerlink" title="5.数学函数:"></a>5.数学函数:</h4><pre><code>//Math对象 
-1. Math.abs(num) : 返回num的绝对值 
-2. Math.acos(num) : 返回num的反余弦值 
-3. Math.asin(num) : 返回num的反正弦值 
-4. Math.atan(num) : 返回num的反正切值 
-5. Math.atan2(y,x) : 返回y除以x的商的反正切值 
-6. Math.ceil(num) : 返回大于num的最小整数 
-7. Math.cos(num) : 返回num的余弦值 
-8. Math.exp(x) : 返回以自然数为底,x次幂的数 
-9. Math.floor(num) : 返回小于num的最大整数 
-10.Math.log(num) : 返回num的自然对数 
-11.Math.max(num1,num2) : 返回num1和num2中较大的一个 
-12.Math.min(num1,num2) : 返回num1和num2中较小的一个 
-13.Math.pow(x,y) : 返回x的y次方的值 
-14.Math.random() : 返回0到1之间的一个随机数 
-15.Math.round(num) : 返回num四舍五入后的值 
-16.Math.sin(num) : 返回num的正弦值 
-17.Math.sqrt(num) : 返回num的平方根 
-18.Math.tan(num) : 返回num的正切值 
-19.Math.E : 自然数(2.718281828459045) 
-20.Math.LN2 : 2的自然对数(0.6931471805599453) 
-21.Math.LN10 : 10的自然对数(2.302585092994046) 
-22.Math.LOG2E : log 2 为底的自然数(1.4426950408889634) 
-23.Math.LOG10E : log 10 为底的自然数(0.4342944819032518) 
-24.Math.PI : π(3.141592653589793) 
-25.Math.SQRT1_2 : 1/2的平方根(0.7071067811865476) 
-26.Math.SQRT2 : 2的平方根(1.4142135623730951) 
-</code></pre><h4 id="6-DOMAPI"><a href="#6-DOMAPI" class="headerlink" title="6.DOMAPI"></a>6.DOMAPI</h4><pre><code>//document方法： 
-getElementById(id) Node 返回指定节点的引用 
-getElementsByTagName(name) NodeList 返回文档中所有匹配的元素的集合 
-createElement(name) Node 创建一个元素节点
-createTextNode(text) 创建一个纯文本结点 
-ownerDocument Document 指向这个节点所属的文档 
-documentElement Node 返回html节点 
-document.body Node 返回body节点 
-document.querySelector()
-document.querySelectorAll()
-
-
-//element方法： 
-getAttribute(attributeName) String 返回指定属性的值 
-setAttribute(attributeName,value) String 给属性赋值 
-removeAttribute(attributeName) String 移除指定属性和它的值 
-
-//node方法： 
-appendChild(child) Node 给指定结点添加一个新的子结点 
-removeChild(child) Node 移除指定结点的子结点 
-replaceChild(newChild,oldChild) Node 替换指定结点的子结点 
-insertBefore(newChild,refChild) Node 在同一层级的结点前面插入新结点 
-hasChildNodes() Boolean 如果结点有子结点则返回true 
-
-//node属性： 
-nodeName String 以字符串的格式存放结点的名称 
-nodeType String 以整型数据格式存放结点的类型 
-nodeValue String 以可用的格式存放结点的值 
-parentNode Node 指向结点的父结点的引用 
-childNodes NodeList 指向子结点的引用的集合 
-firstChild Node 指向子结点结合中的第一个子结点的引用 
-lastChild Node 指向子结点结合中的最后一个子结点的引用 
-previousSibling Node 指向前一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null 
-nextSibling Node 指向后一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null
-</code></pre><h4 id="7-浏览器特征函数"><a href="#7-浏览器特征函数" class="headerlink" title="7.浏览器特征函数:"></a>7.浏览器特征函数:</h4><pre><code>//1.浏览器名称 
-//IE : &quot;Microsoft Internet Explorer&quot; 
-//NS : &quot;Netscape&quot; 
-var browserName = navigator.appName; 
-
-//2.浏览器版本 
-var browserVersion = navigator.appVersion; 
-
-//3.客户端操作系统 
-var isWin = ( navigator.userAgent.indexOf(&quot;Win&quot;) != -1 ); 
-var isMac = ( navigator.userAgent.indexOf(&quot;Mac&quot;) != -1 ); 
-var isUnix = ( navigator.userAgent.indexOf(&quot;X11&quot;) != -1 ); 
-
-//4.判断是否支持某对象,方法,属性 
-//当一个对象,方法,属性未定义时会返回undefined或null等,这些特殊值都是false 
-if( document.images ){ } 
-if( document.getElementById ){ } 
-
-//5.检查浏览器当前语言 
-if( navigator.userLanguage ){ var l = navigator.userLanguage.toUpperCase(); } 
-
-//6.检查浏览器是否支持Cookies 
-if( navigator.cookieEnabled ){ } 
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Javascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="前端面试圣经初级" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F%E5%88%9D%E7%BA%A7/"/>
-    
-    
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
-    
-      <category term="初级" scheme="http://www.amulong.xin/tags/%E5%88%9D%E7%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
     <title>前端三剑客-css基础集锦</title>
-    <link href="http://www.amulong.xin/2017/07/16/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-css%E5%9F%BA%E7%A1%80%E9%9B%86%E9%94%A6/"/>
-    <id>http://www.amulong.xin/2017/07/16/前端三剑客-css基础集锦/</id>
-    <published>2017-07-16T02:21:44.000Z</published>
-    <updated>2017-07-17T05:02:05.612Z</updated>
+    <link href="http://www.amulong.xin/2017/07/01/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-css%E5%9F%BA%E7%A1%80%E9%9B%86%E9%94%A6/"/>
+    <id>http://www.amulong.xin/2017/07/01/前端三剑客-css基础集锦/</id>
+    <published>2017-07-01T02:21:44.000Z</published>
+    <updated>2017-07-17T05:10:53.290Z</updated>
     
     <content type="html"><![CDATA[<p>css是页面展示及特效最直接表现的语言，前端开发除了要了解每个css属性的表现外，更要注重每个属性在不同浏览器之间差异，并完美的解决。<br><a id="more"></a></p>
 <h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><p>background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。</p>
@@ -752,10 +446,10 @@ flex: auto: 计算值为 1 1 auto
   
   <entry>
     <title>前端三剑客-html标签全解</title>
-    <link href="http://www.amulong.xin/2017/07/15/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-html%E6%A0%87%E7%AD%BE%E5%85%A8%E8%A7%A3/"/>
-    <id>http://www.amulong.xin/2017/07/15/前端三剑客-html标签全解/</id>
-    <published>2017-07-15T14:36:39.000Z</published>
-    <updated>2017-07-17T05:01:37.326Z</updated>
+    <link href="http://www.amulong.xin/2017/06/30/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-html%E6%A0%87%E7%AD%BE%E5%85%A8%E8%A7%A3/"/>
+    <id>http://www.amulong.xin/2017/06/30/前端三剑客-html标签全解/</id>
+    <published>2017-06-30T14:36:39.000Z</published>
+    <updated>2017-07-17T05:10:45.977Z</updated>
     
     <content type="html"><![CDATA[<p>html标签是前端界面的骨架，作为一个前端开发我们对每个标签的熟悉程度就应该如同骨科医生对人体每一块骨头的熟知，哪怕他在不常见。<br><a id="more"></a></p>
 <h4 id="文档标签"><a href="#文档标签" class="headerlink" title="文档标签"></a>文档标签</h4><p>&lt;!DOCTYPE&gt;     定义文档类型。</p>
@@ -926,6 +620,462 @@ figure 元素的内容应该与主内容相关，但如果被删除，则不应�
     <summary type="html">
     
       &lt;p&gt;html标签是前端界面的骨架，作为一个前端开发我们对每个标签的熟悉程度就应该如同骨科医生对人体每一块骨头的熟知，哪怕他在不常见。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端面试圣经初级" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F%E5%88%9D%E7%BA%A7/"/>
+    
+    
+      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
+    
+      <category term="初级" scheme="http://www.amulong.xin/tags/%E5%88%9D%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端三剑客-js基础大全</title>
+    <link href="http://www.amulong.xin/2017/06/29/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/"/>
+    <id>http://www.amulong.xin/2017/06/29/前端三剑客-js基础大全/</id>
+    <published>2017-06-29T04:31:55.000Z</published>
+    <updated>2017-07-17T05:10:37.010Z</updated>
+    
+    <content type="html"><![CDATA[<p>Javascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。<br><a id="more"></a></p>
+<h4 id="0-基本类型与引用类型"><a href="#0-基本类型与引用类型" class="headerlink" title="0.基本类型与引用类型"></a>0.基本类型与引用类型</h4><p>1.基本类型： string,number,boolean,null,undefined;操作和保存在变量的实际的值。<br>2.引用类型： Function,Array,Object;值保存在内存中，js不允许直接访问内存，在操作的时候，操作的是对象的引用。</p>
+<h4 id="1-字符串API"><a href="#1-字符串API" class="headerlink" title="1.字符串API:"></a>1.字符串API:</h4><pre><code>//字符串(String) 
+//1.声明 
+var myString = new String(&quot;Every good boy does fine.&quot;); 
+var myString = &quot;Every good boy does fine.&quot;; 
+
+//2.字符串连接 
+var myString = &quot;Every &quot; + &quot;good boy &quot; + &quot;does fine.&quot;; 
+var myString = &quot;Every &quot;; myString += &quot;good boy does fine.&quot;; 
+
+//3.截取字符串 
+var myString = &quot;Every good boy does fine.&quot;; 
+//截取第 6 位开始的字符 
+var section = myString.substring(6); //结果: &quot;good boy does fine.&quot; 
+//截取第 0 位开始至第 10 位为止的字符 
+var section = myString.substring(0,10); //结果: &quot;Every good&quot; 
+//截取从第 11 位到倒数第 6 位为止的字符 
+var section = myString.slice(11,-6); //结果: &quot;boy does&quot; 
+//从第 6 位开始截取长度为 4 的字符 
+var section = myString.substr(6,4); //结果: &quot;good&quot; 
+
+//4.转换大小写 
+var myString = &quot;Hello&quot;; 
+var lcString = myString.toLowerCase(); //结果: &quot;hello&quot; 
+var ucString = myString.toUpperCase(); //结果: &quot;HELLO&quot; 
+
+//5.字符串比较 
+var aString = &quot;Hello!&quot;; 
+var bString = new String(&quot;Hello!&quot;); 
+if( aString == &quot;Hello!&quot; ){ } //结果: true 
+if( aString == bString ){ } //结果: true 
+if( aString === bString ){ } //结果: false (两个对象不同,尽管它们的值相同) 
+
+//6.检索字符串 
+var myString = &quot;hello everybody.&quot;; 
+// 如果检索不到会返回-1,检索到的话返回在该串中的起始位置 
+if( myString.indexOf(&quot;every&quot;) &gt; -1 ){ } //结果: true 
+
+////7.查找替换字符串 
+var myString = &quot;I is your father.&quot;; 
+var result = myString.replace(&quot;is&quot;,&quot;am&quot;); //结果: &quot;I am your father.&quot; 
+
+//8.特殊字符: 
+//\b : 后退符 \t : 水平制表符 
+//\n : 换行符 \v : 垂直制表符 
+//\f : 分页符 \r : 回车符 
+//\&quot; : 双引号 \&apos; : 单引号 
+//\\ : 反斜杆 
+
+//9.将字符转换成Unicode编码 
+var myString = &quot;hello&quot;; 
+var code = myString.charCodeAt(3); //返回&quot;l&quot;的Unicode编码(整型) 
+var char = String.fromCharCode(66); //返回Unicode为66的字符 
+
+//10.将字符串转换成URL编码 
+var myString = &quot;hello all&quot;; 
+var code = encodeURI(myString); //结果: &quot;hello%20all&quot; 
+var str = decodeURI(code); //结果: &quot;hello all&quot; 
+//相应的还有: encodeURIComponent() decodeURIComponent() 
+</code></pre><h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2.数字函数:"></a>2.数字函数:</h4><pre><code>//数字型(Number) 
+//1.声明 
+var i = 1; 
+var i = new Number(1); 
+
+//2.字符串与数字间的转换 
+var i = 1; 
+var str = i.toString(); //结果: &quot;1&quot; 
+var str = new String(i); //结果: &quot;1&quot; 
+i = parseInt(str); //结果: 1 
+i = parseFloat(str); //结果: 1.0 
+//注意: parseInt,parseFloat会把一个类似于&quot;32G&quot;的字符串,强制转换成32 
+
+//3.判断是否为有效的数字 
+var i = 123; var str = &quot;string&quot;; 
+if( typeof i == &quot;number&quot; ){ } //true 
+//某些方法(如:parseInt,parseFloat)会返回一个特殊的值NaN(Not a Number) 
+//请注意第2点中的[注意],此方法不完全适合判断一个字符串是否是数字型!! 
+i = parseInt(str); 
+if( isNaN(i) ){ } 
+
+//4.数字型比较 
+//此知识与[字符串比较]相同 
+
+///5.小数转整数 
+var f = 1.5; 
+var i = Math.round(f); //结果:2 (四舍五入) 
+var i = Math.ceil(f); //结果:2 (返回大于f的最小整数) 
+var i = Math.floor(f); //结果:1 (返回小于f的最大整数) 
+
+//6.格式化显示数字 
+var i = 3.14159; 
+//格式化为两位小数的浮点数 
+var str = i.toFixed(2); //结果: &quot;3.14&quot; 
+//格式化为五位数字的浮点数(从左到右五位数字,不够补零) 
+var str = i.toPrecision(5); //结果: &quot;3.1415&quot; 
+
+//7.X进制数字的转换 
+var i = parseInt(&quot;0x1f&quot;,16); 
+var i = parseInt(i,10); 
+var i = parseInt(&quot;11010011&quot;,2); 
+
+//8.随机数 
+//返回0-1之间的任意小数 
+var rnd = Math.random(); 
+//返回0-n之间的任意整数(不包括n) 
+var rnd = Math.floor(Math.random() * n) 
+</code></pre><h4 id="3-数组API"><a href="#3-数组API" class="headerlink" title="3.数组API"></a>3.数组API</h4><pre><code>//定义数组 
+var arr = new Array();  
+
+//数组长度 
+arr.length; 
+
+//shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
+var a = [1,2,3,4,5]; 
+var b = a.shift(); //a：[2,3,4,5] b：1 
+
+//unshift：将参数添加到原数组开头，并返回数组的长度 
+//注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，
+//所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。
+var a = [1,2,3,4,5]; 
+var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5] b：7 
+
+//pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
+var a = [1,2,3,4,5]; 
+var b = a.pop(); //a：[1,2,3,4] b：5 
+
+//push：将参数添加到原数组末尾，并返回数组的长度 
+var a = [1,2,3,4,5]; 
+var b = a.push(6,7); //a：[1,2,3,4,5,6,7] b：7 
+
+//concat：返回一个新数组，是将参数添加到原数组中构成的 
+var a = [1,2,3,4,5]; 
+var b = a.concat(6,7); //a：[1,2,3,4,5] b：[1,2,3,4,5,6,7] 
+
+//splice(start,deleteCount,val1,val2,)：从start位置开始删除deleteCount项，从该位置起插入val1,val2, 
+var a = [1,2,3,4,5]; 
+var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5] b：[3,4] 
+var b = a.splice(0,1); //同shift 
+a.splice(0,0,-2,-1); var b = a.length; //同unshift 
+var b = a.splice(a.length-1,1); //同pop 
+a.splice(a.length,0,6,7); var b = a.length; //同push 
+
+//reverse：将数组反序 
+var a = [1,2,3,4,5]; 
+var b = a.reverse(); //a：[5,4,3,2,1] b：[5,4,3,2,1] 
+
+//sort(orderfunction)：按指定的参数对数组进行排序 
+var a = [1,2,3,4,5]; 
+var b = a.sort(); //a：[1,2,3,4,5] b：[1,2,3,4,5] 
+
+//slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
+var a = [1,2,3,4,5]; 
+var b = a.slice(2,5); //a：[1,2,3,4,5] b：[3,4,5] 
+
+//join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
+var a = [1,2,3,4,5]; 
+var b = a.join(&quot;|&quot;); //a：[1,2,3,4,5] b：&quot;1|2|3|4|5&quot; 
+</code></pre><h4 id="4-日期函数"><a href="#4-日期函数" class="headerlink" title="4.日期函数:"></a>4.日期函数:</h4><pre><code>//日期型(Date) 
+//1.声明 
+var myDate = new Date(); //系统当前时间 
+var myDate = new Date(yyyy, mm, dd, hh, mm, ss); 
+var myDate = new Date(yyyy, mm, dd); 
+var myDate = new Date(&quot;monthName dd, yyyy hh:mm:ss&quot;); 
+var myDate = new Date(&quot;monthName dd, yyyy&quot;); 
+var myDate = new Date(epochMilliseconds); 
+
+//2.获取时间的某部份 
+var myDate = new Date(); 
+myDate.getYear(); //获取当前年份(2位) 
+myDate.getFullYear(); //获取完整的年份(4位,1970-????) 
+myDate.getMonth(); //获取当前月份(0-11,0代表1月) 
+myDate.getDate(); //获取当前日(1-31) 
+myDate.getDay(); //获取当前星期X(0-6,0代表星期天) 
+myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数) 时间戳！！ 
+myDate.getHours(); //获取当前小时数(0-23) 
+myDate.getMinutes(); //获取当前分钟数(0-59) 
+myDate.getSeconds(); //获取当前秒数(0-59) 
+myDate.getMilliseconds(); //获取当前毫秒数(0-999) 
+myDate.toLocaleDateString(); //获取当前日期 
+myDate.toLocaleTimeString(); //获取当前时间 
+myDate.toLocaleString( ); //获取日期与时间 
+
+//3.计算之前或未来的时间 
+var myDate = new Date(); 
+myDate.setDate(myDate.getDate() + 10); //当前时间加10天 
+//类似的方法都基本相同,以set开头,具体参考第2点 
+
+//4.计算两个日期的偏移量 
+var i = daysBetween(beginDate,endDate); //返回天数 
+var i = beginDate.getTimezoneOffset(endDate); //返回分钟数 
+
+//5.检查有效日期 
+//checkDate() 只允许&quot;mm-dd-yyyy&quot;或&quot;mm/dd/yyyy&quot;两种格式的日期 
+if( checkDate(&quot;2006-01-01&quot;) ){ } 
+//正则表达式(自己写的检查 yyyy-mm-dd, yy-mm-dd, yyyy/mm/dd, yy/mm/dd 四种) 
+var r = /^(\d{2}|\d{4})[\/-]\d{1,2}[\/-]\d{1,2}$/; 
+if( r.test( myString ) ){ } 
+</code></pre><h4 id="5-数学函数"><a href="#5-数学函数" class="headerlink" title="5.数学函数:"></a>5.数学函数:</h4><pre><code>//Math对象 
+1. Math.abs(num) : 返回num的绝对值 
+2. Math.acos(num) : 返回num的反余弦值 
+3. Math.asin(num) : 返回num的反正弦值 
+4. Math.atan(num) : 返回num的反正切值 
+5. Math.atan2(y,x) : 返回y除以x的商的反正切值 
+6. Math.ceil(num) : 返回大于num的最小整数 
+7. Math.cos(num) : 返回num的余弦值 
+8. Math.exp(x) : 返回以自然数为底,x次幂的数 
+9. Math.floor(num) : 返回小于num的最大整数 
+10.Math.log(num) : 返回num的自然对数 
+11.Math.max(num1,num2) : 返回num1和num2中较大的一个 
+12.Math.min(num1,num2) : 返回num1和num2中较小的一个 
+13.Math.pow(x,y) : 返回x的y次方的值 
+14.Math.random() : 返回0到1之间的一个随机数 
+15.Math.round(num) : 返回num四舍五入后的值 
+16.Math.sin(num) : 返回num的正弦值 
+17.Math.sqrt(num) : 返回num的平方根 
+18.Math.tan(num) : 返回num的正切值 
+19.Math.E : 自然数(2.718281828459045) 
+20.Math.LN2 : 2的自然对数(0.6931471805599453) 
+21.Math.LN10 : 10的自然对数(2.302585092994046) 
+22.Math.LOG2E : log 2 为底的自然数(1.4426950408889634) 
+23.Math.LOG10E : log 10 为底的自然数(0.4342944819032518) 
+24.Math.PI : π(3.141592653589793) 
+25.Math.SQRT1_2 : 1/2的平方根(0.7071067811865476) 
+26.Math.SQRT2 : 2的平方根(1.4142135623730951) 
+</code></pre><h4 id="6-DOMAPI"><a href="#6-DOMAPI" class="headerlink" title="6.DOMAPI"></a>6.DOMAPI</h4><pre><code>//document方法： 
+getElementById(id) Node 返回指定节点的引用 
+getElementsByTagName(name) NodeList 返回文档中所有匹配的元素的集合 
+createElement(name) Node 创建一个元素节点
+createTextNode(text) 创建一个纯文本结点 
+ownerDocument Document 指向这个节点所属的文档 
+documentElement Node 返回html节点 
+document.body Node 返回body节点 
+document.querySelector()
+document.querySelectorAll()
+
+
+//element方法： 
+getAttribute(attributeName) String 返回指定属性的值 
+setAttribute(attributeName,value) String 给属性赋值 
+removeAttribute(attributeName) String 移除指定属性和它的值 
+
+//node方法： 
+appendChild(child) Node 给指定结点添加一个新的子结点 
+removeChild(child) Node 移除指定结点的子结点 
+replaceChild(newChild,oldChild) Node 替换指定结点的子结点 
+insertBefore(newChild,refChild) Node 在同一层级的结点前面插入新结点 
+hasChildNodes() Boolean 如果结点有子结点则返回true 
+
+//node属性： 
+nodeName String 以字符串的格式存放结点的名称 
+nodeType String 以整型数据格式存放结点的类型 
+nodeValue String 以可用的格式存放结点的值 
+parentNode Node 指向结点的父结点的引用 
+childNodes NodeList 指向子结点的引用的集合 
+firstChild Node 指向子结点结合中的第一个子结点的引用 
+lastChild Node 指向子结点结合中的最后一个子结点的引用 
+previousSibling Node 指向前一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null 
+nextSibling Node 指向后一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null
+</code></pre><h4 id="7-浏览器特征函数"><a href="#7-浏览器特征函数" class="headerlink" title="7.浏览器特征函数:"></a>7.浏览器特征函数:</h4><pre><code>//1.浏览器名称 
+//IE : &quot;Microsoft Internet Explorer&quot; 
+//NS : &quot;Netscape&quot; 
+var browserName = navigator.appName; 
+
+//2.浏览器版本 
+var browserVersion = navigator.appVersion; 
+
+//3.客户端操作系统 
+var isWin = ( navigator.userAgent.indexOf(&quot;Win&quot;) != -1 ); 
+var isMac = ( navigator.userAgent.indexOf(&quot;Mac&quot;) != -1 ); 
+var isUnix = ( navigator.userAgent.indexOf(&quot;X11&quot;) != -1 ); 
+
+//4.判断是否支持某对象,方法,属性 
+//当一个对象,方法,属性未定义时会返回undefined或null等,这些特殊值都是false 
+if( document.images ){ } 
+if( document.getElementById ){ } 
+
+//5.检查浏览器当前语言 
+if( navigator.userLanguage ){ var l = navigator.userLanguage.toUpperCase(); } 
+
+//6.检查浏览器是否支持Cookies 
+if( navigator.cookieEnabled ){ } 
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Javascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="前端面试圣经初级" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E5%9C%A3%E7%BB%8F%E5%88%9D%E7%BA%A7/"/>
+    
+    
+      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+    
+      <category term="初级" scheme="http://www.amulong.xin/tags/%E5%88%9D%E7%BA%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello-world</title>
+    <link href="http://www.amulong.xin/2016/12/18/hello-world/"/>
+    <id>http://www.amulong.xin/2016/12/18/hello-world/</id>
+    <published>2016-12-18T04:31:31.000Z</published>
+    <updated>2017-07-17T05:12:08.338Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="博客" scheme="http://www.amulong.xin/categories/%E5%8D%9A%E5%AE%A2/"/>
+    
+    
+      <category term="hexo" scheme="http://www.amulong.xin/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>meta标签用法总结</title>
+    <link href="http://www.amulong.xin/2016/07/02/meta%E6%A0%87%E7%AD%BE%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.amulong.xin/2016/07/02/meta标签用法总结/</id>
+    <published>2016-07-02T05:08:57.000Z</published>
+    <updated>2017-07-17T05:11:00.985Z</updated>
+    
+    <content type="html"><![CDATA[<p><meta>标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。</p>
+<a id="more"></a>
+<h5 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h5><pre><code>关键字： 
+    &lt;meta name=&quot;keywords&quot; content=&quot;your tags&quot; /&gt;
+描述： 
+    &lt;meta name=&quot;description&quot; content=&quot;150 words&quot; /&gt;
+搜索引擎索引方式：
+    &lt;meta name=&quot;robots&quot; content=&quot;index,follow&quot; /&gt;
+     &lt;!--
+         all：文件将被检索，且页面上的链接可以被查询；
+         none：文件将不被检索，且页面上的链接不可以被查询；
+         index：文件将被检索；
+         follow：页面上的链接可以被查询；
+         noindex：文件将不被检索；
+         nofollow：页面上的链接不可以被查询。
+      --&gt;
+页面重定向和刷新：
+    &lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=&quot; /&gt;
+定义网页作者：
+    &lt;meta name=&quot;author&quot; content=&quot;author name&quot; /&gt;
+</code></pre><h5 id="移动设备"><a href="#移动设备" class="headerlink" title="移动设备"></a>移动设备</h5><pre><code>viewport：
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no&quot;/&gt;
+    &lt;!-- `width=device-width` 会导致 iPhone 5 添加到主屏后以 WebApp 全屏模式打开页面时出现黑边  --&gt;
+    width：宽度（数值 / device-width）（范围从200 到10,000，默认为980 像素）
+    height：高度（数值 / device-height）（范围从223 到10,000）
+    initial-scale：初始的缩放比例 （范围从&gt;0 到10）
+    minimum-scale：允许用户缩放到的最小比例
+    maximum-scale：允许用户缩放到的最大比例
+    user-scalable：用户是否可以手动缩 (no,yes)
+WebApp全屏模式：
+    伪装app，离线应用   
+    &lt;meta name=&quot;apple-mobile-web-app-capable&quot; content=&quot;yes&quot; /&gt; &lt;!-- 启用 WebApp 全屏模式 --&gt;
+隐藏状态栏/设置状态栏颜色：
+    只有在开启WebApp全屏模式时才生效。
+    content的值为default | black | black-translucent 。
+    &lt;meta name=&quot;apple-mobile-web-app-status-bar-style&quot; content=&quot;black-translucent&quot; /&gt;
+添加到主屏后的标题：
+    &lt;meta name=&quot;apple-mobile-web-app-title&quot; content=&quot;标题&quot;&gt;
+忽略数字自动识别为电话号码：
+    &lt;meta content=&quot;telephone=no&quot; name=&quot;format-detection&quot; /&gt; 
+忽略识别邮箱：
+    &lt;meta content=&quot;email=no&quot; name=&quot;format-detection&quot; /&gt;
+添加智能 App 广告条 Smart App Banner：
+    告诉浏览器这个网站对应的app，并在页面上显示下载banner。
+    &lt;meta name=&quot;apple-itunes-app&quot; 
+    content=&quot;app-id=myAppStoreID, affiliate-data=myAffiliateData, app-argument=myURL&quot;&gt; 
+其他：
+    &lt;!-- 针对手持设备优化，主要是针对一些老的不识别viewport的浏览器，比如黑莓 --&gt;
+    &lt;meta name=&quot;HandheldFriendly&quot; content=&quot;true&quot;&gt;
+    &lt;!-- 微软的老式浏览器 --&gt;
+    &lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot;&gt;
+    &lt;!-- uc强制竖屏 --&gt;
+    &lt;meta name=&quot;screen-orientation&quot; content=&quot;portrait&quot;&gt;
+    &lt;!-- QQ强制竖屏 --&gt;
+    &lt;meta name=&quot;x5-orientation&quot; content=&quot;portrait&quot;&gt;
+    &lt;!-- UC强制全屏 --&gt;
+    &lt;meta name=&quot;full-screen&quot; content=&quot;yes&quot;&gt;
+    &lt;!-- QQ强制全屏 --&gt;
+    &lt;meta name=&quot;x5-fullscreen&quot; content=&quot;true&quot;&gt;
+    &lt;!-- UC应用模式 --&gt;
+    &lt;meta name=&quot;browsermode&quot; content=&quot;application&quot;&gt;
+    &lt;!-- QQ应用模式 --&gt;
+    &lt;meta name=&quot;x5-page-mode&quot; content=&quot;app&quot;&gt;
+    &lt;!-- windows phone 点击无高光 --&gt;
+    &lt;meta name=&quot;msapplication-tap-highlight&quot; content=&quot;no&quot;&gt;
+</code></pre><h5 id="网页相关"><a href="#网页相关" class="headerlink" title="网页相关"></a>网页相关</h5><pre><code>申明编码：
+    &lt;meta charset=&apos;utf-8&apos; /&gt;
+优先使用 IE 最新版本和 Chrome：
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;
+&lt;!-- 关于X-UA-Compatible --&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=6&quot; &gt;&lt;!-- 使用IE6 --&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=7&quot; &gt;&lt;!-- 使用IE7 --&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=8&quot; &gt;&lt;!-- 使用IE8 --&gt;
+浏览器内核控制：
+    国内浏览器很多都是双内核（webkit和Trident），webkit内核高速浏览，IE内核兼容网页和旧版网站。
+    而添加meta标签的网站可以控制浏览器选择何种内核渲染。
+    &lt;meta name=&quot;renderer&quot; content=&quot;webkit|ie-comp|ie-stand&quot;&gt;
+国内双核浏览器默认内核模式如下：
+    1. 搜狗高速浏览器、QQ浏览器：IE内核（兼容模式）
+    2. 360极速浏览器、遨游浏览器：Webkit内核（极速模式）
+
+禁止浏览器从本地计算机的缓存中访问页面内容：这样设定，访问者将无法脱机浏览。
+    &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot;&gt;
+Windows 8
+    &lt;meta name=&quot;msapplication-TileColor&quot; content=&quot;#000&quot;/&gt; &lt;!-- Windows 8 磁贴颜色 --&gt;
+    &lt;meta name=&quot;msapplication-TileImage&quot; content=&quot;icon.png&quot;/&gt; &lt;!-- Windows 8 磁贴图标 --&gt;
+站点适配：主要用于PC-手机页的对应关系。
+    &lt;meta name=&quot;mobile-agent&quot;content=&quot;format=[wml|xhtml|html5]; url=url&quot;&gt;
+    &lt;!--
+    [wml|xhtml|html5]根据手机页的协议语言，选择其中一种；
+    url=&quot;url&quot; 后者代表当前PC页所对应的手机页URL，两者必须是一一对应关系。
+    --&gt;
+转码申明：用百度打开网页可能会对其进行转码（比如贴广告），避免转码可添加如下meta
+    &lt;meta http-equiv=&quot;Cache-Control&quot; content=&quot;no-siteapp&quot; /&gt;
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;meta&gt;标签提供关于HTML文档的元数据。元数据不会显示在页面上，但是对于机器是可读的。它可用于浏览器（如何显示内容或重新加载页面），搜索引擎（关键词），或其他 web 服务。&lt;/p&gt;
     
     </summary>
     
