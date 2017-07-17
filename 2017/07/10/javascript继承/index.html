@@ -2,53 +2,95 @@
 <html>
 <head>
   <meta charset="utf-8">
+
   
-  
-  <meta name="description" content="这是阿木隆的博客" />
+  <meta name="description" content="这是阿木隆的博客,"/>
   
 
   
-  <meta name="keywords" content="阿木隆" />
+  <meta name="keywords" content="阿木隆个人博客,静态博客,JavaScript教程,node教程,react源码,css教程,html5教程,html标签全解,hexo快速搭建,前端聚合体,北风骤起艳阳高照,js源码独解,百度站长,数梦工场,杭州,github,蚂蚁金服antd,dva"/>
   
-  
+
   <!---->
-  <meta name="baidu-site-verification" content="43om1SQhig" />
+  
+  <meta name="baidu-site-verification" content="43om1SQhig"/>
   
   
-  <title>javascript继承 | 阿木隆</title>
+  <meta name="360-site-verification" content="09e51ecaa091dc6562d9b66976940fc8"/>
+  
+
+  
+  <title>
+    
+    javascript继承 |
+    
+    北风骤起，艳阳高照</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!--<meta name="description" content="许多OO语言都支持两种继承方式：接口继承和实现继承。EMCAScript只支持实现继承，其实现继承主要是依靠原型链来实现的。">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript继承">
 <meta property="og:url" content="http://www.amulong.xin/2017/07/10/javascript继承/index.html">
-<meta property="og:site_name" content="阿木隆">
+<meta property="og:site_name" content="北风骤起，艳阳高照">
 <meta property="og:description" content="许多OO语言都支持两种继承方式：接口继承和实现继承。EMCAScript只支持实现继承，其实现继承主要是依靠原型链来实现的。">
 <meta property="og:updated_time" content="2017-07-10T07:14:59.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript继承">
 <meta name="twitter:description" content="许多OO语言都支持两种继承方式：接口继承和实现继承。EMCAScript只支持实现继承，其实现继承主要是依靠原型链来实现的。">-->
   
-    <link rel="alternative" href="/atom.xml" title="阿木隆" type="application/atom+xml">
+  <link rel="alternative" href="http://www.amulong.xin /atom.xml" title="北风骤起，艳阳高照"
+        type="application/atom+xml">
   
   
-    <link rel="icon" href="/css/images/favicon.ico">
+  <link rel="icon" href="/css/images/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   <!--
 -->
+  <!-- 百度站长-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a753051d80b2baecfddfda1afcc3fdc4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!-- 百度推送-->
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  <!--360-->
+  <script>
+    (function () {
+      var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f" : "https://jspassport.ssl.qhimg.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f";
+      document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
 </head>
 <body class="home blog custom-background custom-font-enabled single-author">
   <div id="page" class="hfeed site">
       <header id="masthead" class="site-header" role="banner">
     <hgroup>
       <h1 class="site-title">
-        <a href="/" title="阿木隆" rel="home">阿木隆</a>
+        <a href="http://www.amulong.xin" title="北风骤起，艳阳高照" rel="home" style="background:linear-gradient(-45deg ,#880808 ,#000000);;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background: #ffffff\0;">北风骤起，艳阳高照</a>
       </h1>
       
-        <h2 class="site-description">
-          <a href="/" id="subtitle">北风骤起，艳阳高照</a>
-        </h2>
+        <script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js"></script>
+        <h2 class="site-description"><script>lwlhitokoto();</script></h2>
       
         <!--一言API。貌似已经失效了-->
     </hgroup>
@@ -59,15 +101,15 @@
             <div class="menu-main-container">
                 <ul id="menu-main" class="nav-menu">
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">主页</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/">主页</a></li>
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">文章列表</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/archives">文章列表</a></li>
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/about">关于我</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/project">举个栗子</a></li>
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/project">作品</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/soso">你说我说</a></li>
                 
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/atom.xml">rss</a></li>
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/atom.xml">订了个阅</a></li>
                 
                 </ul>
             </div>
@@ -178,25 +220,28 @@ Object.getOwnPropertyDescriptor(obj, prop)
         
     </div><!-- .entry-content -->
 
-    <footer class="entry-meta">
-        <a href="/2017/07/10/javascript继承/">
+    
+      <footer class="entry-meta">
+          <a href="/2017/07/10/javascript继承/">
     <time datetime="2017-07-10T05:33:15.000Z" class="entry-date">
         2017-07-10
     </time>
 </a>
-        
+          
   <span class="article-delim">&#8226;</span>
   <div class="article-category">
   <a class="article-category-link" href="/categories/前端/">前端</a>
   </div>
 
-        
+          
   <span class="article-delim">&#8226;</span>
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li></ul>
 
-        
-        
-    </footer>
+          
+          <p>本文永久链接：<a href="http://www.amulong.xin/2017/07/10/javascript继承/"> http://www.amulong.xin/2017/07/10/javascript继承/</a></p>
+          
+      </footer>
+    
 </article>
 
 
@@ -236,20 +281,21 @@ Object.getOwnPropertyDescriptor(obj, prop)
         <div id="secondary" class="widget-area" role="complementary">
   
     <aside id="search" class="widget widget_search" style="margin-bottom:0">
-    <div>
+    <div style="display: none">
         <script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=2341236193117022362' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
     </div>
+  <div style="margin: 10px 0;"><input type="text" class="st-default-search-input" style="width:80%;" placeholder="站内搜索由Swiftype提供支持"></div>
 </aside>
   
     <aside class="widget">
     <h3 class="widget-title">简介</h3>
     <div class="widget-content">
-        <img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;float: left;">
+      <a style="width: 100px;float: left;" href="http://www.amulong.xin/about" target="_blank"><img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;"></a>
         <div style="margin-left: 120px; line-height: 2">
-            <div>花名：阿木隆</div>
+            <div>花名：<a href="http://www.amulong.xin/about" target="_blank">阿木隆</a></div>
             <div>出生于辽宁，1993年10月</div>
-            <div>毕业于长安大学，自动化系</div>
-            <div>就职于数梦工场，前端攻城狮</div>
+            <div>毕业于 <a href="http://www.chd.edu.cn/338/list.htm" target="_blank">长安大学</a>，自动化系</div>
+            <div>就职于 <a href="http://www.dtdream.com/" target="_blank">数梦工场</a>，前端攻城狮</div>
         </div>
         <div style="width: 100%;margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：挖掘隐藏于界面下的真相。</div>
     </div>
@@ -263,23 +309,23 @@ Object.getOwnPropertyDescriptor(obj, prop)
         <ul>
             
             <li>
-                <a href="/2017/07/13/前端图像处理/">前端图像处理</a>
+                <a href="http://www.amulong.xin/2017/07/13/前端图像处理/">前端图像处理</a>
             </li>
             
             <li>
-                <a href="/2017/07/13/前端面试题精华/">前端面试题精华</a>
+                <a href="http://www.amulong.xin/2017/07/13/前端面试题精华/">前端面试题精华</a>
             </li>
             
             <li>
-                <a href="/2017/07/10/window对象/">window对象</a>
+                <a href="http://www.amulong.xin/2017/07/10/window对象/">window对象</a>
             </li>
             
             <li>
-                <a href="/2017/07/10/javascript继承/">javascript继承</a>
+                <a href="http://www.amulong.xin/2017/07/10/javascript继承/">javascript继承</a>
             </li>
             
             <li>
-                <a href="/2017/07/10/javascript创建对象/">javascript创建对象</a>
+                <a href="http://www.amulong.xin/2017/07/10/javascript创建对象/">javascript创建对象</a>
             </li>
             
         </ul>
@@ -306,23 +352,30 @@ Object.getOwnPropertyDescriptor(obj, prop)
   </aside>
 
   
-    <aside class="widget">
-    <h3 class="widget-title">热门新闻</h3>
-    <div class="widget-content">
-        <!-- 代码1：放在页面需要展示的位置  -->
-        <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
-        <div id="cyHotnews" role="cylabs" data-use="hotnews"></div>
-    </div>
-</aside>
-  
 </div>
       </div>
       <footer id="colophon" role="contentinfo">
-    <p>2017 Copyright © 阿木隆     当前版本1.0</p>
-    <p>浙ICP备17030325号</p>
+  <div><a target="_blank"  href="https://verify.nic.xin/xinDetail/xinAuthInfoDetail?token=6dd3c6c4c76844ef6d19ef8bb1927d6b"><img src="https://verify.nic.xin/api/domain/showCreditLogo.do?logoToken=d86b10f302e957c7e55534b451b60a71"></a>
+  </div>
+  <div id="getUserIp" style="display:none">
+    <script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
+  </div>
+  <script>
+    var ipJson = eval('(' + document.getElementById("getUserIp").innerText.replace(/ /g,"") + ')');
+    document.write("欢迎你：" + ipJson.ip + "，所在区域：" + ipJson.address)
+  </script>
+  <div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260942557'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260942557%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  <p>2017 Copyright © <a href="http://www.amulong.xin/about" target="_blank"> 阿木隆</a> <a
+      href="http://www.amulong.xin/version" target="_blank">当前版本1.2</a> </p>
+  <p>浙ICP备17030325号</p>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>
@@ -334,6 +387,14 @@ Object.getOwnPropertyDescriptor(obj, prop)
 <script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
 <script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt6d5PUS"></script>
 <script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyt6d5PUS"></script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','VFBHAuRGVeV_QsAzmMsM','2.0.0');
+</script>
 <div id="bg"></div>
 
   </div>
