@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.amulong.xin/"/>
-  <updated>2017-07-17T04:33:31.035Z</updated>
+  <updated>2017-07-17T04:55:18.543Z</updated>
   <id>http://www.amulong.xin/</id>
   
   <author>
@@ -20,327 +20,11 @@
     <link href="http://www.amulong.xin/2017/07/17/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-js%E5%9F%BA%E7%A1%80%E5%A4%A7%E5%85%A8/"/>
     <id>http://www.amulong.xin/2017/07/17/前端三剑客-js基础大全/</id>
     <published>2017-07-17T04:31:55.000Z</published>
-    <updated>2017-07-17T04:33:31.035Z</updated>
+    <updated>2017-07-17T04:55:18.543Z</updated>
     
-    <content type="html"><![CDATA[<p>基本类型与引用类型的区别<br>1.基本类型： string,number,boolean,null,undefined;操作和保存在变量的实际的值。<br>2.引用类型： Function,Array,Object;值保存在内存中，js不允许直接访问内存，在操作的时候，操作的是对象的引用。</p>
-<a id="more"></a>
-<h4 id="1-javascript的数组API"><a href="#1-javascript的数组API" class="headerlink" title="1.javascript的数组API"></a>1.javascript的数组API</h4><pre><code>//定义数组 
-var arr = new Array();  
-
-//数组长度 
-pageIds.length; 
-
-//shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
-var a = [1,2,3,4,5]; 
-var b = a.shift(); //a：[2,3,4,5] b：1 
-
-//unshift：将参数添加到原数组开头，并返回数组的长度 
-//注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，
-//所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。
-var a = [1,2,3,4,5]; 
-var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5] b：7 
-
-//pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
-var a = [1,2,3,4,5]; 
-var b = a.pop(); //a：[1,2,3,4] b：5 
-
-//push：将参数添加到原数组末尾，并返回数组的长度 
-var a = [1,2,3,4,5]; 
-var b = a.push(6,7); //a：[1,2,3,4,5,6,7] b：7 
-
-//concat：返回一个新数组，是将参数添加到原数组中构成的 
-var a = [1,2,3,4,5]; 
-var b = a.concat(6,7); //a：[1,2,3,4,5] b：[1,2,3,4,5,6,7] 
-
-//splice(start,deleteCount,val1,val2,)：从start位置开始删除deleteCount项，从该位置起插入val1,val2, 
-var a = [1,2,3,4,5]; 
-var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5] b：[3,4] 
-var b = a.splice(0,1); //同shift 
-a.splice(0,0,-2,-1); var b = a.length; //同unshift 
-var b = a.splice(a.length-1,1); //同pop 
-a.splice(a.length,0,6,7); var b = a.length; //同push 
-
-//reverse：将数组反序 
-var a = [1,2,3,4,5]; 
-var b = a.reverse(); //a：[5,4,3,2,1] b：[5,4,3,2,1] 
-
-//sort(orderfunction)：按指定的参数对数组进行排序 
-var a = [1,2,3,4,5]; 
-var b = a.sort(); //a：[1,2,3,4,5] b：[1,2,3,4,5] 
-
-//slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
-var a = [1,2,3,4,5]; 
-var b = a.slice(2,5); //a：[1,2,3,4,5] b：[3,4,5] 
-
-//join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
-var a = [1,2,3,4,5]; 
-var b = a.join(&quot;|&quot;); //a：[1,2,3,4,5] b：&quot;1|2|3|4|5&quot; 
-</code></pre><h4 id="2-dom最常用API"><a href="#2-dom最常用API" class="headerlink" title="2.dom最常用API"></a>2.dom最常用API</h4><pre><code>//document方法： 
-getElementById(id) Node 返回指定节点的引用 
-getElementsByTagName(name) NodeList 返回文档中所有匹配的元素的集合 
-createElement(name) Node 创建一个元素节点
-createTextNode(text) 创建一个纯文本结点 
-ownerDocument Document 指向这个节点所属的文档 
-documentElement Node 返回html节点 
-document.body Node 返回body节点 
-
-//element方法： 
-getAttribute(attributeName) String 返回指定属性的值 
-setAttribute(attributeName,value) String 给属性赋值 
-removeAttribute(attributeName) String 移除指定属性和它的值 
-
-//node方法： 
-appendChild(child) Node 给指定结点添加一个新的子结点 
-removeChild(child) Node 移除指定结点的子结点 
-replaceChild(newChild,oldChild) Node 替换指定结点的子结点 
-insertBefore(newChild,refChild) Node 在同一层级的结点前面插入新结点 
-hasChildNodes() Boolean 如果结点有子结点则返回true 
-
-//node属性： 
-nodeName String 以字符串的格式存放结点的名称 
-nodeType String 以整型数据格式存放结点的类型 
-nodeValue String 以可用的格式存放结点的值 
-parentNode Node 指向结点的父结点的引用 
-childNodes NodeList 指向子结点的引用的集合 
-firstChild Node 指向子结点结合中的第一个子结点的引用 
-lastChild Node 指向子结点结合中的最后一个子结点的引用 
-previousSibling Node 指向前一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null 
-nextSibling Node 指向后一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null
-</code></pre><h4 id="3-创建一个map对象"><a href="#3-创建一个map对象" class="headerlink" title="3.创建一个map对象:"></a>3.创建一个map对象:</h4><pre><code>function HashMap() { 
-    /** Map 大小 **/ 
-    var size = 0; 
-    /** 对象 **/ 
-    var entry = new Object(); 
-    /** 存 **/ 
-    this.put = function (key , value) { 
-        if(!this.containsKey(key)) { 
-            size ++ ; 
-        } 
-        entry[key] = value; 
-    } 
-    /** 取 **/ 
-    this.get = function (key) { 
-        return this.containsKey(key) ? entry[key] : null; 
-    } 
-    /** 删除 **/ 
-    this.remove = function ( key ) { 
-        if( this.containsKey(key) &amp;&amp; ( delete entry[key] ) ) { 
-            size --; 
-        } 
-    } 
-    /** 是否包含 Key **/ 
-    this.containsKey = function ( key ) { 
-        return (key in entry); 
-    } 
-    /** 是否包含 Value **/ 
-    this.containsValue = function ( value )     { 
-        for(var prop in entry)  { 
-            if(entry[prop] == value)    { 
-                return true; 
-            } 
-        } 
-        return false; 
-    } 
-    /** 所有 Value **/ 
-    this.values = function () { 
-        var values = new Array(); 
-        for(var prop in entry) { 
-            values.push(entry[prop]); 
-        } 
-        return values; 
-    } 
-    /** 所有 Key **/ 
-    this.keys = function () { 
-        var keys = new Array(); 
-        for(var prop in entry) { 
-            keys.push(prop); 
-        } 
-        return keys;   
-    } 
-    /** Map Size **/ 
-    this.size = function () { 
-        return size; 
-    } 
-    /* 清空 */ 
-    this.clear = function () { 
-        size = 0; 
-        entry = new Object(); 
-    } 
-} 
-var map = new HashMap(); 
-/* 
-    map.put(&quot;A&quot;,&quot;1&quot;); 
-    map.put(&quot;B&quot;,&quot;2&quot;); 
-    map.put(&quot;A&quot;,&quot;5&quot;); 
-*/ 
-/* 
-    alert(map.containsKey(&quot;XX&quot;)); 
-    alert(map.size()); 
-    alert(map.get(&quot;A&quot;)); 
-    alert(map.get(&quot;XX&quot;)); 
-    map.remove(&quot;A&quot;); 
-    alert(map.size()); 
-    alert(map.get(&quot;A&quot;)); 
-*/ 
-/** 同时也可以把对象作为 Key **/ 
-/* 
-    var arrayKey = new Array(&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;); 
-    var arrayValue = new Array(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;); 
-    map.put(arrayKey,arrayValue); 
-    var value = map.get(arrayKey); 
-    for(var i = 0 ; i &lt; value.length ; i++) { 
-        //alert(value[i]); 
-    } 
-*/ 
-/** 把对象做为Key时，自动调用了该对象的toString()方法其实最终还是以String对象为Key**/ 
-/** 如果是自定义对象 那自己得重写 toString() 方法 否则就是下面的结果 **/ 
-function MyObject(name){ 
-    this.name = name; 
-} 
-/** 
-function MyObject(name) { 
-    this.name = name; 
-    this.toString = function () { 
-        return this.name; 
-    } 
-} 
-**/ 
-var object1 = new MyObject(&quot;小张&quot;); 
-var object2 = new MyObject(&quot;小名&quot;); 
-map.put(object1,&quot;小张&quot;); 
-map.put(object2,&quot;小名&quot;); 
-alert(map.get(object1)); 
-alert(map.get(object2)); 
-map.remove(&quot;xxxxx&quot;); 
-alert(map.size()); 
-/** 运行结果 小名 小名 size = 1 **/ 
-/** 如果改成复写toString()方法的对象 , 效果就完全不一样了 **/ 
-</code></pre><h4 id="4-常用的数字函数"><a href="#4-常用的数字函数" class="headerlink" title="4.常用的数字函数:"></a>4.常用的数字函数:</h4><pre><code>//数字型(Number) 
-//1.声明 
-var i = 1; 
-var i = new Number(1); 
-
-//2.字符串与数字间的转换 
-var i = 1; 
-var str = i.toString(); //结果: &quot;1&quot; 
-var str = new String(i); //结果: &quot;1&quot; 
-i = parseInt(str); //结果: 1 
-i = parseFloat(str); //结果: 1.0 
-//注意: parseInt,parseFloat会把一个类似于&quot;32G&quot;的字符串,强制转换成32 
-
-//3.判断是否为有效的数字 
-var i = 123; var str = &quot;string&quot;; 
-if( typeof i == &quot;number&quot; ){ } //true 
-//某些方法(如:parseInt,parseFloat)会返回一个特殊的值NaN(Not a Number) 
-//请注意第2点中的[注意],此方法不完全适合判断一个字符串是否是数字型!! 
-i = parseInt(str); 
-if( isNaN(i) ){ } 
-
-//4.数字型比较 
-//此知识与[字符串比较]相同 
-
-///5.小数转整数 
-var f = 1.5; 
-var i = Math.round(f); //结果:2 (四舍五入) 
-var i = Math.ceil(f); //结果:2 (返回大于f的最小整数) 
-var i = Math.floor(f); //结果:1 (返回小于f的最大整数) 
-
-//6.格式化显示数字 
-var i = 3.14159; 
-//格式化为两位小数的浮点数 
-var str = i.toFixed(2); //结果: &quot;3.14&quot; 
-//格式化为五位数字的浮点数(从左到右五位数字,不够补零) 
-var str = i.toPrecision(5); //结果: &quot;3.1415&quot; 
-
-//7.X进制数字的转换 
-var i = parseInt(&quot;0x1f&quot;,16); 
-var i = parseInt(i,10); 
-var i = parseInt(&quot;11010011&quot;,2); 
-
-//8.随机数 
-//返回0-1之间的任意小数 
-var rnd = Math.random(); 
-//返回0-n之间的任意整数(不包括n) 
-var rnd = Math.floor(Math.random() * n) 
-</code></pre><h4 id="5-js堆栈"><a href="#5-js堆栈" class="headerlink" title="5.js堆栈:"></a>5.js堆栈:</h4><pre><code>function stack(){ 
-    if(this.top==undefined){ 
-        //初始化堆栈的顶部指针和数据存放域 
-        this.top=0; 
-        this.unit=new Array(); 
-    } 
-    this.push=function(pushvalue){ 
-        //定义压入堆栈的方法 
-        this.unit[this.top]=pushvalue; 
-        this.top+=1; 
-    } 
-    this.readAllElements=function(){ 
-        //定义读取所有数据的方法 
-        if(this.top==0){ 
-            alert(&quot;当前栈空，无法读取数据&quot;); 
-            return(&quot;&quot;); 
-        } 
-        var count=0; 
-        var outStr=&quot;&quot;; 
-        for(count=0;count&lt;this.top;count++){ 
-            outStr+=this.unit[count]+&quot;,&quot;; 
-        } 
-        return(outStr); 
-    } 
-    this.pop=function(){ 
-        //定义弹出堆栈的方法 
-        if(this.top==0){ 
-            alert(&quot;当前栈空，无法弹出数据&quot;); 
-            return(&quot;&quot;); 
-        } 
-        var popTo=this.unit[this.top-1]; 
-        this.top--; 
-        return(popTo); 
-    /* 从堆栈弹出数据，顶部指针减一，不过这里没有做到资源的释放，也 
-    就是说数据仍然存在于this.unit的数组中，只不过无法访问罢了。目前 
-    我也没想到好的办法解决。*/ 
-    } 
-} 
-</code></pre><h4 id="6-JavaScript日期函数"><a href="#6-JavaScript日期函数" class="headerlink" title="6.JavaScript日期函数:"></a>6.JavaScript日期函数:</h4><pre><code>//日期型(Date) 
-//1.声明 
-var myDate = new Date(); //系统当前时间 
-var myDate = new Date(yyyy, mm, dd, hh, mm, ss); 
-var myDate = new Date(yyyy, mm, dd); 
-var myDate = new Date(&quot;monthName dd, yyyy hh:mm:ss&quot;); 
-var myDate = new Date(&quot;monthName dd, yyyy&quot;); 
-var myDate = new Date(epochMilliseconds); 
-
-//2.获取时间的某部份 
-var myDate = new Date(); 
-myDate.getYear(); //获取当前年份(2位) 
-myDate.getFullYear(); //获取完整的年份(4位,1970-????) 
-myDate.getMonth(); //获取当前月份(0-11,0代表1月) 
-myDate.getDate(); //获取当前日(1-31) 
-myDate.getDay(); //获取当前星期X(0-6,0代表星期天) 
-myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数) 时间戳！！ 
-myDate.getHours(); //获取当前小时数(0-23) 
-myDate.getMinutes(); //获取当前分钟数(0-59) 
-myDate.getSeconds(); //获取当前秒数(0-59) 
-myDate.getMilliseconds(); //获取当前毫秒数(0-999) 
-myDate.toLocaleDateString(); //获取当前日期 
-myDate.toLocaleTimeString(); //获取当前时间 
-myDate.toLocaleString( ); //获取日期与时间 
-
-//3.计算之前或未来的时间 
-var myDate = new Date(); 
-myDate.setDate(myDate.getDate() + 10); //当前时间加10天 
-//类似的方法都基本相同,以set开头,具体参考第2点 
-
-//4.计算两个日期的偏移量 
-var i = daysBetween(beginDate,endDate); //返回天数 
-var i = beginDate.getTimezoneOffset(endDate); //返回分钟数 
-
-//5.检查有效日期 
-//checkDate() 只允许&quot;mm-dd-yyyy&quot;或&quot;mm/dd/yyyy&quot;两种格式的日期 
-if( checkDate(&quot;2006-01-01&quot;) ){ } 
-//正则表达式(自己写的检查 yyyy-mm-dd, yy-mm-dd, yyyy/mm/dd, yy/mm/dd 四种) 
-var r = /^(\d{2}|\d{4})[\/-]\d{1,2}[\/-]\d{1,2}$/; 
-if( r.test( myString ) ){ } 
-</code></pre><h4 id="7-最常用字符串函数API"><a href="#7-最常用字符串函数API" class="headerlink" title="7.最常用字符串函数API:"></a>7.最常用字符串函数API:</h4><pre><code>//字符串(String) 
+    <content type="html"><![CDATA[<p>avascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。<br><a id="more"></a></p>
+<h4 id="0-基本类型与引用类型"><a href="#0-基本类型与引用类型" class="headerlink" title="0.基本类型与引用类型"></a>0.基本类型与引用类型</h4><p>1.基本类型： string,number,boolean,null,undefined;操作和保存在变量的实际的值。<br>2.引用类型： Function,Array,Object;值保存在内存中，js不允许直接访问内存，在操作的时候，操作的是对象的引用。</p>
+<h4 id="1-字符串API"><a href="#1-字符串API" class="headerlink" title="1.字符串API:"></a>1.字符串API:</h4><pre><code>//字符串(String) 
 //1.声明 
 var myString = new String(&quot;Every good boy does fine.&quot;); 
 var myString = &quot;Every good boy does fine.&quot;; 
@@ -398,7 +82,145 @@ var myString = &quot;hello all&quot;;
 var code = encodeURI(myString); //结果: &quot;hello%20all&quot; 
 var str = decodeURI(code); //结果: &quot;hello all&quot; 
 //相应的还有: encodeURIComponent() decodeURIComponent() 
-</code></pre><h4 id="8-数学函数"><a href="#8-数学函数" class="headerlink" title="8.数学函数:"></a>8.数学函数:</h4><pre><code>//Math对象 
+</code></pre><h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2.数字函数:"></a>2.数字函数:</h4><pre><code>//数字型(Number) 
+//1.声明 
+var i = 1; 
+var i = new Number(1); 
+
+//2.字符串与数字间的转换 
+var i = 1; 
+var str = i.toString(); //结果: &quot;1&quot; 
+var str = new String(i); //结果: &quot;1&quot; 
+i = parseInt(str); //结果: 1 
+i = parseFloat(str); //结果: 1.0 
+//注意: parseInt,parseFloat会把一个类似于&quot;32G&quot;的字符串,强制转换成32 
+
+//3.判断是否为有效的数字 
+var i = 123; var str = &quot;string&quot;; 
+if( typeof i == &quot;number&quot; ){ } //true 
+//某些方法(如:parseInt,parseFloat)会返回一个特殊的值NaN(Not a Number) 
+//请注意第2点中的[注意],此方法不完全适合判断一个字符串是否是数字型!! 
+i = parseInt(str); 
+if( isNaN(i) ){ } 
+
+//4.数字型比较 
+//此知识与[字符串比较]相同 
+
+///5.小数转整数 
+var f = 1.5; 
+var i = Math.round(f); //结果:2 (四舍五入) 
+var i = Math.ceil(f); //结果:2 (返回大于f的最小整数) 
+var i = Math.floor(f); //结果:1 (返回小于f的最大整数) 
+
+//6.格式化显示数字 
+var i = 3.14159; 
+//格式化为两位小数的浮点数 
+var str = i.toFixed(2); //结果: &quot;3.14&quot; 
+//格式化为五位数字的浮点数(从左到右五位数字,不够补零) 
+var str = i.toPrecision(5); //结果: &quot;3.1415&quot; 
+
+//7.X进制数字的转换 
+var i = parseInt(&quot;0x1f&quot;,16); 
+var i = parseInt(i,10); 
+var i = parseInt(&quot;11010011&quot;,2); 
+
+//8.随机数 
+//返回0-1之间的任意小数 
+var rnd = Math.random(); 
+//返回0-n之间的任意整数(不包括n) 
+var rnd = Math.floor(Math.random() * n) 
+</code></pre><h4 id="3-数组API"><a href="#3-数组API" class="headerlink" title="3.数组API"></a>3.数组API</h4><pre><code>//定义数组 
+var arr = new Array();  
+
+//数组长度 
+arr.length; 
+
+//shift：删除原数组第一项，并返回删除元素的值；如果数组为空则返回undefined 
+var a = [1,2,3,4,5]; 
+var b = a.shift(); //a：[2,3,4,5] b：1 
+
+//unshift：将参数添加到原数组开头，并返回数组的长度 
+//注：在IE6.0下测试返回值总为undefined，FF2.0下测试返回值为7，
+//所以这个方法的返回值不可靠，需要用返回值时可用splice代替本方法来使用。
+var a = [1,2,3,4,5]; 
+var b = a.unshift(-2,-1); //a：[-2,-1,1,2,3,4,5] b：7 
+
+//pop：删除原数组最后一项，并返回删除元素的值；如果数组为空则返回undefined 
+var a = [1,2,3,4,5]; 
+var b = a.pop(); //a：[1,2,3,4] b：5 
+
+//push：将参数添加到原数组末尾，并返回数组的长度 
+var a = [1,2,3,4,5]; 
+var b = a.push(6,7); //a：[1,2,3,4,5,6,7] b：7 
+
+//concat：返回一个新数组，是将参数添加到原数组中构成的 
+var a = [1,2,3,4,5]; 
+var b = a.concat(6,7); //a：[1,2,3,4,5] b：[1,2,3,4,5,6,7] 
+
+//splice(start,deleteCount,val1,val2,)：从start位置开始删除deleteCount项，从该位置起插入val1,val2, 
+var a = [1,2,3,4,5]; 
+var b = a.splice(2,2,7,8,9); //a：[1,2,7,8,9,5] b：[3,4] 
+var b = a.splice(0,1); //同shift 
+a.splice(0,0,-2,-1); var b = a.length; //同unshift 
+var b = a.splice(a.length-1,1); //同pop 
+a.splice(a.length,0,6,7); var b = a.length; //同push 
+
+//reverse：将数组反序 
+var a = [1,2,3,4,5]; 
+var b = a.reverse(); //a：[5,4,3,2,1] b：[5,4,3,2,1] 
+
+//sort(orderfunction)：按指定的参数对数组进行排序 
+var a = [1,2,3,4,5]; 
+var b = a.sort(); //a：[1,2,3,4,5] b：[1,2,3,4,5] 
+
+//slice(start,end)：返回从原数组中指定开始下标到结束下标之间的项组成的新数组 
+var a = [1,2,3,4,5]; 
+var b = a.slice(2,5); //a：[1,2,3,4,5] b：[3,4,5] 
+
+//join(separator)：将数组的元素组起一个字符串，以separator为分隔符，省略的话则用默认用逗号为分隔符 
+var a = [1,2,3,4,5]; 
+var b = a.join(&quot;|&quot;); //a：[1,2,3,4,5] b：&quot;1|2|3|4|5&quot; 
+</code></pre><h4 id="4-日期函数"><a href="#4-日期函数" class="headerlink" title="4.日期函数:"></a>4.日期函数:</h4><pre><code>//日期型(Date) 
+//1.声明 
+var myDate = new Date(); //系统当前时间 
+var myDate = new Date(yyyy, mm, dd, hh, mm, ss); 
+var myDate = new Date(yyyy, mm, dd); 
+var myDate = new Date(&quot;monthName dd, yyyy hh:mm:ss&quot;); 
+var myDate = new Date(&quot;monthName dd, yyyy&quot;); 
+var myDate = new Date(epochMilliseconds); 
+
+//2.获取时间的某部份 
+var myDate = new Date(); 
+myDate.getYear(); //获取当前年份(2位) 
+myDate.getFullYear(); //获取完整的年份(4位,1970-????) 
+myDate.getMonth(); //获取当前月份(0-11,0代表1月) 
+myDate.getDate(); //获取当前日(1-31) 
+myDate.getDay(); //获取当前星期X(0-6,0代表星期天) 
+myDate.getTime(); //获取当前时间(从1970.1.1开始的毫秒数) 时间戳！！ 
+myDate.getHours(); //获取当前小时数(0-23) 
+myDate.getMinutes(); //获取当前分钟数(0-59) 
+myDate.getSeconds(); //获取当前秒数(0-59) 
+myDate.getMilliseconds(); //获取当前毫秒数(0-999) 
+myDate.toLocaleDateString(); //获取当前日期 
+myDate.toLocaleTimeString(); //获取当前时间 
+myDate.toLocaleString( ); //获取日期与时间 
+
+//3.计算之前或未来的时间 
+var myDate = new Date(); 
+myDate.setDate(myDate.getDate() + 10); //当前时间加10天 
+//类似的方法都基本相同,以set开头,具体参考第2点 
+
+//4.计算两个日期的偏移量 
+var i = daysBetween(beginDate,endDate); //返回天数 
+var i = beginDate.getTimezoneOffset(endDate); //返回分钟数 
+
+//5.检查有效日期 
+//checkDate() 只允许&quot;mm-dd-yyyy&quot;或&quot;mm/dd/yyyy&quot;两种格式的日期 
+if( checkDate(&quot;2006-01-01&quot;) ){ } 
+//正则表达式(自己写的检查 yyyy-mm-dd, yy-mm-dd, yyyy/mm/dd, yy/mm/dd 四种) 
+var r = /^(\d{2}|\d{4})[\/-]\d{1,2}[\/-]\d{1,2}$/; 
+if( r.test( myString ) ){ } 
+</code></pre><h4 id="5-数学函数"><a href="#5-数学函数" class="headerlink" title="5.数学函数:"></a>5.数学函数:</h4><pre><code>//Math对象 
 1. Math.abs(num) : 返回num的绝对值 
 2. Math.acos(num) : 返回num的反余弦值 
 3. Math.asin(num) : 返回num的反正弦值 
@@ -425,7 +247,41 @@ var str = decodeURI(code); //结果: &quot;hello all&quot;
 24.Math.PI : π(3.141592653589793) 
 25.Math.SQRT1_2 : 1/2的平方根(0.7071067811865476) 
 26.Math.SQRT2 : 2的平方根(1.4142135623730951) 
-</code></pre><h4 id="9-浏览器特征函数"><a href="#9-浏览器特征函数" class="headerlink" title="9.浏览器特征函数:"></a>9.浏览器特征函数:</h4><pre><code>//1.浏览器名称 
+</code></pre><h4 id="6-DOMAPI"><a href="#6-DOMAPI" class="headerlink" title="6.DOMAPI"></a>6.DOMAPI</h4><pre><code>//document方法： 
+getElementById(id) Node 返回指定节点的引用 
+getElementsByTagName(name) NodeList 返回文档中所有匹配的元素的集合 
+createElement(name) Node 创建一个元素节点
+createTextNode(text) 创建一个纯文本结点 
+ownerDocument Document 指向这个节点所属的文档 
+documentElement Node 返回html节点 
+document.body Node 返回body节点 
+document.querySelector()
+document.querySelectorAll()
+
+
+//element方法： 
+getAttribute(attributeName) String 返回指定属性的值 
+setAttribute(attributeName,value) String 给属性赋值 
+removeAttribute(attributeName) String 移除指定属性和它的值 
+
+//node方法： 
+appendChild(child) Node 给指定结点添加一个新的子结点 
+removeChild(child) Node 移除指定结点的子结点 
+replaceChild(newChild,oldChild) Node 替换指定结点的子结点 
+insertBefore(newChild,refChild) Node 在同一层级的结点前面插入新结点 
+hasChildNodes() Boolean 如果结点有子结点则返回true 
+
+//node属性： 
+nodeName String 以字符串的格式存放结点的名称 
+nodeType String 以整型数据格式存放结点的类型 
+nodeValue String 以可用的格式存放结点的值 
+parentNode Node 指向结点的父结点的引用 
+childNodes NodeList 指向子结点的引用的集合 
+firstChild Node 指向子结点结合中的第一个子结点的引用 
+lastChild Node 指向子结点结合中的最后一个子结点的引用 
+previousSibling Node 指向前一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null 
+nextSibling Node 指向后一个兄弟节点；如果这个节点就是兄弟节点，那么该值为null
+</code></pre><h4 id="7-浏览器特征函数"><a href="#7-浏览器特征函数" class="headerlink" title="7.浏览器特征函数:"></a>7.浏览器特征函数:</h4><pre><code>//1.浏览器名称 
 //IE : &quot;Microsoft Internet Explorer&quot; 
 //NS : &quot;Netscape&quot; 
 var browserName = navigator.appName; 
@@ -448,529 +304,11 @@ if( navigator.userLanguage ){ var l = navigator.userLanguage.toUpperCase(); }
 
 //6.检查浏览器是否支持Cookies 
 if( navigator.cookieEnabled ){ } 
-</code></pre><h4 id="10-JavaScript面向对象的方法实现继承-call方法"><a href="#10-JavaScript面向对象的方法实现继承-call方法" class="headerlink" title="10.JavaScript面向对象的方法实现继承:call方法"></a>10.JavaScript面向对象的方法实现继承:call方法</h4><pre><code>// 动物类 animal 
-function animal(bSex){ 
-    this.sex = bSex 
-    this.getSex = function(){ 
-        return this.sex 
-    } 
-} 
-// 类静态变量 (如果你不修改它的话～～) 
-animal.SEX_G = new Object(); // 雌性 
-animal.SEX_B = new Object(); // 雄性 
-// 动物子类 鸟 
-function bird(bSex){ 
-    animal.call(this, bSex); 
-    this.fly = function(iSpeed){ 
-        alert(&quot;飞行时速高达 &quot; + iSpeed); 
-    } 
-} 
-// 动物子类 鱼 
-function fish(bSex){ 
-    animal.call(this, bSex); 
-    this.swim = function(iSpeed){ 
-        alert(&quot;游动时速高达 &quot; + iSpeed) 
-    } 
-} 
-// 鱼 鸟 杂交品种。。。 
-function crossBF(bSex){ 
-    bird.call(this, bSex); 
-    fish.call(this, bSex); 
-} 
-var oPet = new crossBF(animal.SEX_G); // 雌性 鱼鸟 
-alert(oPet.getSex() == animal.SEX_G ? &quot;雌性&quot; : &quot;雄性&quot;); 
-oPet.fly(124) 
-oPet.swim(254) 
-</code></pre><h4 id="11-用面向对象的编程方式写JavaScript"><a href="#11-用面向对象的编程方式写JavaScript" class="headerlink" title="11.用面向对象的编程方式写JavaScript:"></a>11.用面向对象的编程方式写JavaScript:</h4><pre><code>MyTool = new function(){ 
-    /** 
-    * 返回非空字符串,如果有默认值就返回默认字符串. 
-    */ 
-    this.notNull = function(str,defaultStr){ 
-        if(typeof(str)==&quot;undefined&quot;||str==null||str==&apos;&apos;){ 
-            if(defaultStr) {
-                return defaultStr; 
-            } else {
-                return &apos;&apos;; 
-            }
-        } else{ 
-            return str; 
-        } 
-    } 
-} 
-rootId = MyTool.notNull(rootId,&apos;001000&apos;); 
-</code></pre><h4 id="12-常用的js方法-包括表单校验的一些方法-下拉菜单常用的方法等等"><a href="#12-常用的js方法-包括表单校验的一些方法-下拉菜单常用的方法等等" class="headerlink" title="12.常用的js方法,包括表单校验的一些方法,下拉菜单常用的方法等等:"></a>12.常用的js方法,包括表单校验的一些方法,下拉菜单常用的方法等等:</h4><pre><code>/** 
-* 对JSON对象转换为字符串. 
-* @param {json对象} json 
-* @return {json字符串} 
-*/ 
-function jsonObj2Str(json) { 
-    var str = &quot;{&quot;; 
-    for (prop in json) { 
-        str += prop + &quot;:&quot; + json[prop] + &quot;,&quot;; 
-    } 
-    str = str.substr(0, str.length - 1); 
-    str += &quot;}&quot;; 
-    return str; 
-} 
-/** 
-* 将json字符串转换为json对象. 
-* @param {json字符串} jsonstr 
-* @return {json对象} 
-*/ 
-function jsonStr2Obj(jsonstr) { 
-    return eval(&quot;(&quot;+jsonstr+&quot;)&quot;); 
-} 
-/** 
-* 得到一个元素的left坐标值. 
-* @param {dom对象} obj 
-* @return {位置值} 
-*/ 
-function getLeft(obj){ 
-    var offset=e.offsetLeft; 
-    if(e.offsetParent!=null){
-        offset+=getLeft(e.offsetParent); 
-    } 
-    return offset; 
-} 
-/** 
-* 得到一个元素的绝对位置的top坐标值. 
-* @param {dom对象} obj 
-* @return {位置值} 
-*/ 
-function getTop(obj){ 
-    var offset=e.offsetTop; 
-    if(e.offsetParent!=null) {
-        offset+=getTop(e.offsetParent); 
-    }
-    return offset; 
-} 
-/** 
-* 删除一个字符串的左右空格. 
-* @param {原始字符串} str 
-* @return {删除空格之后的字符串} 
-*/ 
-function trim(str) { 
-    return str.replace(/(^\s*)|(\s*$)/g,&quot;&quot;); 
-} 
-/** 
-* 根据id取出一个元素. 
-* @param {元素id值} str 
-* @return {dom对象} 
-*/ 
-function $(str) { 
-    return document.getElementById(str); 
-} 
-/** 
-* 按name获取一个对象. 
-* @param {元素name值} str 
-* @return {根据name返回的第一个对象} 
-*/ 
-function $byName(str) { 
-    var arr = document.getElementsByName(str); 
-    if (arr) {
-        return arr[0]; 
-    }else {
-        return null; 
-    } 
-} 
-/***************以下方法和表单验证相关*************************************************/ 
-/** 
-* 返回非空字符串,如果有默认值就返回默认字符串. 
-* @param {要进行转换的原字符串} str 
-* @param {默认值} defaultStr 
-* @return {返回结果} 
-*/ 
-function notNull(str, defaultStr) { 
-    if (typeof(str) == &quot;undefined&quot; || str == null || str == &apos;&apos;) { 
-        if (defaultStr) {
-            return defaultStr; 
-        }else{ 
-            return &apos;&apos;;
-        } 
-    } else { 
-        return str; 
-    } 
-} 
-/** 
-* 比较两个日期大小. 
-* @param {较小日期的文本框id} smallDate 
-* @param {较大日期的文本框id} bigDate 
-* @param {出错的提示信息} msg 
-*/ 
-function compareTwoDate(smallDate, bigDate, msg) { 
-    var v1 = $(smallDate).value; 
-    var v2 = $(bigDate).value; 
-    if (v1 &gt;= v2) { 
-        alert(msg); 
-        v2.focus(); 
-        return false; 
-    } 
-    return true; 
-} 
-/** 
-* 比较两个金额大小的方法. 
-* @param {较小的金额} smallNum 
-* @param {较大的金额} bigNum 
-* @param {出错提示信息} msg 
-* @return {Boolean} 
-*/ 
-function compareTwoNum(smallNum, bigNum, msg) { 
-    var v1 = $(smallNum).value; 
-    var v2 = $(bigNum).value; 
-    if (parseFloat(v1) &gt;= parseFloat(v2)) { 
-        alert(msg); 
-        v2.focus(); 
-        return false; 
-    } 
-    return true; 
-} 
-/** 
-* 检查文本框的长度是否超出指定长度. 
-* @param {文本id} textId 
-* @param {文本框的最大长度} len 
-* @param {文本框描述内容} msg 
-* @return {有错就返回false,否则返回true} 
-*/ 
-function checkLength(textId, len, msg) { 
-    obj = $(textId); 
-    str = obj.value; 
-    str = str.replace(/[^\x00-\xff]/g, &quot;**&quot;); 
-    realLen = str.length; 
-    if (realLen &gt; len) { 
-        alert(&quot;[&quot; + msg + &quot;]&quot; + &quot;长度最大为&quot; + len + &quot;位,&quot; + &quot;请重新输入！\n注意：一个汉字占2位。&quot;); 
-        obj.focus(); 
-        return false; 
-    } else {
-        return true;
-    }
-} 
-/** 
-* 判断某个文本框不可以为空. 
-* @param {文本框id} textId 
-* @param {文本框描述内容} msg 
-* @return {有错就返回false,否则返回true} 
-*/ 
-function checkIfEmpty(textId, msg) { 
-    var textObj = $(textId); 
-    var textValue = textObj.value; 
-    if (trim(textValue) == &apos;&apos;) { 
-        alert(&apos;[&apos; + msg + &apos;]不得为空！&apos;); 
-        textObj.focus(); 
-        return false; 
-    } else { 
-        return true; 
-    } 
-} 
-/** 
-* 判断指定文本框内容必须为邮件. 
-* @param {文本框id} textId 
-* @param {文本框描述} msg 
-* @return {如果是邮件内容就返回true否则返回false} 
-*/ 
-function checkIsMail(textId, msg) { 
-    var obj = $(textId); 
-    if (!_isEmail(obj.value)) { 
-        alert(&apos;[&apos; + msg + &apos;]不是合法的邮件地址！&apos;); 
-        obj.focus(); 
-        return false;   
-    } else 
-    return true; 
-} 
-/** 
-* 验证是不是邮件. 
-* @param {要验证的字符串} strEmail 
-* @return {Boolean} 
-*/ 
-function _isEmail(strEmail) { 
-    //接下来的验证是否有两个以上的‘.&apos;号，有的话就是错的！ 
-    var first = strEmail.indexOf(&apos;.&apos;); 
-    if (strEmail.indexOf(&apos;@&apos;)== -1) { 
-        return false; 
-    } 
-    var tempStr = strEmail.substring(first + 1); 
-    if (tempStr.indexOf(&apos;.&apos;) != -1) { 
-        return false; 
-    } 
-    if (strEmail 
-    .search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1) { 
-        return true; 
-    } else {
-        return false;        
-    }
-} 
-/** 
-* 判断某个文本框是否数字. 
-* @param {文本框id} textId 
-* @param {文本框描述内容} msg 
-* @return {Boolean} 
-*/ 
-function checkIsNum(textId, msg) { 
-    obj = $(textId); 
-    if (isNaN(obj.value)) { 
-        alert(&apos;[&apos; + msg + &apos;]必须为数字。&apos;); 
-        obj.focus(); 
-        return false; 
-    } else {
-        return true;        
-    }
-} 
-/** 
-* 判断某个文本框是否含有非法字符. 
-* @param {文本框的id} textId 
-* @param {文本框描述内容} msg 
-* @return {有错就返回false否则返回true} 
-*/ 
-function checkIsValid(textId, msg) { 
-    obj = $(textId); 
-    if (!_isValidString(obj.value, &apos;[&apos; + msg + &apos;]不得含有非法字符。&apos;)) { 
-        obj.focus(); 
-        return false; 
-    } 
-    return true; 
-} 
-/** 
-* 判断是不是合法字符串. 
-* @param {要进行判断的字符串} szStr 
-* @param {文本描述} errMsg 
-* @return {合法则返回true否则返回false} 
-*/ 
-function _isValidString(szStr,errMsg) { 
-    voidChar = &quot;&apos;\&quot;&gt;&lt;`~!@#$%^&amp;\(\)（）！￥……？?“”‘&apos;*&quot;; 
-    for (var i = 0; i &lt; voidChar.length; i++) { 
-        aChar = voidChar.substring(i, i + 1); 
-        if (szStr.indexOf(aChar) &gt; -1){ 
-            alert(errMsg) 
-            return false; 
-        } 
-    } 
-    return true; 
-} 
-/*************** 以下方法和下拉菜单相关*************************************************/ 
-/** 
-* 控制下拉菜单不可以为-1(未选择情况value=-1) 
-* @param {下拉菜单id} selectId 
-* @param {下拉菜单描述内容} msg 
-* @param {下拉菜单的空值对应的value,默认为-1} nullValue 
-* @return {Boolean} 
-*/ 
-function checkChooseSelect(selectId, msg ,nullValue) { 
-    var obj = $(selectId); 
-    if (obj.value == notNull(nullValue,&apos;-1&apos;)) { 
-        alert(&apos;[&apos; + msg + &apos;]必选!&apos;); 
-        obj.focus(); 
-        return false; 
-    }
-    return true; 
-} 
-/** 
-* 得到下拉菜单的显示的文字. 
-* @param {下拉菜单dom对象} selectObj 
-* @return {返回下拉菜单的显示的&quot;文本&quot;} 
-*/ 
-function getSelectText(selectObj) { 
-    return selectObj.options[selectObj.selectedIndex].text; 
-} 
-/** 
-* 得到下拉菜单的显示的值. 
-* @param {下拉菜单dom对象} selectObj 
-* @return {得到下拉菜单的显示的&quot;值&quot;} 
-*/ 
-function getSelectValue(selectObj) { 
-    return selectObj.options[selectObj.selectedIndex].value; 
-} 
-/** 
-* 设置下拉菜单的选择状态到指定的值. 
-* @param {下拉菜单对象} obj 
-* @param {要选择的值} value 
-*/ 
-function setSelectValue(obj, value) { 
-    /*
-    for (i = obj.options.length - 1; i &gt;= 0; i--) { 
-        if (obj.options[i].value == value) { 
-            obj.options[i].selected = true; 
-            return; 
-        } 
-    } 
-    */ 
-    obj.value= value; 
-} 
-/** 
-* 根据键值串的内容进行下拉菜单的动态组装 
-* @param {要进行下拉菜单组装的dom对象} obj 
-* @param {键值对用,和;分割,例如&apos;1,男;2,女;3,未知&apos;} valAndText 
-*/ 
-function setSelectContent(obj,valAndText){ 
-    if(trim(valAndText)==&apos;&apos;){ 
-        alert(&apos;没有要进行组装下拉菜单的数据!&apos;); 
-        return false; 
-    } 
-    clearSelect(obj); 
-    var keyandvalues = valAndText.split(&apos;;&apos;); 
-    for(var i=0;i&lt;keyandvalues.length;i++){ 
-        var arr = keyandvalues[i].split(&apos;,&apos;); 
-        if(arr){ 
-            var value =arr[0]; 
-            var text =arr[1]; 
-            var objOption = new Option(text,value); 
-            obj.add(objOption); 
-        } 
-    } 
-} 
-/** 
-* 清空下拉菜单里面的内容. 
-* @param {下拉菜单对象} obj 
-*/ 
-function clearSelect(obj) { 
-    for (var i=obj.options.length; i &gt;0; i--) { 
-        obj.remove(0); 
-    } 
-} 
-/*************** 以下方法和多选框相关*************************************************/ 
-/** 
-* 返回选中的checks的id组成的字符串,逗号隔开. 
-* @param {checks数组} checks 
-* @return 选择的id组成的字符串 
-*/ 
-function getCheckedIds(checks){ 
-    var selectedValue = &apos;&apos;; 
-    var len = checks.length; 
-    for(var index=0; index&lt;len; index++) { 
-        if(checks[index].checked==true) { 
-            selectedValue += checks[index].value+&quot;,&quot;; 
-        } 
-    } 
-    if(selectedValue.length&gt;0) {
-        return selectedValue.substring(0,selectedValue.length-1); 
-    }
-    return selectedValue; 
-} 
-
-//下面的代码放到html标签里，并在head里调用上面的js
-&lt;HEAD&gt;
-    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
-    &lt;!--&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;调用上面的js&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;--&gt;
-    &lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt; 
-        &lt;!-- 
-            /** 
-            * 表单验证的示例js方法. 
-            */ 
-            function check(){ 
-                if(checkIfEmpty(&apos;a&apos;,&apos;非空校验&apos;) 
-                &amp;&amp;checkIsMail(&apos;b&apos;,&apos;邮箱校验&apos;) 
-                &amp;&amp;checkIsNum(&apos;c&apos;,&apos;数字校验&apos;) 
-                &amp;&amp;checkIsValid(&apos;d&apos;,&apos;合法性校验&apos;) 
-                &amp;&amp;compareTwoDate(&apos;e&apos;,&apos;f&apos;,&apos;小日期与大日期关系错误!&apos;) 
-                &amp;&amp;checkLength(&apos;g&apos;,5,&apos;长度校验&apos;) 
-                &amp;&amp;checkChooseSelect(&apos;h&apos;,&apos;下拉菜单非空&apos;,&apos;-1&apos;) 
-                &amp;&amp;compareTwoNum(&apos;k&apos;,&apos;l&apos;,&apos;大小数目关系不正确!&apos;)){ 
-                    alert(&apos;校验通过!&apos;); 
-                    return true; 
-                }else{ 
-                    return false; 
-                } 
-            } 
-            /** 
-            * 取下拉菜单的值和文本的示例js方法. 
-            */ 
-            function getSelect(){ 
-                var sss = $(&apos;h&apos;); 
-                alert(&apos;下拉菜单选择的文本是:&apos;+getSelectText(sss)+&apos;\n&apos; 
-                +&apos;下拉菜单选择的值是:&apos;+getSelectValue(sss)); 
-            } 
-            /** 
-            * 根据键值字符串设置下拉菜单的显示内容. 
-            */ 
-            function setSelect(){ 
-                var sss = $(&apos;i&apos;).value; 
-                setSelectContent($(&apos;h&apos;),sss); 
-            } 
-            /** 
-            * 返回多选框数组选择状态的id的字符串,结果以逗号隔开. 
-            */ 
-            function getMulti(){ 
-                alert(&apos;多选选择的id是:&apos;+getCheckedIds(document.getElementsByName(&apos;j&apos;))); 
-            } 
-        //--&gt; 
-    &lt;/SCRIPT&gt;
-&lt;/HEAD&gt;
-&lt;BODY&gt;
-    &lt;table&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 非空:
-          &lt;input id=&apos;a&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; checkIfEmpty(&apos;a&apos;,&apos;非空校验&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 邮箱:
-          &lt;input id=&apos;b&apos; value=&apos;323232@2323.com&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; checkIsMail(&apos;b&apos;,&apos;邮箱校验&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 数字:
-          &lt;input id=&apos;c&apos; value=&apos;aaaa&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; checkIsNum(&apos;c&apos;,&apos;数字校验&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 合法字符:
-          &lt;input id=&apos;d&apos; value=&apos;@$@$#$#!%%#&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; checkIsValid(&apos;d&apos;,&apos;合法性校验&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 小的日期:
-          &lt;input id=&apos;e&apos; value=&apos;2010-1-1&apos;&gt;
-          大的日期:
-          &lt;input id=&apos;f&apos; value=&apos;2011-1-1&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; compareTwoDate(&apos;e&apos;,&apos;f&apos;,&apos;小日期与大日期关系错误!&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 小的数:
-          &lt;input id=&apos;k&apos; value=&apos;12.3&apos;&gt;
-          大的数:
-          &lt;input id=&apos;l&apos; value=&apos;4564&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; compareTwoNum(&apos;k&apos;,&apos;l&apos;,&apos;大小数目关系不正确!&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 字符长度校验(&lt;5):
-          &lt;input id=&apos;g&apos;&gt;&lt;/td&gt;
-        &lt;td&gt; checkLength(&apos;g&apos;,5,&apos;长度校验&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 下拉菜单非空校验:
-          &lt;select id=&apos;h&apos;&gt;
-            &lt;option value=&apos;-1&apos;&gt; 请选择 &lt;/option&gt;
-            &lt;option value=&apos;1&apos;&gt; 立项 &lt;/option&gt;
-            &lt;option value=&apos;2&apos;&gt; 可研 &lt;/option&gt;
-          &lt;/select&gt;&lt;/td&gt;
-        &lt;td&gt; checkChooseSelect(&apos;h&apos;,&apos;下拉菜单非空&apos;,&apos;-1&apos;) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td colspan=&apos;2&apos;&gt;&lt;button onclick=&apos;check()&apos;&gt; 测试表单校验方法 &lt;/button&gt;&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt;&lt;button onclick=&apos;getSelect()&apos;&gt; 得到下拉菜单的值 &lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt; getSelectText(sss)和getSelectValue(sss) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt; 输入下拉菜单的键值字符串(如右所示)
-          &lt;input id=&apos;i&apos; value=&apos;1,男;2,女;3,未知&apos;&gt;
-          &lt;button onclick=&apos;setSelect()&apos;&gt; 设置下拉菜单的值 &lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt; setSelectContent($(&apos;h&apos;),sss) &lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-        &lt;td&gt;&lt;input type=&apos;checkbox&apos; name=&apos;j&apos; value=&apos;aaa1&apos;&gt;
-          &lt;input type=&apos;checkbox&apos; name=&apos;j&apos; value=&apos;aaa2&apos;&gt;
-          &lt;input type=&apos;checkbox&apos; name=&apos;j&apos; value=&apos;aaa3&apos;&gt;
-          &lt;input type=&apos;checkbox&apos; name=&apos;j&apos; value=&apos;aaa4&apos;&gt;
-          &lt;button onclick=&apos;getMulti()&apos;&gt; 得到多选选择的id &lt;/button&gt;&lt;/td&gt;
-        &lt;td&gt; getCheckedIds(document.getElementsByName(&apos;j&apos;)) &lt;/td&gt;
-      &lt;/tr&gt;
-    &lt;/table&gt;    
-&lt;/BODY&gt;
 </code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;基本类型与引用类型的区别&lt;br&gt;1.基本类型： string,number,boolean,null,undefined;操作和保存在变量的实际的值。&lt;br&gt;2.引用类型： Function,Array,Object;值保存在内存中，js不允许直接访问内存，在操作的时候，操作的是对象的引用。&lt;/p&gt;
+      &lt;p&gt;avascript包括EMCAScript、DOM和BOM。本文总结了javascript基本数据类型里String和number的常用API,数组、Math、Date函数API,常用DOMAPI以及浏览器特征函数。&lt;br&gt;
     
     </summary>
     
@@ -988,9 +326,10 @@ function getCheckedIds(checks){
     <link href="http://www.amulong.xin/2017/07/16/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-css%E5%9F%BA%E7%A1%80%E9%9B%86%E9%94%A6/"/>
     <id>http://www.amulong.xin/2017/07/16/前端三剑客-css基础集锦/</id>
     <published>2017-07-16T02:21:44.000Z</published>
-    <updated>2017-07-17T04:32:44.379Z</updated>
+    <updated>2017-07-17T05:02:05.612Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><p>background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>css是页面展示及特效最直接表现的语言，前端开发除了要了解每个css属性的表现外，更要注重每个属性在不同浏览器之间差异，并完美的解决。<br><a id="more"></a></p>
+<h4 id="1-CSS-背景"><a href="#1-CSS-背景" class="headerlink" title="1.CSS 背景"></a>1.CSS 背景</h4><p>background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。</p>
 <pre><code>//指定填充背景的颜色
 //设置背景颜色之外，如果元素底层的背景图不可用，还可以设置一个“回退色”。
 //通过在回退色之前增加一个斜杠(/)来实现。
@@ -1398,7 +737,7 @@ flex: auto: 计算值为 1 1 auto
     
     <summary type="html">
     
-      &lt;h4 id=&quot;1-CSS-背景&quot;&gt;&lt;a href=&quot;#1-CSS-背景&quot; class=&quot;headerlink&quot; title=&quot;1.CSS 背景&quot;&gt;&lt;/a&gt;1.CSS 背景&lt;/h4&gt;&lt;p&gt;background:背景占据元素的所有内容区域，包括 padding 和 border，但是不包括元素的 margin。它在 Firefox, Safari ,Opera 以及 IE8 中工作正常，但是 IE6 和 IE7 中，background 没把 border 计算在内。&lt;br&gt;
+      &lt;p&gt;css是页面展示及特效最直接表现的语言，前端开发除了要了解每个css属性的表现外，更要注重每个属性在不同浏览器之间差异，并完美的解决。&lt;br&gt;
     
     </summary>
     
@@ -1416,9 +755,10 @@ flex: auto: 计算值为 1 1 auto
     <link href="http://www.amulong.xin/2017/07/15/%E5%89%8D%E7%AB%AF%E4%B8%89%E5%89%91%E5%AE%A2-html%E6%A0%87%E7%AD%BE%E5%85%A8%E8%A7%A3/"/>
     <id>http://www.amulong.xin/2017/07/15/前端三剑客-html标签全解/</id>
     <published>2017-07-15T14:36:39.000Z</published>
-    <updated>2017-07-17T04:38:07.172Z</updated>
+    <updated>2017-07-17T05:01:37.326Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="文档标签"><a href="#文档标签" class="headerlink" title="文档标签"></a>文档标签</h4><p>&lt;!DOCTYPE&gt;     定义文档类型。<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>html标签是前端界面的骨架，作为一个前端开发我们对每个标签的熟悉程度就应该如同骨科医生对人体每一块骨头的熟知，哪怕他在不常见。<br><a id="more"></a></p>
+<h4 id="文档标签"><a href="#文档标签" class="headerlink" title="文档标签"></a>文档标签</h4><p>&lt;!DOCTYPE&gt;     定义文档类型。</p>
 <pre><code>1.HTML 5
 &lt;!DOCTYPE html&gt;
 2.HTML 4.01 Strict
@@ -1585,7 +925,7 @@ figure 元素的内容应该与主内容相关，但如果被删除，则不应�
     
     <summary type="html">
     
-      &lt;h4 id=&quot;文档标签&quot;&gt;&lt;a href=&quot;#文档标签&quot; class=&quot;headerlink&quot; title=&quot;文档标签&quot;&gt;&lt;/a&gt;文档标签&lt;/h4&gt;&lt;p&gt;&amp;lt;!DOCTYPE&amp;gt;     定义文档类型。&lt;br&gt;
+      &lt;p&gt;html标签是前端界面的骨架，作为一个前端开发我们对每个标签的熟悉程度就应该如同骨科医生对人体每一块骨头的熟知，哪怕他在不常见。&lt;br&gt;
     
     </summary>
     
