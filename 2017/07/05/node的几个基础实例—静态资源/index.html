@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!---->
+  <!--<meta name="description" content="这是王昌隆的个人博客"/>-->
+  <!---->
+
+  <!---->
+  <!--<meta name="keywords" content="阿木隆个人博客,王昌隆个人博客,静态博客,hexo快速搭建,北风骤起,艳阳高照,北风骤起艳阳高照,杭州数梦工场,redux浅封装框架dva,前端面试,前端面试圣经,加薪三级跳,前端自学,经验分享,前端工程师,前端初级开发工程师都需要哪些技能,前端中级开发工程师都需要哪些技能,前端高级开发工程师都需要哪些技能,新人新站,如何使用hexo快速建站"/>-->
+  <!---->
+
+  <!---->
+  
+  <meta name="baidu-site-verification" content="43om1SQhig"/>
+  
+  
+  <meta name="360-site-verification" content="09e51ecaa091dc6562d9b66976940fc8"/>
+  
+
+  
+  <title>
+    
+    node的几个基础实例—静态资源 |
+    
+    北风骤起，艳阳高照</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="nodejs静态资源服务器必须的几个模块：1、http 是nodejs的服务模块2、url 是url路由模块3、fs 是文件服务器模块4、mime类型表，以extname来决定content-type5、path是路径模块6、child_process子进程模块">
+<meta name="keywords" content="nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node的几个基础实例—静态资源">
+<meta property="og:url" content="http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/index.html">
+<meta property="og:site_name" content="北风骤起，艳阳高照">
+<meta property="og:description" content="nodejs静态资源服务器必须的几个模块：1、http 是nodejs的服务模块2、url 是url路由模块3、fs 是文件服务器模块4、mime类型表，以extname来决定content-type5、path是路径模块6、child_process子进程模块">
+<meta property="og:updated_time" content="2017-07-05T15:33:25.810Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node的几个基础实例—静态资源">
+<meta name="twitter:description" content="nodejs静态资源服务器必须的几个模块：1、http 是nodejs的服务模块2、url 是url路由模块3、fs 是文件服务器模块4、mime类型表，以extname来决定content-type5、path是路径模块6、child_process子进程模块">
+  
+  <link rel="alternative" href="http://www.amulong.xin /atom.xml" title="北风骤起，艳阳高照"
+        type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  <!-- 百度站长-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a753051d80b2baecfddfda1afcc3fdc4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!-- 百度推送-->
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  <!--360-->
+  <script>
+    (function () {
+      var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f" : "https://jspassport.ssl.qhimg.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f";
+      document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="http://www.amulong.xin" title="北风骤起，艳阳高照" rel="home" style="background:linear-gradient(-45deg ,#880808 ,#000000);;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background: #ffffff\0;">北风骤起，艳阳高照</a>
+      </h1>
+      
+        <script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js"></script>
+        <h2 class="site-description"><script>lwlhitokoto();</script></h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/project">举个栗子</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/soso">你说我说</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/atom.xml">订了个阅</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-node的几个基础实例—静态资源"
+         class="post-node的几个基础实例—静态资源 post type-post status-publish format-standard hentry">
+    <!---->
+
+    <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      node的几个基础实例—静态资源
+    </h1>
+  
+
+        
+    </header><!-- .entry-header -->
+
+    <div class="entry-content">
+        
+        <p>nodejs静态资源服务器必须的几个模块：<br>1、http 是nodejs的服务模块<br>2、url 是url路由模块<br>3、fs 是文件服务器模块<br>4、mime类型表，以extname来决定content-type<br>5、path是路径模块<br>6、child_process子进程模块<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div><div class="line"><span class="comment">//加载所需要的模块</span></div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>);</div><div class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">var</span> cp = <span class="built_in">require</span>(<span class="string">'child_process'</span>);</div><div class="line"></div><div class="line"><span class="comment">//创建服务</span></div><div class="line"><span class="keyword">var</span> httpServer = http.createServer(processRequest);</div><div class="line"></div><div class="line"><span class="keyword">var</span> port = <span class="number">8080</span>;</div><div class="line"></div><div class="line"><span class="comment">//指定一个监听的接口</span></div><div class="line">httpServer.listen(port, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`app is running at port:<span class="subst">$&#123;port&#125;</span>`</span>);</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`url: http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>);</div><div class="line">    cp.exec(<span class="string">`explorer http://localhost:<span class="subst">$&#123;port&#125;</span>`</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//响应请求的函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">processRequest</span> (<span class="params">request, response</span>) </span>&#123;</div><div class="line">    <span class="comment">//mime类型</span></div><div class="line">    <span class="keyword">var</span> mime = &#123;</div><div class="line">        <span class="string">"css"</span>: <span class="string">"text/css"</span>,</div><div class="line">        <span class="string">"gif"</span>: <span class="string">"image/gif"</span>,</div><div class="line">        <span class="string">"html"</span>: <span class="string">"text/html"</span>,</div><div class="line">        <span class="string">"ico"</span>: <span class="string">"image/x-icon"</span>,</div><div class="line">        <span class="string">"jpeg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">        <span class="string">"jpg"</span>: <span class="string">"image/jpeg"</span>,</div><div class="line">        <span class="string">"js"</span>: <span class="string">"text/javascript"</span>,</div><div class="line">        <span class="string">"json"</span>: <span class="string">"application/json"</span>,</div><div class="line">        <span class="string">"pdf"</span>: <span class="string">"application/pdf"</span>,</div><div class="line">        <span class="string">"png"</span>: <span class="string">"image/png"</span>,</div><div class="line">        <span class="string">"svg"</span>: <span class="string">"image/svg+xml"</span>,</div><div class="line">        <span class="string">"swf"</span>: <span class="string">"application/x-shockwave-flash"</span>,</div><div class="line">        <span class="string">"tiff"</span>: <span class="string">"image/tiff"</span>,</div><div class="line">        <span class="string">"txt"</span>: <span class="string">"text/plain"</span>,</div><div class="line">        <span class="string">"wav"</span>: <span class="string">"audio/x-wav"</span>,</div><div class="line">        <span class="string">"wma"</span>: <span class="string">"audio/x-ms-wma"</span>,</div><div class="line">        <span class="string">"wmv"</span>: <span class="string">"video/x-ms-wmv"</span>,</div><div class="line">        <span class="string">"xml"</span>: <span class="string">"text/xml"</span></div><div class="line">    &#125;;</div><div class="line">    </div><div class="line">    <span class="comment">//request里面切出标识符字符串</span></div><div class="line">    <span class="keyword">var</span> requestUrl = request.url;</div><div class="line">    <span class="comment">//url模块的parse方法 接受一个字符串，返回一个url对象,切出来路径</span></div><div class="line">    <span class="keyword">var</span> pathName = url.parse(requestUrl).pathname;</div><div class="line"></div><div class="line">    <span class="comment">//对路径解码，防止中文乱码</span></div><div class="line">    <span class="keyword">var</span> pathName = <span class="built_in">decodeURI</span>(pathName);</div><div class="line"></div><div class="line">    <span class="comment">//解决301重定向问题，如果pathname没以/结尾，并且没有扩展名</span></div><div class="line">    <span class="keyword">if</span> (!pathName.endsWith(<span class="string">'/'</span>) &amp;&amp; path.extname(pathName) === <span class="string">''</span>) &#123;</div><div class="line">        pathName += <span class="string">'/'</span>;</div><div class="line">        <span class="keyword">var</span> redirect = <span class="string">"http://"</span> + request.headers.host + pathName;</div><div class="line">        response.writeHead(<span class="number">301</span>, &#123;</div><div class="line">            <span class="attr">location</span>: redirect</div><div class="line">        &#125;);</div><div class="line">        <span class="comment">//response.end方法用来回应完成后关闭本次对话，也可以写入HTTP回应的具体内容。</span></div><div class="line">        response.end();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//获取资源文件的绝对路径</span></div><div class="line">    <span class="keyword">var</span> filePath = path.resolve(__dirname + pathName);</div><div class="line">    <span class="built_in">console</span>.log(filePath);</div><div class="line">    <span class="comment">//获取对应文件的文档类型</span></div><div class="line">    <span class="comment">//我们通过path.extname来获取文件的后缀名。由于extname返回值包含”.”，所以通过slice方法来剔除掉”.”，</span></div><div class="line">    <span class="comment">//对于没有后缀名的文件，我们一律认为是unknown。</span></div><div class="line">    <span class="keyword">var</span> ext = path.extname(pathName);</div><div class="line">    ext = ext ? ext.slice(<span class="number">1</span>) : <span class="string">'unknown'</span>;</div><div class="line"></div><div class="line">    <span class="comment">//未知的类型一律用"text/plain"类型</span></div><div class="line">    <span class="keyword">var</span> contentType = mime[ext] || <span class="string">"text/plain"</span>;</div><div class="line"></div><div class="line">    fs.stat(filePath, (err, stats) =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            response.writeHead(<span class="number">404</span>, &#123; <span class="string">"content-type"</span>: <span class="string">"text/html"</span> &#125;);</div><div class="line">            response.end(<span class="string">"&lt;h1&gt;404 Not Found&lt;/h1&gt;"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//没出错 并且文件存在</span></div><div class="line">        <span class="keyword">if</span> (!err &amp;&amp; stats.isFile()) &#123;</div><div class="line">            readFile(filePath, contentType);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//如果路径是目录</span></div><div class="line">        <span class="keyword">if</span> (!err &amp;&amp; stats.isDirectory()) &#123;</div><div class="line">            <span class="keyword">var</span> html = <span class="string">"&lt;head&gt;&lt;meta charset = 'utf-8'/&gt;&lt;/head&gt;&lt;body&gt;&lt;ul&gt;"</span>;</div><div class="line">            <span class="comment">//读取该路径下文件</span></div><div class="line">            fs.readdir(filePath, (err, files) =&gt; &#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">                    <span class="built_in">console</span>.log(<span class="string">"读取路径失败！"</span>);</div><div class="line">                &#125; <span class="keyword">else</span> &#123;</div><div class="line">                    <span class="comment">//做成一个链接表，方便用户访问</span></div><div class="line">                    <span class="keyword">var</span> flag = <span class="literal">false</span>;</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">var</span> file <span class="keyword">of</span> files) &#123;</div><div class="line">                        <span class="comment">//如果在目录下找到index.html，直接读取这个文件</span></div><div class="line">                        <span class="keyword">if</span> (file === <span class="string">"index.html"</span>) &#123;</div><div class="line">                            readFile(filePath + (filePath[filePath.length<span class="number">-1</span>]==<span class="string">'/'</span> ? <span class="string">''</span> : <span class="string">'/'</span>) + <span class="string">'index.html'</span>, <span class="string">"text/html"</span>);</div><div class="line">                            flag = <span class="literal">true</span>;</div><div class="line">                            <span class="keyword">break</span>;</div><div class="line">                        &#125;;</div><div class="line">                        html += <span class="string">`&lt;li&gt;&lt;a href='<span class="subst">$&#123;file&#125;</span>'&gt;<span class="subst">$&#123;file&#125;</span>&lt;/a&gt;&lt;/li&gt;`</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span>(!flag) &#123;</div><div class="line">                        html += <span class="string">'&lt;/ul&gt;&lt;/body&gt;'</span>;</div><div class="line">                        response.writeHead(<span class="number">200</span>, &#123; <span class="string">"content-type"</span>: <span class="string">"text/html"</span> &#125;);</div><div class="line">                        response.end(html);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//读取文件的函数</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">readFile</span>(<span class="params">filePath, contentType</span>)</span>&#123;</div><div class="line">            response.writeHead(<span class="number">200</span>, &#123; <span class="string">"content-type"</span>: contentType &#125;);</div><div class="line">            <span class="comment">//建立流对象，读文件</span></div><div class="line">            <span class="keyword">var</span> stream = fs.createReadStream(filePath);</div><div class="line">            <span class="comment">//错误处理</span></div><div class="line">            stream.on(<span class="string">'error'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                response.writeHead(<span class="number">500</span>, &#123; <span class="string">"content-type"</span>: contentType &#125;);</div><div class="line">                response.end(<span class="string">"&lt;h1&gt;500 Server Error&lt;/h1&gt;"</span>);</div><div class="line">            &#125;);</div><div class="line">            <span class="comment">//读取文件</span></div><div class="line">            stream.pipe(response);</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
+    </div><!-- .entry-content -->
+
+    
+      <footer class="entry-meta">
+          <a href="/2017/07/05/node的几个基础实例—静态资源/">
+    <time datetime="2017-07-05T12:48:11.000Z" class="entry-date">
+        2017-07-05
+    </time>
+</a>
+          
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
+  </div>
+
+          
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li></ul>
+
+          
+          <p>本文永久链接：<a href="http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/"> http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/</a></p>
+          
+      </footer>
+    
+</article>
+
+
+
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2017/07/06/CSS兼容性总结/" rel="prev"><span class="meta-nav">←</span> CSS兼容性总结</a></span>
+    
+    
+        <span class="nav-next"><a href="/2017/07/05/初学docker3/" rel="next">初学docker3 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+
+<div id="cyReward" role="cylabs" data-use="reward" sid="http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/"  style="text-align: center"></div>
+<section id="comments">
+  <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+  <!--<div id="cyReping" role="cylabs" data-use="reping" sid="http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/"></div>-->
+  <div id="SOHUCS" sid="http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/" ></div>
+  <script type="text/javascript">
+      (function(){
+          var appid = 'cyt6d5PUS';
+          var conf = 'prod_ae46027aa49ac2fe7a466e24ef337d1f';
+          var width = window.innerWidth || document.documentElement.clientWidth;
+          if (width < 600) {
+              window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+</section>
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search" style="margin-bottom:0">
+    <div style="display: none">
+        <script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=2341236193117022362' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+  <div style="margin: 10px 0;"><input type="text" class="st-default-search-input" style="width:80%;" placeholder="站内搜索由Swiftype提供支持"></div>
+</aside>
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+      <a style="width: 100px;float: left;" href="http://www.amulong.xin/about" target="_blank"><img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;"></a>
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：<a href="http://www.amulong.xin/about" target="_blank">阿木隆</a></div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于 <a href="http://www.chd.edu.cn/338/list.htm" target="_blank">长安大学</a>，自动化系</div>
+            <div>就职于 <a href="http://www.dtdream.com/" target="_blank">数梦工场</a>，前端攻城狮</div>
+        </div>
+        <div style="width: 100%;margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：挖掘隐藏于界面下的真相。</div>
+    </div>
+</aside>
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <h4 class="widget-title">总共发表了31篇</h4>
+    <div class="widget-content">
+        <ul>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/13/前端图像处理/">前端图像处理</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/13/前端面试题精华/">前端面试题精华</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/window对象/">window对象</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/javascript继承/">javascript继承</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/javascript创建对象/">javascript创建对象</a>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端面试圣经初级/">前端面试圣经初级</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初级/">初级</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget-content">
+        <ul>
+            
+            <li><a href="http://www.chinayingli.cn/">电商</a></li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+  <div><a target="_blank"  href="https://verify.nic.xin/xinDetail/xinAuthInfoDetail?token=6dd3c6c4c76844ef6d19ef8bb1927d6b"><img src="https://verify.nic.xin/api/domain/showCreditLogo.do?logoToken=d86b10f302e957c7e55534b451b60a71"></a>
+  </div>
+  <div id="getUserIp" style="display:none">
+    <script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
+  </div>
+  <script>
+    var ipJson = eval('(' + document.getElementById("getUserIp").innerText.replace(/ /g,"") + ')');
+    document.write("欢迎你：" + ipJson.ip + "，所在区域：" + ipJson.address)
+  </script>
+  <div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260942557'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260942557%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  <p>2017 Copyright © <a href="http://www.amulong.xin/about" target="_blank"> 阿木隆</a> <a
+      href="http://www.amulong.xin/version" target="_blank">当前版本1.2</a> </p>
+  <p>浙ICP备17030325号-1</p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+<script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt6d5PUS"></script>
+<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyt6d5PUS"></script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','VFBHAuRGVeV_QsAzmMsM','2.0.0');
+</script>
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>

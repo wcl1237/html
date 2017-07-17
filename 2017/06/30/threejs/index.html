@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!---->
+  <!--<meta name="description" content="这是王昌隆的个人博客"/>-->
+  <!---->
+
+  <!---->
+  <!--<meta name="keywords" content="阿木隆个人博客,王昌隆个人博客,静态博客,hexo快速搭建,北风骤起,艳阳高照,北风骤起艳阳高照,杭州数梦工场,redux浅封装框架dva,前端面试,前端面试圣经,加薪三级跳,前端自学,经验分享,前端工程师,前端初级开发工程师都需要哪些技能,前端中级开发工程师都需要哪些技能,前端高级开发工程师都需要哪些技能,新人新站,如何使用hexo快速建站"/>-->
+  <!---->
+
+  <!---->
+  
+  <meta name="baidu-site-verification" content="43om1SQhig"/>
+  
+  
+  <meta name="360-site-verification" content="09e51ecaa091dc6562d9b66976940fc8"/>
+  
+
+  
+  <title>
+    
+    threejs基础 |
+    
+    北风骤起，艳阳高照</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。">
+<meta name="keywords" content="javascript,webGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threejs基础">
+<meta property="og:url" content="http://www.amulong.xin/2017/06/30/threejs/index.html">
+<meta property="og:site_name" content="北风骤起，艳阳高照">
+<meta property="og:description" content="Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。">
+<meta property="og:updated_time" content="2017-07-05T03:20:53.071Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="threejs基础">
+<meta name="twitter:description" content="Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。">
+  
+  <link rel="alternative" href="http://www.amulong.xin /atom.xml" title="北风骤起，艳阳高照"
+        type="application/atom+xml">
+  
+  
+  <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--
+-->
+  <!-- 百度站长-->
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a753051d80b2baecfddfda1afcc3fdc4";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <!-- 百度推送-->
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      }
+      else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+  <!--360-->
+  <script>
+    (function () {
+      var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f" : "https://jspassport.ssl.qhimg.com/11.0.1.js?4c65c9eab96d147331a3c2ac2a0c8e6f";
+      document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+  </script>
+
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="http://www.amulong.xin" title="北风骤起，艳阳高照" rel="home" style="background:linear-gradient(-45deg ,#880808 ,#000000);;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background: #ffffff\0;">北风骤起，艳阳高照</a>
+      </h1>
+      
+        <script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js"></script>
+        <h2 class="site-description"><script>lwlhitokoto();</script></h2>
+      
+        <!--一言API。貌似已经失效了-->
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/">主页</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/archives">文章列表</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/project">举个栗子</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/soso">你说我说</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="http://www.amulong.xin/atom.xml">订了个阅</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-threejs"
+         class="post-threejs post type-post status-publish format-standard hentry">
+    <!---->
+
+    <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      threejs基础
+    </h1>
+  
+
+        
+    </header><!-- .entry-header -->
+
+    <div class="entry-content">
+        
+        <p>Threejs中3个基础元素是场景（scene）、相机（camera）和渲染器（renderer）。</p>
+<a id="more"></a>
+<h4 id="1-场景"><a href="#1-场景" class="headerlink" title="1.场景"></a>1.场景</h4><p>场景是所有物体的容器，用THREE.Scene来表示。</p>
+<p>构件一个场景</p>
+<pre><code>var scene = new THREE.Scene();
+</code></pre><h4 id="2-相机"><a href="#2-相机" class="headerlink" title="2.相机"></a>2.相机</h4><p>相机决定了场景中第一视角的位置。<br>相机的种类：<br>透视相机（THREE.PerspectiveCamera）</p>
+<pre><code>var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+</code></pre><h4 id="3-渲染器"><a href="#3-渲染器" class="headerlink" title="3.渲染器"></a>3.渲染器</h4><p> 渲染器决定了渲染的结果应该画在页面的什么元素上面，并且以怎样的方式来绘制。</p>
+<pre><code>var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+</code></pre><h4 id="4-添加物体到场景中"><a href="#4-添加物体到场景中" class="headerlink" title="4.添加物体到场景中"></a>4.添加物体到场景中</h4><pre><code>/*创建一个物体*/
+var geometry = new THREE.CubeGeometry(1,1,1); 
+var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+/*为物体添加细节*/
+var cube = new THREE.Mesh(geometry, material);
+/*将物体添加到场景中*/
+scene.add(cube);
+</code></pre><h4 id="5-渲染"><a href="#5-渲染" class="headerlink" title="5.渲染"></a>5.渲染</h4><pre><code>/*使用渲染器，结合相机和场景*/
+renderer.render(scene, camera);
+/*渲染函数的原型*/
+render( scene, camera, renderTarget, forceClear )
+/*
+scene：前面定义的场景
+camera：前面定义的相机
+renderTarget：渲染的目标，默认是渲染到前面定义的render变量中
+forceClear：每次绘制之前都将画布的内容给清除，即使自动清除标志autoClear为false，也会清除。
+*/
+</code></pre><h4 id="6-渲染循环"><a href="#6-渲染循环" class="headerlink" title="6.渲染循环"></a>6.渲染循环</h4><p>渲染有两种方式：实时渲染和离线渲染 。</p>
+<pre><code>/*实时渲染（游戏循环）*/
+function render() {
+    cube.rotation.x += 0.1;
+    cube.rotation.y += 0.1;
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+}
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;style&gt;canvas &#123; width: 100%; height: 100% &#125;&lt;/style&gt;</div><div class="line">    &lt;script src=<span class="string">"js/three.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">        var scene = new THREE.Scene();</div><div class="line">        </div><div class="line">        var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);</div><div class="line">        </div><div class="line">        var renderer = new THREE.WebGLRenderer();</div><div class="line">        </div><div class="line">        renderer.setSize(window.innerWidth, window.innerHeight);</div><div class="line">        </div><div class="line">        document.body.appendChild(renderer.domElement);</div><div class="line">        var geometry = new THREE.CubeGeometry(1,1,1);</div><div class="line">        var material = new THREE.MeshBasicMaterial(&#123;color: 0x00ff00&#125;);</div><div class="line">        var cube = new THREE.Mesh(geometry, material); </div><div class="line">        scene.add(cube);</div><div class="line">        camera.position.z = 5;</div><div class="line">        <span class="keyword">function</span> <span class="function"><span class="title">render</span></span>() &#123;</div><div class="line">            requestAnimationFrame(render);</div><div class="line">            cube.rotation.x += 0.1;</div><div class="line">            cube.rotation.y += 0.1;</div><div class="line">            renderer.render(scene, camera);</div><div class="line">        &#125;</div><div class="line">        render();</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+        
+    </div><!-- .entry-content -->
+
+    
+      <footer class="entry-meta">
+          <a href="/2017/06/30/threejs/">
+    <time datetime="2017-06-30T02:07:16.000Z" class="entry-date">
+        2017-06-30
+    </time>
+</a>
+          
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/前端/">前端</a>
+  </div>
+
+          
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webGL/">webGL</a></li></ul>
+
+          
+          <p>本文永久链接：<a href="http://www.amulong.xin/2017/06/30/threejs/"> http://www.amulong.xin/2017/06/30/threejs/</a></p>
+          
+      </footer>
+    
+</article>
+
+
+
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/2017/06/30/前端三剑客-html标签全解/" rel="prev"><span class="meta-nav">←</span> 前端三剑客-html标签全解</a></span>
+    
+    
+        <span class="nav-next"><a href="/2017/06/29/前端三剑客-js基础大全/" rel="next">前端三剑客-js基础大全 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+<!-- 代码1：放在页面需要展示的位置  -->
+<!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+
+<div id="cyReward" role="cylabs" data-use="reward" sid="http://www.amulong.xin/2017/06/30/threejs/"  style="text-align: center"></div>
+<section id="comments">
+  <!-- 如果您配置过sourceid，建议在div标签中配置sourceid、cid(分类id)，没有请忽略  -->
+  <!--<div id="cyReping" role="cylabs" data-use="reping" sid="http://www.amulong.xin/2017/06/30/threejs/"></div>-->
+  <div id="SOHUCS" sid="http://www.amulong.xin/2017/06/30/threejs/" ></div>
+  <script type="text/javascript">
+      (function(){
+          var appid = 'cyt6d5PUS';
+          var conf = 'prod_ae46027aa49ac2fe7a466e24ef337d1f';
+          var width = window.innerWidth || document.documentElement.clientWidth;
+          if (width < 600) {
+              window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); } })(); </script>
+</section>
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search" style="margin-bottom:0">
+    <div style="display: none">
+        <script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=2341236193117022362' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script>
+    </div>
+  <div style="margin: 10px 0;"><input type="text" class="st-default-search-input" style="width:80%;" placeholder="站内搜索由Swiftype提供支持"></div>
+</aside>
+  
+    <aside class="widget">
+    <h3 class="widget-title">简介</h3>
+    <div class="widget-content">
+      <a style="width: 100px;float: left;" href="http://www.amulong.xin/about" target="_blank"><img src="/css/images/author.jpg" alt="阿木隆" style="width: 100px;"></a>
+        <div style="margin-left: 120px; line-height: 2">
+            <div>花名：<a href="http://www.amulong.xin/about" target="_blank">阿木隆</a></div>
+            <div>出生于辽宁，1993年10月</div>
+            <div>毕业于 <a href="http://www.chd.edu.cn/338/list.htm" target="_blank">长安大学</a>，自动化系</div>
+            <div>就职于 <a href="http://www.dtdream.com/" target="_blank">数梦工场</a>，前端攻城狮</div>
+        </div>
+        <div style="width: 100%;margin-top: 10px;line-height: 2;float: left;margin-bottom: 48px;">座右铭：挖掘隐藏于界面下的真相。</div>
+    </div>
+</aside>
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">最近发表</h3>
+    <h4 class="widget-title">总共发表了31篇</h4>
+    <div class="widget-content">
+        <ul>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/13/前端图像处理/">前端图像处理</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/13/前端面试题精华/">前端面试题精华</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/window对象/">window对象</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/javascript继承/">javascript继承</a>
+            </li>
+            
+            <li>
+                <a href="http://www.amulong.xin/2017/07/10/javascript创建对象/">javascript创建对象</a>
+            </li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Nginx/">Nginx</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/nodejs/">nodejs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端面试圣经初级/">前端面试圣经初级</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/天命无我/">天命无我</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/通信/">通信</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nodejs/">nodejs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/">redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webGL/">webGL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/window/">window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/初级/">初级</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/原创/">原创</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨域/">跨域</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/通信/">通信</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">1</span></li></ul>
+      <div id = "tagsCloud"></div>
+    </div>
+  </aside>
+
+  
+    
+<aside class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget-content">
+        <ul>
+            
+            <li><a href="http://www.chinayingli.cn/">电商</a></li>
+            
+        </ul>
+    </div>
+</aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+  <div><a target="_blank"  href="https://verify.nic.xin/xinDetail/xinAuthInfoDetail?token=6dd3c6c4c76844ef6d19ef8bb1927d6b"><img src="https://verify.nic.xin/api/domain/showCreditLogo.do?logoToken=d86b10f302e957c7e55534b451b60a71"></a>
+  </div>
+  <div id="getUserIp" style="display:none">
+    <script type="text/javascript" src="http://ip.chinaz.com/getip.aspx"></script>
+  </div>
+  <script>
+    var ipJson = eval('(' + document.getElementById("getUserIp").innerText.replace(/ /g,"") + ')');
+    document.write("欢迎你：" + ipJson.ip + "，所在区域：" + ipJson.address)
+  </script>
+  <div>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260942557'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260942557%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+  </div>
+  <p>2017 Copyright © <a href="http://www.amulong.xin/about" target="_blank"> 阿木隆</a> <a
+      href="http://www.amulong.xin/version" target="_blank">当前版本1.2</a> </p>
+  <p>浙ICP备17030325号-1</p>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+<!-- 代码2：用来读取评论框配置，此代码需放置在代码1之后。 -->
+<!-- 如果当前页面有评论框，代码2请勿放置在评论框代码之前。 -->
+<!-- 如果页面同时使用多个实验室项目，以下代码只需要引入一次，只配置上面的div标签即可 -->
+<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+<script id="cy_cmt_num" src="http://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cyt6d5PUS"></script>
+<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cyt6d5PUS"></script>
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install','VFBHAuRGVeV_QsAzmMsM','2.0.0');
+</script>
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
