@@ -4,9 +4,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://www.amulong.xin/"/>
+  <link href="http://www.wcl1237.com/"/>
   <updated>2017-07-14T01:23:21.421Z</updated>
-  <id>http://www.amulong.xin/</id>
+  <id>http://www.wcl1237.com/</id>
   
   <author>
     <name>阿木隆</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>前端图像处理</title>
-    <link href="http://www.amulong.xin/2017/07/13/%E5%89%8D%E7%AB%AF%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
-    <id>http://www.amulong.xin/2017/07/13/前端图像处理/</id>
+    <link href="http://www.wcl1237.com/2017/07/13/%E5%89%8D%E7%AB%AF%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"/>
+    <id>http://www.wcl1237.com/2017/07/13/前端图像处理/</id>
     <published>2017-07-13T10:21:08.000Z</published>
     <updated>2017-07-14T01:23:21.421Z</updated>
     
@@ -34,17 +34,17 @@
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>前端面试题精华</title>
-    <link href="http://www.amulong.xin/2017/07/13/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E5%8D%8E/"/>
-    <id>http://www.amulong.xin/2017/07/13/前端面试题精华/</id>
+    <link href="http://www.wcl1237.com/2017/07/13/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E5%8D%8E/"/>
+    <id>http://www.wcl1237.com/2017/07/13/前端面试题精华/</id>
     <published>2017-07-13T07:57:08.000Z</published>
     <updated>2017-07-17T05:18:15.029Z</updated>
     
@@ -165,17 +165,17 @@
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="面试" scheme="http://www.amulong.xin/tags/%E9%9D%A2%E8%AF%95/"/>
+      <category term="面试" scheme="http://www.wcl1237.com/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>window对象</title>
-    <link href="http://www.amulong.xin/2017/07/10/window%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.amulong.xin/2017/07/10/window对象/</id>
+    <link href="http://www.wcl1237.com/2017/07/10/window%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.wcl1237.com/2017/07/10/window对象/</id>
     <published>2017-07-10T07:44:40.000Z</published>
     <updated>2017-07-11T01:14:27.984Z</updated>
     
@@ -238,19 +238,19 @@ if(typeof pageWidth != &amp;quot;number&amp;quot;){
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="window" scheme="http://www.amulong.xin/tags/window/"/>
+      <category term="window" scheme="http://www.wcl1237.com/tags/window/"/>
     
   </entry>
   
   <entry>
     <title>javascript继承</title>
-    <link href="http://www.amulong.xin/2017/07/10/javascript%E7%BB%A7%E6%89%BF/"/>
-    <id>http://www.amulong.xin/2017/07/10/javascript继承/</id>
+    <link href="http://www.wcl1237.com/2017/07/10/javascript%E7%BB%A7%E6%89%BF/"/>
+    <id>http://www.wcl1237.com/2017/07/10/javascript继承/</id>
     <published>2017-07-10T05:33:15.000Z</published>
     <updated>2017-07-10T07:14:59.801Z</updated>
     
@@ -344,17 +344,17 @@ Object.getOwnPropertyDescriptor(obj, prop)
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>javascript创建对象</title>
-    <link href="http://www.amulong.xin/2017/07/10/javascript%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.amulong.xin/2017/07/10/javascript创建对象/</id>
+    <link href="http://www.wcl1237.com/2017/07/10/javascript%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.wcl1237.com/2017/07/10/javascript创建对象/</id>
     <published>2017-07-10T01:34:07.000Z</published>
     <updated>2017-07-10T05:32:20.845Z</updated>
     
@@ -430,17 +430,17 @@ Person.prototype = {
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>javascript理解对象</title>
-    <link href="http://www.amulong.xin/2017/07/07/javascript%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.amulong.xin/2017/07/07/javascript理解对象/</id>
+    <link href="http://www.wcl1237.com/2017/07/07/javascript%E7%90%86%E8%A7%A3%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.wcl1237.com/2017/07/07/javascript理解对象/</id>
     <published>2017-07-07T14:05:40.000Z</published>
     <updated>2017-07-10T01:45:14.167Z</updated>
     
@@ -466,17 +466,17 @@ Object.defineProperty{
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
   </entry>
   
   <entry>
     <title>CSS兼容性总结</title>
-    <link href="http://www.amulong.xin/2017/07/06/CSS%E5%85%BC%E5%AE%B9%E6%80%A7%E6%80%BB%E7%BB%93/"/>
-    <id>http://www.amulong.xin/2017/07/06/CSS兼容性总结/</id>
+    <link href="http://www.wcl1237.com/2017/07/06/CSS%E5%85%BC%E5%AE%B9%E6%80%A7%E6%80%BB%E7%BB%93/"/>
+    <id>http://www.wcl1237.com/2017/07/06/CSS兼容性总结/</id>
     <published>2017-07-06T06:12:55.000Z</published>
     <updated>2017-07-06T11:26:40.647Z</updated>
     
@@ -598,17 +598,17 @@ IE7可识别 *+div{color:red;}
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="css" scheme="http://www.amulong.xin/tags/css/"/>
+      <category term="css" scheme="http://www.wcl1237.com/tags/css/"/>
     
   </entry>
   
   <entry>
     <title>node的几个基础实例—静态资源</title>
-    <link href="http://www.amulong.xin/2017/07/05/node%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E5%AE%9E%E4%BE%8B%E2%80%94%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"/>
-    <id>http://www.amulong.xin/2017/07/05/node的几个基础实例—静态资源/</id>
+    <link href="http://www.wcl1237.com/2017/07/05/node%E7%9A%84%E5%87%A0%E4%B8%AA%E5%9F%BA%E7%A1%80%E5%AE%9E%E4%BE%8B%E2%80%94%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"/>
+    <id>http://www.wcl1237.com/2017/07/05/node的几个基础实例—静态资源/</id>
     <published>2017-07-05T12:48:11.000Z</published>
     <updated>2017-07-05T15:33:25.810Z</updated>
     
@@ -621,17 +621,17 @@ IE7可识别 *+div{color:red;}
     
     </summary>
     
-      <category term="nodejs" scheme="http://www.amulong.xin/categories/nodejs/"/>
+      <category term="nodejs" scheme="http://www.wcl1237.com/categories/nodejs/"/>
     
     
-      <category term="nodejs" scheme="http://www.amulong.xin/tags/nodejs/"/>
+      <category term="nodejs" scheme="http://www.wcl1237.com/tags/nodejs/"/>
     
   </entry>
   
   <entry>
     <title>初学docker3</title>
-    <link href="http://www.amulong.xin/2017/07/05/%E5%88%9D%E5%AD%A6docker3/"/>
-    <id>http://www.amulong.xin/2017/07/05/初学docker3/</id>
+    <link href="http://www.wcl1237.com/2017/07/05/%E5%88%9D%E5%AD%A6docker3/"/>
+    <id>http://www.wcl1237.com/2017/07/05/初学docker3/</id>
     <published>2017-07-05T12:02:36.000Z</published>
     <updated>2017-07-05T12:20:33.372Z</updated>
     
@@ -759,19 +759,19 @@ service docker restart
     
     </summary>
     
-      <category term="docker" scheme="http://www.amulong.xin/categories/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/categories/docker/"/>
     
     
-      <category term="nodejs" scheme="http://www.amulong.xin/tags/nodejs/"/>
+      <category term="nodejs" scheme="http://www.wcl1237.com/tags/nodejs/"/>
     
-      <category term="docker" scheme="http://www.amulong.xin/tags/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>初学docker2</title>
-    <link href="http://www.amulong.xin/2017/07/05/%E5%88%9D%E5%AD%A6docker2/"/>
-    <id>http://www.amulong.xin/2017/07/05/初学docker2/</id>
+    <link href="http://www.wcl1237.com/2017/07/05/%E5%88%9D%E5%AD%A6docker2/"/>
+    <id>http://www.wcl1237.com/2017/07/05/初学docker2/</id>
     <published>2017-07-05T11:58:19.000Z</published>
     <updated>2017-07-05T12:25:54.891Z</updated>
     
@@ -795,19 +795,19 @@ $ 172.17.0.34:6379&gt; get a
     
     </summary>
     
-      <category term="docker" scheme="http://www.amulong.xin/categories/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/categories/docker/"/>
     
     
-      <category term="docker" scheme="http://www.amulong.xin/tags/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/tags/docker/"/>
     
-      <category term="redis" scheme="http://www.amulong.xin/tags/redis/"/>
+      <category term="redis" scheme="http://www.wcl1237.com/tags/redis/"/>
     
   </entry>
   
   <entry>
     <title>Nginx作为Node.js前端WebServer</title>
-    <link href="http://www.amulong.xin/2017/07/05/Nginx%E4%BD%9C%E4%B8%BANode-js%E5%89%8D%E7%AB%AFWebServer/"/>
-    <id>http://www.amulong.xin/2017/07/05/Nginx作为Node-js前端WebServer/</id>
+    <link href="http://www.wcl1237.com/2017/07/05/Nginx%E4%BD%9C%E4%B8%BANode-js%E5%89%8D%E7%AB%AFWebServer/"/>
+    <id>http://www.wcl1237.com/2017/07/05/Nginx作为Node-js前端WebServer/</id>
     <published>2017-07-05T11:32:13.000Z</published>
     <updated>2017-07-05T11:50:27.005Z</updated>
     
@@ -827,19 +827,19 @@ $ 172.17.0.34:6379&gt; get a
     
     </summary>
     
-      <category term="Nginx" scheme="http://www.amulong.xin/categories/Nginx/"/>
+      <category term="Nginx" scheme="http://www.wcl1237.com/categories/Nginx/"/>
     
     
-      <category term="Nginx" scheme="http://www.amulong.xin/tags/Nginx/"/>
+      <category term="Nginx" scheme="http://www.wcl1237.com/tags/Nginx/"/>
     
-      <category term="nodejs" scheme="http://www.amulong.xin/tags/nodejs/"/>
+      <category term="nodejs" scheme="http://www.wcl1237.com/tags/nodejs/"/>
     
   </entry>
   
   <entry>
     <title>初学docker1</title>
-    <link href="http://www.amulong.xin/2017/07/05/%E5%88%9D%E5%AD%A6docker1/"/>
-    <id>http://www.amulong.xin/2017/07/05/初学docker1/</id>
+    <link href="http://www.wcl1237.com/2017/07/05/%E5%88%9D%E5%AD%A6docker1/"/>
+    <id>http://www.wcl1237.com/2017/07/05/初学docker1/</id>
     <published>2017-07-05T11:26:03.000Z</published>
     <updated>2017-07-05T12:29:31.570Z</updated>
     
@@ -889,17 +889,17 @@ $ sudo docker start 026e
     
     </summary>
     
-      <category term="docker" scheme="http://www.amulong.xin/categories/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/categories/docker/"/>
     
     
-      <category term="docker" scheme="http://www.amulong.xin/tags/docker/"/>
+      <category term="docker" scheme="http://www.wcl1237.com/tags/docker/"/>
     
   </entry>
   
   <entry>
     <title>怎么使用react搭建工程3—webpack</title>
-    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B3%E2%80%94webpack/"/>
-    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程3—webpack/</id>
+    <link href="http://www.wcl1237.com/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B3%E2%80%94webpack/"/>
+    <id>http://www.wcl1237.com/2017/07/04/怎么使用react搭建工程3—webpack/</id>
     <published>2017-07-04T08:35:26.000Z</published>
     <updated>2017-07-04T15:08:22.870Z</updated>
     
@@ -913,19 +913,19 @@ $ sudo docker start 026e
     
     </summary>
     
-      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/categories/react/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/tags/react/"/>
     
   </entry>
   
   <entry>
     <title>怎么使用react搭建工程2—React-router</title>
-    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B2%E2%80%94React-router/"/>
-    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程2—React-router/</id>
+    <link href="http://www.wcl1237.com/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B2%E2%80%94React-router/"/>
+    <id>http://www.wcl1237.com/2017/07/04/怎么使用react搭建工程2—React-router/</id>
     <published>2017-07-04T06:24:35.000Z</published>
     <updated>2017-07-04T07:29:50.422Z</updated>
     
@@ -938,19 +938,19 @@ $ sudo docker start 026e
     
     </summary>
     
-      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/categories/react/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/tags/react/"/>
     
   </entry>
   
   <entry>
     <title>怎么使用react搭建工程1—计数器</title>
-    <link href="http://www.amulong.xin/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B1%E2%80%94%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
-    <id>http://www.amulong.xin/2017/07/04/怎么使用react搭建工程1—计数器/</id>
+    <link href="http://www.wcl1237.com/2017/07/04/%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8react%E6%90%AD%E5%BB%BA%E5%B7%A5%E7%A8%8B1%E2%80%94%E8%AE%A1%E6%95%B0%E5%99%A8/"/>
+    <id>http://www.wcl1237.com/2017/07/04/怎么使用react搭建工程1—计数器/</id>
     <published>2017-07-04T05:17:44.000Z</published>
     <updated>2017-07-04T07:26:29.767Z</updated>
     
@@ -967,19 +967,19 @@ $ sudo docker start 026e
     
     </summary>
     
-      <category term="react" scheme="http://www.amulong.xin/categories/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/categories/react/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="react" scheme="http://www.amulong.xin/tags/react/"/>
+      <category term="react" scheme="http://www.wcl1237.com/tags/react/"/>
     
   </entry>
   
   <entry>
     <title>http协议</title>
-    <link href="http://www.amulong.xin/2017/07/03/http%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://www.amulong.xin/2017/07/03/http协议/</id>
+    <link href="http://www.wcl1237.com/2017/07/03/http%E5%8D%8F%E8%AE%AE/"/>
+    <id>http://www.wcl1237.com/2017/07/03/http协议/</id>
     <published>2017-07-03T06:01:44.000Z</published>
     <updated>2017-07-03T09:09:07.944Z</updated>
     
@@ -1019,19 +1019,19 @@ Connection:Keep-Alive (CRLF)
     
     </summary>
     
-      <category term="通信" scheme="http://www.amulong.xin/categories/%E9%80%9A%E4%BF%A1/"/>
+      <category term="通信" scheme="http://www.wcl1237.com/categories/%E9%80%9A%E4%BF%A1/"/>
     
     
-      <category term="通信" scheme="http://www.amulong.xin/tags/%E9%80%9A%E4%BF%A1/"/>
+      <category term="通信" scheme="http://www.wcl1237.com/tags/%E9%80%9A%E4%BF%A1/"/>
     
-      <category term="http" scheme="http://www.amulong.xin/tags/http/"/>
+      <category term="http" scheme="http://www.wcl1237.com/tags/http/"/>
     
   </entry>
   
   <entry>
     <title>实现全屏</title>
-    <link href="http://www.amulong.xin/2017/07/02/%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%8F/"/>
-    <id>http://www.amulong.xin/2017/07/02/实现全屏/</id>
+    <link href="http://www.wcl1237.com/2017/07/02/%E5%AE%9E%E7%8E%B0%E5%85%A8%E5%B1%8F/"/>
+    <id>http://www.wcl1237.com/2017/07/02/实现全屏/</id>
     <published>2017-07-02T06:48:02.000Z</published>
     <updated>2017-07-02T09:24:32.237Z</updated>
     
@@ -1044,19 +1044,19 @@ Connection:Keep-Alive (CRLF)
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
+      <category term="html" scheme="http://www.wcl1237.com/tags/html/"/>
     
   </entry>
   
   <entry>
     <title>复制到剪切板</title>
-    <link href="http://www.amulong.xin/2017/07/02/%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E5%88%87%E6%9D%BF/"/>
-    <id>http://www.amulong.xin/2017/07/02/复制到剪切板/</id>
+    <link href="http://www.wcl1237.com/2017/07/02/%E5%A4%8D%E5%88%B6%E5%88%B0%E5%89%AA%E5%88%87%E6%9D%BF/"/>
+    <id>http://www.wcl1237.com/2017/07/02/复制到剪切板/</id>
     <published>2017-07-02T06:46:59.000Z</published>
     <updated>2017-07-02T08:19:07.876Z</updated>
     
@@ -1073,19 +1073,19 @@ Connection:Keep-Alive (CRLF)
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
+      <category term="html" scheme="http://www.wcl1237.com/tags/html/"/>
     
   </entry>
   
   <entry>
     <title>jsonp</title>
-    <link href="http://www.amulong.xin/2017/07/02/jsonp/"/>
-    <id>http://www.amulong.xin/2017/07/02/jsonp/</id>
+    <link href="http://www.wcl1237.com/2017/07/02/jsonp/"/>
+    <id>http://www.wcl1237.com/2017/07/02/jsonp/</id>
     <published>2017-07-02T05:32:48.000Z</published>
     <updated>2017-07-02T05:53:27.784Z</updated>
     
@@ -1112,19 +1112,19 @@ Connection:Keep-Alive (CRLF)
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="javascript" scheme="http://www.amulong.xin/tags/javascript/"/>
+      <category term="javascript" scheme="http://www.wcl1237.com/tags/javascript/"/>
     
-      <category term="跨域" scheme="http://www.amulong.xin/tags/%E8%B7%A8%E5%9F%9F/"/>
+      <category term="跨域" scheme="http://www.wcl1237.com/tags/%E8%B7%A8%E5%9F%9F/"/>
     
   </entry>
   
   <entry>
     <title>form对象</title>
-    <link href="http://www.amulong.xin/2017/07/02/form%E5%AF%B9%E8%B1%A1/"/>
-    <id>http://www.amulong.xin/2017/07/02/form对象/</id>
+    <link href="http://www.wcl1237.com/2017/07/02/form%E5%AF%B9%E8%B1%A1/"/>
+    <id>http://www.wcl1237.com/2017/07/02/form对象/</id>
     <published>2017-07-02T05:32:00.000Z</published>
     <updated>2017-07-02T05:53:35.304Z</updated>
     
@@ -1144,10 +1144,10 @@ Connection:Keep-Alive (CRLF)
     
     </summary>
     
-      <category term="前端" scheme="http://www.amulong.xin/categories/%E5%89%8D%E7%AB%AF/"/>
+      <category term="前端" scheme="http://www.wcl1237.com/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
-      <category term="html" scheme="http://www.amulong.xin/tags/html/"/>
+      <category term="html" scheme="http://www.wcl1237.com/tags/html/"/>
     
   </entry>
   
